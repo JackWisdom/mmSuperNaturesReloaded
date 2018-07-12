@@ -240,14 +240,14 @@ import git.JackWisdom.mcp.supernaturals.SupernaturalsPlugin;
 /*     */   }
 /*     */   
 /*     */   public static void addBounty() {
-/* 254 */     List<SuperNPlayer> targets = SuperNManager.getSupernaturals();
+/* 254 */     ArrayList targets = new ArrayList(SuperNManager.getSupernaturals());
 /* 255 */     boolean bountyFound = false;
 /* 256 */     Random generator = new Random();
 /* 257 */     int count = 0;
 /*     */     
 /* 259 */     while (!bountyFound) {
 /* 260 */       int randomIndex = generator.nextInt(targets.size());
-/* 261 */       SuperNPlayer sntarget = (SuperNPlayer)targets.get(randomIndex);
+/* 261 */       SuperNPlayer sntarget = (SuperNPlayer)targets.iterator();
 /*     */       
 /* 263 */       if ((!bountyList.contains(sntarget)) && (sntarget.isSuper())) {
 /* 264 */         bountyList.add(sntarget);
@@ -285,7 +285,7 @@ import git.JackWisdom.mcp.supernaturals.SupernaturalsPlugin;
 /*     */   }
 /*     */   
 /*     */   public static void createBounties() {
-/* 299 */     List<SuperNPlayer> targets = SuperNManager.getSupernaturals();
+/* 299 */     List<SuperNPlayer> targets = new ArrayList<>(SuperNManager.getSupernaturals());
 /* 300 */     if (targets.size() == 0) {
 /* 301 */       SupernaturalsPlugin.log(Level.WARNING, "No targets found for WitchHunters!");
 /*     */       

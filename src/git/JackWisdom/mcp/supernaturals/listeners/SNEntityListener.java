@@ -60,7 +60,7 @@
 /*  60 */       return;
 /*     */     }
 /*  62 */     Player shooter = (Player)event.getEntity();
-/*  63 */     boolean cancel = this.plugin.getClassManager(shooter).shootArrow(shooter, event);
+/*  63 */     boolean cancel = SuperNManager.get(shooter).getType().getManager().shootArrow(shooter, event);
 /*     */     
 /*  65 */     event.setCancelled(cancel);
 /*     */   }
@@ -112,7 +112,7 @@
 /* 112 */       if (((edbeEvent.getDamager() instanceof Player)) && ((victim instanceof Player)))
 /*     */       {
 /* 114 */         Player pVictim = (Player)victim;
-/* 115 */         this.plugin.getClassManager((Player)edbeEvent.getDamager()).spellEvent(edbeEvent, pVictim);
+/* 115 */         SuperNManager.get(pVictim).getManager().spellEvent(edbeEvent, pVictim);
 /*     */       }
 /*     */     }
 /*     */     
@@ -127,7 +127,7 @@
 /* 127 */           return;
 /*     */         }
 /*     */         
-/* 130 */         damage = this.plugin.getClassManager((Player)damager).damagerEvent(edbeEvent, damage);
+/* 130 */         damage = SuperNManager.get(((Player)damager)).getManager().damagerEvent(edbeEvent, damage);
 /*     */       }
 /*     */     }
 /*     */     
@@ -139,7 +139,7 @@
 /*     */       {
 /* 140 */         return;
 /*     */       }
-/* 142 */       damage = this.plugin.getClassManager(pVictim).victimEvent(event, damage);
+/* 142 */       damage = SuperNManager.get(pVictim).getManager().victimEvent(event, damage);
 /*     */       
 /* 144 */       SuperNPlayer snvictim = SuperNManager.get(pVictim);
 /*     */       

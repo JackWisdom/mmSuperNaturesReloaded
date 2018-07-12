@@ -85,7 +85,7 @@
 /*     */ 
 /*     */ 
 /*     */ public class SupernaturalsPlugin
-/*     */   extends JavaPlugin
+/*     */   extends JavaPlugin implements UsingData
 /*     */ {
 /*     */   public static SupernaturalsPlugin instance;
 /*  91 */   private final SNConfigHandler snConfig = new SNConfigHandler(this);
@@ -109,7 +109,14 @@
 /*     */   
 /* 110 */   public static boolean foundPerms = false;
 /*     */   public PluginManager pm;
-/*     */   
+
+    public static void saveAll() {
+        for(SuperNPlayer sn:superpowers.values()){
+            instance.getDataHandler().write(sn);
+        };
+    }
+
+    /*     */
 /*     */   public SNDataHandler getDataHandler()
 /*     */   {
 /* 115 */     return this.snData;
@@ -154,6 +161,9 @@
 /*     */   public GhoulManager getGhoulManager() {
 /* 155 */     return this.ghoulManager;
 /*     */   }
+            public HumanManager getHumanManager() {
+        /* 155 */     return this.humanManager;
+        /*     */   }
 /*     */   
 /*     */   public HunterManager getHunterManager() {
 /* 159 */     return this.hunterManager;
@@ -163,25 +173,7 @@
 /* 163 */     return this.demonManager;
 /*     */   }
 /*     */   
-/*     */   public ClassManager getClassManager(Player player) {
-/* 167 */     SuperNPlayer snplayer = SuperNManager.get(player);
-/* 168 */     if (snplayer.getType()==SuperType.DEMON)
-/* 169 */       return this.demonManager;
-/* 170 */     if (snplayer.getType()==SuperType.GHOUL)
-/* 171 */       return this.ghoulManager;
-/* 172 */     if (snplayer.getType()==SuperType.WITCHHUNTER)
-/* 173 */       return this.hunterManager;
-/* 174 */     if (snplayer.getType()==SuperType.PRIEST)
-/* 175 */       return this.priestManager;
-/* 176 */     if (snplayer.getType()==SuperType.VAMPIRE)
-/* 177 */       return this.vampManager;
-/* 178 */     if (snplayer.getType()==SuperType.WEREWOLF)
-/* 179 */       return this.wereManager;
-/* 180 */     if (snplayer.getType()==SuperType.ANGLE) {
-/* 181 */       return this.angelManager;
-/*     */     }
-/* 183 */     return this.humanManager;
-/*     */   }
+
 /*     */   
 /*     */ 
 /*     */ 
@@ -191,9 +183,6 @@
 /*     */   public void onDisable()
 /*     */   {
 /* 193 */     SuperNManager.cancelTimer();
-/* 194 */     this.snData.write();
-/*     */     
-/* 196 */     saveData();
 /* 197 */     this.demonManager.removeAllWebs();
 /* 198 */     PluginDescriptionFile pdfFile = getDescription();
 /* 199 */     log(pdfFile.getName() + " version " + pdfFile.getVersion() + " disabled.");
@@ -207,8 +196,6 @@
 /* 207 */     instance = this;
 /* 208 */     getDataFolder().mkdir();
 /* 209 */     this.pm = getServer().getPluginManager();
-/*     */     
-/*     */ 
 /* 212 */     this.commands.add(new SNCommandHelp());
 /* 213 */     this.commands.add(new SNCommandAdmin());
 /* 214 */     this.commands.add(new SNCommandPower());
@@ -241,10 +228,6 @@
 /* 241 */     dataFolder = getDataFolder();
 /* 242 */     SNConfigHandler.getConfiguration();
 /* 243 */     SNLanguageHandler.getConfiguration();
-/*     */     
-/* 245 */
-/* 246 */     this.snData = SNDataHandler.read();
-/*     */     loadData();
 /* 248 */     SNWhitelistHandler.reloadWhitelist();
 /*     */     
 /* 250 */     if (this.snData == null) {
@@ -314,34 +297,13 @@
 /*     */ 
 /*     */ 
 /*     */ 
-/*     */   public static void saveAll()
-/*     */   {
-/* 319 */     File file = new File(dataFolder, "data.yml");
-/* 320 */     SNPlayerHandler.save(SuperNManager.getSupernaturals(), file);
-/*     */     
-/* 322 */     SNConfigHandler.saveConfig();
-/*     */   }
-/*     */   
-/*     */   public static void saveData() {
-/* 326 */     File file = new File(dataFolder, "data.yml");
-/* 327 */     SNPlayerHandler.save(SuperNManager.getSupernaturals(), file);
-/*     */   }
-/*     */   
-/*     */   public static void loadData() {
-/* 331 */     File file = new File(dataFolder, "data.yml");
-/* 332 */     SuperNManager.setSupernaturals(SNPlayerHandler.load(file));
-/*     */   }
-/*     */   
+
 /*     */   public static void reConfig() {
 /* 336 */     SNConfigHandler.reloadConfig();
 /* 337 */     SNLanguageHandler.reloadConfig();
 /*     */   }
 /*     */   
-/*     */   public static void reloadData() {
-/* 341 */     File file = new File(dataFolder, "data.yml");
-/* 342 */     SuperNManager.setSupernaturals(SNPlayerHandler.load(file));
-/*     */   }
-/*     */   
+
 /*     */   public static void restartTask() {
 /* 346 */     SuperNManager.cancelTimer();
 /* 347 */     SuperNManager.startTimer();

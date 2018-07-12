@@ -1,9 +1,14 @@
 /*     */ package git.JackWisdom.mcp.supernaturals;
 /*     */ 
 /*     */ import java.io.Serializable;
+
+import java.util.HashMap;
+import java.util.HashSet;
 import java.util.UUID;
-/*     */ import org.bukkit.Bukkit;
-/*     */ import org.bukkit.entity.Player;
+/*     */ import git.JackWisdom.mcp.supernaturals.manager.ClassManager;
+import org.bukkit.Bukkit;
+/*     */ import org.bukkit.Location;
+import org.bukkit.entity.Player;
 
 import javax.annotation.Nullable;
 /*     */ 
@@ -12,13 +17,25 @@ import javax.annotation.Nullable;
 /*     */   implements Serializable
 /*     */ {
 /*     */   private static final long serialVersionUID = -2693531379993789149L;
-/*     */   public UUID uuid;
-/*  32 */   public SuperType superType=SuperType.HUMAN;
-/*  33 */   public SuperType oldSuperType =SuperType.HUMAN;
-/*  34 */   public double oldSuperPower = 0.0D;
-/*  35 */   public double superPower = 0.0D;
-/*  36 */   public boolean truce = true;
-/*  37 */   public int truceTimer = 0;
+        public UUID uuid;
+        public SuperType superType=SuperType.HUMAN;
+        public SuperType oldSuperType =SuperType.HUMAN;
+        public double oldSuperPower = 0.0D;
+        public double superPower = 0.0D;
+        public boolean truce = true;
+        public int truceTimer = 0;
+        public UUID protecting=null;
+        //牧师保护的UID
+        public HashSet<SuperType> hunterApp=new HashSet<SuperType>(){
+           @Override
+           public boolean add(SuperType e) {
+               if(e.isHuman()){
+               return false;}
+               //只允许非人类
+               return super.add(e);
+           }
+        };
+        public git.JackWisdom.mcp.supernaturals.util.Location vampireLoc=null;
 /*     */   
 /*     */   public SuperNPlayer() {}
 /*     */   
@@ -31,20 +48,51 @@ import javax.annotation.Nullable;
              this.superPower = 0.0D;
              this.truce = true;
              this.truceTimer = 0;
+             this.vampireLoc=null;
+             this.hunterApp=new HashSet<>();
+             this.protecting=null;
             }
-    public SuperNPlayer(Player player)
-    {
-        this(player.getUniqueId());
-    }
-/*     */   
-/*     */ 
-/*     */ 
-/*     */ 
+              public SuperNPlayer(Player player)
+              {
+                 this(player.getUniqueId());
+              }
+    //猎人猎杀的超能力者种类
+              public HashSet getHuntApp(){
+               return hunterApp;
+            }
+            //吸血鬼的传送位置
+            public void setTeleport(Location loc){
+               this.vampireLoc=new git.JackWisdom.mcp.supernaturals.util.Location(loc);
+            }
+             //吸血鬼是否可以传送
+              public boolean hasTeleport(){
+                    return vampireLoc==null;
+              }
+              //获取吸血鬼的传送位置
+            public org.bukkit.Location getTeleport() {
+               git.JackWisdom.mcp.supernaturals.util.Location location = this.vampireLoc;
+              org.bukkit.Location bLocation = new org.bukkit.Location(location.getWorld(), location.getX(), location.getY(), location.getZ());
+             return bLocation;
+              }
 /*     */   public UUID getUuid()
 /*     */   {
 /*  57 */     return this.getUuid();
 /*     */   }
-
+            public HashMap getBelong(){
+            return getType().getBelong();
+            }
+            public UUID getProtecting(){
+            return this.protecting;
+            }
+            public ClassManager getManager(){
+    return getType().getManager();
+            }
+          public Player getProtectingPlayer(){
+          return Bukkit.getPlayer(protecting);
+            }
+            public void setProtecting(UUID uuid){
+            this.protecting=uuid;
+            }
 /*     */   public SuperType getType() {
 /*  65 */     return this.superType;
 /*     */   }
@@ -173,10 +221,11 @@ import javax.annotation.Nullable;
         }
         return getPlayer().isDead();
         }
-/*     */   
-/*     */ 
-/*     */   public int hashCode()
-/*     */   {
+        public void save(){
+        SupernaturalsPlugin.instance.getDataHandler().write(this);
+        }
+    public int hashCode()
+    {
 /* 199 */     return uuid.hashCode();
 /*     */   }
 /*     */   

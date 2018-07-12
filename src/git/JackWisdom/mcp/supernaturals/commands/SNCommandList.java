@@ -2,7 +2,8 @@
 /*     */ 
 /*     */ import git.JackWisdom.mcp.supernaturals.SuperNPlayer;
 /*     */ import git.JackWisdom.mcp.supernaturals.SupernaturalsPlugin;
-/*     */ import git.JackWisdom.mcp.supernaturals.manager.SuperNManager;
+/*     */ import git.JackWisdom.mcp.supernaturals.UsingData;
+import git.JackWisdom.mcp.supernaturals.manager.SuperNManager;
 /*     */ import git.JackWisdom.mcp.supernaturals.util.Language;
 /*     */ import git.JackWisdom.mcp.supernaturals.util.TextUtil;
 /*     */ import java.util.ArrayList;
@@ -30,7 +31,7 @@
 /*     */ 
 /*     */ 
 /*     */ public class SNCommandList
-/*     */   extends SNCommand
+/*     */   extends SNCommand implements UsingData
 /*     */ {
 /*     */   public SNCommandList()
 /*     */   {
@@ -44,48 +45,22 @@
 /*     */   
 /*     */   public void perform()
 /*     */   {
-/*  47 */     List<String> vampires = new ArrayList();
-/*  48 */     List<String> werewolves = new ArrayList();
-/*  49 */     List<String> ghouls = new ArrayList();
-/*  50 */     List<String> priests = new ArrayList();
-/*  51 */     List<String> hunters = new ArrayList();
-/*  52 */     List<String> demons = new ArrayList();
-/*  53 */     List<String> angels = new ArrayList();
-/*     */     
-/*  55 */     for (SuperNPlayer snplayer : SuperNManager.findAllOnline()) {
-/*  56 */       if (snplayer.isVampire()) {
-/*  57 */         vampires.add(snplayer.getName());
-/*  58 */       } else if (snplayer.isPriest()) {
-/*  59 */         priests.add(snplayer.getName());
-/*  60 */       } else if (snplayer.isWere()) {
-/*  61 */         werewolves.add(snplayer.getName());
-/*  62 */       } else if (snplayer.isGhoul()) {
-/*  63 */         ghouls.add(snplayer.getName());
-/*  64 */       } else if (snplayer.isHunter()) {
-/*  65 */         hunters.add(snplayer.getName());
-/*  66 */       } else if (snplayer.isDemon()) {
-/*  67 */         demons.add(snplayer.getName());
-/*  68 */       } else if (snplayer.isAngel()) {
-/*  69 */         angels.add(snplayer.getName());
-/*     */       }
-/*     */     }
-/*     */     
-/*     */ 
+
 /*  74 */     List<String> messages = new ArrayList();
 /*  75 */     messages.add(String.format("*** %s ***", new Object[] { Language.ONLINE_PLAYERS }));
-/*  76 */     messages.add(String.format("%s: %s%s", new Object[] { Language.SN_VAMPIRE_NAME, ChatColor.WHITE, TextUtil.implode(vampires, ", ") }));
+/*  76 */     messages.add(String.format("%s: %s%s", new Object[] { Language.SN_VAMPIRE_NAME, ChatColor.WHITE, TextUtil.implode(vampires.values(), ", ") }));
 /*     */     
-/*  78 */     messages.add(String.format("%s: %s%s", new Object[] { Language.SN_WEREWOLF_NAME, ChatColor.WHITE, TextUtil.implode(werewolves, ", ") }));
+/*  78 */     messages.add(String.format("%s: %s%s", new Object[] { Language.SN_WEREWOLF_NAME, ChatColor.WHITE, TextUtil.implode(werewolves.values(), ", ") }));
 /*     */     
-/*  80 */     messages.add(String.format("%s: %s%s", new Object[] { Language.SN_GHOUL_NAME, ChatColor.WHITE, TextUtil.implode(ghouls, ", ") }));
+/*  80 */     messages.add(String.format("%s: %s%s", new Object[] { Language.SN_GHOUL_NAME, ChatColor.WHITE, TextUtil.implode(ghouls.values(), ", ") }));
 /*     */     
-/*  82 */     messages.add(String.format("%s: %s%s", new Object[] { Language.SN_PREIEST_NAME, ChatColor.WHITE, TextUtil.implode(priests, ", ") }));
+/*  82 */     messages.add(String.format("%s: %s%s", new Object[] { Language.SN_PREIEST_NAME, ChatColor.WHITE, TextUtil.implode(priests.values(), ", ") }));
 /*     */     
-/*  84 */     messages.add(String.format("%s: %s%s", new Object[] { Language.SN_WITCHHUNTER_NAME, ChatColor.WHITE, TextUtil.implode(hunters, ", ") }));
+/*  84 */     messages.add(String.format("%s: %s%s", new Object[] { Language.SN_WITCHHUNTER_NAME, ChatColor.WHITE, TextUtil.implode(hunters.values(), ", ") }));
 /*     */     
-/*  86 */     messages.add(String.format("%s: %s%s", new Object[] { Language.SN_DEMON_NAME, ChatColor.WHITE, TextUtil.implode(demons, ", ") }));
+/*  86 */     messages.add(String.format("%s: %s%s", new Object[] { Language.SN_DEMON_NAME, ChatColor.WHITE, TextUtil.implode(demons.values(), ", ") }));
 /*     */     
-/*  88 */     messages.add(String.format("%s: %s%s", new Object[] { Language.SN_ANGEL_NAME, ChatColor.WHITE, TextUtil.implode(angels, ", ") }));
+/*  88 */     messages.add(String.format("%s: %s%s", new Object[] { Language.SN_ANGEL_NAME, ChatColor.WHITE, TextUtil.implode(angels.values(), ", ") }));
 /*     */     
 /*     */ 
 /*  91 */     if (!(this.sender instanceof Player))

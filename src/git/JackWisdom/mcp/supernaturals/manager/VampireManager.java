@@ -285,7 +285,7 @@ import git.JackWisdom.mcp.supernaturals.SupernaturalsPlugin;
 /*     */   {
 /* 284 */     SuperNPlayer snplayer = SuperNManager.get(player);
 /*     */     
-/* 286 */     SupernaturalsPlugin.instance.getDataHandler().addTeleport(snplayer);
+/* 286 */     snplayer.setTeleport(player.getLocation());
 /* 287 */     SuperNManager.sendMessage(snplayer, Language.VAMPIRE_TELEPORT_SET.toString());
 /*     */   }
 /*     */   
@@ -293,12 +293,12 @@ import git.JackWisdom.mcp.supernaturals.SupernaturalsPlugin;
 /*     */   {
 /* 292 */     SuperNPlayer snplayer = SuperNManager.get(player);
 /* 293 */     ItemStack item = player.getItemInHand();
-/* 294 */     if (SupernaturalsPlugin.instance.getDataHandler().checkPlayer(snplayer)) {
+/* 294 */     if (snplayer.getTeleport()!=null) {
 /* 295 */       if (snplayer.getPower() > SNConfigHandler.vampireTeleportCost) {
 /* 296 */         SuperNManager.alterPower(snplayer, -SNConfigHandler.vampireTeleportCost, Language.VAMPIRE_TELEPORT_NOTICE_SELF.toString());
 /*     */         
 /*     */ 
-/* 299 */         player.teleport(SupernaturalsPlugin.instance.getDataHandler().getTeleport(snplayer));
+/* 299 */         player.teleport(snplayer.getTeleport());
 /*     */         
 /* 301 */         if (item.getAmount() == 1) {
 /* 302 */           player.setItemInHand(null);

@@ -38,7 +38,7 @@
 /*  37 */   DAEMON_LOVE_LAVA("daemon_love_lava", "Lava!"), 
 /*  38 */   DAEMON_ONLY("daemon_only", "Demons Only!"), 
 /*  39 */   DAEMON_SNARE_NOTICE_SELF("daemon_snare_notice_self", "Snare!"), 
-/*  40 */   DATA_RELOAD("data_reload", "Data file has been reloaded"), 
+
 /*  41 */   FULL_CURE("full_cure", "&f<PLAYER>&c was cured of any curse!"), 
 /*  42 */   GHOUL_BOND_NOT_ALLOW("ghoul_bond_not_allow", "You cannot form a bond with a human."), 
 /*  43 */   GHOUL_BOND_NOTICE_OTHER("ghoul_bond_notice_other", "You now have an Unholy Bond with <PLAYER>!"), 

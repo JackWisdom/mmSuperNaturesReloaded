@@ -10,7 +10,8 @@ import git.JackWisdom.mcp.supernaturals.SupernaturalsPlugin;
 /*     */
 /*     */
 /*     */
-/*     */ import org.bukkit.Location;
+/*     */ import org.bukkit.Bukkit;
+import org.bukkit.Location;
 /*     */ import org.bukkit.Material;
 /*     */ import org.bukkit.World;
 /*     */ import org.bukkit.entity.Animals;
@@ -604,16 +605,9 @@ import git.JackWisdom.mcp.supernaturals.SupernaturalsPlugin;
 /* 603 */       if (!snvictim.isSuper()) {
 /* 604 */         if (SupernaturalsPlugin.instance.getDataHandler().hasAngel(priest))
 /*     */         {
-/* 606 */           SuperNManager.sendMessage(priest, Language.PRIEST_GUARDANGEL_REMOVE_NOTICE_SELF.toString().replace(LanguageTag.PLAYER.toString(), SupernaturalsPlugin.instance.getDataHandler().getAngelPlayer(priest).getName()));
-/*     */           
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/* 615 */           SuperNManager.sendMessage(SupernaturalsPlugin.instance.getDataHandler().getAngelPlayer(priest), Language.PRIEST_GUARDANGEL_REMOVE_NOTICE_OTHER.toString());
+/* 606 */           SuperNManager.sendMessage(priest, Language.PRIEST_GUARDANGEL_REMOVE_NOTICE_SELF.toString().replace(LanguageTag.PLAYER.toString(), priest.getProtectingPlayer().getName()));
+
+/* 615 */           SuperNManager.sendMessage(Bukkit.getPlayer(priest.getProtecting()), Language.PRIEST_GUARDANGEL_REMOVE_NOTICE_OTHER.toString());
 /*     */           
 /*     */ 
 /*     */ 

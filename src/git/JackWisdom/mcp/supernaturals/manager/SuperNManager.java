@@ -1,9 +1,12 @@
 /*     */ package git.JackWisdom.mcp.supernaturals.manager;
 /*     */ 
-/*     */ import git.JackWisdom.mcp.supernaturals.SuperNPlayer;
+/*     */
+
+import git.JackWisdom.mcp.supernaturals.SuperNPlayer;
 /*     */ import git.JackWisdom.mcp.supernaturals.SuperType;
 import git.JackWisdom.mcp.supernaturals.SupernaturalsPlugin;
-/*     */ import git.JackWisdom.mcp.supernaturals.io.SNConfigHandler;
+/*     */ import git.JackWisdom.mcp.supernaturals.UsingData;
+import git.JackWisdom.mcp.supernaturals.io.SNConfigHandler;
 /*     */
 /*     */ import git.JackWisdom.mcp.supernaturals.io.SNWhitelistHandler;
 /*     */ import git.JackWisdom.mcp.supernaturals.util.EntityUtil;
@@ -16,7 +19,7 @@ import git.JackWisdom.mcp.supernaturals.SupernaturalsPlugin;
 /*     */
 /*     */
 /*     */ import java.util.logging.Level;
-/*     */ import com.sun.istack.internal.NotNull;
+/*     */
 import org.bukkit.Bukkit;
 /*     */ import org.bukkit.ChatColor;
 /*     */ import org.bukkit.Location;
@@ -31,13 +34,11 @@ import org.bukkit.Bukkit;
 /*     */
 /*     */ import org.bukkit.util.Vector;
 
-/*     */ public class SuperNManager
+/*     */ public class SuperNManager implements UsingData
 /*     */ {
 /*     */   public static SupernaturalsPlugin plugin;
 /*  51 */   public String worldPermission = "supernatural.world.enabled";
 /*  52 */   public static String infPowerPermissions = "supernatural.admin.infinitepower";
-/*     */   
-/*  54 */   public static List<SuperNPlayer> supernaturals = new ArrayList();
 /*  55 */   public transient int taskCounter = 0;
 /*     */   public static int timer;
 /*     */   
@@ -48,55 +49,42 @@ import org.bukkit.Bukkit;
 /*     */ 
 /*     */ 
 /*     */ 
-/*     */   public static List<SuperNPlayer> getSupernaturals()
+/*     */   public static Collection<SuperNPlayer> getSupernaturals()
 /*     */   {
-/*  67 */     return supernaturals;
+/*  67 */     return superpowers.values();
 /*     */   }
-/*     */   
-/*     */   public static void setSupernaturals(@NotNull List<SuperNPlayer> supe) {
-             supernaturals=supe;
-/*     */   }
-/*     */   
-/*     */   public static SuperNPlayer get(UUID playername) {
-/*  77 */     for (SuperNPlayer supernatural : supernaturals) {
-/*  78 */       if (supernatural.getUuid().equals(playername)) {
-/*  79 */         return supernatural;
-/*     */       }
-/*     */     }
-/*     */     
-/*  83 */     SuperNPlayer snplayer = new SuperNPlayer(playername);
-/*  84 */     supernaturals.add(snplayer);
-/*  85 */     return snplayer;
-/*     */   }
-/*     */   
-         public static SuperNPlayer get(Player player) {
-           for (SuperNPlayer supernatural : supernaturals) {
-             if (supernatural.getUuid().equals(player.getUniqueId())) {
-                 return supernatural;
-               }
-             }
-            SuperNPlayer snplayer = new SuperNPlayer(player.getUniqueId());
-            supernaturals.add(snplayer);
-             return snplayer;
-          }
-    public static SuperNPlayer get(String name) {
-        for (SuperNPlayer supernatural : supernaturals) {
-            if (supernatural.getName().equals(name)) {
-                return supernatural;
+/*     */
+            public static SuperNPlayer get(Player player){
+               return get(player.getUniqueId());
             }
-        }
-        SuperNPlayer snplayer = new SuperNPlayer(Bukkit.getPlayer(name));
-        supernaturals.add(snplayer);
-        return snplayer;
-    }
-/*     */   
-/*     */   public static HashSet<SuperNPlayer> findAllOnline() {
-            HashSet<SuperNPlayer> players=new HashSet<>();
-            for(Player p:Bukkit.getOnlinePlayers()){
-                players.add(get(p));
+            public static SuperNPlayer get(UUID playername) {
+            if(superpowers.get(playername)==null){
+              return   load(playername);
             }
-/* 100 */     return players;
+            return superpowers.get(playername);
 /*     */   }
+/*     */   public static SuperNPlayer load(UUID uuid){
+            SuperNPlayer np=SupernaturalsPlugin.instance.getDataHandler().read(uuid);
+            superpowers.put(np.getUuid(),np);
+            np.getBelong().put(np.getUuid(),np);
+            return np ;
+            }
+            public static void unLoad(SuperNPlayer superNPlayer){
+                superNPlayer.getBelong().remove(superNPlayer.getUuid());
+            superpowers.remove(superNPlayer.getUuid());
+
+            }
+            public static void unLoad(Player player){
+            if(superpowers.get(player)==null){
+                return;
+            }
+            superpowers.get(player).getBelong().remove(player.getUniqueId());
+            superpowers.remove(player.getUniqueId());
+           }
+
+
+/*     */   
+
 /*     */   
 /*     */ 
 /*     */ 
@@ -109,7 +97,15 @@ import org.bukkit.Bukkit;
     {
         convert(snplayer, SuperType.valueOf(superType), 0);
     }
-/*     */   
+            private static void changeType(SuperNPlayer snplayer,SuperType supertype){
+                snplayer.getType().getBelong().remove(snplayer.getUuid());//从之前所属的map中移除
+                snplayer.setOldType(snplayer.getType());//设置旧数据
+                snplayer.setOldPower(snplayer.getPower());
+                snplayer.setType(supertype);//设置新类别
+                snplayer.setPower(0.0d);
+                snplayer.getBelong().put(snplayer.getUuid(),snplayer);
+                snplayer.setTruce(true);
+            }
 /*     */   public static void convert(SuperNPlayer snplayer, SuperType superType, int powerLevel)
 /*     */   {
 /* 118 */     if (!SNConfigHandler.supernaturalTypes.contains(superType.name())) {
@@ -129,12 +125,15 @@ import org.bukkit.Bukkit;
 /*     */ 
 /* 133 */       return;
 /*     */     }
-/*     */     
-/* 136 */
-/* 137 */     snplayer.setOldType(snplayer.getType());
-/* 138 */     snplayer.setOldPower(snplayer.getPower());
-/*     */     
-/* 140 */     snplayer.setType(superType);
+/*     */
+            changeType(snplayer,superType);
+            /*
+             snplayer.getType().getBelong().remove(snplayer.getUuid());
+             snplayer.setOldType(snplayer.getType());
+             snplayer.setOldPower(snplayer.getPower());
+             snplayer.setType(superType);
+             superType.getBelong().put(snplayer.getUuid(),snplayer);
+             */
 /* 141 */     if (snplayer.hasPermission(infPowerPermissions))
 /*     */     {
 /*     */ 
@@ -161,8 +160,6 @@ import org.bukkit.Bukkit;
 /*     */     }
 /* 165 */     SupernaturalsPlugin.instance.getGhoulManager().removeBond(snplayer);
 /* 166 */     SupernaturalsPlugin.instance.getDataHandler().removeAngel(snplayer);
-/*     */     
-/* 168 */     SupernaturalsPlugin.saveData();
 /*     */   }
 /*     */   
 /*     */   public static void cure(SuperNPlayer snplayer) {
@@ -170,13 +167,18 @@ import org.bukkit.Bukkit;
 /* 173 */       revert(snplayer);
 /* 174 */       return;
 /*     */     }
-/* 176 */     snplayer.setOldType(snplayer.getType());
-/* 177 */     snplayer.setOldPower(snplayer.getPower());
+                  changeType(snplayer,SuperType.HUMAN);
+                /*
+              snplayer.getBelong().remove(snplayer.getUuid());
+              snplayer.setOldType(snplayer.getType());
+              snplayer.setOldPower(snplayer.getPower());
+
+              snplayer.setType(SuperType.HUMAN);
+              snplayer.getBelong().put(snplayer.getUuid(),snplayer);
+              snplayer.setPower(0.0D);
+              snplayer.setTruce(true);*/
 /*     */     
-/* 179 */     snplayer.setType(SuperType.HUMAN);
-/* 180 */     snplayer.setPower(0.0D);
-/*     */     
-/* 182 */     snplayer.setTruce(true);
+/* 182 */
 /*     */     
 /* 184 */     updateName(snplayer);
 /* 185 */     HunterManager.updateBounties();
@@ -193,21 +195,13 @@ import org.bukkit.Bukkit;
 /* 196 */     sendMessage(snplayer, Language.SN_ADMIN_CMD_CURE_NOTICE.toString());
 /*     */     
 /* 198 */     SupernaturalsPlugin.log(snplayer.getName() + " was restored to humanity!");
-/*     */     
-/* 200 */     SupernaturalsPlugin.saveData();
+
 /*     */   }
-/*     */   
+/*     */
 /*     */   public static void revert(SuperNPlayer snplayer) {
 /* 204 */     SuperType oldType = snplayer.getOldType();
 /* 205 */     double oldPower = snplayer.getOldPower();
-/*     */     
-/* 207 */     snplayer.setOldType(snplayer.getType());
-/* 208 */     snplayer.setOldPower(snplayer.getPower());
-/*     */     
-/* 210 */     snplayer.setType(oldType);
-/* 211 */     snplayer.setPower(oldPower);
-/*     */     
-/* 213 */     snplayer.setTruce(true);
+              changeType(snplayer,oldType);
 /*     */     
 /* 215 */     updateName(snplayer);
 /* 216 */     HunterManager.updateBounties();
@@ -224,9 +218,7 @@ import org.bukkit.Bukkit;
 /* 227 */     sendMessage(snplayer, Language.SN_ADMIN_CMD_REVERT_NOTICE.toString().replace(LanguageTag.TYPE.toString(), oldType.name()));
 /*     */     
 /* 229 */     SupernaturalsPlugin.log(snplayer.getName() + " was reverted to the previous state of being a " + oldType + "!");
-/*     */     
-/*     */ 
-/* 232 */     SupernaturalsPlugin.saveData();
+
 /*     */   }
 /*     */   
 /*     */ 
@@ -271,7 +263,7 @@ import org.bukkit.Bukkit;
 /*     */ 
 /*     */   public static boolean jump(Player player, double deltaSpeed, boolean upOnly)
 /*     */   {
-/* 277 */     SuperNPlayer snplayer = get(player);
+/* 277 */     SuperNPlayer snplayer = get(player.getUniqueId());
 /*     */     
 /* 279 */     if (upOnly) {
 /* 280 */       if (snplayer.getPower() - SNConfigHandler.jumpBloodCost <= 0.0D) {
@@ -387,7 +379,7 @@ import org.bukkit.Bukkit;
 /*     */     } else {
 /* 392 */       snplayer.setTruceTimer(snplayer.getTruceTimer() + delta);
 /*     */     }
-/* 394 */     SupernaturalsPlugin.saveData();
+
 /*     */   }
 /*     */   
 /*     */ 
@@ -399,7 +391,7 @@ import org.bukkit.Bukkit;
 /* 403 */       return;
 /*     */     }
 /*     */     
-/* 406 */     SuperNPlayer snplayer = get(player);
+/* 406 */     SuperNPlayer snplayer = get(player.getUniqueId());
 /* 407 */     double currentHealth = player.getHealth();
 /*     */     
 /* 409 */     if (currentHealth == player.getMaxHealth()) {
@@ -474,10 +466,12 @@ import org.bukkit.Bukkit;
 /*     */     Block block;
 /* 478 */     return null;
 /*     */   }
-/*     */   
-/*     */ 
-/*     */ 
-/*     */ 
+            public static void sendMessage(Player p,String msg){
+            if(!p.isOnline()){
+                return;
+            }
+            p.sendMessage(msg);
+            }
 /*     */   public static void sendMessage(SuperNPlayer snplayer, String message)
 /*     */   {
 /* 486 */     Player player = SupernaturalsPlugin.instance.getServer().getPlayer(snplayer.getName());
@@ -601,7 +595,7 @@ import org.bukkit.Bukkit;
 /*     */       }
 /*     */       
 /*     */ 
-/* 606 */       plugin.getClassManager(player).armorCheck(player);
+/* 606 */      get(player.getUniqueId()).getType().getManager().armorCheck(player);
 /*     */       
 /* 608 */       if ((snplayer.isDemon()) && 
 /* 609 */         (this.taskCounter % 5 == 0)) {

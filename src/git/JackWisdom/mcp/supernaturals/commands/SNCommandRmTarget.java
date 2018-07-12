@@ -9,6 +9,7 @@
 /*     */ import java.util.ArrayList;
 /*     */
 /*     */
+import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 /*     */ 
 /*     */ 
@@ -48,7 +49,13 @@ import org.bukkit.entity.Player;
 /*  47 */         sendMessage(Language.MISSING_PLAYER.toString());
 /*     */       } else {
 /*  49 */         String playername = (String)this.parameters.get(0);
-/*  50 */         SuperNPlayer snplayer = SuperNManager.get(playername);
+                 SuperNPlayer snplayer=null;
+                    for(Player p:Bukkit.getOnlinePlayers()){
+                        if (p.getName().equals(playername)){
+                            snplayer=SuperNManager.get(p);
+                        }
+                    }
+/*  50 */
 /*     */         
 /*  52 */         if (snplayer == null) {
 /*  53 */           sendMessage(Language.PLAYER_NOT_FOUND.toString());
@@ -86,7 +93,12 @@ import org.bukkit.entity.Player;
 /*     */       }
 /*     */     } else {
 /*  87 */       String playername = (String)this.parameters.get(0);
-/*  88 */       SuperNPlayer snplayer = SuperNManager.get(playername);
+/*  88 */                        SuperNPlayer snplayer=null;
+              for(Player p:Bukkit.getOnlinePlayers()){
+                   if (p.getName().equals(playername)){
+                       snplayer=SuperNManager.get(p);
+                   }
+             }
 /*     */       
 /*  90 */       if (snplayer == null) {
 /*  91 */         sendMessage(Language.PLAYER_NOT_FOUND.toString());

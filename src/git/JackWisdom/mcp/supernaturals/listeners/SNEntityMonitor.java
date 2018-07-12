@@ -1,7 +1,8 @@
 /*     */ package git.JackWisdom.mcp.supernaturals.listeners;
 /*     */ 
 /*     */ import git.JackWisdom.mcp.supernaturals.SuperNPlayer;
-/*     */ import git.JackWisdom.mcp.supernaturals.SupernaturalsPlugin;
+/*     */ import git.JackWisdom.mcp.supernaturals.SuperType;
+import git.JackWisdom.mcp.supernaturals.SupernaturalsPlugin;
 /*     */ import git.JackWisdom.mcp.supernaturals.io.SNConfigHandler;
 /*     */
 /*     */
@@ -12,13 +13,15 @@ import git.JackWisdom.mcp.supernaturals.manager.SuperNManager;
 /*     */ import git.JackWisdom.mcp.supernaturals.util.EntityUtil;
 /*     */ import git.JackWisdom.mcp.supernaturals.util.Language;
 /*     */ import java.util.ArrayList;
+import java.util.HashSet;
 /*     */
 /*     */
 /*     */
 import org.bukkit.Material;
 /*     */
 /*     */ import org.bukkit.block.Block;
-/*     */ import org.bukkit.entity.Arrow;
+/*     */ import org.bukkit.craftbukkit.libs.it.unimi.dsi.fastutil.Hash;
+import org.bukkit.entity.Arrow;
 /*     */ import org.bukkit.entity.Creature;
 /*     */ import org.bukkit.entity.Entity;
 /*     */
@@ -169,7 +172,7 @@ import org.bukkit.Material;
 /* 178 */         return;
 /*     */       }
 /* 180 */       SuperNPlayer snDamager = SuperNManager.get(pDamager);
-/* 181 */       SupernaturalsPlugin.instance.getClassManager(pDamager).killEvent(pDamager, snDamager, null);
+/* 181 */       SuperNManager.get(pDamager).getManager().killEvent(pDamager, snDamager, null);
 /*     */     }
 /*     */     
 /*     */ 
@@ -204,43 +207,50 @@ import org.bukkit.Material;
 /* 213 */             SuperNManager.cure(snplayer);
 /*     */           }
 /* 215 */         } else if (snDamager.isHuman()) {
-/* 216 */           ArrayList<String> supersKilled = new ArrayList();
-/* 217 */           if (this.plugin.getDataHandler().playerHasApp(snDamager)) {
-/* 218 */             supersKilled = this.plugin.getDataHandler().getPlayerApp(snDamager);
-/*     */             
-/* 220 */             if (!supersKilled.contains(snplayer.getType())) {
-/* 221 */               supersKilled.add(snplayer.getType().name());
-/* 222 */               if (supersKilled.size() >= 3) {
-/* 223 */                 this.plugin.getHunterManager().invite(snDamager);
-/*     */               }
-/*     */             }
-/*     */           } else {
-/* 227 */             supersKilled.add(snplayer.getType().name());
-/*     */           }
-/* 229 */           this.plugin.getDataHandler().addPlayerApp(snDamager, supersKilled);
+/* 216 */
+                HashSet<SuperType> supersKilled=snDamager.getHuntApp();
+                supersKilled.add(snplayer.getType());
+                if(supersKilled.size()>=0){
+                    this.plugin.getHunterManager().invite(snDamager);
+                }
+                /*
+
+          if (snDamager.getHuntApp().size()!=0) {
+            supersKilled = snDamager.getHuntApp();
+
+            if (!supersKilled.contains(snplayer.getType())) {
+               supersKilled.add(snplayer.getType().name());
+               if (supersKilled.size() >= 3) {
+
+               }
+           }
+           } else {
+             supersKilled.add(snplayer.getType().name());
+          }
+          this.plugin.getDataHandler().addPlayerApp(snDamager, supersKilled);*/
 /*     */         }
 /*     */         
-/* 232 */         SupernaturalsPlugin.instance.getClassManager(pDamager).killEvent(pDamager, snDamager, snplayer);
+/* 232 */         snDamager.getManager().killEvent(pDamager, snDamager, snplayer);
 /*     */       }
 /* 234 */       else if ((lDamager instanceof Wolf)) {
 /* 235 */         Wolf wolf = (Wolf)lDamager;
 /* 236 */         if (!wolf.isTamed()) {
-/* 237 */           SupernaturalsPlugin.instance.getClassManager(pVictim).deathEvent(pVictim);
+/* 237 */           snplayer.getManager().deathEvent(pVictim);
 /*     */           
 /* 239 */           return;
 /*     */         }
 /* 241 */         if (!(wolf.getOwner() instanceof Player)) {
-/* 242 */           SupernaturalsPlugin.instance.getClassManager(pVictim).deathEvent(pVictim);
+/* 242 */           snplayer.getManager().deathEvent(pVictim);
 /*     */           
 /* 244 */           return;
 /*     */         }
 /* 246 */         pDamager = (Player)wolf.getOwner();
 /* 247 */         SuperNPlayer snDamager = SuperNManager.get(pDamager);
-/* 248 */         SupernaturalsPlugin.instance.getClassManager(pDamager).killEvent(pDamager, snDamager, snplayer);
+/* 248 */         snDamager.getManager().killEvent(pDamager, snDamager, snplayer);
 /*     */       }
 /*     */     }
 /*     */     
-/* 252 */     SupernaturalsPlugin.instance.getClassManager(pVictim).deathEvent(pVictim);
+/* 252 */    snplayer.getManager().deathEvent(pVictim);
 /*     */   }
 /*     */ }
 

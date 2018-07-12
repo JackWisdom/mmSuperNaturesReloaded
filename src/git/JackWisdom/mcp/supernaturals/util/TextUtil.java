@@ -2,8 +2,10 @@
 /*    */ 
 /*    */ import java.util.ArrayList;
 /*    */ import java.util.Arrays;
-/*    */ import java.util.List;
-/*    */ import org.bukkit.Material;
+/*    */ import java.util.Collection;
+import java.util.List;
+/*    */ import git.JackWisdom.mcp.supernaturals.SuperType;
+import org.bukkit.Material;
 /*    */ 
 /*    */ 
 /*    */ 
@@ -38,16 +40,15 @@
 /* 38 */     return new ArrayList(Arrays.asList(str.trim().split("\\s+")));
 /*    */   }
 /*    */   
-/*    */   public static String implode(List<String> list, String glue) {
-/* 42 */     String ret = "";
-/* 43 */     for (int i = 0; i < list.size(); i++) {
-/* 44 */       if (i != 0) {
-/* 45 */         ret = ret + glue;
-/*    */       }
-/* 47 */       ret = ret + (String)list.get(i);
-/*    */     }
-/* 49 */     return ret;
-/*    */   }
+   public static String implode(Collection list, String glue) {
+     StringBuilder sb=new StringBuilder();
+     for(Object obj:list){
+         sb.append(obj.toString());
+         sb.append(glue);
+     }
+     return sb.toString();
+ }
+
 /*    */   
 /*    */   public static String implode(List<String> list) {
 /* 53 */     return implode(list, " ");

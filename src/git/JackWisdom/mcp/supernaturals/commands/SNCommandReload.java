@@ -49,10 +49,7 @@ import org.bukkit.entity.Player;
 /* 48 */       else if (((String)this.parameters.get(0)).equalsIgnoreCase("config")) {
 /* 49 */         SupernaturalsPlugin.reConfig();
 /* 50 */         sendMessage(Language.CONFIG_RELOAD.toString());
-/* 51 */       } else if (((String)this.parameters.get(0)).equalsIgnoreCase("data")) {
-/* 52 */         SupernaturalsPlugin.reloadData();
-/* 53 */         sendMessage(Language.DATA_RELOAD.toString());
-/*    */       } else {
+/* 51 */       } else   {
 /* 55 */         sendMessage(Language.INVALID_OPTION.toString());
 /*    */       }
 /*    */       
@@ -70,10 +67,7 @@ import org.bukkit.entity.Player;
 /* 69 */     else if (((String)this.parameters.get(0)).equalsIgnoreCase("config")) {
 /* 70 */       SupernaturalsPlugin.reConfig();
 /* 71 */       sendMessage(Language.CONFIG_RELOAD.toString());
-/* 72 */     } else if (((String)this.parameters.get(0)).equalsIgnoreCase("data")) {
-/* 73 */       SupernaturalsPlugin.reloadData();
-/* 74 */       sendMessage(Language.DATA_RELOAD.toString());
-/*    */     } else {
+/* 72 */     } else  {
 /* 76 */       sendMessage(Language.INVALID_OPTION.toString());
 /*    */     }
 /*    */   }

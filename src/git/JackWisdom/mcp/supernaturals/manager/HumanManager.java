@@ -80,9 +80,7 @@ import org.bukkit.projectiles.ProjectileSource;
 /*  77 */       return;
 /*     */     }
 /*     */     
-/*  80 */     if (this.plugin.getDataHandler().getApps().containsKey(snplayer)) {
-/*  81 */       this.plugin.getDataHandler().removePlayerApp(snplayer);
-/*     */     }
+/*  80 */     snplayer.getHuntApp().clear();
 /*     */     
 /*  84 */     if (e == null) {
 /*  85 */       return;

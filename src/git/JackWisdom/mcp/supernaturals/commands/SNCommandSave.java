@@ -36,18 +36,15 @@ import org.bukkit.entity.Player;
 /*    */   }
 /*    */   
 /*    */   public void perform()
-/*    */   {
-/* 39 */     if (!(this.sender instanceof Player)) {
-/* 40 */       SupernaturalsPlugin.saveAll();
-/* 41 */       sendMessage(Language.ALL_DATA_SAVE.toString());
-/*    */     }
-/* 43 */     Player senderPlayer = (Player)this.sender;
-/* 44 */     if (!senderPlayer.hasPermission( this.permissions)) {
-/* 45 */       sendMessage(Language.NO_PREMISSION.toString());
-/* 46 */       return;
-/*    */     }
-/* 48 */     SupernaturalsPlugin.saveAll();
-/* 49 */     sendMessage(Language.ALL_DATA_SAVE.toString());
+                     {
+
+
+                 if (!sender .hasPermission( this.permissions)) {
+                  sendMessage(Language.NO_PREMISSION.toString());
+                  return;
+               }
+              SupernaturalsPlugin.saveAll();
+              sendMessage(Language.ALL_DATA_SAVE.toString());
 /*    */   }
 /*    */ }
 

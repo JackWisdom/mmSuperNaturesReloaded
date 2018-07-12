@@ -154,7 +154,7 @@ import org.bukkit.Location;
 /*     */     
 /* 154 */     boolean cancelled = false;
 /*     */     
-/* 156 */     cancelled = this.plugin.getClassManager(player).playerInteract(event);
+/* 156 */     cancelled = SuperNManager.get(player).getManager().playerInteract(event);
 /*     */     
 /* 158 */     if (cancelled) {
 /* 159 */       return;
