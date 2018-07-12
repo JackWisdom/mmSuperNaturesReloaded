@@ -546,11 +546,13 @@
 /*     */   public void advanceTime(Set<SuperNPlayer> snplayers)
 /*     */   {
 /* 565 */     for (SuperNPlayer snplayer : snplayers) {
-/* 566 */       Player player = plugin.getServer().getPlayer(snplayer.getName());
+/* 566 */       Player player = null;
+
 /*     */       
-/* 568 */       if (player == null) {
+/* 568 */       if (plugin.getServer().getPlayer(snplayer.getName()) == null) {
 /* 569 */         return;
 /*     */       }
+                player=plugin.getServer().getPlayer(snplayer.getName());
 /*     */       
 /* 572 */       if ((!SupernaturalsPlugin.hasPermissions(player, this.worldPermission)) && (SNConfigHandler.multiworld))
 /*     */       {
