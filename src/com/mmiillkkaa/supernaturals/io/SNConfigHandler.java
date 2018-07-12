@@ -245,7 +245,7 @@
 /* 245 */   private static List<String> angelArmorString = new ArrayList();
 /*     */   
 /* 247 */   public static Map<Material, Double> materialOpacity = new HashMap();
-/* 248 */   public static HashSet<Byte> transparent = new HashSet();
+/* 248 */   public static HashSet<Material> transparent = new HashSet();
 /*     */   
 /* 250 */   public static Recipes vampireAltarInfectRecipe = new Recipes();
 /* 251 */   public static Recipes vampireAltarCureRecipe = new Recipes();
@@ -279,9 +279,9 @@
 /* 279 */     materialOpacity.put(Material.DIODE_BLOCK_OFF, Double.valueOf(0.0D));
 /* 280 */     materialOpacity.put(Material.DIODE_BLOCK_ON, Double.valueOf(0.0D));
 /*     */     
-/* 282 */     transparent.add(Byte.valueOf((byte)Material.WATER.getId()));
-/* 283 */     transparent.add(Byte.valueOf((byte)Material.STATIONARY_WATER.getId()));
-/* 284 */     transparent.add(Byte.valueOf((byte)Material.AIR.getId()));
+/* 282 */     transparent.add(Material.WATER);
+/* 283 */     transparent.add(Material.STATIONARY_WATER);
+/* 284 */     transparent.add(Material.AIR);
 /*     */   }
 /*     */   
 /*     */   public SNConfigHandler(SupernaturalsPlugin instance) {
@@ -749,7 +749,3 @@
 /*     */ }
 
 
-/* Location:              C:\Users\jackw\Desktop\mmSupernaturals for 1.7.2.jar!\com\mmiillkkaa\supernaturals\io\SNConfigHandler.class
- * Java compiler version: 6 (50.0)
- * JD-Core Version:       0.7.1
- */

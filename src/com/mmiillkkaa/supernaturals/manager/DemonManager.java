@@ -148,7 +148,7 @@
 /* 148 */       int pLocY = player.getLocation().getBlockZ();
 /* 149 */       Biome pBiome = player.getWorld().getBiome(pLocX, pLocY);
 /* 150 */       if ((snplayer.isDemon()) && (
-/* 151 */         (pBiome == Biome.TAIGA) || (pBiome == Biome.FROZEN_OCEAN) || (pBiome == Biome.FROZEN_RIVER) || (pBiome == Biome.ICE_MOUNTAINS) || (pBiome == Biome.ICE_PLAINS)))
+/* 151 */         (pBiome == Biome.TAIGA) || (pBiome == Biome.FROZEN_OCEAN) || (pBiome == Biome.FROZEN_RIVER) || (pBiome == Biome.ICE_MOUNTAINS) || (pBiome == Biome.COLD_BEACH)))
 /*     */       {
 /*     */ 
 /*     */ 
@@ -436,7 +436,7 @@
 /* 436 */       return false;
 /*     */     }
 /*     */     Block block;
-/*     */     Block block;
+
 /* 440 */     if (target == null) {
 /* 441 */       block = player.getTargetBlock(null, 20);
 /*     */     } else {
@@ -521,7 +521,7 @@
 /*     */ 
 /* 522 */     if (snplayer.isDemon()) { Location newLoc;
 /* 523 */       if (door.isTopHalf()) {
-/* 524 */         Location newLoc = new Location(loc.getWorld(), loc.getBlockX(), loc.getBlockY() - 1, loc.getBlockZ());
+/* 524 */           newLoc = new Location(loc.getWorld(), loc.getBlockX(), loc.getBlockY() - 1, loc.getBlockZ());
 /*     */         
 /* 526 */         Block newBlock = newLoc.getBlock();
 /* 527 */         block.setTypeIdAndData(71, (byte)(block.getData() + 4), false);
@@ -566,7 +566,7 @@
 /*     */     Location newLoc;
 /*     */     
 /* 568 */     if (door.isTopHalf()) {
-/* 569 */       Location newLoc = new Location(loc.getWorld(), loc.getBlockX(), loc.getBlockY() - 1, loc.getBlockZ());
+/* 569 */       newLoc = new Location(loc.getWorld(), loc.getBlockX(), loc.getBlockY() - 1, loc.getBlockZ());
 /*     */       
 /* 571 */       Block newBlock = newLoc.getBlock();
 /* 572 */       block.setTypeIdAndData(71, (byte)(block.getData() - 4), false);

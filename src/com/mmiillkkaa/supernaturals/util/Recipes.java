@@ -7,7 +7,8 @@
 /*    */ import java.util.Map.Entry;
 /*    */ import java.util.SortedSet;
 /*    */ import java.util.TreeSet;
-/*    */ import org.bukkit.Material;
+/*    */ import com.sun.org.apache.regexp.internal.RE;
+import org.bukkit.Material;
 /*    */ import org.bukkit.entity.Player;
 /*    */ import org.bukkit.inventory.Inventory;
 /*    */ import org.bukkit.inventory.ItemStack;
@@ -77,22 +78,15 @@
 /*    */ 
 /*    */   public static <K, V extends Comparable<? super V>> SortedSet<Map.Entry<K, V>> entriesSortedByValues(Map<K, V> map)
 /*    */   {
-/* 80 */     SortedSet<Map.Entry<K, V>> sortedEntries = new TreeSet(new Comparator()
-/*    */     {
-/*    */       public int compare(Map.Entry<K, V> e1, Map.Entry<K, V> e2)
-/*    */       {
-/* 84 */         int res = ((Comparable)e1.getValue()).compareTo(e2.getValue());
-/* 85 */         return res != 0 ? res : 1;
-/*    */       }
-/*    */       
-/* 88 */     });
+/* 80 */     SortedSet<Map.Entry<K, V>> sortedEntries = new TreeSet(new entryComparator());
 /* 89 */     sortedEntries.addAll(map.entrySet());
 /* 90 */     return sortedEntries;
 /*    */   }
+            static class entryComparator implements  Comparator<Map.Entry<Object,? extends Comparable>>{
+                @Override
+                public int compare(Entry o1, Entry o2) {
+                   return  ((Comparable) o1.getValue()).compareTo(o2);
+                }
+            }
 /*    */ }
 
-
-/* Location:              C:\Users\jackw\Desktop\mmSupernaturals for 1.7.2.jar!\com\mmiillkkaa\supernaturals\util\Recipes.class
- * Java compiler version: 6 (50.0)
- * JD-Core Version:       0.7.1
- */

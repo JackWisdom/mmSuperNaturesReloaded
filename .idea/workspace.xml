@@ -1,7 +1,40 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="a588d0f0-fc3d-4986-9865-d4e49c2dbc51" name="Default" comment="" />
+    <list default="true" id="a588d0f0-fc3d-4986-9865-d4e49c2dbc51" name="Default" comment="">
+      <change afterPath="$PROJECT_DIR$/../mmSuperNaturesReloaded/.idea/libraries/spigot_latest.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mmSuperNaturesReloaded/.idea/libraries/worldedit_bukkit_6_1_7_3.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mmSuperNaturesReloaded/.idea/libraries/worldguard_6_2_1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mmSuperNaturesReloaded/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../mmSuperNaturesReloaded/.idea/libraries/spigot_api_latest.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../mmSuperNaturesReloaded/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../mmSuperNaturesReloaded/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../mmSuperNaturesReloaded/mmSuperNaturesReloaded.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../mmSuperNaturesReloaded/mmSuperNaturesReloaded.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../mmSuperNaturesReloaded/src/com/mmiillkkaa/supernaturals/Metrics.java" beforeDir="false" afterPath="$PROJECT_DIR$/../mmSuperNaturesReloaded/src/com/mmiillkkaa/supernaturals/Metrics.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../mmSuperNaturesReloaded/src/com/mmiillkkaa/supernaturals/commands/SNCommandHelp.java" beforeDir="false" afterPath="$PROJECT_DIR$/../mmSuperNaturesReloaded/src/com/mmiillkkaa/supernaturals/commands/SNCommandHelp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../mmSuperNaturesReloaded/src/com/mmiillkkaa/supernaturals/commands/SNCommandJoin.java" beforeDir="false" afterPath="$PROJECT_DIR$/../mmSuperNaturesReloaded/src/com/mmiillkkaa/supernaturals/commands/SNCommandJoin.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../mmSuperNaturesReloaded/src/com/mmiillkkaa/supernaturals/io/SNConfigHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/../mmSuperNaturesReloaded/src/com/mmiillkkaa/supernaturals/io/SNConfigHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../mmSuperNaturesReloaded/src/com/mmiillkkaa/supernaturals/io/SNLanguageHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/../mmSuperNaturesReloaded/src/com/mmiillkkaa/supernaturals/io/SNLanguageHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../mmSuperNaturesReloaded/src/com/mmiillkkaa/supernaturals/listeners/SNEntityListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/../mmSuperNaturesReloaded/src/com/mmiillkkaa/supernaturals/listeners/SNEntityListener.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../mmSuperNaturesReloaded/src/com/mmiillkkaa/supernaturals/listeners/SNEntityMonitor.java" beforeDir="false" afterPath="$PROJECT_DIR$/../mmSuperNaturesReloaded/src/com/mmiillkkaa/supernaturals/listeners/SNEntityMonitor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../mmSuperNaturesReloaded/src/com/mmiillkkaa/supernaturals/listeners/SNPlayerMonitor.java" beforeDir="false" afterPath="$PROJECT_DIR$/../mmSuperNaturesReloaded/src/com/mmiillkkaa/supernaturals/listeners/SNPlayerMonitor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../mmSuperNaturesReloaded/src/com/mmiillkkaa/supernaturals/manager/DemonManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/../mmSuperNaturesReloaded/src/com/mmiillkkaa/supernaturals/manager/DemonManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../mmSuperNaturesReloaded/src/com/mmiillkkaa/supernaturals/manager/HumanManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/../mmSuperNaturesReloaded/src/com/mmiillkkaa/supernaturals/manager/HumanManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../mmSuperNaturesReloaded/src/com/mmiillkkaa/supernaturals/manager/HunterManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/../mmSuperNaturesReloaded/src/com/mmiillkkaa/supernaturals/manager/HunterManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../mmSuperNaturesReloaded/src/com/mmiillkkaa/supernaturals/manager/PriestManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/../mmSuperNaturesReloaded/src/com/mmiillkkaa/supernaturals/manager/PriestManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../mmSuperNaturesReloaded/src/com/mmiillkkaa/supernaturals/manager/SuperNManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/../mmSuperNaturesReloaded/src/com/mmiillkkaa/supernaturals/manager/SuperNManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../mmSuperNaturesReloaded/src/com/mmiillkkaa/supernaturals/manager/VampireManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/../mmSuperNaturesReloaded/src/com/mmiillkkaa/supernaturals/manager/VampireManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../mmSuperNaturesReloaded/src/com/mmiillkkaa/supernaturals/util/Armor.java" beforeDir="false" afterPath="$PROJECT_DIR$/../mmSuperNaturesReloaded/src/com/mmiillkkaa/supernaturals/util/Armor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../mmSuperNaturesReloaded/src/com/mmiillkkaa/supernaturals/util/ArrowUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/../mmSuperNaturesReloaded/src/com/mmiillkkaa/supernaturals/util/ArrowUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../mmSuperNaturesReloaded/src/com/mmiillkkaa/supernaturals/util/Color.java" beforeDir="false" afterPath="$PROJECT_DIR$/../mmSuperNaturesReloaded/src/com/mmiillkkaa/supernaturals/util/Color.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../mmSuperNaturesReloaded/src/com/mmiillkkaa/supernaturals/util/EntityUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/../mmSuperNaturesReloaded/src/com/mmiillkkaa/supernaturals/util/EntityUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../mmSuperNaturesReloaded/src/com/mmiillkkaa/supernaturals/util/GeometryUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/../mmSuperNaturesReloaded/src/com/mmiillkkaa/supernaturals/util/GeometryUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../mmSuperNaturesReloaded/src/com/mmiillkkaa/supernaturals/util/Language.java" beforeDir="false" afterPath="$PROJECT_DIR$/../mmSuperNaturesReloaded/src/com/mmiillkkaa/supernaturals/util/Language.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../mmSuperNaturesReloaded/src/com/mmiillkkaa/supernaturals/util/LanguageTag.java" beforeDir="false" afterPath="$PROJECT_DIR$/../mmSuperNaturesReloaded/src/com/mmiillkkaa/supernaturals/util/LanguageTag.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../mmSuperNaturesReloaded/src/com/mmiillkkaa/supernaturals/util/Location.java" beforeDir="false" afterPath="$PROJECT_DIR$/../mmSuperNaturesReloaded/src/com/mmiillkkaa/supernaturals/util/Location.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../mmSuperNaturesReloaded/src/com/mmiillkkaa/supernaturals/util/Recipes.java" beforeDir="false" afterPath="$PROJECT_DIR$/../mmSuperNaturesReloaded/src/com/mmiillkkaa/supernaturals/util/Recipes.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../mmSuperNaturesReloaded/src/com/mmiillkkaa/supernaturals/util/SNTaskTimer.java" beforeDir="false" afterPath="$PROJECT_DIR$/../mmSuperNaturesReloaded/src/com/mmiillkkaa/supernaturals/util/SNTaskTimer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../mmSuperNaturesReloaded/src/com/mmiillkkaa/supernaturals/util/TextUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/../mmSuperNaturesReloaded/src/com/mmiillkkaa/supernaturals/util/TextUtil.java" afterDir="false" />
+    </list>
     <ignored path="$PROJECT_DIR$/../mmSuperNaturesReloaded/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -12,31 +45,154 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="zh_CN.yml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/../mmSuperNaturesReloaded/src/language/zh_CN.yml">
+      <file leaf-file-name="SNEntityMonitor.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../mmSuperNaturesReloaded/src/com/mmiillkkaa/supernaturals/listeners/SNEntityMonitor.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret column="9" selection-start-column="9" selection-end-column="9" />
+            <state relative-caret-position="143">
+              <caret line="63" column="20" selection-start-line="63" selection-start-column="20" selection-end-line="63" selection-end-column="20" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="plugin.yml" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/../mmSuperNaturesReloaded/src/plugin.yml">
+      <file leaf-file-name="SNCommandJoin.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../mmSuperNaturesReloaded/src/com/mmiillkkaa/supernaturals/commands/SNCommandJoin.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2261">
-              <caret line="119" lean-forward="true" selection-start-line="119" selection-end-line="119" />
+            <state relative-caret-position="-68">
+              <caret line="7" column="22" selection-start-line="7" selection-start-column="22" selection-end-line="7" selection-end-column="22" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="VampireManager.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../mmSuperNaturesReloaded/src/com/mmiillkkaa/supernaturals/manager/VampireManager.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-135">
+              <caret line="648" column="50" lean-forward="true" selection-start-line="648" selection-start-column="50" selection-end-line="648" selection-end-column="50" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="DemonManager.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../mmSuperNaturesReloaded/src/com/mmiillkkaa/supernaturals/manager/DemonManager.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-6">
+              <caret line="568" column="16" selection-start-line="568" selection-start-column="16" selection-end-line="568" selection-end-column="16" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Recipes.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/../mmSuperNaturesReloaded/src/com/mmiillkkaa/supernaturals/util/Recipes.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="162">
+              <caret line="82" column="34" lean-forward="true" selection-start-line="82" selection-start-column="34" selection-end-line="82" selection-end-column="34" />
+              <folding>
+                <element signature="e#2998#2999#0" expanded="true" />
+                <element signature="e#3087#3088#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Comparator.java" pinned="false" current-in-tab="false">
+        <entry file="jar://C:/Program Files/Java/jdk1.8.0_171/src.zip!/java/util/Comparator.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="19">
+              <caret line="108" column="17" selection-start-line="108" selection-start-column="17" selection-end-line="108" selection-end-column="17" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="TreeSet.java" pinned="false" current-in-tab="false">
+        <entry file="jar://C:/Program Files/Java/jdk1.8.0_171/src.zip!/java/util/TreeSet.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="19">
+              <caret line="122" column="11" selection-start-line="122" selection-start-column="11" selection-end-line="122" selection-end-column="11" />
+              <folding>
+                <element signature="e#4697#4698#0" expanded="true" />
+                <element signature="e#4742#4743#0" expanded="true" />
+                <element signature="e#5525#5526#0" expanded="true" />
+                <element signature="e#5572#5573#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="SNPlayerMonitor.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../mmSuperNaturesReloaded/src/com/mmiillkkaa/supernaturals/listeners/SNPlayerMonitor.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="123">
+              <caret line="77" column="13" selection-start-line="77" selection-start-column="13" selection-end-line="77" selection-end-column="13" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="SNCommandHelp.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../mmSuperNaturesReloaded/src/com/mmiillkkaa/supernaturals/commands/SNCommandHelp.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="257">
+              <caret line="79" selection-start-line="79" selection-end-line="79" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="SNEntityListener.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../mmSuperNaturesReloaded/src/com/mmiillkkaa/supernaturals/listeners/SNEntityListener.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="114">
+              <caret line="71" column="64" lean-forward="true" selection-start-line="71" selection-start-column="64" selection-end-line="71" selection-end-column="64" />
             </state>
           </provider>
         </entry>
       </file>
     </leaf>
   </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>tra</find>
+      <find>ï¿½.</find>
+      <find>lDamager</find>
+      <find>getShooter</find>
+    </findStrings>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../mmSuperNaturesReloaded" />
+  </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/../mmSuperNaturesReloaded/src/language/zh_CN.yml" />
         <option value="$PROJECT_DIR$/../mmSuperNaturesReloaded/src/plugin.yml" />
+        <option value="$PROJECT_DIR$/../mmSuperNaturesReloaded/src/com/mmiillkkaa/supernaturals/SupernaturalsPlugin.java" />
+        <option value="$PROJECT_DIR$/../mmSuperNaturesReloaded/src/com/mmiillkkaa/supernaturals/Metrics.java" />
+        <option value="$PROJECT_DIR$/../mmSuperNaturesReloaded/src/com/mmiillkkaa/supernaturals/io/SNLanguageHandler.java" />
+        <option value="$PROJECT_DIR$/../mmSuperNaturesReloaded/src/com/mmiillkkaa/supernaturals/util/LanguageTag.java" />
+        <option value="$PROJECT_DIR$/../mmSuperNaturesReloaded/src/com/mmiillkkaa/supernaturals/util/Location.java" />
+        <option value="$PROJECT_DIR$/../mmSuperNaturesReloaded/src/com/mmiillkkaa/supernaturals/util/SNTaskTimer.java" />
+        <option value="$PROJECT_DIR$/../mmSuperNaturesReloaded/src/com/mmiillkkaa/supernaturals/util/EntityUtil.java" />
+        <option value="$PROJECT_DIR$/../mmSuperNaturesReloaded/src/com/mmiillkkaa/supernaturals/util/Color.java" />
+        <option value="$PROJECT_DIR$/../mmSuperNaturesReloaded/src/com/mmiillkkaa/supernaturals/util/Armor.java" />
+        <option value="$PROJECT_DIR$/../mmSuperNaturesReloaded/src/com/mmiillkkaa/supernaturals/util/Language.java" />
+        <option value="$PROJECT_DIR$/../mmSuperNaturesReloaded/src/com/mmiillkkaa/supernaturals/util/ArrowUtil.java" />
+        <option value="$PROJECT_DIR$/../mmSuperNaturesReloaded/src/com/mmiillkkaa/supernaturals/util/TextUtil.java" />
+        <option value="$PROJECT_DIR$/../mmSuperNaturesReloaded/src/com/mmiillkkaa/supernaturals/util/GeometryUtil.java" />
+        <option value="$PROJECT_DIR$/../mmSuperNaturesReloaded/src/com/mmiillkkaa/supernaturals/io/SNPlayerHandler.java" />
+        <option value="$PROJECT_DIR$/../mmSuperNaturesReloaded/src/com/mmiillkkaa/supernaturals/manager/SuperNManager.java" />
+        <option value="$PROJECT_DIR$/../mmSuperNaturesReloaded/src/com/mmiillkkaa/supernaturals/listeners/SNEntityListener.java" />
+        <option value="$PROJECT_DIR$/../mmSuperNaturesReloaded/src/com/mmiillkkaa/supernaturals/io/SNConfigHandler.java" />
+        <option value="$PROJECT_DIR$/../mmSuperNaturesReloaded/src/com/mmiillkkaa/supernaturals/manager/HunterManager.java" />
+        <option value="$PROJECT_DIR$/../mmSuperNaturesReloaded/src/com/mmiillkkaa/supernaturals/manager/PriestManager.java" />
+        <option value="$PROJECT_DIR$/../mmSuperNaturesReloaded/src/com/mmiillkkaa/supernaturals/manager/HumanManager.java" />
+        <option value="$PROJECT_DIR$/../mmSuperNaturesReloaded/src/com/mmiillkkaa/supernaturals/listeners/SNEntityMonitor.java" />
+        <option value="$PROJECT_DIR$/../mmSuperNaturesReloaded/src/com/mmiillkkaa/supernaturals/commands/SNCommandJoin.java" />
+        <option value="$PROJECT_DIR$/../mmSuperNaturesReloaded/src/com/mmiillkkaa/supernaturals/commands/SNCommandHelp.java" />
+        <option value="$PROJECT_DIR$/../mmSuperNaturesReloaded/src/com/mmiillkkaa/supernaturals/manager/VampireManager.java" />
+        <option value="$PROJECT_DIR$/../mmSuperNaturesReloaded/src/com/mmiillkkaa/supernaturals/listeners/SNPlayerMonitor.java" />
+        <option value="$PROJECT_DIR$/../mmSuperNaturesReloaded/src/com/mmiillkkaa/supernaturals/manager/DemonManager.java" />
+        <option value="$PROJECT_DIR$/../mmSuperNaturesReloaded/src/com/mmiillkkaa/supernaturals/util/Recipes.java" />
       </list>
     </option>
   </component>
@@ -50,10 +206,13 @@
     <packageJsonPaths />
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="29" />
-    <option name="y" value="22" />
+    <option name="x" value="10" />
+    <option name="y" value="-10" />
     <option name="width" value="1346" />
     <option name="height" value="689" />
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
@@ -85,7 +244,7 @@
               <item name="mmSuperNaturesReloaded" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="supernaturals" type="462c0819:PsiDirectoryNode" />
-              <item name="commands" type="462c0819:PsiDirectoryNode" />
+              <item name="util" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="mmSuperNaturesReloaded" type="b2602c69:ProjectViewProjectNode" />
@@ -104,11 +263,11 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="android.sdk.path" value="$USER_HOME$/AppData/Local/Android/Sdk" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$USER_HOME$/Desktop/spigot-api-latest.jar!/" />
+    <property name="last_opened_file_path" value="$USER_HOME$/Desktop/spigot-latest.jar!/" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="project.structure.last.edited" value="Libraries" />
-    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="vcs.Git" />
   </component>
@@ -183,44 +342,45 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1531353098112</updated>
-      <workItem from="1531353104295" duration="784000" />
+      <workItem from="1531353104295" duration="5639000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="784000" />
+    <option name="totallyTimeSpent" value="5639000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info anchor="right" id="Palette" />
-      <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="right" id="Palette&#9;" />
-      <window_info id="Image Layers" />
-      <window_info anchor="right" id="Capture Analysis" />
-      <window_info anchor="bottom" id="Event Log" side_tool="true" />
-      <window_info anchor="right" id="Maven Projects" />
-      <window_info anchor="bottom" id="Database Changes" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Run" order="2" />
-      <window_info anchor="bottom" id="Terminal" />
-      <window_info id="Capture Tool" />
-      <window_info id="Designer" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24304539" />
-      <window_info anchor="right" id="Database" />
-      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info id="UI Designer" />
-      <window_info anchor="right" id="Theme Preview" />
-      <window_info id="Favorites" side_tool="true" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
-      <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="right" id="Palette" order="5" />
+      <window_info anchor="bottom" id="TODO" order="10" />
+      <window_info anchor="bottom" id="Messages" weight="0.32961783" />
+      <window_info anchor="right" id="Palette&#9;" order="1" />
+      <window_info id="Image Layers" order="4" />
+      <window_info anchor="right" id="Capture Analysis" order="0" />
+      <window_info anchor="bottom" id="Event Log" order="3" side_tool="true" />
+      <window_info anchor="right" id="Maven Projects" order="4" />
+      <window_info anchor="bottom" id="Database Changes" order="1" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" order="0" />
+      <window_info anchor="bottom" id="Run" order="6" />
+      <window_info anchor="bottom" id="Terminal" order="2" />
+      <window_info id="Capture Tool" order="2" />
+      <window_info id="Designer" order="0" />
+      <window_info active="true" content_ui="combo" id="Project" order="5" visible="true" weight="0.24304539" />
+      <window_info anchor="right" id="Database" order="3" />
+      <window_info anchor="bottom" id="Find" order="5" visible="true" weight="0.32961783" />
+      <window_info id="Structure" order="6" side_tool="true" weight="0.25" />
+      <window_info anchor="right" id="Ant Build" order="7" weight="0.25" />
+      <window_info id="UI Designer" order="1" />
+      <window_info anchor="right" id="Theme Preview" order="2" />
+      <window_info id="Favorites" order="3" side_tool="true" />
+      <window_info anchor="bottom" id="Debug" order="7" weight="0.4" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="6" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="8" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="9" weight="0.4" />
+      <window_info anchor="bottom" id="Message" order="4" />
+      <window_info anchor="bottom" id="Cvs" order="8" weight="0.25" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -233,6 +393,13 @@
     <entry file="file://$PROJECT_DIR$/../mmSuperNaturesReloaded/src/language/zh_TW.yml">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
+    <entry file="file://$PROJECT_DIR$/../mmSuperNaturesReloaded/src/plugin.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="779">
+          <caret line="119" lean-forward="true" selection-start-line="119" selection-end-line="119" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/../mmSuperNaturesReloaded/src/language/zh_CN.yml">
       <provider selected="true" editor-type-id="text-editor">
         <state>
@@ -240,31 +407,278 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../mmSuperNaturesReloaded/src/com/mmiillkkaa/supernaturals/commands/SNCommand.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="201">
-          <caret line="29" column="23" selection-start-line="29" selection-start-column="23" selection-end-line="29" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/../mmSuperNaturesReloaded/src/com/mmiillkkaa/supernaturals/SupernaturalsPlugin.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="142">
-          <caret line="353" column="13" lean-forward="true" selection-start-line="353" selection-start-column="13" selection-end-line="353" selection-end-column="13" />
+        <state relative-caret-position="-68">
+          <caret line="411" column="14" selection-start-line="411" selection-start-column="14" selection-end-line="411" selection-end-column="14" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/../mmSuperNaturesReloaded/src/com/mmiillkkaa/supernaturals/Metrics.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="85" column="31" selection-start-line="85" selection-start-column="31" selection-end-line="85" selection-end-column="31" />
+        <state relative-caret-position="59">
+          <caret line="156" column="25" selection-start-line="156" selection-start-column="25" selection-end-line="156" selection-end-column="25" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../mmSuperNaturesReloaded/src/plugin.yml">
+    <entry file="file://$PROJECT_DIR$/../mmSuperNaturesReloaded/src/com/mmiillkkaa/supernaturals/io/SNLanguageHandler.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2261">
-          <caret line="119" lean-forward="true" selection-start-line="119" selection-end-line="119" />
+        <state relative-caret-position="180">
+          <caret line="95" column="49" selection-start-line="95" selection-start-column="49" selection-end-line="95" selection-end-column="49" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../mmSuperNaturesReloaded/src/com/mmiillkkaa/supernaturals/util/LanguageTag.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="257">
+          <caret line="29" column="1" selection-start-line="29" selection-start-column="1" selection-end-line="29" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../mmSuperNaturesReloaded/src/com/mmiillkkaa/supernaturals/util/Location.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="257">
+          <caret line="45" column="1" selection-start-line="45" selection-start-column="1" selection-end-line="45" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../mmSuperNaturesReloaded/src/com/mmiillkkaa/supernaturals/util/SNTaskTimer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="257">
+          <caret line="46" column="1" lean-forward="true" selection-start-line="46" selection-start-column="1" selection-end-line="46" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../mmSuperNaturesReloaded/src/com/mmiillkkaa/supernaturals/util/Armor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="257">
+          <caret line="48" column="1" selection-start-line="48" selection-start-column="1" selection-end-line="48" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../mmSuperNaturesReloaded/src/com/mmiillkkaa/supernaturals/util/Language.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="243">
+          <caret line="275" column="1" selection-start-line="275" selection-start-column="1" selection-end-line="275" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../mmSuperNaturesReloaded/src/com/mmiillkkaa/supernaturals/util/EntityUtil.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="257">
+          <caret line="40" column="1" selection-start-line="40" selection-start-column="1" selection-end-line="40" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../mmSuperNaturesReloaded/src/com/mmiillkkaa/supernaturals/util/Color.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="257">
+          <caret line="41" column="1" selection-start-line="41" selection-start-column="1" selection-end-line="41" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../mmSuperNaturesReloaded/src/com/mmiillkkaa/supernaturals/commands/SNCommandSetBanish.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="28" column="22" selection-start-line="28" selection-start-column="22" selection-end-line="28" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../mmSuperNaturesReloaded/src/com/mmiillkkaa/supernaturals/commands/SNCommand.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="201">
+          <caret line="77" column="24" selection-start-line="77" selection-start-column="24" selection-end-line="77" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../mmSuperNaturesReloaded/src/com/mmiillkkaa/supernaturals/util/ArrowUtil.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="257">
+          <caret line="68" selection-start-line="68" selection-end-line="68" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../mmSuperNaturesReloaded/src/com/mmiillkkaa/supernaturals/util/TextUtil.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="257">
+          <caret line="67" selection-start-line="67" selection-end-line="67" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../mmSuperNaturesReloaded/src/com/mmiillkkaa/supernaturals/util/GeometryUtil.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="243">
+          <caret line="104" selection-start-line="104" selection-end-line="104" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/Desktop/spigot-api-latest.jar!/org/bukkit/entity/LivingEntity.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="131">
+          <caret line="26" column="16" selection-start-line="26" selection-start-column="16" selection-end-line="26" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../mmSuperNaturesReloaded/src/com/mmiillkkaa/supernaturals/manager/SuperNManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-409">
+          <caret line="499" column="66" selection-start-line="499" selection-start-column="66" selection-end-line="499" selection-end-column="66" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/Desktop/spigot-api-latest.jar!/org/bukkit/entity/Damageable.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="131">
+          <caret line="10" column="9" selection-start-line="10" selection-start-column="9" selection-end-line="10" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../mmSuperNaturesReloaded/src/com/mmiillkkaa/supernaturals/io/SNConfigHandler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="140">
+          <caret line="281" column="44" selection-start-line="281" selection-start-column="44" selection-end-line="281" selection-end-column="44" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/Desktop/spigot-api-latest.jar!/org/bukkit/entity/HumanEntity.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-477">
+          <caret line="53" column="12" selection-start-line="53" selection-start-column="12" selection-end-line="53" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../mmSuperNaturesReloaded/src/com/mmiillkkaa/supernaturals/io/SNPlayerHandler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="294">
+          <caret line="66" column="13" selection-start-line="66" selection-start-column="13" selection-end-line="66" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../mmSuperNaturesReloaded/src/com/mmiillkkaa/supernaturals/manager/HunterManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-230">
+          <caret line="363" column="18" selection-start-line="363" selection-start-column="18" selection-end-line="363" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/Desktop/spigot-latest.jar!/org/bukkit/entity/Projectile.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="131">
+          <caret line="10" column="11" lean-forward="true" selection-start-line="10" selection-start-column="11" selection-end-line="10" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/Desktop/spigot-latest.jar!/org/bukkit/projectiles/ProjectileSource.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="114">
+          <caret line="10" column="17" selection-start-line="10" selection-start-column="17" selection-end-line="10" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../mmSuperNaturesReloaded/src/com/mmiillkkaa/supernaturals/manager/PriestManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="302">
+          <caret line="312" column="27" selection-start-line="312" selection-start-column="27" selection-end-line="312" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/Desktop/spigot-latest.jar!/org/bukkit/event/entity/EntityDamageByEntityEvent.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="114">
+          <caret line="13" column="13" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../mmSuperNaturesReloaded/src/com/mmiillkkaa/supernaturals/manager/HumanManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="119" column="20" selection-start-line="119" selection-start-column="20" selection-end-line="119" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../mmSuperNaturesReloaded/src/com/mmiillkkaa/supernaturals/listeners/SNEntityListener.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="114">
+          <caret line="71" column="64" lean-forward="true" selection-start-line="71" selection-start-column="64" selection-end-line="71" selection-end-column="64" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../mmSuperNaturesReloaded/src/com/mmiillkkaa/supernaturals/listeners/SNEntityMonitor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="143">
+          <caret line="63" column="20" selection-start-line="63" selection-start-column="20" selection-end-line="63" selection-end-column="20" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../mmSuperNaturesReloaded/src/com/mmiillkkaa/supernaturals/commands/SNCommandHelp.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="257">
+          <caret line="79" selection-start-line="79" selection-end-line="79" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../mmSuperNaturesReloaded/src/com/mmiillkkaa/supernaturals/commands/SNCommandJoin.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-68">
+          <caret line="7" column="22" selection-start-line="7" selection-start-column="22" selection-end-line="7" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../mmSuperNaturesReloaded/src/com/mmiillkkaa/supernaturals/manager/VampireManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-135">
+          <caret line="648" column="50" lean-forward="true" selection-start-line="648" selection-start-column="50" selection-end-line="648" selection-end-column="50" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../mmSuperNaturesReloaded/src/com/mmiillkkaa/supernaturals/listeners/SNPlayerMonitor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="123">
+          <caret line="77" column="13" selection-start-line="77" selection-start-column="13" selection-end-line="77" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../mmSuperNaturesReloaded/src/com/mmiillkkaa/supernaturals/manager/DemonManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-6">
+          <caret line="568" column="16" selection-start-line="568" selection-start-column="16" selection-end-line="568" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_171/src.zip!/java/util/TreeSet.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="19">
+          <caret line="122" column="11" selection-start-line="122" selection-start-column="11" selection-end-line="122" selection-end-column="11" />
+          <folding>
+            <element signature="e#4697#4698#0" expanded="true" />
+            <element signature="e#4742#4743#0" expanded="true" />
+            <element signature="e#5525#5526#0" expanded="true" />
+            <element signature="e#5572#5573#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_171/src.zip!/java/util/Comparator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="19">
+          <caret line="108" column="17" selection-start-line="108" selection-start-column="17" selection-end-line="108" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../mmSuperNaturesReloaded/src/com/mmiillkkaa/supernaturals/util/Recipes.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="162">
+          <caret line="82" column="34" lean-forward="true" selection-start-line="82" selection-start-column="34" selection-end-line="82" selection-end-column="34" />
+          <folding>
+            <element signature="e#2998#2999#0" expanded="true" />
+            <element signature="e#3087#3088#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -345,7 +759,7 @@
       </state>
       <state key="ProjectLibrariesConfigurable.UI">
         <settings>
-          <last-edited>spigot-api-latest</last-edited>
+          <last-edited>spigot-latest</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>

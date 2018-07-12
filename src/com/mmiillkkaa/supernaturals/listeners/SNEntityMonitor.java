@@ -29,8 +29,7 @@
 /*     */ import org.bukkit.event.EventPriority;
 /*     */ import org.bukkit.event.Listener;
 /*     */ import org.bukkit.event.entity.EntityDamageByEntityEvent;
-/*     */ import org.bukkit.event.entity.EntityDamageEvent;
-/*     */ import org.bukkit.event.entity.EntityDeathEvent;
+
 /*     */ import org.bukkit.event.entity.ProjectileHitEvent;
 /*     */ 
 /*     */ 
@@ -61,7 +60,10 @@
 /*     */   public void onProjectileHit(ProjectileHitEvent event) {
 /*  62 */     if ((event.getEntity() instanceof Arrow)) {
 /*  63 */       Arrow arrow = (Arrow)event.getEntity();
-/*  64 */       if (this.plugin.getHunterManager().getArrowMap().containsKey(arrow)) {
+/*  64 */       if (!this.plugin.getHunterManager().getArrowMap().containsKey(arrow)) {  return;}
+                if(!(arrow.getShooter() instanceof Player)){
+    return;
+                }
 /*  65 */         Player player = (Player)arrow.getShooter();
 /*  66 */         if ((!SupernaturalsPlugin.hasPermissions(player, this.worldPermission)) && (SNConfigHandler.multiworld))
 /*     */         {
@@ -84,22 +86,19 @@
 /*     */         }
 /*     */         
 /*  86 */         this.plugin.getHunterManager().removeArrow(arrow);
-/*     */       }
+/*     */
 /*     */     }
 /*     */   }
 /*     */   
 /*     */   @EventHandler(priority=EventPriority.MONITOR)
-/*     */   public void onEntityDamage(EntityDamageEvent event) {
+/*     */   public void onEntityDamage(EntityDamageByEntityEvent event) {
 /*  93 */     if (event.isCancelled()) {
 /*  94 */       return;
 /*     */     }
-/*  96 */     if ((event instanceof EntityDamageByEntityEvent)) {
-/*  97 */       EntityDamageByEntityEvent edbeEvent = (EntityDamageByEntityEvent)event;
-/*     */       
-/*     */ 
+
 /* 100 */       Entity victim = event.getEntity();
 /*     */       
-/* 102 */       Entity damager = edbeEvent.getDamager();
+/* 102 */       Entity damager = event.getDamager();
 /* 103 */       Player pDamager = null;
 /*     */       
 /*     */ 
@@ -132,24 +131,14 @@
 /* 132 */           this.plugin.getSuperManager().truceBreak(snDamager);
 /*     */         }
 /*     */       }
-/*     */     }
+/*     */
 /*     */   }
 /*     */   
 /*     */   @EventHandler(priority=EventPriority.MONITOR)
-/*     */   public void onEntityDeath(EntityDeathEvent event) {
+/*     */   public void onEntityDeath(EntityDamageByEntityEvent event) {
 /* 140 */     Entity entity = event.getEntity();
-/*     */     
-/* 142 */     Player pDamager = null;
-/* 143 */     LivingEntity lDamager = null;
-/* 144 */     Event e = entity.getLastDamageCause();
-/* 145 */     if ((e instanceof EntityDamageByEntityEvent)) {
-/* 146 */       if ((((EntityDamageByEntityEvent)e).getDamager() instanceof LivingEntity)) {
-/* 147 */         lDamager = (LivingEntity)((EntityDamageByEntityEvent)e).getDamager();
-/*     */       }
-/* 149 */       else if ((((EntityDamageByEntityEvent)e).getDamager() instanceof Projectile)) {
-/* 150 */         lDamager = ((Projectile)((EntityDamageByEntityEvent)e).getDamager()).getShooter();
-/*     */       }
-/*     */     }
+                Player pDamager = null;
+/* 143 */     Entity lDamager=event.getDamager();
 /*     */     
 /*     */ 
 /* 155 */     if ((lDamager instanceof Player)) {

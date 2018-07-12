@@ -161,7 +161,7 @@
 /*     */     }
 /*     */     
 /*     */ 
-/* 164 */     Graph graph = new Graph(name, null);
+/* 164 */     Graph graph = new Graph(name);
 /*     */     
 /*     */ 
 /* 167 */     this.graphs.add(graph);
@@ -362,7 +362,7 @@
 /*     */ 
 /* 363 */     String pluginVersion = description.getVersion();
 /* 364 */     String serverVersion = Bukkit.getVersion();
-/* 365 */     int playersOnline = Bukkit.getServer().getOnlinePlayers().length;
+/* 365 */     int playersOnline = Bukkit.getServer().getOnlinePlayers().size();
 /*     */     
 /*     */ 
 /*     */ 
@@ -451,9 +451,7 @@
 /*     */     
 /*     */ 
 /*     */     URLConnection connection;
-/*     */     
-/*     */ 
-/*     */     URLConnection connection;
+
 /*     */     
 /* 458 */     if (isMineshafterPresent()) {
 /* 459 */       connection = url.openConnection(Proxy.NO_PROXY);
@@ -531,7 +529,8 @@
 /*     */ 
 /*     */   public static byte[] gzip(String input)
 /*     */   {
-/* 534 */     baos = new ByteArrayOutputStream();
+/* 534 */
+    ByteArrayOutputStream baos = new ByteArrayOutputStream();
 /* 535 */     GZIPOutputStream gzos = null;
 /*     */     try
 /*     */     {
@@ -560,6 +559,7 @@
 /*     */         catch (IOException ignore) {}
 /*     */       }
 /*     */     }
+            return null;
 /*     */   }
 /*     */   
 /*     */ 

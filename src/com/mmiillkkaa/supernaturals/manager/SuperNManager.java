@@ -295,8 +295,7 @@
 /* 295 */       alterPower(snplayer, -SNConfigHandler.dashBloodCost, Language.WERWWOLF_DASH_TRIGGER.toString());
 /*     */     }
 /*     */     
-/*     */     Vector vjadd;
-/*     */     
+
 /*     */     Vector vjadd;
 /*     */     
 /* 302 */     if (upOnly) {
@@ -418,11 +417,11 @@
 /* 418 */         return;
 /*     */       }
 /*     */       
-/* 421 */       double deltaHeal = deltaSeconds * SNConfigHandler.vampireTimeHealthGained;
+/* 421 */       deltaHeal = deltaSeconds * SNConfigHandler.vampireTimeHealthGained;
 /* 422 */       alterPower(snplayer, -SNConfigHandler.vampireHealthCost, Language.HEALTH_REGEN.toString());
 /*     */     }
 /*     */     else {
-/*     */       double deltaHeal;
+/*     */
 /* 426 */       if (snplayer.isGhoul()) {
 /* 427 */         if ((player.getWorld().hasStorm()) && (!plugin.getGhoulManager().isUnderRoof(player)))
 /*     */         {
@@ -456,7 +455,8 @@
 /* 456 */     List<Block> blocks = player.getLineOfSight(SNConfigHandler.transparent, 20);
 /*     */     
 /* 458 */     List<Entity> entities = player.getNearbyEntities(21.0D, 21.0D, 21.0D);
-/* 459 */     for (Iterator i$ = blocks.iterator(); i$.hasNext();) { block = (Block)i$.next();
+/* 459 */     for (Block block:blocks) {
+
 /* 460 */       for (Entity entity : entities) {
 /* 461 */         if ((entity instanceof Player)) {
 /* 462 */           Player victim = (Player)entity;
@@ -503,25 +503,25 @@
 /* 503 */     String name = player.getName();
 /* 504 */     String displayname = player.getDisplayName().trim();
 /*     */     
-/*     */     ChatColor color;
+
 /*     */     ChatColor color;
 /* 508 */     if (snplayer.isPriest()) {
-/* 509 */       color = ChatColor.GOLD; } else { ChatColor color;
-/* 510 */       if (snplayer.isVampire()) {
-/* 511 */         color = ChatColor.DARK_PURPLE; } else { ChatColor color;
-/* 512 */         if (snplayer.isGhoul()) {
-/* 513 */           color = ChatColor.DARK_GRAY; } else { ChatColor color;
-/* 514 */           if (snplayer.isWere()) {
-/* 515 */             color = ChatColor.BLUE; } else { ChatColor color;
-/* 516 */             if (snplayer.isHunter()) {
-/* 517 */               color = ChatColor.GREEN; } else { ChatColor color;
-/* 518 */               if (snplayer.isDemon()) {
-/* 519 */                 color = ChatColor.RED; } else { ChatColor color;
-/* 520 */                 if (snplayer.isAngel()) {
+/* 509 */       color = ChatColor.GOLD; }
+              else if (snplayer.isVampire()) {
+/* 511 */         color = ChatColor.DARK_PURPLE; }
+                else if (snplayer.isGhoul()) {
+/* 513 */           color = ChatColor.DARK_GRAY; }
+                else   if (snplayer.isWere()) {
+/* 515 */             color = ChatColor.BLUE; }
+                else   if (snplayer.isHunter()) {
+/* 517 */               color = ChatColor.GREEN; }
+                else    if (snplayer.isDemon()) {
+/* 519 */                 color = ChatColor.RED; }
+                else      if (snplayer.isAngel()) {
 /* 521 */                   color = ChatColor.AQUA;
-/*     */                 } else
-/* 523 */                   color = ChatColor.WHITE; } } } } } }
-/*     */     String updatedname;
+/*     */                 } else{
+/* 523 */                   color = ChatColor.WHITE; }
+
 /*     */     String updatedname;
 /* 526 */     if (displayname.contains("ï¿½." + name)) {
 /* 527 */       updatedname = displayname.replaceFirst(" ï¿½." + name, " " + color + name);

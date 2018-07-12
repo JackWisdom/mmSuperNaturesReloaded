@@ -88,7 +88,7 @@
 /*     */             }
 /*     */             else
 /*     */             {
-/*  91 */               lEntity.damage(SNConfigHandler.demonFireballDamage, fireball.getShooter());
+/*  91 */               lEntity.damage(SNConfigHandler.demonFireballDamage, fireball);
 /*     */               
 /*  93 */               lEntity.setFireTicks(200);
 /*     */             }

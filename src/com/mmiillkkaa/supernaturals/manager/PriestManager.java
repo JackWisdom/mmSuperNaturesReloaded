@@ -307,10 +307,10 @@
 /* 307 */           delta = ((Integer)SNConfigHandler.priestDonationMap.get(mat)).intValue();
 /* 308 */           if (itemStack.getAmount() == 1) {
 /* 309 */             inv.clear(inv.first(itemStack.getType()));
-/*     */             break label172; }
+/*     */             break ; }
 /* 311 */           itemStack.setAmount(itemStack.getAmount() - 1);
 /*     */           
-/*     */           break label172;
+/*     */           break  ;
 /*     */         }
 /*     */       }
 /*     */     }

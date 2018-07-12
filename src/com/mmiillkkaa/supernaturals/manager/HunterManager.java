@@ -361,7 +361,7 @@
 /*     */     
 /* 362 */     if ((snplayer.isHunter()) || ((snplayer.isHuman()) && (open))) { Location newLoc;
 /* 363 */       if (door.isTopHalf()) {
-/* 364 */         Location newLoc = new Location(loc.getWorld(), loc.getBlockX(), loc.getBlockY() - 1, loc.getBlockZ());
+/* 364 */          newLoc = new Location(loc.getWorld(), loc.getBlockX(), loc.getBlockY() - 1, loc.getBlockZ());
 /*     */         
 /* 366 */         Block newBlock = newLoc.getBlock();
 /* 367 */         block.setTypeIdAndData(71, (byte)(block.getData() + 4), false);
@@ -407,7 +407,7 @@
 /*     */     Location newLoc;
 /*     */     
 /* 409 */     if (door.isTopHalf()) {
-/* 410 */       Location newLoc = new Location(loc.getWorld(), loc.getBlockX(), loc.getBlockY() - 1, loc.getBlockZ());
+/* 410 */         newLoc = new Location(loc.getWorld(), loc.getBlockX(), loc.getBlockY() - 1, loc.getBlockZ());
 /*     */       
 /* 412 */       Block newBlock = newLoc.getBlock();
 /* 413 */       block.setTypeIdAndData(71, (byte)(block.getData() - 4), false);

@@ -612,7 +612,7 @@
 /*     */ 
 /* 613 */     if (snplayer.isVampire()) { Location newLoc;
 /* 614 */       if (door.isTopHalf()) {
-/* 615 */         Location newLoc = new Location(loc.getWorld(), loc.getBlockX(), loc.getBlockY() - 1, loc.getBlockZ());
+/* 615 */          newLoc = new Location(loc.getWorld(), loc.getBlockX(), loc.getBlockY() - 1, loc.getBlockZ());
 /*     */         
 /* 617 */         Block newBlock = newLoc.getBlock();
 /* 618 */         block.setTypeIdAndData(71, (byte)(block.getData() + 4), false);
@@ -657,7 +657,7 @@
 /*     */     Location newLoc;
 /*     */     
 /* 659 */     if (door.isTopHalf()) {
-/* 660 */       Location newLoc = new Location(loc.getWorld(), loc.getBlockX(), loc.getBlockY() - 1, loc.getBlockZ());
+/* 660 */        newLoc = new Location(loc.getWorld(), loc.getBlockX(), loc.getBlockY() - 1, loc.getBlockZ());
 /*     */       
 /* 662 */       Block newBlock = newLoc.getBlock();
 /* 663 */       block.setTypeIdAndData(71, (byte)(block.getData() - 4), false);

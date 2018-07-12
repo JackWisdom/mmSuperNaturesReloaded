@@ -273,9 +273,3 @@
 /* 273 */     return result;
 /*     */   }
 /*     */ }
-
-
-/* Location:              C:\Users\jackw\Desktop\mmSupernaturals for 1.7.2.jar!\com\mmiillkkaa\supernaturals\util\Language.class
- * Java compiler version: 6 (50.0)
- * JD-Core Version:       0.7.1
- */

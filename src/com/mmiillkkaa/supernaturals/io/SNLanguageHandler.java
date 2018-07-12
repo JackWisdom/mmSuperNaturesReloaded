@@ -93,7 +93,7 @@
 /*     */   }
 /*     */   
 /*     */   public static YamlConfiguration loadValues(YamlConfiguration config) {
-/*  96 */     for (Language l : ) {
+/*  96 */     for (Language l : Language.values()) {
 /*  97 */       config.set(l.getPath(), config.getString(l.getPath(), l.getDef()));
 /*     */     }
 /*  99 */     return config;

@@ -19,7 +19,9 @@
 /*     */ import org.bukkit.event.entity.EntityDamageEvent.DamageCause;
 /*     */ import org.bukkit.event.player.PlayerInteractEvent;
 /*     */ import org.bukkit.inventory.ItemStack;
-/*     */ 
+import org.bukkit.projectiles.ProjectileSource;
+
+/*     */
 /*     */ 
 /*     */ 
 /*     */ 
@@ -113,7 +115,12 @@
 /* 113 */         lDamager = (LivingEntity)((EntityDamageByEntityEvent)e).getDamager();
 /*     */       }
 /* 115 */       else if ((((EntityDamageByEntityEvent)e).getDamager() instanceof Projectile)) {
-/* 116 */         lDamager = ((Projectile)((EntityDamageByEntityEvent)e).getDamager()).getShooter();
+                ProjectileSource shooter=((Projectile)((EntityDamageByEntityEvent)e).getDamager()).getShooter();
+/* 116 */         if(shooter instanceof LivingEntity){
+                    lDamager= (LivingEntity) shooter;
+            }else {
+    return;
+            }
 /*     */       }
 /*     */     }
 /*     */     

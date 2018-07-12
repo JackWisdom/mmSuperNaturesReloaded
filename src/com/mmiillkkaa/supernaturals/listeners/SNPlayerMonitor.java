@@ -60,28 +60,23 @@
 /*     */     }
 /*  61 */     Player player = event.getPlayer();
 /*  62 */     SuperNPlayer snplayer = SuperNManager.get(player);
-/*     */     String prefix;
-/*  64 */     String prefix; if (snplayer.isPriest()) {
-/*  65 */       prefix = Color.PRIEST.prefix(Language.SN_PREIEST_NAME); } else { String prefix;
-/*  66 */       if (snplayer.isVampire()) {
-/*  67 */         prefix = Color.VAMPIRE.prefix(Language.SN_VAMPIRE_NAME); } else { String prefix;
-/*  68 */         if (snplayer.isGhoul()) {
-/*  69 */           prefix = Color.GHOUL.prefix(Language.SN_GHOUL_NAME); } else { String prefix;
-/*  70 */           if (snplayer.isWere()) {
-/*  71 */             prefix = Color.WEREWOLF.prefix(Language.SN_WEREWOLF_NAME); } else { String prefix;
-/*  72 */             if (snplayer.isHunter()) {
-/*  73 */               prefix = Color.WITCHHUNTER.prefix(Language.SN_WITCHHUNTER_NAME); } else { String prefix;
-/*  74 */               if (snplayer.isDemon()) {
-/*  75 */                 prefix = Color.DEMON.prefix(Language.SN_DEMON_NAME); } else { String prefix;
-/*  76 */                 if (snplayer.isAngel()) {
+
+/*  64 */     String prefix;
+            if (snplayer.isPriest()) {
+/*  65 */       prefix = Color.PRIEST.prefix(Language.SN_PREIEST_NAME); } else if (snplayer.isVampire()) {
+/*  67 */         prefix = Color.VAMPIRE.prefix(Language.SN_VAMPIRE_NAME); } else if (snplayer.isGhoul()) {
+/*  69 */           prefix = Color.GHOUL.prefix(Language.SN_GHOUL_NAME); } else  if (snplayer.isWere()) {
+/*  71 */             prefix = Color.WEREWOLF.prefix(Language.SN_WEREWOLF_NAME); } else   if (snplayer.isHunter()) {
+/*  73 */               prefix = Color.WITCHHUNTER.prefix(Language.SN_WITCHHUNTER_NAME); } else if (snplayer.isDemon()) {
+/*  75 */                 prefix = Color.DEMON.prefix(Language.SN_DEMON_NAME); } else  if (snplayer.isAngel()) {
 /*  77 */                   prefix = Color.ANGEL.prefix(Language.SN_ANGEL_NAME);
-/*     */                 } else
+/*     */                 } else{
 /*  79 */                   prefix = Color.HUMAN.prefix(Language.SN_HUMAN_NAME);
 /*     */               }
-/*     */             } } } } }
+/*     */
 /*  82 */     event.setFormat(event.getFormat().replace("[SN]", prefix));
 /*     */   }
-/*     */   
+    /*     */
 /*     */   @EventHandler(priority=EventPriority.MONITOR)
 /*     */   public void onPlayerPortal(PlayerPortalEvent event) {
 /*  87 */     if (event.isCancelled()) {

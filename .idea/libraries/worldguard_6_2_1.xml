@@ -1,7 +1,7 @@
 <component name="libraryTable">
-  <library name="spigot-api-latest">
+  <library name="worldguard-6.2.1">
     <CLASSES>
-      <root url="jar://$USER_HOME$/Desktop/spigot-api-latest.jar!/" />
+      <root url="jar://$USER_HOME$/Desktop/worldguard-6.2.1.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />
