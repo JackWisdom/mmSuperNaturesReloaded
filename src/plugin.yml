@@ -1,6 +1,6 @@
 name: mmSupernaturalsReloaded
 main: com.mmiillkkaa.supernaturals.SupernaturalsPlugin
-version: 1.6
+version: 1.6 alpha
 author: [Matterz,mmiillkkaa,marlboromoo,JackWisdom]
 commands:
   sn:

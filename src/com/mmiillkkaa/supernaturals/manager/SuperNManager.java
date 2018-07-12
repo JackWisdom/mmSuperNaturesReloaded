@@ -28,23 +28,6 @@
 /*     */ import org.bukkit.entity.Wolf;
 /*     */ import org.bukkit.scheduler.BukkitScheduler;
 /*     */ import org.bukkit.util.Vector;
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
 /*     */ public class SuperNManager
 /*     */ {
 /*     */   public static SupernaturalsPlugin plugin;
@@ -523,8 +506,8 @@
 /* 523 */                   color = ChatColor.WHITE; }
 
 /*     */     String updatedname;
-/* 526 */     if (displayname.contains("ï¿½." + name)) {
-/* 527 */       updatedname = displayname.replaceFirst(" ï¿½." + name, " " + color + name);
+/* 526 */     if (displayname.contains("[SN]" + name)) {
+/* 527 */       updatedname = displayname.replaceFirst(" [SN]" + name, " " + color + name);
 /*     */     }
 /*     */     else {
 /* 530 */       updatedname = displayname.replaceFirst(name, color + name);
