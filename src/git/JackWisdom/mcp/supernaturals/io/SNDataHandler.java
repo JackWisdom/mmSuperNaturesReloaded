@@ -49,9 +49,9 @@
 /*  67 */     SNDataHandler handler = null;
 
 /*     */     try {
-        if(!file.exists()){
-            file.createNewFile();
-        }
+             if(!file.exists()){
+              file.createNewFile();
+                  }
 /*  69 */       ObjectInputStream ois = new ObjectInputStream(new FileInputStream(file));
 /*     */       
 /*  71 */       handler = (SNDataHandler)ois.readObject();

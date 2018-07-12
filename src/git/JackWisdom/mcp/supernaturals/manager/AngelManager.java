@@ -174,6 +174,7 @@
 /* 175 */             spawnedWolf.setTamed(true);
 /* 176 */             spawnedWolf.setOwner(player);
 /* 177 */             spawnedWolf.setHealth(8.0D);
+                      spawnedWolf.setCustomName(Language.ANGEL_SUMMON_WOLF_NAME.toString());
 /* 178 */             event.setCancelled(true);
 /* 179 */             SuperNManager.alterPower(snplayer, -SNConfigHandler.angelSummonPowerCost, Language.ANGEL_SUMMON_WOLF.toString());
 /*     */             

@@ -242,9 +242,9 @@
 /* 242 */     SNConfigHandler.getConfiguration();
 /* 243 */     SNLanguageHandler.getConfiguration();
 /*     */     
-/* 245 */     loadData();
+/* 245 */
 /* 246 */     this.snData = SNDataHandler.read();
-/*     */     
+/*     */     loadData();
 /* 248 */     SNWhitelistHandler.reloadWhitelist();
 /*     */     
 /* 250 */     if (this.snData == null) {
