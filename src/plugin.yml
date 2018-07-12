@@ -1,0 +1,119 @@
+name: mmSupernaturalsReloaded
+main: com.mmiillkkaa.supernaturals.SupernaturalsPlugin
+version: 1.6
+author: [Matterz,mmiillkkaa,marlboromoo,JackWisdom]
+commands:
+  sn:
+    description: 超自然种族的指令
+    usage: /<command> - 列出指令
+permissions:
+    supernatural.*:
+        description: 所有权限
+        children:
+            supernatural.command.help: true
+            supernatural.command.list: true
+            supernatural.command.power: true
+            supernatural.command.classes: true
+            supernatural.command.killlist: true
+            supernatural.player.shrineuse.vampire: true
+            supernatural.player.shrineuse.priest: true
+            supernatural.player.wolfbane: true
+            supernatural.player.preventwaterdamage: true
+            supernatural.player.preventsundamage: true
+            supernatural.player.witchhuntersign: true
+            supernatural.admin.infinitepower: true
+            supernatural.admin.partial.curse: true
+            supernatural.world.enabled: true
+            supernatural.admin.command.adminhelp: true
+            supernatural.admin.command.cure: true
+            supernatural.admin.command.curse: true
+            supernatural.admin.command.power: true
+            supernatural.admin.command.reset: true
+            supernatural.admin.command.reload: true
+            supernatural.admin.command.save: true
+            supernatural.admin.command.setchurch: true
+            supernatural.admin.command.setbanish: true
+    supernatural.command.*:
+        description: 玩家指令的所有权限
+        children:
+            supernatural.command.help: true
+            supernatural.command.list: true
+            supernatural.command.power: true
+            supernatural.command.classes: true
+            supernatural.command.killlist: true
+    supernatural.player.*:
+        description: 玩家动作的所有权限
+        children:
+            supernatural.player.shrineuse.vampire: true
+            supernatural.player.shrineuse.priest: true
+            supernatural.player.wolfbane: true
+            supernatural.player.preventwaterdamage: true
+            supernatural.player.preventsundamage: true
+            supernatural.player.witchhuntersign: true
+    supernatural.player.shrineuse.*:
+        description: 圣坛的使用权限
+        children:
+            supernatural.player.shrineuse.vampire: true
+            supernatural.player.shrineuse.priest: true
+    supernatural.admin.*:
+        description: 管理员的权限
+        children:
+            supernatural.admin.infinitepower: true
+            supernatural.admin.partial.curse: true
+            supernatural.admin.command.adminhelp: true
+            supernatural.admin.command.cure: true
+            supernatural.admin.command.curse: true
+            supernatural.admin.command.power: true
+            supernatural.admin.command.reset: true
+            supernatural.admin.command.reload: true
+            supernatural.admin.command.save: true
+            supernatural.admin.command.setchurch: true
+            supernatural.admin.command.setbanish: true
+    supernatural.command.help:
+        default: true
+    supernatural.command.list:
+        default: true
+    supernatural.command.power:
+        default: true
+    supernatural.command.classes:
+        default: true
+    supernatural.command.killlist:
+        default: true
+    supernatural.player.shrineuse.vampire:
+        default: true
+    supernatural.player.shrineuse.priest:
+        default: true
+    supernatural.player.wolfbane:
+        default: true
+    supernatural.player.preventwaterdamage:
+        default: false
+    supernatural.player.preventsundamage:
+        default: false
+    supernatural.player.witchhuntersign:
+        default: true
+    supernatural.player.ignorearmor:
+        default: op
+    supernatural.admin.infinitepower:
+        default: op
+    supernatural.admin.partial.curse:
+        default: op
+    supernatural.world.enabled:
+        default: false
+    supernatural.admin.command.adminhelp:
+        default: op
+    supernatural.admin.command.cure:
+        default: op
+    supernatural.admin.command.curse:
+        default: op
+    supernatural.admin.command.power:
+        default: op
+    supernatural.admin.command.reset:
+        default: op
+    supernatural.admin.command.reload:
+        default: op
+    supernatural.admin.command.save:
+        default: op
+    supernatural.admin.command.setchurch:
+        default: op
+    supernatural.admin.command.setbanish:
+        default: op
