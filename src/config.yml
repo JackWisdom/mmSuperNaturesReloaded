@@ -4,6 +4,10 @@ MultiWorld: false
 EnableChatColors: true
 EnableLoginMessage: true
 EnableJoinCommand: false
+Storage:
+  sql: true
+  url: "jdbc:mysql://localhost:3306/test?user=root&password=123456&useUnicode=true&characterEncoding=utf-8"
+  prefix: "mm_"
 Supernatural:
   Truce:
     BreakTime: 120000

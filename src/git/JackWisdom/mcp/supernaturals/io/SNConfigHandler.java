@@ -43,6 +43,7 @@ import org.bukkit.Location;
 /*     */   public static SupernaturalsPlugin plugin;
 /*     */   public static Configuration config;
 /*     */   public static String language;
+            public static boolean useSql;
 /*     */   public static boolean convertNode;
 /*     */   public static boolean vampireKillSpreadCurse;
 /*     */   public static boolean ghoulKillSpreadCurse;
@@ -151,6 +152,8 @@ import org.bukkit.Location;
 /*     */   public static int hunterPowerStart;
 /*     */   public static int hunterMaxBounties;
 /*     */   public static int hunterBountyCompletion;
+            public static String sqlPrefix;
+            public static String sqlUrl;
 /*     */   public static String vampireAltarInfectMaterial;
 /*     */   public static String vampireAltarCureMaterial;
 /*     */   public static String vampireAltarInfectMaterialSurround;
@@ -307,7 +310,9 @@ import org.bukkit.Location;
 /* 305 */       config.options().copyDefaults(true);
 /* 306 */       saveConfig();
 /*     */     }
-/*     */     
+              sqlPrefix=config.getString("Storage.prefix");
+              useSql=config.getBoolean("Storage.sql");
+              sqlUrl=config.getString("Storage.url");
 /* 309 */     language = config.getString("Language");
 /* 310 */     convertNode = config.getBoolean("UseConvertPermissionNode");
 /* 311 */     multiworld = config.getBoolean("MultiWorld", false);

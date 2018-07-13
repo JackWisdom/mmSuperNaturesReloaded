@@ -3,8 +3,9 @@ package git.JackWisdom.mcp.supernaturals.storage;
 import git.JackWisdom.mcp.supernaturals.SuperNPlayer;
 import git.JackWisdom.mcp.supernaturals.SuperType;
 import git.JackWisdom.mcp.supernaturals.SupernaturalsPlugin;
-import git.JackWisdom.mcp.supernaturals.util.Location;
+
 import org.bukkit.Bukkit;
+import org.bukkit.Location;
 import org.bukkit.configuration.file.YamlConfiguration;
 
 import java.io.File;
@@ -38,7 +39,7 @@ public class FileDataHandler extends SNDataHandler {
             String tel="teleport.";
             String world=cfg.getString(tel+"world");
             if(!world.equals("NONE")) {
-                player.teleport=new Location(world,cfg.getDouble(tel+"X"),
+                player.teleport=new Location(Bukkit.getWorld(world),cfg.getDouble(tel+"X"),
                         cfg.getDouble(tel+"Y"),cfg.getDouble(tel+"Z"));
             }
             player.superPower=cfg.getDouble("power");
@@ -82,7 +83,7 @@ public class FileDataHandler extends SNDataHandler {
                 cfg.set("teleport.world","NONE");
             }else {
                 String t="teleport.";
-                cfg.set(t+"world",player.teleport.getWorldName());
+                cfg.set(t+"world",player.teleport.getWorld().getName());
                 cfg.set(t+"X",player.teleport.getX());
                 cfg.set(t+"Y",player.teleport.getY());
                 cfg.set(t+"Z",player.teleport.getZ());

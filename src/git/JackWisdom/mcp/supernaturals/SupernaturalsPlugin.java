@@ -21,6 +21,7 @@
 /*     */ import git.JackWisdom.mcp.supernaturals.hooks.PAPIHook;
 import git.JackWisdom.mcp.supernaturals.io.SNConfigHandler;
 /*     */ import git.JackWisdom.mcp.supernaturals.storage.FileDataHandler;
+import git.JackWisdom.mcp.supernaturals.storage.MySqlDataHandler;
 import git.JackWisdom.mcp.supernaturals.storage.SNDataHandler;
 /*     */ import git.JackWisdom.mcp.supernaturals.io.SNLanguageHandler;
 /*     */
@@ -46,7 +47,8 @@ import git.JackWisdom.mcp.supernaturals.storage.SNDataHandler;
 
 /*     */ import java.io.File;
 /*     */ import java.io.IOException;
-/*     */ import java.util.ArrayList;
+/*     */ import java.sql.SQLException;
+import java.util.ArrayList;
 /*     */ import java.util.Arrays;
 /*     */ import java.util.List;
 /*     */ import java.util.logging.Level;
@@ -240,10 +242,19 @@ import git.JackWisdom.mcp.supernaturals.storage.SNDataHandler;
 /* 242 */     SNConfigHandler.getConfiguration();
 /* 243 */     SNLanguageHandler.getConfiguration();
 /* 248 */     SNWhitelistHandler.reloadWhitelist();
-/*     */     
-/* 250 */     if (this.snData == null) {
-/* 251 */       this.snData = new FileDataHandler();
-/*     */     }
+            //using mysql or not
+            if(SNConfigHandler.useSql){
+                try {
+                    snData=new MySqlDataHandler();
+                } catch (SQLException e) {
+                    snData=null;
+                    log("AN ERROR HAPPENED WHILE USING SQL CHANGING TO FILE MODE");
+                    e.printStackTrace();
+                }
+            }
+            if (this.snData == null) {
+            this.snData = new FileDataHandler();
+            }
 /*     */     
 /* 254 */     SuperNManager.startTimer();
 /* 255 */     HunterManager.createBounties();

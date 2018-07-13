@@ -27,7 +27,7 @@ import javax.annotation.Nullable;
         public boolean truce = true;
         public int truceTimer = 0;
         public UUID protecting=null;
-        public git.JackWisdom.mcp.supernaturals.util.Location teleport =null;
+        public Location teleport =null;
         //牧师保护的UID
         public HashSet<SuperType> hunterApp=new HashSet<SuperType>(){
            @Override
@@ -65,7 +65,7 @@ import javax.annotation.Nullable;
             }
             //吸血鬼的传送位置
             public void setTeleport(Location loc){
-               this.teleport =new git.JackWisdom.mcp.supernaturals.util.Location(loc);
+               this.teleport =loc;
             }
              //吸血鬼是否可以传送
               public boolean hasTeleport(){
@@ -73,7 +73,7 @@ import javax.annotation.Nullable;
               }
               //获取吸血鬼的传送位置
             public org.bukkit.Location getTeleport() {
-               git.JackWisdom.mcp.supernaturals.util.Location location = this.teleport;
+               Location location = this.teleport;
               org.bukkit.Location bLocation = new org.bukkit.Location(location.getWorld(), location.getX(), location.getY(), location.getZ());
              return bLocation;
               }
