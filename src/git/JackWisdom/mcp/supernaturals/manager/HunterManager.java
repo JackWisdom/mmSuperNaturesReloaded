@@ -513,20 +513,7 @@ import git.JackWisdom.mcp.supernaturals.SupernaturalsPlugin;
 /* 524 */     if (!player.getInventory().contains(Material.ARROW)) {
 /* 525 */       return false;
 /*     */     }
-/*     */     
-/* 528 */     if (!SupernaturalsPlugin.instance.getPvP(player)) {
-/* 529 */       ArrowType arrowType =  this.hunterMap.get(snplayer);
-/* 530 */       if (arrowType == null) {
-/* 531 */         this.hunterMap.put(snplayer.getUuid(),ArrowType.NORMAL);
-/* 532 */         return false;
-/*     */       }
-/* 534 */       if (arrowType!=ArrowType.NORMAL) {
-/* 535 */         SuperNManager.sendMessage(snplayer, Language.NOT_ALLOW_PVP.toString());
-/*     */       }
-/*     */       
-/* 538 */       return false;
-/*     */     }
-/*     */     
+
 /* 541 */     if (this.drainedPlayers.contains(player)) {
 /* 542 */       player.getWorld().dropItem(player.getLocation(), new ItemStack(Material.ARROW, 1));
 /*     */       

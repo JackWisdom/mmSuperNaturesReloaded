@@ -405,11 +405,7 @@ import git.JackWisdom.mcp.supernaturals.SupernaturalsPlugin;
 /*     */   public boolean summon(Player player) {
 /* 405 */     SuperNPlayer snplayer = SuperNManager.get(player);
 /* 406 */     ItemStack item = player.getItemInHand();
-/* 407 */     if (!SupernaturalsPlugin.instance.getSpawn(player)) {
-/* 408 */       SuperNManager.sendMessage(snplayer, Language.GHOUL_SUMMON_NOT_ALLOW.toString());
-/*     */       
-/* 410 */       return false;
-/*     */     }
+
 /* 412 */     if (snplayer.getPower() > SNConfigHandler.ghoulPowerSummonCost) {
 /* 413 */       player.getWorld().spawnEntity(player.getLocation(), EntityType.ZOMBIE);
 /*     */       

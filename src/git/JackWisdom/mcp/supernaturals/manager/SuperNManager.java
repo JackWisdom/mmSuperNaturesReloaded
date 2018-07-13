@@ -63,7 +63,12 @@ import org.bukkit.Bukkit;
             if(superpowers.get(playername)==null){
               return   load(playername);
             }
-            return superpowers.get(playername);
+
+                if(superpowers.get(playername).getUuid()==null){
+                    superpowers.remove(playername);
+                    return null;
+                }
+                return superpowers.get(playername);
 /*     */   }
 /*     */   public static SuperNPlayer load(UUID uuid){
             SuperNPlayer np= SupernaturalsPlugin.instance.getDataHandler().load(uuid);

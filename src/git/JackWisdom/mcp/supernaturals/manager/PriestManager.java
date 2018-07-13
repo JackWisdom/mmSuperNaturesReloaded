@@ -83,9 +83,7 @@ import org.bukkit.Location;
 /*  81 */       damage = 0.0D;
 /*  82 */     } else if ((victim instanceof Player)) {
 /*  83 */       Player pVictim = (Player)victim;
-/*  84 */       if (!SupernaturalsPlugin.instance.getPvP(pVictim)) {
-/*  85 */         return damage;
-/*     */       }
+
 /*  87 */       SuperNPlayer snvictim = SuperNManager.get(pVictim);
 /*  88 */       if (snvictim.isSuper()) {
 /*  89 */         if (!snvictim.isDemon()) {
@@ -384,11 +382,7 @@ import org.bukkit.Location;
 /*     */   public boolean banish(Player player, Player victim) {
 /* 383 */     SuperNPlayer snplayer = SuperNManager.get(player);
 /* 384 */     SuperNPlayer snvictim = SuperNManager.get(victim);
-/* 385 */     if (!SupernaturalsPlugin.instance.getPvP(victim)) {
-/* 386 */       SuperNManager.sendMessage(snplayer, Language.NOT_ALLOW_PVP.toString());
-/*     */       
-/* 388 */       return false;
-/*     */     }
+
 /* 390 */     if (snplayer.getPower() > SNConfigHandler.priestPowerBanish) {
 /* 391 */       if (snvictim.isSuper()) {
 /* 392 */         SuperNManager.alterPower(snplayer, -SNConfigHandler.priestPowerBanish, Language.PRIEST_BANISH_NOTICE_SELF.toString().replace(LanguageTag.PLAYER.toString(), victim.getName()));
@@ -465,11 +459,7 @@ import org.bukkit.Location;
 /*     */   {
 /* 464 */     SuperNPlayer snplayer = SuperNManager.get(player);
 /* 465 */     SuperNPlayer snvictim = SuperNManager.get(victim);
-/* 466 */     if (!SupernaturalsPlugin.instance.getPvP(victim)) {
-/* 467 */       SuperNManager.sendMessage(snplayer, Language.NOT_ALLOW_PVP.toString());
-/*     */       
-/* 469 */       return false;
-/*     */     }
+
 /* 471 */     if (snplayer.getPower() > SNConfigHandler.priestPowerExorcise) {
 /* 472 */       if (snvictim.isSuper()) {
 /* 473 */         SuperNManager.alterPower(snplayer, -SNConfigHandler.priestPowerExorcise, Language.PRIEST_EXORISE_NOTICE_SELF.toString().replace(LanguageTag.PLAYER.toString(), victim.getName()));
@@ -558,11 +548,7 @@ import org.bukkit.Location;
 /*     */   {
 /* 557 */     SuperNPlayer snplayer = SuperNManager.get(player);
 /* 558 */     SuperNPlayer snvictim = SuperNManager.get(victim);
-/* 559 */     if (!SupernaturalsPlugin.instance.getPvP(victim)) {
-/* 560 */       SuperNManager.sendMessage(snplayer, Language.NOT_ALLOW_PVP.toString());
-/*     */       
-/* 562 */       return false;
-/*     */     }
+
 /* 564 */     if (snplayer.getPower() > SNConfigHandler.priestPowerDrain) {
 /* 565 */       if (snvictim.isSuper()) {
 /* 566 */         double power = snvictim.getPower();

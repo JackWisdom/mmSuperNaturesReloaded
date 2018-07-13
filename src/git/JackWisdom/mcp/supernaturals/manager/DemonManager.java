@@ -120,16 +120,7 @@ import git.JackWisdom.mcp.supernaturals.SupernaturalsPlugin;
 /*     */       
 /* 119 */       damage = 0.0D;
 /*     */     }
-/* 121 */     if ((victim instanceof Player)) {
-/* 122 */       if (this.plugin.getPvP(pDamager)) {
-/* 123 */         Player pVictim = (Player)victim;
-/* 124 */         double random = Math.random();
-/* 125 */         if (random < 0.35D) {
-/* 126 */           pVictim.setFireTicks(SNConfigHandler.demonFireTicks);
-/*     */         }
-/*     */       }
-/* 129 */       return damage;
-/*     */     }
+
 /* 131 */     return damage;
 /*     */   }
 /*     */   
@@ -376,11 +367,7 @@ import git.JackWisdom.mcp.supernaturals.SupernaturalsPlugin;
 /*     */   
 /*     */   public boolean fireball(Player player) {
 /* 376 */     SuperNPlayer snplayer = SuperNManager.get(player);
-/* 377 */     if (!SupernaturalsPlugin.instance.getPvP(player)) {
-/* 378 */       SuperNManager.sendMessage(snplayer, Language.NOT_ALLOW_PVP.toString());
-/*     */       
-/* 380 */       return false;
-/*     */     }
+
 /* 382 */     if (snplayer.getPower() < SNConfigHandler.demonPowerFireball) {
 /* 383 */       SuperNManager.sendMessage(snplayer, Language.NO_POWER.toString());
 /* 384 */       return false;

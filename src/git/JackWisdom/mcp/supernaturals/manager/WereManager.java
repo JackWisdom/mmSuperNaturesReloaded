@@ -312,11 +312,7 @@ import git.JackWisdom.mcp.supernaturals.SupernaturalsPlugin;
 /*     */   {
 /* 312 */     SuperNPlayer snplayer = SuperNManager.get(player);
 /* 313 */     ItemStack item = player.getItemInHand();
-/* 314 */     if (!SupernaturalsPlugin.instance.getSpawn(player)) {
-/* 315 */       SuperNManager.sendMessage(snplayer, Language.WEREWOLF_SUMMON_NOT_ALLOW.toString());
-/*     */       
-/* 317 */       return false;
-/*     */     }
+
 /* 319 */     if (SuperNManager.worldTimeIsNight(player)) {
 /* 320 */       if (snplayer.getPower() >= SNConfigHandler.werePowerSummonCost) {
 /* 321 */         int i = 0;
