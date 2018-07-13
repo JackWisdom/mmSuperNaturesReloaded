@@ -1,6 +1,6 @@
 name: mmSupernaturalsReloaded
 main: git.JackWisdom.mcp.supernaturals.SupernaturalsPlugin
-version: 1.6 alpha
+version: 1.6 beta
 author: [Matterz,mmiillkkaa,marlboromoo,JackWisdom]
 commands:
   sn:

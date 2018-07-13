@@ -22,6 +22,7 @@ import git.JackWisdom.mcp.supernaturals.manager.SuperNManager;
 /*    */     {
 /*    */       public void run()
 /*    */       {
+
 /* 40 */         SNTaskTimer.this.plugin.getSuperManager().advanceTime(superpowers.values());
 /*    */       }
 /*    */     });

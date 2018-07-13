@@ -19,18 +19,19 @@
 /*     */ import git.JackWisdom.mcp.supernaturals.commands.SNCommandSetChurch;
 /*     */ import git.JackWisdom.mcp.supernaturals.commands.SNCommandSetup;
 /*     */ import git.JackWisdom.mcp.supernaturals.io.SNConfigHandler;
-/*     */ import git.JackWisdom.mcp.supernaturals.io.SNDataHandler;
+/*     */ import git.JackWisdom.mcp.supernaturals.storage.FileDataHandler;
+import git.JackWisdom.mcp.supernaturals.storage.SNDataHandler;
 /*     */ import git.JackWisdom.mcp.supernaturals.io.SNLanguageHandler;
-/*     */ import git.JackWisdom.mcp.supernaturals.io.SNPlayerHandler;
+/*     */
 /*     */ import git.JackWisdom.mcp.supernaturals.io.SNWhitelistHandler;
-/*     */ import git.JackWisdom.mcp.supernaturals.listeners.SNBlockListener;
-/*     */ import git.JackWisdom.mcp.supernaturals.listeners.SNEntityListener;
-/*     */ import git.JackWisdom.mcp.supernaturals.listeners.SNEntityMonitor;
-/*     */ import git.JackWisdom.mcp.supernaturals.listeners.SNPlayerListener;
-/*     */ import git.JackWisdom.mcp.supernaturals.listeners.SNPlayerMonitor;
-/*     */ import git.JackWisdom.mcp.supernaturals.listeners.SNServerMonitor;
+/*     */ import git.JackWisdom.mcp.supernaturals.listeners.*;
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
 /*     */ import git.JackWisdom.mcp.supernaturals.manager.AngelManager;
-/*     */ import git.JackWisdom.mcp.supernaturals.manager.ClassManager;
+/*     */
 /*     */ import git.JackWisdom.mcp.supernaturals.manager.DemonManager;
 /*     */ import git.JackWisdom.mcp.supernaturals.manager.GhoulManager;
 /*     */ import git.JackWisdom.mcp.supernaturals.manager.HumanManager;
@@ -88,22 +89,22 @@
 /*     */   extends JavaPlugin implements UsingData
 /*     */ {
 /*     */   public static SupernaturalsPlugin instance;
-/*  91 */   private final SNConfigHandler snConfig = new SNConfigHandler(this);
-/*  92 */   private final SNLanguageHandler snLanguage = new SNLanguageHandler(this);
-/*  93 */   private SNDataHandler snData = new SNDataHandler();
-/*  94 */   private SNWhitelistHandler snWhitelist = new SNWhitelistHandler(this);
+/*  91 */   private final SNConfigHandler snConfig=new SNConfigHandler(this);
+/*  92 */   private final SNLanguageHandler  snLanguage = new SNLanguageHandler(this);
+/*  93 */   private SNDataHandler snData;
+/*  94 */   private SNWhitelistHandler snWhitelist;
 /*     */   
-/*  96 */   private SuperNManager superManager = new SuperNManager(this);
-/*  97 */   private HumanManager humanManager = new HumanManager(this);
-/*  98 */   private VampireManager vampManager = new VampireManager();
-/*  99 */   private PriestManager priestManager = new PriestManager(this);
-/* 100 */   private WereManager wereManager = new WereManager();
-/* 101 */   private GhoulManager ghoulManager = new GhoulManager();
-/* 102 */   private HunterManager hunterManager = new HunterManager(this);
-/* 103 */   private DemonManager demonManager = new DemonManager(this);
-/* 104 */   private AngelManager angelManager = new AngelManager();
+/*  96 */   private SuperNManager  superManager;
+/*  97 */   private HumanManager  humanManager;
+/*  98 */   private VampireManager vampManager;
+/*  99 */   private PriestManager priestManager;
+/* 100 */   private WereManager wereManager;
+/* 101 */   private GhoulManager  ghoulManager;
+/* 102 */   private HunterManager hunterManager;
+/* 103 */   private DemonManager demonManager;
+/* 104 */   private AngelManager angelManager;
 /*     */   
-/* 106 */   public List<SNCommand> commands = new ArrayList();
+/* 106 */   public List<SNCommand> commands;
 /*     */   
 /*     */   private static File dataFolder;
 /*     */   
@@ -112,7 +113,7 @@
 
     public static void saveAll() {
         for(SuperNPlayer sn:superpowers.values()){
-            instance.getDataHandler().write(sn);
+            instance.getDataHandler().save(sn);
         };
     }
 
@@ -143,6 +144,7 @@
 /*     */   }
 /*     */   
 /*     */   public VampireManager getVampireManager() {
+
 /* 139 */     return this.vampManager;
 /*     */   }
 /*     */   
@@ -185,6 +187,7 @@
 /* 193 */     SuperNManager.cancelTimer();
 /* 197 */     this.demonManager.removeAllWebs();
 /* 198 */     PluginDescriptionFile pdfFile = getDescription();
+                saveAll();
 /* 199 */     log(pdfFile.getName() + " version " + pdfFile.getVersion() + " disabled.");
 /*     */   }
 /*     */   
@@ -193,8 +196,22 @@
 /*     */ 
 /*     */   public void onEnable()
 /*     */   {
+
 /* 207 */     instance = this;
 /* 208 */     getDataFolder().mkdir();
+    commands = new ArrayList();
+
+    demonManager = new DemonManager(this);
+    hunterManager = new HunterManager(this);
+    angelManager = new AngelManager();
+    snWhitelist = new SNWhitelistHandler(this);
+    superManager = new SuperNManager(this);
+    humanManager = new HumanManager(this);
+    vampManager = new VampireManager();
+    wereManager = new WereManager();
+    ghoulManager = new GhoulManager();
+    priestManager = new PriestManager(this);
+
 /* 209 */     this.pm = getServer().getPluginManager();
 /* 212 */     this.commands.add(new SNCommandHelp());
 /* 213 */     this.commands.add(new SNCommandAdmin());
@@ -220,7 +237,7 @@
 /* 233 */     this.pm.registerEvents(new SNPlayerListener(this), this);
 /* 234 */     this.pm.registerEvents(new SNPlayerMonitor(this), this);
 /* 235 */     this.pm.registerEvents(new SNServerMonitor(this), this);
-/*     */     
+/*     */     this.pm.registerEvents(new PlayerGather(),this);
 /* 237 */     PluginDescriptionFile pdfFile = getDescription();
 /* 238 */     log(pdfFile.getName() + " version " + pdfFile.getVersion() + " enabled.");
 /*     */     
@@ -231,7 +248,7 @@
 /* 248 */     SNWhitelistHandler.reloadWhitelist();
 /*     */     
 /* 250 */     if (this.snData == null) {
-/* 251 */       this.snData = new SNDataHandler();
+/* 251 */       this.snData = new FileDataHandler();
 /*     */     }
 /*     */     
 /* 254 */     SuperNManager.startTimer();

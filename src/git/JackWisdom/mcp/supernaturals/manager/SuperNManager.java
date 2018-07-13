@@ -36,7 +36,7 @@ import org.bukkit.Bukkit;
 
 /*     */ public class SuperNManager implements UsingData
 /*     */ {
-/*     */   public static SupernaturalsPlugin plugin;
+/*     */   public static SupernaturalsPlugin plugin=SupernaturalsPlugin.instance;
 /*  51 */   public String worldPermission = "supernatural.world.enabled";
 /*  52 */   public static String infPowerPermissions = "supernatural.admin.infinitepower";
 /*  55 */   public transient int taskCounter = 0;
@@ -64,7 +64,8 @@ import org.bukkit.Bukkit;
             return superpowers.get(playername);
 /*     */   }
 /*     */   public static SuperNPlayer load(UUID uuid){
-            SuperNPlayer np=SupernaturalsPlugin.instance.getDataHandler().read(uuid);
+            SuperNPlayer np= SupernaturalsPlugin.instance.getDataHandler().load(uuid);
+
             superpowers.put(np.getUuid(),np);
             np.getBelong().put(np.getUuid(),np);
             return np ;
@@ -75,10 +76,11 @@ import org.bukkit.Bukkit;
 
             }
             public static void unLoad(Player player){
-            if(superpowers.get(player)==null){
+            if(superpowers.get(player.getUniqueId())==null){
                 return;
             }
-            superpowers.get(player).getBelong().remove(player.getUniqueId());
+                superpowers.get(player.getUniqueId()).save();
+            superpowers.get(player.getUniqueId()).getBelong().remove(player.getUniqueId());
             superpowers.remove(player.getUniqueId());
            }
 
@@ -131,8 +133,8 @@ import org.bukkit.Bukkit;
              snplayer.getType().getBelong().remove(snplayer.getUuid());
              snplayer.setOldType(snplayer.getType());
              snplayer.setOldPower(snplayer.getPower());
-             snplayer.setType(superType);
-             superType.getBelong().put(snplayer.getUuid(),snplayer);
+             snplayer.setType(type);
+             type.getBelong().put(snplayer.getUuid(),snplayer);
              */
 /* 141 */     if (snplayer.hasPermission(infPowerPermissions))
 /*     */     {
@@ -556,16 +558,16 @@ import org.bukkit.Bukkit;
 /* 565 */     for (SuperNPlayer snplayer : snplayers) {
 /* 566 */       Player player = snplayer.getPlayer();
 
-/*     */       
+/*     */
 /* 568 */       if (player == null) {
 /* 569 */         return;
 /*     */       }
-/*     */       
+/*     */
 /* 572 */       if ((!player.hasPermission(this.worldPermission)) && (SNConfigHandler.multiworld))
 /*     */       {
 /* 574 */         return;
 /*     */       }
-/*     */       
+/*     */
 /* 577 */       this.taskCounter += 1;
 /* 578 */       if (this.taskCounter >= 30) {
 /* 579 */         this.taskCounter = 0;
@@ -576,9 +578,11 @@ import org.bukkit.Bukkit;
 /* 584 */           regenAdvanceTime(player, 3000);
 /*     */         }
 /* 586 */         if (this.taskCounter % 3 == 0) {
-/* 587 */           plugin.getVampireManager().combustAdvanceTime(player, 3000L);
-/* 588 */           plugin.getVampireManager().gainPowerAdvanceTime(snplayer, 3000);
-/*     */         }
+
+
+               plugin.getVampireManager().combustAdvanceTime(player, 3000L);
+               plugin.getVampireManager().gainPowerAdvanceTime(snplayer, 3000);
+          }
 /*     */       }
 /* 591 */       else if (snplayer.isGhoul()) {
 /* 592 */         if (this.taskCounter % 10 == 0) {

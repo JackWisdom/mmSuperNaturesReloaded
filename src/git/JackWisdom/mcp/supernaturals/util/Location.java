@@ -23,8 +23,14 @@
 /* 23 */     this.y = location.getY();
 /* 24 */     this.z = location.getZ();
 /* 25 */     this.world = location.getWorld().getName();
+
 /*    */   }
-/*    */   
+
+    public Location(String world, double aDouble, double aDouble1, double aDouble2) {
+    this.world=world;this.x=aDouble;this.y=aDouble1;this.z=aDouble2;
+    }
+
+    /*    */
 /*    */   public double getX() {
 /* 29 */     return this.x;
 /*    */   }
@@ -36,7 +42,9 @@
 /*    */   public double getZ() {
 /* 37 */     return this.z;
 /*    */   }
-/*    */   
+/*    */   public String getWorldName(){
+    return world;
+}
 /*    */   public World getWorld() {
 /* 41 */     return SupernaturalsPlugin.instance.getServer().getWorld(this.world);
 /*    */   }

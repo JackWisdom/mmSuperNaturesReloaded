@@ -18,13 +18,14 @@ import javax.annotation.Nullable;
 /*     */ {
 /*     */   private static final long serialVersionUID = -2693531379993789149L;
         public UUID uuid;
-        public SuperType superType=SuperType.HUMAN;
-        public SuperType oldSuperType =SuperType.HUMAN;
-        public double oldSuperPower = 0.0D;
+        public SuperType type =SuperType.HUMAN;
+        public SuperType oldType =SuperType.HUMAN;
+        public double oldPower = 0.0D;
         public double superPower = 0.0D;
         public boolean truce = true;
         public int truceTimer = 0;
         public UUID protecting=null;
+        public git.JackWisdom.mcp.supernaturals.util.Location teleport =null;
         //牧师保护的UID
         public HashSet<SuperType> hunterApp=new HashSet<SuperType>(){
            @Override
@@ -35,20 +36,20 @@ import javax.annotation.Nullable;
                return super.add(e);
            }
         };
-        public git.JackWisdom.mcp.supernaturals.util.Location vampireLoc=null;
+
 /*     */   
 /*     */   public SuperNPlayer() {}
 /*     */   
            public SuperNPlayer(UUID uuid)
             {
              this.uuid=uuid;
-             this.superType = SuperType.HUMAN;
-             this.oldSuperType =SuperType.HUMAN;
-             this.oldSuperPower = 0.0D;
+             this.type = SuperType.HUMAN;
+             this.oldType =SuperType.HUMAN;
+             this.oldPower = 0.0D;
              this.superPower = 0.0D;
              this.truce = true;
              this.truceTimer = 0;
-             this.vampireLoc=null;
+             this.teleport =null;
              this.hunterApp=new HashSet<>();
              this.protecting=null;
             }
@@ -62,21 +63,21 @@ import javax.annotation.Nullable;
             }
             //吸血鬼的传送位置
             public void setTeleport(Location loc){
-               this.vampireLoc=new git.JackWisdom.mcp.supernaturals.util.Location(loc);
+               this.teleport =new git.JackWisdom.mcp.supernaturals.util.Location(loc);
             }
              //吸血鬼是否可以传送
               public boolean hasTeleport(){
-                    return vampireLoc==null;
+                    return teleport ==null;
               }
               //获取吸血鬼的传送位置
             public org.bukkit.Location getTeleport() {
-               git.JackWisdom.mcp.supernaturals.util.Location location = this.vampireLoc;
+               git.JackWisdom.mcp.supernaturals.util.Location location = this.teleport;
               org.bukkit.Location bLocation = new org.bukkit.Location(location.getWorld(), location.getX(), location.getY(), location.getZ());
              return bLocation;
               }
 /*     */   public UUID getUuid()
 /*     */   {
-/*  57 */     return this.getUuid();
+/*  57 */     return this.uuid;
 /*     */   }
             public HashMap getBelong(){
             return getType().getBelong();
@@ -94,27 +95,27 @@ import javax.annotation.Nullable;
             this.protecting=uuid;
             }
 /*     */   public SuperType getType() {
-/*  65 */     return this.superType;
+/*  65 */     return this.type;
 /*     */   }
 /*     */   
 /*     */   public void setType(SuperType type) {
-/*  69 */     this.superType = type;
+/*  69 */     this.type = type;
 /*     */   }
 /*     */   
 /*     */   public SuperType getOldType() {
-/*  73 */     return this.oldSuperType;
+/*  73 */     return this.oldType;
 /*     */   }
 /*     */   
 /*     */   public void setOldType(SuperType type) {
-/*  77 */     this.oldSuperType = type;
+/*  77 */     this.oldType = type;
 /*     */   }
 /*     */   
 /*     */   public double getOldPower() {
-/*  81 */     return this.oldSuperPower;
+/*  81 */     return this.oldPower;
 /*     */   }
 /*     */   
 /*     */   public void setOldPower(double amount) {
-/*  85 */     this.oldSuperPower = amount;
+/*  85 */     this.oldPower = amount;
 /*     */   }
 /*     */   
 /*     */   public double getPower() {
@@ -181,7 +182,7 @@ import javax.annotation.Nullable;
 /*     */   public boolean isDemon() {
 /* 177 */  return getType()==SuperType.DEMON;
 /*     */   }
-/*     */   
+
 /*     */   public double scale(double input) {
 /* 184 */     double powerPercentage = input * (getPower() / 10000.0D);
 /* 185 */     return powerPercentage;
@@ -222,7 +223,8 @@ import javax.annotation.Nullable;
         return getPlayer().isDead();
         }
         public void save(){
-        SupernaturalsPlugin.instance.getDataHandler().write(this);
+        SupernaturalsPlugin.instance.getDataHandler().save(this);
+            SupernaturalsPlugin.log("loading data for"+uuid.toString());
         }
     public int hashCode()
     {
