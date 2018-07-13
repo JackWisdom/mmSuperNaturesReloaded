@@ -90,6 +90,7 @@ public class FileDataHandler extends SNDataHandler {
             cfg.set("protecting",player.protecting);
             cfg.set("oldType",player.oldType.name());
             cfg.set("oldPower",player.oldPower);
+            cfg.set("power",player.superPower);
             cfg.set("hunterApp",player.hunterApp);
             cfg.save(data);
         }catch (Exception e){
