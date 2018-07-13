@@ -66,7 +66,8 @@ import org.bukkit.entity.Entity;
 /*     */     
 /*  65 */     event.setCancelled(cancel);
 /*     */   }
-/*     */   @EventHandler
+/*
+    @EventHandler
             public void onDemonExplode(EntityDamageByEntityEvent event){
             if(event.getCause()!=EntityDamageEvent.DamageCause.ENTITY_EXPLOSION){
                 return;
@@ -85,46 +86,52 @@ import org.bukkit.entity.Entity;
                 return;
             }//now the shooter is demon and shoot a living entity
 
-    DemonFireBallDamageEvent ie=new DemonFireBallDamageEvent(p,entity,SNConfigHandler.demonFireballDamage,SNConfigHandler.demonFireTicks);
-    Bukkit.getPluginManager().callEvent(ie);
-    if(ie.isCancelled()){
-        return;
-    }
-            entity.damage(ie.getDamage());
-             entity.setFireTicks(ie.getFireTick());
+
 
 
             }
-            /*
+             */
     @EventHandler(priority=EventPriority.NORMAL)
-   public void onEntityExplode(EntityExplodeEvent event) { Fireball fireball;
+   public void onEntityExplode(EntityExplodeEvent event) {
+    Fireball fireball;
       if (!(event.getEntity() instanceof Fireball)) { return;}
        fireball = (Fireball)event.getEntity();
-        if ((fireball.getShooter() instanceof Player)) {
-          if ((!((Player)fireball.getShooter()).hasPermission(this.worldPermission)) && (SNConfigHandler.multiworld))
+        if (!(fireball.getShooter() instanceof Player)) {
+            return;
+        }
+        Player shooter=((Player)fireball.getShooter());
+        if(!SuperNManager.get(shooter).isDemon()){
+            return;
+        }
+          if ((!shooter.hasPermission(this.worldPermission)) && (SNConfigHandler.multiworld))
          {
-
            return;
          }
        for (Entity entity : fireball.getNearbyEntities(3.0D, 3.0D, 3.0D)){
-         if ((!(entity instanceof LivingEntity))) {
+           if ((!(entity instanceof LivingEntity))) {
+               continue;
+           }
+           if ((entity instanceof Player)) {
+               Player player = (Player)entity;
+               SuperNPlayer snplayer = SuperNManager.get(player);
+                if(snplayer.isDemon()){
                     continue;
                 }
-             LivingEntity lEntity = (LivingEntity)entity;
-            if ((entity instanceof Player)) {
-               Player player = (Player)entity;
-                SuperNPlayer snplayer = SuperNManager.get(player);
+           }
+           LivingEntity lEntity = (LivingEntity)entity;
+           DemonFireBallDamageEvent ie=new DemonFireBallDamageEvent(shooter,lEntity,SNConfigHandler.demonFireballDamage,SNConfigHandler.demonFireTicks);
+           Bukkit.getPluginManager().callEvent(ie);
+           if(ie.isCancelled()){
+               continue;
+           }
+           lEntity.damage(ie.getDamage());
+           lEntity.setFireTicks(ie.getFireTick());
 
-             } else
-             {
-               lEntity.damage(SNConfigHandler.demonFireballDamage, fireball);
 
-               lEntity.setFireTicks(200);
-             }}
 
-       }
+        }
     }
-    */
+
 /*     */   
 /*     */   @EventHandler(priority=EventPriority.NORMAL)
 /*     */   public void onEntityDamage(EntityDamageEvent event) {
