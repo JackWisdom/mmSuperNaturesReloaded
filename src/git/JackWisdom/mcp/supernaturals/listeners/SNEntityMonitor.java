@@ -21,21 +21,22 @@ import org.bukkit.Material;
 /*     */
 /*     */ import org.bukkit.block.Block;
 /*     */ import org.bukkit.craftbukkit.libs.it.unimi.dsi.fastutil.Hash;
-import org.bukkit.entity.Arrow;
-/*     */ import org.bukkit.entity.Creature;
-/*     */ import org.bukkit.entity.Entity;
+import org.bukkit.entity.*;
 /*     */
-/*     */ import org.bukkit.entity.Monster;
-/*     */ import org.bukkit.entity.Player;
-/*     */ import org.bukkit.entity.Projectile;
-/*     */ import org.bukkit.entity.Wolf;
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
 /*     */
 /*     */ import org.bukkit.event.EventHandler;
 /*     */ import org.bukkit.event.EventPriority;
 /*     */ import org.bukkit.event.Listener;
 /*     */ import org.bukkit.event.entity.EntityDamageByEntityEvent;
 
-/*     */ import org.bukkit.event.entity.ProjectileHitEvent;
+/*     */ import org.bukkit.event.entity.EntityDeathEvent;
+import org.bukkit.event.entity.ProjectileHitEvent;
 /*     */ 
 /*     */ 
 /*     */ 
@@ -140,11 +141,17 @@ import org.bukkit.entity.Arrow;
 /*     */   }
 /*     */   
 /*     */   @EventHandler(priority=EventPriority.MONITOR)
-/*     */   public void onEntityDeath(EntityDamageByEntityEvent event) {
-/* 140 */     Entity entity = event.getEntity();
+/*     */   public void onEntityDeath(EntityDeathEvent event) {
+                if(!(event.getEntity() instanceof LivingEntity)){
+                    return;
+                }
+                    LivingEntity entity = (LivingEntity) event.getEntity();
+                 if(entity.getKiller()==null||!(entity.getKiller() instanceof LivingEntity)){
+                     return;
+                 }
                 Player pDamager = null;
-/* 143 */     Entity lDamager=event.getDamager();
-/*     */     
+/* 143 */     Entity lDamager=event.getEntity().getKiller();
+
 /*     */ 
 /* 155 */     if ((lDamager instanceof Player)) {
 /* 156 */       pDamager = (Player)lDamager;

@@ -20,6 +20,9 @@ public class FileDataHandler extends SNDataHandler {
     }
     @Override
     public SuperNPlayer load(UUID uuid) {
+        if(!data.exists()){
+            data.mkdir();
+        }
         SuperNPlayer player=new SuperNPlayer();
         try {
             File data=new File( this.data,uuid+".yml");
@@ -47,7 +50,6 @@ public class FileDataHandler extends SNDataHandler {
             player.oldPower=cfg.getDouble("oldPower");
             player.hunterApp= (HashSet<SuperType>) cfg.get("hunterApp");
         } catch (Exception e) {
-            e.printStackTrace();
             player=null;
             SupernaturalsPlugin.log("error while loading"+uuid+".yml creating new data for it");
         }
@@ -60,6 +62,12 @@ public class FileDataHandler extends SNDataHandler {
 
     @Override
     public void save(SuperNPlayer player) {
+        if(!data.exists()){
+            data.mkdir();
+        }
+            if(player==null||player.getUuid()==null){
+                return;
+            }
         try {
             File data = new File(this.data, player.getUuid() + ".yml");
             if (!data.exists()) {

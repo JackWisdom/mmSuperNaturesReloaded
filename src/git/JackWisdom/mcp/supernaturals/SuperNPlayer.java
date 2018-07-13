@@ -14,7 +14,7 @@ import javax.annotation.Nullable;
 /*     */ 
 
 /*     */ public class SuperNPlayer
-/*     */   implements Serializable
+/*     */   implements Serializable,UsingData
 /*     */ {
 /*     */   private static final long serialVersionUID = -2693531379993789149L;
         public UUID uuid;
@@ -187,7 +187,29 @@ import javax.annotation.Nullable;
 /* 184 */     double powerPercentage = input * (getPower() / 10000.0D);
 /* 185 */     return powerPercentage;
 /*     */   }
-/*     */   
+    public static SuperNPlayer getPlayerOnline(Player p){
+    return getPlayerOnline(p.getUniqueId());
+    }
+    public static SuperNPlayer getPlayerOnline(String  p){
+    UUID uid=null;
+    try {
+    uid=UUID.fromString(p);
+    }catch (Exception e){
+        return null;
+    }
+
+        return getPlayerOnline(uid);
+    }
+/*     */   public static SuperNPlayer getPlayerOnline(UUID uuid){
+            if(superpowers.get(uuid)==null){
+                return null;
+            }
+             if(superpowers.get(uuid).getUuid()==null){
+                superpowers.remove(uuid);
+                return null;
+             }
+             return superpowers.get(uuid);
+            }
 /*     */   public boolean isOnline() {
 
 /* 189 */     for(Player p:Bukkit.getOnlinePlayers()) {

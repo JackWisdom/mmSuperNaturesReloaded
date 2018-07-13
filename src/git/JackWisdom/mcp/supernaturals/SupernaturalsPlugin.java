@@ -189,6 +189,7 @@ import git.JackWisdom.mcp.supernaturals.storage.SNDataHandler;
 /* 198 */     PluginDescriptionFile pdfFile = getDescription();
                 saveAll();
 /* 199 */     log(pdfFile.getName() + " version " + pdfFile.getVersion() + " disabled.");
+
 /*     */   }
 /*     */   
 /*     */ 
@@ -237,7 +238,7 @@ import git.JackWisdom.mcp.supernaturals.storage.SNDataHandler;
 /* 233 */     this.pm.registerEvents(new SNPlayerListener(this), this);
 /* 234 */     this.pm.registerEvents(new SNPlayerMonitor(this), this);
 /* 235 */     this.pm.registerEvents(new SNServerMonitor(this), this);
-/*     */     this.pm.registerEvents(new PlayerGather(),this);
+              this.pm.registerEvents(new PlayerGather(),this);
 /* 237 */     PluginDescriptionFile pdfFile = getDescription();
 /* 238 */     log(pdfFile.getName() + " version " + pdfFile.getVersion() + " enabled.");
 /*     */     

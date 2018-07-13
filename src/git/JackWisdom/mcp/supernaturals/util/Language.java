@@ -255,21 +255,14 @@
 /*     */   }
 /*     */   
 /*     */   public void setDef(String def) {
+                if(def==null){
+                    return;
+                }
 /* 257 */     this.def = def;
 /*     */   }
 /*     */   
 /*     */   public String toString() {
 /* 261 */     String result = this.def;
-/*     */     try {
-/* 263 */       YamlConfiguration config = SNLanguageHandler.getConfig();
-/* 264 */       if (config.isString(this.path)) {
-/* 265 */         result = config.getString(this.path);
-/*     */       }
-/*     */     } catch (Exception e) {
-/* 268 */       SupernaturalsPlugin.log(String.format("Convert to string fail - %s, path: %s, config: %s", new Object[] { e, this.path, SNLanguageHandler.getConfig() }));
-/*     */     }
-/*     */     
-/*     */ 
 /* 272 */     result = ChatColor.translateAlternateColorCodes('&', result);
 /* 273 */     return result;
 /*     */   }

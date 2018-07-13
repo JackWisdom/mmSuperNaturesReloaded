@@ -16,4 +16,5 @@ public interface UsingData {
       public static final HashMap<UUID,SuperNPlayer> demons = new HashMap<>();
       public static final  HashMap<UUID,SuperNPlayer> angels = new HashMap<>();
       public static final  HashMap<UUID,SuperNPlayer> humans = new HashMap<>();
+
 }
