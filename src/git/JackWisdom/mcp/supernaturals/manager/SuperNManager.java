@@ -6,6 +6,8 @@ import git.JackWisdom.mcp.supernaturals.SuperNPlayer;
 /*     */ import git.JackWisdom.mcp.supernaturals.SuperType;
 import git.JackWisdom.mcp.supernaturals.SupernaturalsPlugin;
 /*     */ import git.JackWisdom.mcp.supernaturals.UsingData;
+import git.JackWisdom.mcp.supernaturals.events.PlayerChangeTypeEvent;
+import git.JackWisdom.mcp.supernaturals.events.VampireJumpEvent;
 import git.JackWisdom.mcp.supernaturals.io.SNConfigHandler;
 /*     */
 /*     */ import git.JackWisdom.mcp.supernaturals.io.SNWhitelistHandler;
@@ -100,6 +102,7 @@ import org.bukkit.Bukkit;
         convert(snplayer, SuperType.valueOf(superType), 0);
     }
             private static void changeType(SuperNPlayer snplayer,SuperType supertype){
+
                 snplayer.getType().getBelong().remove(snplayer.getUuid());//从之前所属的map中移除
                 snplayer.setOldType(snplayer.getType());//设置旧数据
                 snplayer.setOldPower(snplayer.getPower());
@@ -107,6 +110,8 @@ import org.bukkit.Bukkit;
                 snplayer.setPower(0.0d);
                 snplayer.getBelong().put(snplayer.getUuid(),snplayer);
                 snplayer.setTruce(true);
+                PlayerChangeTypeEvent event=new PlayerChangeTypeEvent(snplayer.getOldType(),snplayer.getType(),snplayer.getOldPower(),snplayer.getPower());
+                Bukkit.getPluginManager().callEvent(event);
             }
 /*     */   public static void convert(SuperNPlayer snplayer, SuperType superType, int powerLevel)
 /*     */   {
@@ -265,6 +270,7 @@ import org.bukkit.Bukkit;
 /*     */ 
 /*     */   public static boolean jump(Player player, double deltaSpeed, boolean upOnly)
 /*     */   {
+
 /* 277 */     SuperNPlayer snplayer = get(player.getUniqueId());
 /*     */     
 /* 279 */     if (upOnly) {
@@ -285,8 +291,11 @@ import org.bukkit.Bukkit;
 /*     */       }
 /* 295 */       alterPower(snplayer, -SNConfigHandler.dashBloodCost, Language.WERWWOLF_DASH_TRIGGER.toString());
 /*     */     }
-/*     */     
-
+    VampireJumpEvent event=new VampireJumpEvent(player,deltaSpeed,upOnly);
+    Bukkit.getPluginManager().callEvent(event);
+    if(event.isCancelled()){
+        return false;
+    }
 /*     */     Vector vjadd;
 /*     */     
 /* 302 */     if (upOnly) {

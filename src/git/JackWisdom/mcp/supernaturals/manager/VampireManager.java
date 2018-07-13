@@ -3,7 +3,8 @@
 /*     */ import git.JackWisdom.mcp.supernaturals.SuperNPlayer;
 /*     */ import git.JackWisdom.mcp.supernaturals.SuperType;
 import git.JackWisdom.mcp.supernaturals.SupernaturalsPlugin;
-/*     */ import git.JackWisdom.mcp.supernaturals.io.SNConfigHandler;
+/*     */ import git.JackWisdom.mcp.supernaturals.events.VampireTeleportEvent;
+import git.JackWisdom.mcp.supernaturals.io.SNConfigHandler;
 /*     */
 /*     */ import git.JackWisdom.mcp.supernaturals.util.GeometryUtil;
 /*     */ import git.JackWisdom.mcp.supernaturals.util.Language;
@@ -12,7 +13,8 @@ import git.JackWisdom.mcp.supernaturals.SupernaturalsPlugin;
 /*     */ import java.util.ArrayList;
 /*     */
 /*     */
-/*     */ import org.bukkit.Location;
+/*     */ import org.bukkit.Bukkit;
+import org.bukkit.Location;
 /*     */ import org.bukkit.Material;
 /*     */
 /*     */ import org.bukkit.World;
@@ -291,13 +293,19 @@ import git.JackWisdom.mcp.supernaturals.SupernaturalsPlugin;
 /*     */   
 /*     */   public boolean teleport(Player player)
 /*     */   {
+
 /* 292 */     SuperNPlayer snplayer = SuperNManager.get(player);
+
 /* 293 */     ItemStack item = player.getItemInHand();
 /* 294 */     if (snplayer.getTeleport()!=null) {
 /* 295 */       if (snplayer.getPower() > SNConfigHandler.vampireTeleportCost) {
 /* 296 */         SuperNManager.alterPower(snplayer, -SNConfigHandler.vampireTeleportCost, Language.VAMPIRE_TELEPORT_NOTICE_SELF.toString());
 /*     */         
-/*     */ 
+/*     */                  VampireTeleportEvent event=new VampireTeleportEvent(snplayer, player.getLocation());
+                           Bukkit.getPluginManager().callEvent(event);
+                        if(event.isCancelled()){
+                           return false;
+                       }
 /* 299 */         player.teleport(snplayer.getTeleport());
 /*     */         
 /* 301 */         if (item.getAmount() == 1) {
