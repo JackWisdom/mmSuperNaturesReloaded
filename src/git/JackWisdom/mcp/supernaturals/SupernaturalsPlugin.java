@@ -42,12 +42,7 @@ import git.JackWisdom.mcp.supernaturals.storage.SNDataHandler;
 /*     */ import git.JackWisdom.mcp.supernaturals.manager.WereManager;
 /*     */ import git.JackWisdom.mcp.supernaturals.util.Language;
 /*     */ import git.JackWisdom.mcp.supernaturals.util.LanguageTag;
-/*     */ import com.sk89q.worldedit.Vector;
-/*     */ import com.sk89q.worldguard.bukkit.BukkitUtil;
-/*     */ import com.sk89q.worldguard.bukkit.WorldGuardPlugin;
-/*     */ import com.sk89q.worldguard.protection.ApplicableRegionSet;
-/*     */ import com.sk89q.worldguard.protection.flags.DefaultFlag;
-/*     */ import com.sk89q.worldguard.protection.managers.RegionManager;
+
 /*     */ import java.io.File;
 /*     */ import java.io.IOException;
 /*     */ import java.util.ArrayList;
@@ -355,47 +350,8 @@ import git.JackWisdom.mcp.supernaturals.storage.SNDataHandler;
 /*     */   }
 
 /*     */   
-/*     */   private WorldGuardPlugin getWorldGuard()
-/*     */   {
-/* 387 */     Plugin plugin = getServer().getPluginManager().getPlugin("WorldGuard");
-/*     */     
-/*     */ 
-/* 390 */     if ((plugin == null) || (!(plugin instanceof WorldGuardPlugin))) {
-/* 391 */       return null;
-/*     */     }
-/*     */     
-/* 394 */     return (WorldGuardPlugin)plugin;
-/*     */   }
-/*     */   
-/*     */   public boolean getPvP(Player player) {
-/* 398 */     WorldGuardPlugin worldGuard = instance.getWorldGuard();
-/*     */     
-/* 400 */     if (worldGuard == null) {
-/* 401 */       return true;
-/*     */     }
-/* 403 */     Vector pt = BukkitUtil.toVector(player.getLocation());
-/* 404 */     RegionManager regionManager = worldGuard.getRegionManager(player.getWorld());
-/*     */     
-/* 406 */     ApplicableRegionSet set = regionManager.getApplicableRegions(pt);
-/* 407 */     return set.allows(DefaultFlag.PVP);
-/*     */   }
-/*     */   
-/*     */   public boolean getSpawn(Player player) {
-/* 411 */     WorldGuardPlugin worldGuard = instance.getWorldGuard();
-/*     */     
-/* 413 */     if (worldGuard == null) {
-/* 414 */       return true;
-/*     */     }
-/* 416 */     Vector pt = BukkitUtil.toVector(player.getLocation());
-/* 417 */     RegionManager regionManager = worldGuard.getRegionManager(player.getWorld());
-/*     */     
-/* 419 */     ApplicableRegionSet set = regionManager.getApplicableRegions(pt);
-/* 420 */     return set.allows(DefaultFlag.MOB_SPAWNING);
-/*     */   }
-/*     */   
-/*     */ 
-/*     */ 
-/*     */ 
+
+
 /*     */   public static void log(String msg)
 /*     */   {
 /* 428 */     log(Level.INFO, msg);
@@ -405,9 +361,3 @@ import git.JackWisdom.mcp.supernaturals.storage.SNDataHandler;
 /* 432 */     Logger.getLogger("Minecraft").log(level, "[" + instance.getDescription().getFullName() + "] " + msg);
 /*     */   }
 /*     */ }
-
-
-/* Location:              C:\Users\jackw\Desktop\mmSupernaturals for 1.7.2.jar!\com\mmiillkkaa\supernaturals\SupernaturalsPlugin.class
- * Java compiler version: 6 (50.0)
- * JD-Core Version:       0.7.1
- */
