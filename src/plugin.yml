@@ -2,6 +2,7 @@ name: mmSupernaturalsReloaded
 main: git.JackWisdom.mcp.supernaturals.SupernaturalsPlugin
 version: 1.6 beta
 author: [Matterz,mmiillkkaa,marlboromoo,JackWisdom]
+softdepend: [PlaceholderAPI,WorldEdit,WorldGuard]
 commands:
   sn:
     description: 超自然种族的指令
