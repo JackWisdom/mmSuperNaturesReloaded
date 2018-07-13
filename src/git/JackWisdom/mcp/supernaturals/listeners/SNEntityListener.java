@@ -92,7 +92,7 @@ import org.bukkit.entity.Entity;
             }
              */
     @EventHandler(priority=EventPriority.NORMAL)
-   public void onEntityExplode(EntityExplodeEvent event) {
+   public void onEntityDemonExplode(EntityExplodeEvent event) {
     Fireball fireball;
       if (!(event.getEntity() instanceof Fireball)) { return;}
        fireball = (Fireball)event.getEntity();

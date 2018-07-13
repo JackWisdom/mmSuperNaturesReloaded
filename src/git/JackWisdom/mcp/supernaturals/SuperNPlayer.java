@@ -6,6 +6,8 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.UUID;
 /*     */ import git.JackWisdom.mcp.supernaturals.manager.ClassManager;
+import git.JackWisdom.mcp.supernaturals.util.Color;
+import git.JackWisdom.mcp.supernaturals.util.Language;
 import org.bukkit.Bukkit;
 /*     */ import org.bukkit.Location;
 import org.bukkit.entity.Player;
@@ -219,6 +221,22 @@ import javax.annotation.Nullable;
                 }
                 return false;
 /*     */   }
+            public String getPrefix(){
+    SuperNPlayer snplayer=this;
+         String prefix="";
+                if (snplayer.isPriest()) {
+                    prefix = Color.PRIEST.prefix(Language.SN_PREIEST_NAME); } else if (snplayer.isVampire()) {
+                    prefix = Color.VAMPIRE.prefix(Language.SN_VAMPIRE_NAME); } else if (snplayer.isGhoul()) {
+                    prefix = Color.GHOUL.prefix(Language.SN_GHOUL_NAME); } else  if (snplayer.isWere()) {
+                    prefix = Color.WEREWOLF.prefix(Language.SN_WEREWOLF_NAME); } else   if (snplayer.isHunter()) {
+                    prefix = Color.WITCHHUNTER.prefix(Language.SN_WITCHHUNTER_NAME); } else if (snplayer.isDemon()) {
+                    prefix = Color.DEMON.prefix(Language.SN_DEMON_NAME); } else  if (snplayer.isAngel()) {
+                    prefix = Color.ANGEL.prefix(Language.SN_ANGEL_NAME);
+                } else{
+                    prefix = Color.HUMAN.prefix(Language.SN_HUMAN_NAME);
+                }
+                return prefix;
+            }
             @Nullable
             public Player getPlayer(){
             if(!isOnline()){

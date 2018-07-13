@@ -11,10 +11,10 @@ import git.JackWisdom.mcp.supernaturals.events.VampireJumpEvent;
 import git.JackWisdom.mcp.supernaturals.io.SNConfigHandler;
 /*     */
 /*     */ import git.JackWisdom.mcp.supernaturals.io.SNWhitelistHandler;
-/*     */ import git.JackWisdom.mcp.supernaturals.util.EntityUtil;
-/*     */ import git.JackWisdom.mcp.supernaturals.util.Language;
-/*     */ import git.JackWisdom.mcp.supernaturals.util.LanguageTag;
-/*     */ import git.JackWisdom.mcp.supernaturals.util.SNTaskTimer;
+/*     */ import git.JackWisdom.mcp.supernaturals.util.*;
+/*     */
+/*     */
+/*     */
 /*     */ import java.util.*;
 /*     */
 /*     */
@@ -82,6 +82,7 @@ import org.bukkit.Bukkit;
             superpowers.remove(superNPlayer.getUuid());
 
             }
+
             public static void unLoad(Player player){
             if(superpowers.get(player.getUniqueId())==null){
                 return;

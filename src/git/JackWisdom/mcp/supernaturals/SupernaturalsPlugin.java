@@ -18,7 +18,8 @@
 /*     */ import git.JackWisdom.mcp.supernaturals.commands.SNCommandSetBanish;
 /*     */ import git.JackWisdom.mcp.supernaturals.commands.SNCommandSetChurch;
 /*     */ import git.JackWisdom.mcp.supernaturals.commands.SNCommandSetup;
-/*     */ import git.JackWisdom.mcp.supernaturals.io.SNConfigHandler;
+/*     */ import git.JackWisdom.mcp.supernaturals.hooks.PAPIHook;
+import git.JackWisdom.mcp.supernaturals.io.SNConfigHandler;
 /*     */ import git.JackWisdom.mcp.supernaturals.storage.FileDataHandler;
 import git.JackWisdom.mcp.supernaturals.storage.SNDataHandler;
 /*     */ import git.JackWisdom.mcp.supernaturals.io.SNLanguageHandler;
@@ -54,7 +55,7 @@ import git.JackWisdom.mcp.supernaturals.storage.SNDataHandler;
 /*     */ import org.bukkit.command.Command;
 /*     */ import org.bukkit.command.CommandSender;
 /*     */ import org.bukkit.entity.Player;
-/*     */ import org.bukkit.plugin.Plugin;
+/*     */
 /*     */ import org.bukkit.plugin.PluginDescriptionFile;
 /*     */ import org.bukkit.plugin.PluginManager;
 /*     */ import org.bukkit.plugin.java.JavaPlugin;
@@ -100,11 +101,9 @@ import git.JackWisdom.mcp.supernaturals.storage.SNDataHandler;
 /* 104 */   private AngelManager angelManager;
 /*     */   
 /* 106 */   public List<SNCommand> commands;
-/*     */   
+/*     */   public static PAPIHook papiHook;
 /*     */   private static File dataFolder;
-/*     */   
-/* 110 */   public static boolean foundPerms = false;
-/*     */   public PluginManager pm;
+              public PluginManager pm;
 
     public static void saveAll() {
         for(SuperNPlayer sn:superpowers.values()){
@@ -232,7 +231,6 @@ import git.JackWisdom.mcp.supernaturals.storage.SNDataHandler;
 /* 232 */     this.pm.registerEvents(new SNEntityMonitor(this), this);
 /* 233 */     this.pm.registerEvents(new SNPlayerListener(this), this);
 /* 234 */     this.pm.registerEvents(new SNPlayerMonitor(this), this);
-/* 235 */     this.pm.registerEvents(new SNServerMonitor(this), this);
               this.pm.registerEvents(new PlayerGather(),this);
 /* 237 */     PluginDescriptionFile pdfFile = getDescription();
 /* 238 */     log(pdfFile.getName() + " version " + pdfFile.getVersion() + " enabled.");
@@ -249,20 +247,21 @@ import git.JackWisdom.mcp.supernaturals.storage.SNDataHandler;
 /*     */     
 /* 254 */     SuperNManager.startTimer();
 /* 255 */     HunterManager.createBounties();
-/* 256 */     setupPermissions();
+                hook();
 /*     */     try {
 /* 258 */       Metrics metrics = new Metrics(this);
 /* 259 */       metrics.start();
 /*     */     } catch (IOException e) {
 /* 261 */       log("Couldn't start Metrics.");
 /*     */     }
-/*     */   }
-/*     */   
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
+           }
+            private void hook(){
+            if(pm.isPluginEnabled("PlaceHolderAPI")){
+                papiHook =new PAPIHook();
+                papiHook.hook();
+                log("Hooked with PAPI");
+            }
+            }
 /*     */   public boolean onCommand(CommandSender sender, Command cmd, String commandLabel, String[] args)
 /*     */   {
 /* 272 */     if ((sender instanceof Player)) {
@@ -325,29 +324,7 @@ import git.JackWisdom.mcp.supernaturals.storage.SNDataHandler;
 /*     */ 
 /*     */ 
 /*     */ 
-/*     */   private void setupPermissions()
-/*     */   {
-/* 355 */     if (this.pm.isPluginEnabled("PermissionsEx")) {
-/* 356 */       log("Found PermissionsEx!");
-/* 357 */       foundPerms = true;
-/* 358 */     } else if (this.pm.isPluginEnabled("PermissionsBukkit")) {
-/* 359 */       log("Found PermissionsBukkit!");
-/* 360 */       foundPerms = true;
-/* 361 */     } else if (this.pm.isPluginEnabled("bPermissions")) {
-/* 362 */       log("Found bPermissions.");
-/* 363 */       log(Level.WARNING, "If something goes wrong with bPermissions and this plugin, I will not help!");
-/*     */       
-/* 365 */       foundPerms = true;
-/* 366 */     } else if (this.pm.isPluginEnabled("GroupManager")) {
-/* 367 */       log("Found GroupManager.");
-/* 368 */       foundPerms = true;
-/*     */     }
-/*     */     
-/* 371 */     if (!foundPerms) {
-/* 372 */       log("Permission system not detected, defaulting to SuperPerms");
-/* 373 */       log("A permissions system may be detected later, just wait.");
-/*     */     }
-/*     */   }
+
 
 /*     */   
 

@@ -61,20 +61,9 @@
 /*  61 */     Player player = event.getPlayer();
 /*  62 */     SuperNPlayer snplayer = SuperNManager.get(player);
 
-/*  64 */     String prefix;
-            if (snplayer.isPriest()) {
-/*  65 */       prefix = Color.PRIEST.prefix(Language.SN_PREIEST_NAME); } else if (snplayer.isVampire()) {
-/*  67 */         prefix = Color.VAMPIRE.prefix(Language.SN_VAMPIRE_NAME); } else if (snplayer.isGhoul()) {
-/*  69 */           prefix = Color.GHOUL.prefix(Language.SN_GHOUL_NAME); } else  if (snplayer.isWere()) {
-/*  71 */             prefix = Color.WEREWOLF.prefix(Language.SN_WEREWOLF_NAME); } else   if (snplayer.isHunter()) {
-/*  73 */               prefix = Color.WITCHHUNTER.prefix(Language.SN_WITCHHUNTER_NAME); } else if (snplayer.isDemon()) {
-/*  75 */                 prefix = Color.DEMON.prefix(Language.SN_DEMON_NAME); } else  if (snplayer.isAngel()) {
-/*  77 */                   prefix = Color.ANGEL.prefix(Language.SN_ANGEL_NAME);
-/*     */                 } else{
-/*  79 */                   prefix = Color.HUMAN.prefix(Language.SN_HUMAN_NAME);
-/*     */               }
-/*     */
-/*  82 */     event.setFormat(event.getFormat().replace("[SN]", prefix));
+/*  64 */
+            //PlayerPrefixSetting
+/*  82 */     event.setFormat(event.getFormat().replace("[SN]", snplayer.getPrefix()));
 /*     */   }
     /*     */
 /*     */   @EventHandler(priority=EventPriority.MONITOR)
