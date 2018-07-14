@@ -93,8 +93,6 @@ public class MySqlDataHandler extends SNDataHandler {
                 np.uuid=UUID.fromString(set.getString("uuid"));
                 np.type=SuperType.valueOf(set.getString("type"));
                 np.oldType=SuperType.valueOf(set.getString("oldtype"));
-                np.truceTimer=set.getInt("trucetimer");
-                np.truce=set.getBoolean("truce");
                 np.superPower=set.getDouble("power");
                 np.oldPower=set.getDouble("oldpower");
                 String hunterapp=set.getString("hunterapp");
@@ -120,17 +118,15 @@ public class MySqlDataHandler extends SNDataHandler {
         statement.execute(deleteData(playerTable,player.uuid.toString()));
         statement.close();
         //删除旧数据完成 开始输入新的
-      String url="insert into "+playerTable+"(uuid,type,oldtype,trucetimer,truce,power,oldpower,hunterapp) values(?,?,?,?,?,?,?,?)";
+      String url="insert into "+playerTable+"(uuid,type,oldtype,trucetimer,truce,power,oldpower,hunterapp) values(?,?,?,?,?,?)";
       PreparedStatement ps=connection.prepareStatement(url);
       ps.setString(1,player.uuid.toString());
       ps.setString(2,player.type.name());
       ps.setString(3,player.oldType.name());
-      ps.setInt(4,player.truceTimer);
-      ps.setBoolean(5,player.truce);
-      ps.setDouble(6,player.superPower);
-      ps.setDouble(7,player.oldPower);
+      ps.setDouble(4,player.superPower);
+      ps.setDouble(5,player.oldPower);
       HashSet<SuperType> app=player.hunterApp;
-      ps.setString(8,new Gson().toJson(app));
+      ps.setString(6,new Gson().toJson(app));
       ps.execute();
       ps.close();
     }

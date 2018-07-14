@@ -577,23 +577,23 @@ import org.bukkit.Location;
 /* 570 */     angelWeaponsString = config.getStringList("Angel.Weapons.Restrictions");
 /*     */     
 /* 572 */     for (String weapon : angelWeaponsString) {
-/* 573 */       angelWeapons.add(Material.getMaterial(weapon));
+/* 573 */       angelWeapons.add(Material.valueOf(weapon));
 /*     */     }
 /*     */     
 /* 576 */     for (String armor : angelArmorString) {
-/* 577 */       angelArmor.add(Material.getMaterial(armor));
+/* 577 */       angelArmor.add(Material.valueOf(armor));
 /*     */     }
 /*     */     
 /* 580 */     for (String wood : woodMaterialsString) {
-/* 581 */       woodMaterials.add(Material.getMaterial(wood));
+/* 581 */       woodMaterials.add(Material.valueOf(wood));
 /*     */     }
 /*     */     
 /* 584 */     for (String food : foodMaterialsString) {
-/* 585 */       foodMaterials.add(Material.getMaterial(food));
+/* 585 */       foodMaterials.add(Material.valueOf(food));
 /*     */     }
 /*     */     
 /* 588 */     for (String block : burnableBlocksString) {
-/* 589 */       burnableBlocks.add(Material.getMaterial(block));
+/* 589 */       burnableBlocks.add(Material.valueOf(block));
 /*     */     }
 /*     */     
 /* 592 */     for (String creature : vampireTruceString) {
@@ -604,7 +604,7 @@ import org.bukkit.Location;
 /*     */     }
 /*     */     
 /* 599 */     for (String material : priestMaterialsString) {
-/* 600 */       priestSpellMaterials.add(Material.getMaterial(material));
+/* 600 */       priestSpellMaterials.add(Material.valueOf(material));
 /*     */     }
 /*     */     
 /* 603 */     for (String creature : ghoulTruceString) {
@@ -615,59 +615,60 @@ import org.bukkit.Location;
 /*     */     }
 /*     */     
 /* 610 */     for (String weapon : ghoulWeaponsString) {
-/* 611 */       ghoulWeapons.add(Material.getMaterial(weapon));
+/* 611 */       ghoulWeapons.add(Material.valueOf(weapon));
 /*     */     }
 /*     */     
 /* 614 */     for (String weapon : demonWeaponsString) {
-/* 615 */       demonWeapons.add(Material.getMaterial(weapon));
+/* 615 */       demonWeapons.add(Material.valueOf(weapon));
 /*     */     }
 /*     */     
 /* 618 */     for (String weapon : hunterWeaponsString) {
-/* 619 */       hunterWeapons.add(Material.getMaterial(weapon));
+/* 619 */       hunterWeapons.add(Material.valueOf(weapon));
 /*     */     }
 /*     */     
 /* 622 */     for (String weapon : priestWeaponsString) {
-/* 623 */       priestWeapons.add(Material.getMaterial(weapon));
+/* 623 */       priestWeapons.add(Material.valueOf(weapon));
 /*     */     }
 /*     */     
 /* 626 */     for (String weapon : vampireWeaponsString) {
-/* 627 */       vampireWeapons.add(Material.getMaterial(weapon));
+/* 627 */       vampireWeapons.add(Material.valueOf(weapon));
 /*     */     }
 /*     */     
 /* 630 */     for (String weapon : wereWeaponsString) {
-/* 631 */       wereWeapons.add(Material.getMaterial(weapon));
+/* 631 */       wereWeapons.add(Material.valueOf(weapon));
 /*     */     }
 /*     */     
 /* 634 */     for (String weapon : ghoulWeaponImmunityString) {
-/* 635 */       ghoulWeaponImmunity.add(Material.getMaterial(weapon));
+/* 635 */       ghoulWeaponImmunity.add(Material.valueOf(weapon));
 /*     */     }
 /*     */     
 /* 638 */     for (String armor : hunterArmorString) {
-/* 639 */       hunterArmor.add(Material.getMaterial(armor));
+/* 639 */       hunterArmor.add(Material.valueOf(armor));
 /*     */     }
 /*     */     
 /* 642 */     for (String armor : ghoulArmorString) {
-/* 643 */       ghoulArmor.add(Material.getMaterial(armor));
+/* 643 */       ghoulArmor.add(Material.valueOf(armor));
 /*     */     }
 /*     */     
 /* 646 */     for (String armor : demonArmorString) {
-/* 647 */       demonArmor.add(Material.getMaterial(armor));
+/* 647 */       demonArmor.add(Material.valueOf(armor));
 /*     */     }
 /*     */     
 /* 650 */     for (String armor : priestArmorString) {
-/* 651 */       priestArmor.add(Material.getMaterial(armor));
+ 
+/* 651 */       priestArmor.add(Material.valueOf(armor));
 /*     */     }
 /*     */     
 /* 654 */     for (String armor : vampireArmorString) {
-/* 655 */       vampireArmor.add(Material.getMaterial(armor));
+/* 655 */       vampireArmor.add(Material.valueOf(armor));
 /*     */     }
 /*     */     
 /* 658 */     for (String armor : wereArmorString) {
-/* 659 */       wereArmor.add(Material.getMaterial(armor));
+/* 659 */       wereArmor.add(Material.valueOf(armor));
 /*     */     }
 /*     */     
 /* 662 */     for (int i = 0; i < vampireAltarInfectMaterialsString.size(); i++) {
-/* 663 */       Material material = Material.getMaterial((String)vampireAltarInfectMaterialsString.get(i));
+/* 663 */       Material material = Material.valueOf((String)vampireAltarInfectMaterialsString.get(i));
 /*     */       
 /* 665 */       int quantity = 1;
 /*     */       try {
@@ -681,7 +682,7 @@ import org.bukkit.Location;
 /*     */     }
 /*     */     
 /* 676 */     for (int i = 0; i < vampireAltarCureMaterialsString.size(); i++) {
-/* 677 */       Material material = Material.getMaterial((String)vampireAltarCureMaterialsString.get(i));
+/* 677 */       Material material = Material.valueOf((String)vampireAltarCureMaterialsString.get(i));
 /*     */       
 /* 679 */       int quantity = 1;
 /*     */       try {
@@ -695,7 +696,7 @@ import org.bukkit.Location;
 /*     */     }
 /*     */     
 /* 690 */     for (int i = 0; i < priestAltarMaterialsString.size(); i++) {
-/* 691 */       Material material = Material.getMaterial((String)priestAltarMaterialsString.get(i));
+/* 691 */       Material material = Material.valueOf((String)priestAltarMaterialsString.get(i));
 /*     */       
 /* 693 */       int quantity = 1;
 /*     */       try {
@@ -708,7 +709,7 @@ import org.bukkit.Location;
 /*     */     }
 /*     */     
 /* 703 */     for (int i = 0; i < wereWolfbaneMaterialsString.size(); i++) {
-/* 704 */       Material material = Material.getMaterial((String)wereWolfbaneMaterialsString.get(i));
+/* 704 */       Material material = Material.valueOf((String)wereWolfbaneMaterialsString.get(i));
 /*     */       
 /* 706 */       int quantity = 1;
 /*     */       try {
@@ -721,7 +722,7 @@ import org.bukkit.Location;
 /*     */     }
 /*     */     
 /* 716 */     for (int i = 0; i < priestDonationMaterialsString.size(); i++) {
-/* 717 */       Material material = Material.getMaterial((String)priestDonationMaterialsString.get(i));
+/* 717 */       Material material = Material.valueOf((String)priestDonationMaterialsString.get(i));
 /*     */       
 /* 719 */       int reward = 1;
 /*     */       try {

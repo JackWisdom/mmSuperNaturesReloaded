@@ -240,7 +240,7 @@ import org.bukkit.Location;
 /* 236 */       ItemStack chest = inv.getChestplate();
 /* 237 */       ItemStack leggings = inv.getLeggings();
 /* 238 */       ItemStack boots = inv.getBoots();
-/*     */       
+/*     */
 /* 240 */       if ((helmet != null) && 
 /* 241 */         (!SNConfigHandler.vampireArmor.contains(helmet.getType())) && (!helmet.getType().equals(Material.WOOL)))
 /*     */       {

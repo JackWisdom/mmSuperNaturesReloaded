@@ -24,8 +24,7 @@ import javax.annotation.Nullable;
         public SuperType oldType =SuperType.HUMAN;
         public double oldPower = 0.0D;
         public double superPower = 0.0D;
-        public boolean truce = true;
-        public int truceTimer = 0;
+
         public UUID protecting=null;
         public Location teleport =null;
         //牧师保护的UID
@@ -49,8 +48,7 @@ import javax.annotation.Nullable;
              this.oldType =SuperType.HUMAN;
              this.oldPower = 0.0D;
              this.superPower = 0.0D;
-             this.truce = true;
-             this.truceTimer = 0;
+
              this.teleport =null;
              this.hunterApp=new HashSet<>();
              this.protecting=null;
@@ -127,27 +125,26 @@ import javax.annotation.Nullable;
 /*     */   public void setPower(double amount) {
 /*  93 */     this.superPower = limitDouble(amount);
 /*     */   }
-/*     */   
+/*     */   public boolean hasTruce(){
+    return this.type.hasTruce();
+}
 /*     */   public boolean getTruce() {
-/*  97 */     return this.truce;
+/*  97 */     return getTruceTimer()==0;
 /*     */   }
-/*     */   
-/*     */   public void setTruce(boolean truce) {
-/* 101 */     this.truce = truce;
-/* 102 */     this.truceTimer = 0;
-/*     */   }
-/*     */   
+
 /*     */   public int getTruceTimer() {
-/* 106 */     return this.truceTimer;
+/* 106 */     return truceBreak.get(uuid);
 /*     */   }
-/*     */   
+/*     */
 /*     */   public void setTruceTimer(int timer) {
-/* 110 */     this.truceTimer = timer;
+                if(timer==0){
+                    truceBreak.remove(uuid);
+                    return;
+                }
+/* 110 */     truceBreak.put(uuid,timer);
+
 /*     */   }
-/*     */   
-/*     */ 
-/*     */ 
-/*     */ 
+
 /*     */   public boolean isSuper()
 /*     */   {
 /* 118 */     return getType().isSuper();

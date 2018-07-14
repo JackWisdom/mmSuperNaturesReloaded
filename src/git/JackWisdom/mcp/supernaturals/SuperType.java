@@ -37,6 +37,9 @@ this.manager=manager;
     public HashMap getBelong(){
         return belong;
     }
+    public boolean hasTruce(){
+        return this==WEREWOLF||this==GHOUL||this==VAMPIRE;
+    }
 }
 enum Type{
     Super,Normal,Demon;

@@ -1,7 +1,8 @@
 /*     */ package git.JackWisdom.mcp.supernaturals.listeners;
 /*     */ 
 /*     */ import git.JackWisdom.mcp.supernaturals.SuperNPlayer;
-/*     */ import git.JackWisdom.mcp.supernaturals.SupernaturalsPlugin;
+/*     */ import git.JackWisdom.mcp.supernaturals.SuperType;
+import git.JackWisdom.mcp.supernaturals.SupernaturalsPlugin;
 /*     */ import git.JackWisdom.mcp.supernaturals.io.SNConfigHandler;
 /*     */
 /*     */
@@ -10,22 +11,30 @@
 /*     */ import git.JackWisdom.mcp.supernaturals.manager.SuperNManager;
 /*     */
 /*     */
+import git.JackWisdom.mcp.supernaturals.util.Language;
 import org.bukkit.Location;
 /*     */ import org.bukkit.Material;
 /*     */ import org.bukkit.block.Block;
 /*     */
 /*     */ import org.bukkit.block.Sign;
-/*     */ import org.bukkit.entity.Player;
-/*     */ import org.bukkit.event.EventHandler;
+/*     */ import org.bukkit.entity.Entity;
+import org.bukkit.entity.LivingEntity;
+import org.bukkit.entity.Player;
+/*     */ import org.bukkit.entity.Wolf;
+import org.bukkit.event.EventHandler;
 /*     */ import org.bukkit.event.EventPriority;
 /*     */ import org.bukkit.event.Listener;
 /*     */ import org.bukkit.event.block.Action;
-/*     */ import org.bukkit.event.entity.PlayerDeathEvent;
+/*     */ import org.bukkit.event.entity.EntityDamageByEntityEvent;
+import org.bukkit.event.entity.PlayerDeathEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 /*     */ import org.bukkit.event.player.PlayerKickEvent;
 /*     */
 /*     */ import org.bukkit.material.Door;
-/*     */ 
+
+import java.util.HashSet;
+
+/*     */
 /*     */ 
 /*     */ 
 /*     */ 
@@ -51,12 +60,63 @@ import org.bukkit.event.player.PlayerInteractEvent;
 /*     */ 
 /*     */ 
 /*     */ 
-/*     */ 
+/*     */
+
+    @EventHandler(priority = EventPriority.LOWEST)
+    public void onPlayerPVP(EntityDamageByEntityEvent event){
+        if(!(event.getEntity() instanceof Player &&event.getDamager() instanceof Player)){
+            return;
+        }
+        Player d= (Player) event.getDamager();
+        Player v= (Player) event.getEntity();
+        SuperNPlayer sv=SuperNPlayer.getPlayerOnline(v);
+        SuperNPlayer sd=SuperNPlayer.getPlayerOnline(d);
+        if(sv.getTruceTimer()!=0){
+            d.sendMessage(Language.TRUCE_RESTORE.toString());
+        }
+    }
               @EventHandler
     public void playerDeath(PlayerDeathEvent event){
-     SuperNPlayer sn=SuperNManager.get(event.getEntity());
-     sn.getManager().deathEvent(event.getEntity());
+                  Player pVictim = event.getEntity();
+  if ((!pVictim.hasPermission(this.worldPermission)) && (SNConfigHandler.multiworld)) {
+      return;
+  }
+  if (!pVictim.isOnline()) {
+               return;
     }
+   SuperNPlayer snplayer = SuperNManager.get(pVictim);
+    Entity killer=event.getEntity().getKiller();
+   snplayer.getManager().deathEvent(event.getEntity());
+    if(killer==null){
+        return;
+    }
+    if(killer instanceof Wolf){
+        Wolf wolf= (Wolf)killer;
+        if(!(wolf.getOwner() instanceof Player)){return;}
+        Player owner= (Player) wolf.getOwner();
+        SuperNManager.get(owner).getManager().killEvent(owner,SuperNManager.get(owner),snplayer);
+        return;
+    }
+    if(!(killer instanceof Player)){ return;}
+        Player pkiller=pVictim.getKiller();
+        SuperNPlayer snkiller=SuperNManager.get(pkiller);
+        if(snkiller.isHunter()){
+            if(pVictim.getName().equals(pkiller.getName())){
+                SuperNManager.sendMessage(snplayer, Language.KILL_SELF.toString());
+                SuperNManager.sendMessage(snplayer, Language.WITCHHUNTER_KILL_SELF.toString());
+            }//is suicide
+            return;
+        }
+        if(!snkiller.isHuman()){return;}
+                  HashSet<SuperType> supersKilled=snkiller.getHuntApp();
+                  supersKilled.add(snplayer.getType());
+                  if(supersKilled.size()>=3){
+                      this.plugin.getHunterManager().invite(snkiller);
+                  }
+        }
+
+
+
 
 /*     */   @EventHandler(priority=EventPriority.LOW)
 /*     */   public void onPlayerInteract(PlayerInteractEvent event)

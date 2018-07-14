@@ -115,7 +115,6 @@ import org.bukkit.Bukkit;
                 snplayer.setType(supertype);//设置新类别
                 snplayer.setPower(0.0d);
                 snplayer.getBelong().put(snplayer.getUuid(),snplayer);
-                snplayer.setTruce(true);
 
                 PlayerChangeTypeEvent event=new PlayerChangeTypeEvent(snplayer.getOldType(),snplayer.getType(),snplayer.getOldPower(),snplayer.getPower());
                 Bukkit.getPluginManager().callEvent(event);
@@ -155,9 +154,7 @@ import org.bukkit.Bukkit;
 /*     */     } else {
 /* 146 */       snplayer.setPower(powerLevel);
 /*     */     }
-/*     */     
-/* 149 */     snplayer.setTruce(true);
-/*     */     
+
 /* 151 */     sendMessage(snplayer, Language.SN_ADMIN_CMD_CURE_NOTICE.toString().replace(LanguageTag.TYPE.toString(), superType.name()));
 /*     */     
 /* 153 */     SupernaturalsPlugin.log(snplayer.getName() + " turned into a " + ChatColor.WHITE + superType + ChatColor.RED + "!");
@@ -327,56 +324,12 @@ import org.bukkit.Bukkit;
 /*     */   }
 /*     */   
 /*     */   public void truceBreak(SuperNPlayer snplayer) {
-/* 324 */     if (!snplayer.isSuper()) {
-/* 325 */       snplayer.setTruce(true);
-/* 326 */       return;
-/*     */     }
-/* 328 */     if (snplayer.getTruce()) {
-/* 329 */       sendMessage(snplayer, Language.TRUCE_BREAK.toString());
-/*     */     }
-/*     */     
-/* 332 */     snplayer.setTruce(false);
 /* 333 */     snplayer.setTruceTimer(SNConfigHandler.truceBreakTime);
 /*     */   }
 /*     */   
 /*     */   public static void truceRestore(SuperNPlayer snplayer) {
 /* 337 */     sendMessage(snplayer, Language.TRUCE_RESTORE.toString());
-/* 338 */     snplayer.setTruce(true);
 /* 339 */     snplayer.setTruceTimer(0);
-/*     */     
-/*     */ 
-/* 342 */     Player player = SupernaturalsPlugin.instance.getServer().getPlayer(snplayer.getName());
-/*     */     
-/* 344 */     for (LivingEntity entity : player.getWorld().getLivingEntities()) {
-/* 345 */       if ((entity instanceof Creature))
-/*     */       {
-/*     */ 
-/*     */ 
-/* 349 */         if ((snplayer.isVampire()) && (SNConfigHandler.vampireTruce.contains(EntityUtil.entityTypeFromEntity(entity))))
-/*     */         {
-/*     */ 
-/* 352 */           Creature creature = (Creature)entity;
-/* 353 */           LivingEntity target = creature.getTarget();
-/* 354 */           if ((target != null) && (creature.getTarget().equals(player))) {
-/* 355 */             creature.setTarget(null);
-/*     */           }
-/* 357 */         } else if ((snplayer.isGhoul()) && (SNConfigHandler.ghoulTruce.contains(EntityUtil.entityTypeFromEntity(entity))))
-/*     */         {
-/*     */ 
-/* 360 */           Creature creature = (Creature)entity;
-/* 361 */           LivingEntity target = creature.getTarget();
-/* 362 */           if ((target != null) && (creature.getTarget().equals(player))) {
-/* 363 */             creature.setTarget(null);
-/*     */           }
-/* 365 */         } else if ((snplayer.isWere()) && (SNConfigHandler.wolfTruce) && ((entity instanceof Wolf)))
-/*     */         {
-/* 367 */           Creature creature = (Creature)entity;
-/* 368 */           LivingEntity target = creature.getTarget();
-/* 369 */           if ((target != null) && (creature.getTarget().equals(player)))
-/* 370 */             creature.setTarget(null);
-/*     */         }
-/*     */       }
-/*     */     }
 /*     */   }
 /*     */   
 /*     */   public void truceBreakAdvanceTime(SuperNPlayer snplayer, int milliseconds) {

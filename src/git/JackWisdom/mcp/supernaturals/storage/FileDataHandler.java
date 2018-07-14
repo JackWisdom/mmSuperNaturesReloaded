@@ -34,8 +34,6 @@ public class FileDataHandler extends SNDataHandler {
             YamlConfiguration cfg=YamlConfiguration.loadConfiguration(data);
             player.uuid=UUID.fromString(cfg.getString("uuid"));
             player.type=SuperType.valueOf(cfg.getString("type"));
-            player.truceTimer=cfg.getInt("truceTimer");
-            player.truce=cfg.getBoolean("truce");
             String tel="teleport.";
             String world=cfg.getString(tel+"world");
             if(!world.equals("NONE")) {
@@ -77,8 +75,6 @@ public class FileDataHandler extends SNDataHandler {
             YamlConfiguration cfg=YamlConfiguration.loadConfiguration(data);
             cfg.set("uuid",player.getUuid().toString());
             cfg.set("type",player.getType().name());
-            cfg.set("truceTimer",player.truceTimer);
-            cfg.set("truce",player.truce);
             if(player.teleport==null){
                 cfg.set("teleport.world","NONE");
             }else {
