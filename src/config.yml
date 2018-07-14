@@ -12,15 +12,16 @@ Supernatural:
   Truce:
     BreakTime: 120000
   SpreadChance: 0.35
+  ##MUST BE UPPER CASE
   Types:
-  - human
-  - vampire
-  - werewolf
-  - ghoul
-  - priest
-  - demon
-  - witchhunter
-  - angel
+  - HUMAN
+  - ANGLE
+  - VAMPIRE
+  - PRIEST
+  - WEREWOLF
+  - GHOUL
+  - WITCHHUNTER
+  - DEMON
 Vampire:
   Materials:
     Jump: RED_ROSE

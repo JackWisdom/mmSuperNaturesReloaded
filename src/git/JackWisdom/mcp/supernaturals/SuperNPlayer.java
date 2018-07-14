@@ -264,7 +264,7 @@ import javax.annotation.Nullable;
         }
         public void save(){
         SupernaturalsPlugin.instance.getDataHandler().save(this);
-            SupernaturalsPlugin.log("loading data for"+uuid.toString());
+            SupernaturalsPlugin.log("saving data for"+uuid.toString());
         }
     public int hashCode()
     {

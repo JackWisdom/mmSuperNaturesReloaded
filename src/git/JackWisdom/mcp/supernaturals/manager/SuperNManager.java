@@ -116,12 +116,15 @@ import org.bukkit.Bukkit;
                 snplayer.setPower(0.0d);
                 snplayer.getBelong().put(snplayer.getUuid(),snplayer);
                 snplayer.setTruce(true);
+
                 PlayerChangeTypeEvent event=new PlayerChangeTypeEvent(snplayer.getOldType(),snplayer.getType(),snplayer.getOldPower(),snplayer.getPower());
                 Bukkit.getPluginManager().callEvent(event);
             }
 /*     */   public static void convert(SuperNPlayer snplayer, SuperType superType, int powerLevel)
 /*     */   {
+
 /* 118 */     if (!SNConfigHandler.supernaturalTypes.contains(superType.name())) {
+
 /* 119 */       return;
 /*     */     }
 /* 121 */     if ((!SNWhitelistHandler.isWhitelisted(snplayer)) && (!snplayer.isHuman())) {
@@ -133,9 +136,7 @@ import org.bukkit.Bukkit;
 /* 127 */       (snplayer.hasPermission( "supernatural.convert." + superType + ".allow")))
 /*     */     {
 /* 129 */       sendMessage(snplayer, Language.SN_CMD_JOIN_NO_PREMISSION.toString().replace(LanguageTag.TYPE.toString(), superType.name()));
-/*     */       
-/*     */ 
-/*     */ 
+/*     */
 /* 133 */       return;
 /*     */     }
 /*     */
