@@ -2,10 +2,7 @@ package git.JackWisdom.mcp.supernaturals.listeners;
 
 import git.JackWisdom.mcp.supernaturals.SuperNPlayer;
 import git.JackWisdom.mcp.supernaturals.SuperType;
-import git.JackWisdom.mcp.supernaturals.inventory.DonateGui;
-import git.JackWisdom.mcp.supernaturals.inventory.IGui;
-import git.JackWisdom.mcp.supernaturals.inventory.PDonateGui;
-import git.JackWisdom.mcp.supernaturals.inventory.VampInfectGui;
+import git.JackWisdom.mcp.supernaturals.inventory.*;
 import git.JackWisdom.mcp.supernaturals.io.SNConfigHandler;
 import git.JackWisdom.mcp.supernaturals.manager.SuperNManager;
 import git.JackWisdom.mcp.supernaturals.util.Language;
@@ -70,7 +67,14 @@ public class InventoryListener implements Listener {
                }
            }
            case VAMPIRE_C:{
-
+               VampCureGui donateGui=(VampCureGui) iGui;
+               if(donateGui.accept()){
+                   player.sendMessage( Language.VAMPIRE_ALTAR_CONFIRM.toString());
+                   player.sendMessage(Language.VAMPIRE_ALTAR_CURE_SUCCESS.toString().replace(LanguageTag.MATERIAL.toString(), SNConfigHandler.vampireAltarCureMaterial.toLowerCase().replace('_', ' ')).replace(LanguageTag.MATERIAL_SURROUND.toString(), SNConfigHandler.vampireAltarCureMaterialSurround.toLowerCase().replace('_', ' ')));
+                   SuperNManager.cure(snplayer);
+               }else {
+                    player.sendMessage(Language.GUI_EXACTLY.toString());
+               }
            }
        }
 

@@ -7,30 +7,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c1b564b4-0357-43b3-ad2a-ab2a8f0331b6" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/src/git/JackWisdom/mcp/supernaturals/inventory/DonateGui.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/git/JackWisdom/mcp/supernaturals/inventory/IGui.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/git/JackWisdom/mcp/supernaturals/inventory/InventoryType.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/git/JackWisdom/mcp/supernaturals/inventory/PDonateGui.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/git/JackWisdom/mcp/supernaturals/inventory/VampCureGui.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/git/JackWisdom/mcp/supernaturals/inventory/VampInfectGui.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/git/JackWisdom/mcp/supernaturals/listeners/InventoryListener.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/git/JackWisdom/mcp/supernaturals/recipes/WolfbaneRecipe.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/mmSuperNaturesReloaded/config.yml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/mmSuperNaturesReloaded/config.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/mmSuperNaturesReloaded/git/JackWisdom/mcp/supernaturals/SupernaturalsPlugin.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/mmSuperNaturesReloaded/git/JackWisdom/mcp/supernaturals/SupernaturalsPlugin.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/mmSuperNaturesReloaded/git/JackWisdom/mcp/supernaturals/UsingData.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/mmSuperNaturesReloaded/git/JackWisdom/mcp/supernaturals/UsingData.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/mmSuperNaturesReloaded/git/JackWisdom/mcp/supernaturals/io/SNConfigHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/mmSuperNaturesReloaded/git/JackWisdom/mcp/supernaturals/io/SNConfigHandler.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/mmSuperNaturesReloaded/git/JackWisdom/mcp/supernaturals/manager/VampireManager$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/mmSuperNaturesReloaded/git/JackWisdom/mcp/supernaturals/manager/VampireManager.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/config.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/config.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/git/JackWisdom/mcp/supernaturals/SuperNPlayer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/git/JackWisdom/mcp/supernaturals/SuperNPlayer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/git/JackWisdom/mcp/supernaturals/SuperType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/git/JackWisdom/mcp/supernaturals/SuperType.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/git/JackWisdom/mcp/supernaturals/SupernaturalsPlugin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/git/JackWisdom/mcp/supernaturals/SupernaturalsPlugin.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/git/JackWisdom/mcp/supernaturals/io/SNConfigHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/git/JackWisdom/mcp/supernaturals/io/SNConfigHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/git/JackWisdom/mcp/supernaturals/manager/PriestManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/git/JackWisdom/mcp/supernaturals/manager/PriestManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/git/JackWisdom/mcp/supernaturals/listeners/InventoryListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/git/JackWisdom/mcp/supernaturals/listeners/InventoryListener.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/git/JackWisdom/mcp/supernaturals/manager/VampireManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/git/JackWisdom/mcp/supernaturals/manager/VampireManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/git/JackWisdom/mcp/supernaturals/storage/SNDataHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/git/JackWisdom/mcp/supernaturals/storage/SNDataHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/git/JackWisdom/mcp/supernaturals/util/Language.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/git/JackWisdom/mcp/supernaturals/util/Language.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/git/JackWisdom/mcp/supernaturals/util/Recipes.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/git/JackWisdom/mcp/supernaturals/util/Recipes.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -51,11 +32,50 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="VampireManager.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="VampireManager.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/git/JackWisdom/mcp/supernaturals/manager/VampireManager.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="115">
-              <caret line="411" column="10" lean-forward="true" selection-start-line="411" selection-start-column="10" selection-end-line="411" selection-end-column="10" />
+            <state relative-caret-position="20">
+              <caret line="413" column="25" selection-start-line="413" selection-start-column="25" selection-end-line="413" selection-end-column="25" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="WereManager.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/git/JackWisdom/mcp/supernaturals/manager/WereManager.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="33">
+              <caret line="287" column="30" selection-start-line="287" selection-start-column="30" selection-end-line="287" selection-end-column="30" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="WolfbaneRecipe.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/git/JackWisdom/mcp/supernaturals/recipes/WolfbaneRecipe.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="262">
+              <caret line="18" column="19" lean-forward="true" selection-start-line="18" selection-start-column="19" selection-end-line="18" selection-end-column="19" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ShapedRecipe.class" pinned="false" current-in-tab="false">
+        <entry file="jar://F:/mctst/spigot-latest.jar!/org/bukkit/inventory/ShapedRecipe.class">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="19">
+              <caret line="37" column="48" lean-forward="true" selection-start-line="37" selection-start-column="48" selection-end-line="37" selection-end-column="48" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="config.yml" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/config.yml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="200">
+              <caret line="307" column="21" selection-start-line="307" selection-start-column="21" selection-end-line="307" selection-end-column="21" />
             </state>
           </provider>
         </entry>
@@ -63,8 +83,8 @@
       <file leaf-file-name="InventoryListener.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/git/JackWisdom/mcp/supernaturals/listeners/InventoryListener.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="262">
-              <caret line="72" selection-start-line="72" selection-end-line="72" />
+            <state relative-caret-position="186">
+              <caret line="75" column="70" selection-start-line="75" selection-start-column="70" selection-end-line="75" selection-end-column="70" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -75,8 +95,8 @@
       <file leaf-file-name="Language.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/git/JackWisdom/mcp/supernaturals/util/Language.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="33">
-              <caret line="9" column="36" selection-start-line="9" selection-start-column="25" selection-end-line="9" selection-end-column="36" />
+            <state relative-caret-position="109">
+              <caret line="190" column="12" selection-start-line="190" selection-start-column="12" selection-end-line="190" selection-end-column="12" />
             </state>
           </provider>
         </entry>
@@ -116,8 +136,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>invite</find>
-      <find>ArmorCh</find>
       <find>VAMPIREARM</find>
       <find>Material.getMaterial</find>
       <find>none</find>
@@ -146,6 +164,8 @@
       <find>vampire_al</find>
       <find>_need</find>
       <find>exactly</find>
+      <find>werew</find>
+      <find>were</find>
     </findStrings>
     <replaceStrings>
       <replace>Material.vauleOf</replace>
@@ -183,7 +203,6 @@
         <option value="$PROJECT_DIR$/src/git/JackWisdom/mcp/supernaturals/SuperType.java" />
         <option value="$PROJECT_DIR$/src/git/JackWisdom/mcp/supernaturals/SuperNPlayer.java" />
         <option value="$PROJECT_DIR$/src/git/JackWisdom/mcp/supernaturals/storage/SNDataHandler.java" />
-        <option value="$PROJECT_DIR$/src/config.yml" />
         <option value="$PROJECT_DIR$/src/git/JackWisdom/mcp/supernaturals/inventory/MInventoryHolder.java" />
         <option value="$PROJECT_DIR$/src/git/JackWisdom/mcp/supernaturals/io/SNConfigHandler.java" />
         <option value="$PROJECT_DIR$/src/git/JackWisdom/mcp/supernaturals/SupernaturalsPlugin.java" />
@@ -199,6 +218,8 @@
         <option value="$PROJECT_DIR$/src/git/JackWisdom/mcp/supernaturals/inventory/VampCureGui.java" />
         <option value="$PROJECT_DIR$/src/git/JackWisdom/mcp/supernaturals/listeners/InventoryListener.java" />
         <option value="$PROJECT_DIR$/src/git/JackWisdom/mcp/supernaturals/manager/VampireManager.java" />
+        <option value="$PROJECT_DIR$/src/git/JackWisdom/mcp/supernaturals/recipes/WolfbaneRecipe.java" />
+        <option value="$PROJECT_DIR$/src/config.yml" />
       </list>
     </option>
   </component>
@@ -211,9 +232,9 @@
   <component name="NodePackageJsonFileManager">
     <packageJsonPaths />
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
-    <option name="x" value="31" />
-    <option name="y" value="-13" />
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="153" />
+    <option name="y" value="-21" />
     <option name="width" value="1346" />
     <option name="height" value="677" />
   </component>
@@ -251,28 +272,7 @@
               <item name="mmSuperNaturesReloaded" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="supernaturals" type="462c0819:PsiDirectoryNode" />
-              <item name="inventory" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="mmSuperNaturesReloaded" type="b2602c69:ProjectViewProjectNode" />
-              <item name="mmSuperNaturesReloaded" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="supernaturals" type="462c0819:PsiDirectoryNode" />
-              <item name="listeners" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="mmSuperNaturesReloaded" type="b2602c69:ProjectViewProjectNode" />
-              <item name="mmSuperNaturesReloaded" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="supernaturals" type="462c0819:PsiDirectoryNode" />
-              <item name="manager" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="mmSuperNaturesReloaded" type="b2602c69:ProjectViewProjectNode" />
-              <item name="mmSuperNaturesReloaded" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="supernaturals" type="462c0819:PsiDirectoryNode" />
-              <item name="util" type="462c0819:PsiDirectoryNode" />
+              <item name="recipes" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="mmSuperNaturesReloaded" type="b2602c69:ProjectViewProjectNode" />
@@ -369,7 +369,7 @@
       <workItem from="1531528691316" duration="2160000" />
       <workItem from="1531542720452" duration="811000" />
       <workItem from="1531544678568" duration="11102000" />
-      <workItem from="1531558797409" duration="3462000" />
+      <workItem from="1531558797409" duration="5382000" />
     </task>
     <task id="LOCAL-00001" summary="fix bugs">
       <created>1531460951475</created>
@@ -469,11 +469,18 @@
       <option name="project" value="LOCAL" />
       <updated>1531548680638</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="using a new way to donate etc not finish yet">
+      <created>1531562340239</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1531562340239</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="32243000" />
+    <option name="totallyTimeSpent" value="34163000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
@@ -529,24 +536,10 @@
     <MESSAGE value="fix lang" />
     <MESSAGE value="most bugs fix" />
     <MESSAGE value="changed type to handle truce" />
-    <option name="LAST_COMMIT_MESSAGE" value="changed type to handle truce" />
+    <MESSAGE value="using a new way to donate etc not finish yet" />
+    <option name="LAST_COMMIT_MESSAGE" value="using a new way to donate etc not finish yet" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/git/JackWisdom/mcp/supernaturals/listeners/SNServerMonitor.java" />
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_171/src.zip!/java/sql/ResultSet.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="454">
-          <caret line="2533" column="35" selection-start-line="2533" selection-start-column="35" selection-end-line="2533" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_171/src.zip!/java/util/HashSet.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="131">
-          <caret line="89" column="13" selection-start-line="89" selection-start-column="13" selection-end-line="89" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://F:/mctst/spigot-latest.jar!/com/google/gson/Gson.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="131">
@@ -843,20 +836,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/config.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="14" selection-start-column="14" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/git/JackWisdom/mcp/supernaturals/util/Language.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="33">
-          <caret line="9" column="36" selection-start-line="9" selection-start-column="25" selection-end-line="9" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/language/zh.yml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="19">
@@ -895,22 +874,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/git/JackWisdom/mcp/supernaturals/inventory/VampCureGui.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="247">
-          <caret line="17" lean-forward="true" selection-start-line="17" selection-end-line="17" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#261#262#0" expanded="true" />
-            <element signature="e#291#292#0" expanded="true" />
-            <element signature="e#229#230#0" expanded="true" />
-            <element signature="e#256#257#0" expanded="true" />
-            <element signature="e#309#310#0" expanded="true" />
-            <element signature="e#336#337#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/git/JackWisdom/mcp/supernaturals/inventory/IGui.java">
       <provider selected="true" editor-type-id="text-editor">
         <state>
@@ -921,10 +884,29 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/git/JackWisdom/mcp/supernaturals/inventory/VampCureGui.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="247">
+          <caret line="17" lean-forward="true" selection-start-line="17" selection-end-line="17" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#261#262#0" expanded="true" />
+            <element signature="e#291#292#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/git/JackWisdom/mcp/supernaturals/util/Language.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="109">
+          <caret line="190" column="12" selection-start-line="190" selection-start-column="12" selection-end-line="190" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/git/JackWisdom/mcp/supernaturals/listeners/InventoryListener.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="262">
-          <caret line="72" selection-start-line="72" selection-end-line="72" />
+        <state relative-caret-position="186">
+          <caret line="75" column="70" selection-start-line="75" selection-start-column="70" selection-end-line="75" selection-end-column="70" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -933,8 +915,39 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/git/JackWisdom/mcp/supernaturals/manager/VampireManager.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="115">
-          <caret line="411" column="10" lean-forward="true" selection-start-line="411" selection-start-column="10" selection-end-line="411" selection-end-column="10" />
+        <state relative-caret-position="20">
+          <caret line="413" column="25" selection-start-line="413" selection-start-column="25" selection-end-line="413" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/git/JackWisdom/mcp/supernaturals/manager/WereManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="33">
+          <caret line="287" column="30" selection-start-line="287" selection-start-column="30" selection-end-line="287" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/git/JackWisdom/mcp/supernaturals/recipes/WolfbaneRecipe.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="262">
+          <caret line="18" column="19" lean-forward="true" selection-start-line="18" selection-start-column="19" selection-end-line="18" selection-end-column="19" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://F:/mctst/spigot-latest.jar!/org/bukkit/inventory/ShapedRecipe.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="19">
+          <caret line="37" column="48" lean-forward="true" selection-start-line="37" selection-start-column="48" selection-end-line="37" selection-end-column="48" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/config.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="200">
+          <caret line="307" column="21" selection-start-line="307" selection-start-column="21" selection-end-line="307" selection-end-column="21" />
         </state>
       </provider>
     </entry>

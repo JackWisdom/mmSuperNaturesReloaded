@@ -298,19 +298,27 @@ Were:
     Dash: FEATHER
   WolfTruce: true
   Wolfbane:
-    Trigger: BOWL
-    Materials:
-    - YELLOW_FLOWER
-    - RED_ROSE
-    - RED_MUSHROOM
-    - BROWN_MUSHROOM
-    - BOWL
-    Quantities:
-    - 10
-    - 10
-    - 10
-    - 10
-    - 1
+    Material: BOWL
+    customName: wolfBane
+    description:
+    - lol
+    recipe:
+    - "YELLOW_FLOWER,AIR,RED_ROSE"
+    - "RED_MUSHROOM,RED_STONE,BROWN_MUSHROOM"
+    - "AIR,BOWEL,AIR"
+#   Trigger: BOWL
+#   Materials:
+#   - YELLOW_FLOWER
+#   - RED_ROSE
+#    - RED_MUSHROOM
+#   - BROWN_MUSHROOM
+#    - BOWL
+#    Quantities:
+#    - 10
+#    - 10
+#    - 10
+#    - 10
+#    - 1
   Weapon:
     Restrictions:
     - BOW

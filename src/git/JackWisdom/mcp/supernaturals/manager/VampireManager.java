@@ -4,6 +4,7 @@
 /*     */ import git.JackWisdom.mcp.supernaturals.SuperType;
 import git.JackWisdom.mcp.supernaturals.SupernaturalsPlugin;
 /*     */ import git.JackWisdom.mcp.supernaturals.events.VampireTeleportEvent;
+import git.JackWisdom.mcp.supernaturals.inventory.VampCureGui;
 import git.JackWisdom.mcp.supernaturals.inventory.VampInfectGui;
 import git.JackWisdom.mcp.supernaturals.io.SNConfigHandler;
 /*     */
@@ -407,30 +408,12 @@ import org.bukkit.Location;
 /*     */ 
 /* 456 */     if (!snplayer.isVampire()) {
 /* 457 */       SuperNManager.sendMessage(snplayer, Language.VAMPIRE_ALTAR_CURE_FAIL.toString());
-/*     */ 
-/*     */ 
-/*     */ 
+return;
 /*     */     }
-/* 462 */     else if (SNConfigHandler.vampireAltarCureRecipe.playerHasEnough(player)) {
-/* 463 */       SuperNManager.sendMessage(snplayer, Language.VAMPIRE_ALTAR_CONFIRM.toString());
-/*     */       
-/* 465 */       SuperNManager.sendMessage(snplayer, SNConfigHandler.vampireAltarCureRecipe.getRecipeLine());
-/*     */       
-/* 467 */       SuperNManager.sendMessage(snplayer, Language.VAMPIRE_ALTAR_CURE_SUCCESS.toString().replace(LanguageTag.MATERIAL.toString(), SNConfigHandler.vampireAltarCureMaterial.toLowerCase().replace('_', ' ')).replace(LanguageTag.MATERIAL_SURROUND.toString(), SNConfigHandler.vampireAltarCureMaterialSurround.toLowerCase().replace('_', ' ')));
-
-/* 483 */       SNConfigHandler.vampireAltarCureRecipe.removeFromPlayer(player);
-/* 484 */       SuperNManager.cure(snplayer);
-/*     */     } else {
-/* 486 */       SuperNManager.sendMessage(snplayer, Language.VAMPIRE_ALTAR_NEED.toString());
-/*     */       
-/* 488 */       SuperNManager.sendMessage(snplayer, SNConfigHandler.vampireAltarCureRecipe.getRecipeLine());
-/*     */     }
+    VampCureGui bc=new VampCureGui(SNConfigHandler.vampireAltarCureRecipe);
+        bc.openInv(player);
 /*     */   }
-/*     */   
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
+
 /*     */   public boolean combustAdvanceTime(Player player, long milliseconds)
 /*     */   {
 /* 498 */     SuperNPlayer snplayer = SuperNManager.get(player);
