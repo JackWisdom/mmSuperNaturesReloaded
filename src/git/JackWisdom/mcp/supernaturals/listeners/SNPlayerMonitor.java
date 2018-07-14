@@ -17,7 +17,8 @@
 /*     */ import org.bukkit.event.EventHandler;
 /*     */ import org.bukkit.event.EventPriority;
 /*     */ import org.bukkit.event.Listener;
-/*     */ import org.bukkit.event.player.AsyncPlayerChatEvent;
+/*     */ import org.bukkit.event.entity.PlayerDeathEvent;
+import org.bukkit.event.player.AsyncPlayerChatEvent;
 /*     */ import org.bukkit.event.player.PlayerJoinEvent;
 /*     */ import org.bukkit.event.player.PlayerPortalEvent;
 /*     */ 
@@ -45,13 +46,11 @@
 /*     */   public SNPlayerMonitor(SupernaturalsPlugin instance) {
 /*  46 */     this.plugin = instance;
 /*     */   }
-/*     */   
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
+            @EventHandler
+            public void playerDeath(PlayerDeathEvent event){
+            SuperNPlayer sn=SuperNManager.get(event.getEntity());
+            sn.getManager().deathEvent(event.getEntity());
+            }
 /*     */   @EventHandler(priority=EventPriority.MONITOR)
 /*     */   public void onPlayerChat(AsyncPlayerChatEvent event)
 /*     */   {

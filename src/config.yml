@@ -6,7 +6,7 @@ EnableLoginMessage: true
 EnableJoinCommand: false
 Storage:
   sql: true
-  url: "jdbc:mysql://localhost:3306/mtest?user=root&password=123456&useUnicode=true&characterEncoding=utf-8"
+  url: "jdbc:mysql://localhost:3306/mtest?user=root&password=123456&useUnicode=true&characterEncoding=utf-8&useSSL=false"
   prefix: "mm_"
 Supernatural:
   Truce:

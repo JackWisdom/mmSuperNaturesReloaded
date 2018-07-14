@@ -251,6 +251,7 @@ import java.util.ArrayList;
                     log("AN ERROR HAPPENED WHILE USING SQL CHANGING TO FILE MODE");
                     e.printStackTrace();
                 }
+                log("Using Mysql to storage data");
             }
             if (this.snData == null) {
             this.snData = new FileDataHandler();
