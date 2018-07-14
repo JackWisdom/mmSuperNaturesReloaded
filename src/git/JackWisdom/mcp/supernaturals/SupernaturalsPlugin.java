@@ -346,6 +346,6 @@ import java.util.ArrayList;
 /*     */   }
 /*     */   
 /*     */   public static void log(Level level, String msg) {
-/* 432 */     Logger.getLogger("Minecraft").log(level, "[" + instance.getDescription().getFullName() + "] " + msg);
+/* 432 */     instance.getLogger().log(level, msg);
 /*     */   }
 /*     */ }
