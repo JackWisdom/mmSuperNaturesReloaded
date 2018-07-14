@@ -34,6 +34,9 @@
 /*     */
 /*     */   public void removeAngel(SuperNPlayer snplayer) {
               for(SuperNPlayer p:priests.values()){
+                  if(p.getProtecting()==null){
+                      return;
+                  }
               if(p.getProtecting().equals(snplayer.getUuid())){
                     p.setProtecting(null);
                }

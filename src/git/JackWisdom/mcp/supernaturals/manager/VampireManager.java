@@ -4,6 +4,7 @@
 /*     */ import git.JackWisdom.mcp.supernaturals.SuperType;
 import git.JackWisdom.mcp.supernaturals.SupernaturalsPlugin;
 /*     */ import git.JackWisdom.mcp.supernaturals.events.VampireTeleportEvent;
+import git.JackWisdom.mcp.supernaturals.inventory.VampInfectGui;
 import git.JackWisdom.mcp.supernaturals.io.SNConfigHandler;
 /*     */
 /*     */ import git.JackWisdom.mcp.supernaturals.util.GeometryUtil;
@@ -244,6 +245,8 @@ import org.bukkit.Location;
 /* 240 */       if ((helmet != null) && 
 /* 241 */         (!SNConfigHandler.vampireArmor.contains(helmet.getType())) && (!helmet.getType().equals(Material.WOOL)))
 /*     */       {
+                    System.out.println(helmet.getType());
+                    System.out.println(SNConfigHandler.vampireArmor.size());
 /* 243 */         inv.setHelmet(null);
 /* 244 */         dropItem(player, helmet);
 /*     */       }
@@ -336,31 +339,13 @@ import org.bukkit.Location;
 /*     */     
 /*     */ 
 /* 328 */     int count = GeometryUtil.countNearby(centerBlock, Material.getMaterial(SNConfigHandler.vampireAltarInfectMaterialSurround), SNConfigHandler.vampireAltarInfectMaterialRadius);
-/*     */     
-/*     */ 
-/*     */ 
-/*     */ 
+
 /* 333 */     if (count == 0) {
 /* 334 */       return;
 /*     */     }
 /*     */     
 /* 337 */     if (count < SNConfigHandler.vampireAltarInfectMaterialSurroundCount) {
 /* 338 */       SuperNManager.sendMessage(snplayer, Language.VAMPIRE_ALTAR_INFECT_NOT_ENOUGH.toString().replace(LanguageTag.MATERIAL.toString(), SNConfigHandler.vampireAltarInfectMaterial.toLowerCase().replace('_', ' ')).replaceAll(LanguageTag.MATERIAL_SURROUND.toString(), SNConfigHandler.vampireAltarInfectMaterialSurround.toLowerCase().replace('_', ' ')));
-/*     */       
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
 /* 354 */       return;
 /*     */     }
 /*     */     
@@ -385,37 +370,8 @@ import org.bukkit.Location;
 /*     */       
 /* 376 */       return;
 /*     */     }
-/*     */     
-/*     */ 
-/* 380 */     if (SNConfigHandler.vampireAltarInfectRecipe.playerHasEnough(player)) {
-/* 381 */       SuperNManager.sendMessage(snplayer, Language.VAMPIRE_ALTAR_CONFIRM.toString());
-/*     */       
-/* 383 */       SuperNManager.sendMessage(snplayer, SNConfigHandler.vampireAltarInfectRecipe.getRecipeLine());
-/*     */       
-/* 385 */       SuperNManager.sendMessage(snplayer, Language.VAMPIRE_ALTAR_INFECT_SUCCESS.toString().replace(LanguageTag.MATERIAL.toString(), SNConfigHandler.vampireAltarInfectMaterial.toLowerCase().replace('_', ' ')).replace(LanguageTag.MATERIAL_SURROUND.toString(), SNConfigHandler.vampireAltarInfectMaterialSurround.toLowerCase().replace('_', ' ')));
-/*     */       
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/* 401 */       SNConfigHandler.vampireAltarInfectRecipe.removeFromPlayer(player);
-/* 402 */       SuperNManager.convert(snplayer, SuperType.VAMPIRE, SNConfigHandler.vampirePowerStart);
-/*     */     }
-/*     */     else {
-/* 405 */       SuperNManager.sendMessage(snplayer, Language.VAMPIRE_ALTAR_NEED.toString());
-/*     */       
-/* 407 */       SuperNManager.sendMessage(snplayer, SNConfigHandler.vampireAltarInfectRecipe.getRecipeLine());
-/*     */     }
+    VampInfectGui vampInfectGui=new VampInfectGui(SNConfigHandler.vampireAltarInfectRecipe);
+    vampInfectGui.openInv(player);
 /*     */   }
 /*     */   
 /*     */   public void useAltarCure(Player player, Block centerBlock)
@@ -432,22 +388,8 @@ import org.bukkit.Location;
 /*     */     
 /* 423 */     if (count < SNConfigHandler.vampireAltarCureMaterialSurroundCount) {
 /* 424 */       SuperNManager.sendMessage(snplayer, Language.VAMPIRE_ALTAR_CURE_FAIL.toString().replace(LanguageTag.MATERIAL.toString(), SNConfigHandler.vampireAltarCureMaterial.toLowerCase().replace('_', ' ').replace('_', ' ')).replaceAll(LanguageTag.MATERIAL_SURROUND.toString(), SNConfigHandler.vampireAltarCureMaterialSurround.toLowerCase().replace('_', ' ')));
-/*     */       
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
+/*     */
+
 /* 441 */       return;
 /*     */     }
 /*     */     
@@ -475,21 +417,7 @@ import org.bukkit.Location;
 /* 465 */       SuperNManager.sendMessage(snplayer, SNConfigHandler.vampireAltarCureRecipe.getRecipeLine());
 /*     */       
 /* 467 */       SuperNManager.sendMessage(snplayer, Language.VAMPIRE_ALTAR_CURE_SUCCESS.toString().replace(LanguageTag.MATERIAL.toString(), SNConfigHandler.vampireAltarCureMaterial.toLowerCase().replace('_', ' ')).replace(LanguageTag.MATERIAL_SURROUND.toString(), SNConfigHandler.vampireAltarCureMaterialSurround.toLowerCase().replace('_', ' ')));
-/*     */       
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
+
 /* 483 */       SNConfigHandler.vampireAltarCureRecipe.removeFromPlayer(player);
 /* 484 */       SuperNManager.cure(snplayer);
 /*     */     } else {

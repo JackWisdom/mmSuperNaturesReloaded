@@ -3,7 +3,9 @@
 /*     */ import git.JackWisdom.mcp.supernaturals.SuperNPlayer;
 /*     */ import git.JackWisdom.mcp.supernaturals.SuperType;
 import git.JackWisdom.mcp.supernaturals.SupernaturalsPlugin;
-/*     */ import git.JackWisdom.mcp.supernaturals.io.SNConfigHandler;
+/*     */ import git.JackWisdom.mcp.supernaturals.inventory.DonateGui;
+import git.JackWisdom.mcp.supernaturals.inventory.PDonateGui;
+import git.JackWisdom.mcp.supernaturals.io.SNConfigHandler;
 /*     */
 /*     */ import git.JackWisdom.mcp.supernaturals.util.Language;
 /*     */ import git.JackWisdom.mcp.supernaturals.util.LanguageTag;
@@ -195,10 +197,10 @@ import org.bukkit.Location;
 /* 195 */     SuperNPlayer snplayer = SuperNManager.get(player);
 /* 196 */     int amount = 0;
 /* 197 */     int delta = 0;
-/* 198 */     if ((world.getName().equalsIgnoreCase(SNConfigHandler.priestChurchWorld)) && 
+/* 198 */     if (!((world.getName().equalsIgnoreCase(SNConfigHandler.priestChurchWorld)) &&
 /* 199 */       (Math.abs(locX - SNConfigHandler.priestChurchLocationX) <= 10) && 
 /* 200 */       (Math.abs(locY - SNConfigHandler.priestChurchLocationY) <= 10) && 
-/* 201 */       (Math.abs(locZ - SNConfigHandler.priestChurchLocationZ) <= 10)) {
+/* 201 */       (Math.abs(locZ - SNConfigHandler.priestChurchLocationZ) <= 10)) ){return;}
 /* 202 */       if (snplayer.isPriest()) {
 /* 203 */         if (player.getItemInHand().getType().equals(Material.COAL))
 /*     */         {
@@ -206,44 +208,18 @@ import org.bukkit.Location;
 /*     */           
 /* 207 */           SuperNManager.cure(snplayer);
 /*     */         } else {
-/* 209 */           PlayerInventory inv = player.getInventory();
-/* 210 */           ItemStack[] items = inv.getContents();
-/* 211 */           for (Material mat : SNConfigHandler.priestDonationMap.keySet())
-/*     */           {
-/* 213 */             for (ItemStack itemStack : items) {
-/* 214 */               if ((itemStack != null) && 
-/* 215 */                 (itemStack.getType().equals(mat))) {
-/* 216 */                 amount += itemStack.getAmount();
-/*     */               }
-/*     */             }
-/*     */             
-/* 220 */             delta += amount * ((Integer)SNConfigHandler.priestDonationMap.get(mat)).intValue();
-/*     */             
-/*     */ 
-/* 223 */             amount = 0;
-/*     */           }
-/* 225 */           for (Material mat : SNConfigHandler.priestDonationMap.keySet())
-/*     */           {
-/* 227 */             inv.remove(mat);
-/*     */           }
-/* 229 */           player.updateInventory();
-/* 230 */           SuperNManager.sendMessage(snplayer, Language.PRIEST_DONATE_ACCEPT.toString());
-/*     */           
-/*     */ 
-/* 233 */           SuperNManager.alterPower(snplayer, delta, Language.DAEMON_SNARE_NOTICE_SELF.toString());
-/*     */         }
-/*     */       }
-/*     */       else
-/*     */       {
+            PDonateGui pDonateGui=new PDonateGui(SNConfigHandler.priestAltarRecipe);
+            pDonateGui.openInv(player);
+                 }
+/*     */       }  else {
 /* 238 */         SuperNManager.sendMessage(snplayer, Language.PRIEST_ALTAR_POWER_HUMAN.toString());
 /*     */         
 /*     */ 
-/* 241 */         if (snplayer.isSuper()) {
+/* 241 */         if (snplayer.getType().isDemon()) {
+                /*     */
+                /*     */
+                /* 233 */           SuperNManager.alterPower(snplayer, delta, Language.DAEMON_SNARE_NOTICE_SELF.toString());
 /* 242 */           SuperNManager.sendMessage(snplayer, Language.PRIEST_ALTAR_POWER_SUPERNATURAL.toString());
-/*     */           
-/*     */ 
-/*     */ 
-/*     */ 
 /* 247 */           EntityDamageEvent event = new EntityDamageEvent(player, EntityDamageEvent.DamageCause.BLOCK_EXPLOSION, 20);
 /*     */           
 /* 249 */           player.setLastDamageCause(event);
@@ -256,36 +232,11 @@ import org.bukkit.Location;
 /*     */           }
 /* 257 */           return;
 /*     */         }
-/* 259 */         if (SNConfigHandler.priestAltarRecipe.playerHasEnough(player))
-/*     */         {
-/* 261 */           if (!player.hasPermission( "supernatural.player.shrineuse.priest"))
-/*     */           {
-/* 263 */             SuperNManager.sendMessage(snplayer, Language.PRIEST_ALTAR_NOT_ALLOW.toString());
-/*     */             
-/*     */ 
-/* 266 */             return;
-/*     */           }
-/* 268 */           SuperNManager.sendMessage(snplayer, Language.PRIEST_DONATE_CONFIRM.toString());
-/*     */           
-/*     */ 
-/* 271 */           SuperNManager.sendMessage(snplayer, SNConfigHandler.priestAltarRecipe.getRecipeLine());
-/*     */           
-/*     */ 
-/* 274 */           SuperNManager.sendMessage(snplayer, Language.PRIEST_DONATE_ENOUGHT.toString());
-/*     */           
-/*     */ 
-/* 277 */           SNConfigHandler.priestAltarRecipe.removeFromPlayer(player);
-/*     */           
-/* 279 */           SuperNManager.convert(snplayer, SuperType.PRIEST, SNConfigHandler.priestPowerStart);
-/*     */         }
-/*     */         else {
-/* 282 */           SuperNManager.sendMessage(snplayer, Language.PRIEST_DONATE_NOT_ENOGHT.toString());
-/*     */           
-/*     */ 
-/* 285 */           SuperNManager.sendMessage(snplayer, SNConfigHandler.priestAltarRecipe.getRecipeLine());
-/*     */         }
+                DonateGui donateGui=new DonateGui(SNConfigHandler.priestAltarRecipe);
+                donateGui.openInv(player);
+/* 259 */        //here add inv
 /*     */       }
-/*     */     }
+/*     */
 /*     */   }
 /*     */   
 /*     */ 

@@ -234,6 +234,7 @@ import java.util.ArrayList;
 /* 233 */     this.pm.registerEvents(new SNPlayerListener(this), this);
 /* 234 */     this.pm.registerEvents(new SNPlayerMonitor(this), this);
               this.pm.registerEvents(new PlayerGather(),this);
+              this.pm.registerEvents(new InventoryListener(),this);
 /* 237 */     PluginDescriptionFile pdfFile = getDescription();
 /* 238 */     log(pdfFile.getName() + " version " + pdfFile.getVersion() + " enabled.");
 /*     */     
@@ -248,13 +249,16 @@ import java.util.ArrayList;
                     snData=new MySqlDataHandler();
                 } catch (SQLException e) {
                     snData=null;
-                    log("AN ERROR HAPPENED WHILE USING SQL CHANGING TO FILE MODE");
+
                     e.printStackTrace();
                 }
-                log("Using Mysql to storage data");
+
             }
             if (this.snData == null) {
             this.snData = new FileDataHandler();
+                log("Using File to storage data");
+            }else {
+                log("Using MySql to storage data");
             }
 /*     */     
 /* 254 */     SuperNManager.startTimer();

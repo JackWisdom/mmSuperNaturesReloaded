@@ -31,7 +31,7 @@ import javax.annotation.Nullable;
         public HashSet<SuperType> hunterApp=new HashSet<SuperType>(){
            @Override
            public boolean add(SuperType e) {
-               if(e.isHuman()){
+               if(!e.isSuper()){
                return false;}
                //只允许非人类
                return super.add(e);
@@ -130,10 +130,14 @@ import javax.annotation.Nullable;
 }
 /*     */   public boolean getTruce() {
 /*  97 */     return getTruceTimer()==0;
+
 /*     */   }
 
 /*     */   public int getTruceTimer() {
-/* 106 */     return truceBreak.get(uuid);
+/* 106 */
+    if(truceBreak.get(uuid)==null){
+    return 0;}
+    return truceBreak.get(uuid);
 /*     */   }
 /*     */
 /*     */   public void setTruceTimer(int timer) {
@@ -155,7 +159,7 @@ import javax.annotation.Nullable;
 /*     */   }
 /*     */   
 /*     */   public boolean isHuman() {
-/* 135 */     return getType().isHuman();
+/* 135 */     return getType()==SuperType.HUMAN;
 /*     */   }
 /*     */   
 /*     */   public boolean isVampire() {

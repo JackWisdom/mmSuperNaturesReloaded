@@ -1,3 +1,4 @@
+#RECIPE' ITEM MUST BE LOWER THAN 9
 Language: zh
 UseConvertPermissionNode: false
 MultiWorld: false
@@ -16,7 +17,7 @@ Supernatural:
   Types:
   - HUMAN
   - ANGLE
-  - VAMPIRE
+  - VAMPIRE_I
   - PRIEST
   - WEREWOLF
   - GHOUL
@@ -101,8 +102,7 @@ Vampire:
     - SPIDER
     - BLAZE
   Weapon:
-    Restrictions:
-    - none
+    Restrictions: []
   Armor:
   - AIR
   - LEATHER_HELMET
@@ -188,8 +188,7 @@ Priest:
     - PAPER
     - BOOK
   Weapon:
-    Restrictions:
-    - none
+    Restrictions: []
   Armor:
   - AIR
 Ghoul:
@@ -385,8 +384,7 @@ Demon:
   DamageFactor:
     FireTicks: 50
   Weapon:
-    Restrictions:
-    - none
+    Restrictions: []
   Armor:
   - AIR
   Hall:
@@ -478,8 +476,7 @@ Angel:
       Wolf: BONE
     Heal: FEATHER
   Weapons:
-    Restrictions:
-    - none
+    Restrictions: []
   Armor:
   - AIR
   - LEATHER_HELMET

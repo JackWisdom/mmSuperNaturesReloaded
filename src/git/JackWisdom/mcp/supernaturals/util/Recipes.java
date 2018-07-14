@@ -1,18 +1,20 @@
 /*    */ package git.JackWisdom.mcp.supernaturals.util;
 /*    */ 
-/*    */ import java.util.ArrayList;
-/*    */ import java.util.Comparator;
-/*    */ import java.util.HashMap;
-/*    */ import java.util.Map;
+/*    */ import java.util.*;
+/*    */
+/*    */
+/*    */
 /*    */ import java.util.Map.Entry;
-/*    */ import java.util.SortedSet;
-/*    */ import java.util.TreeSet;
+/*    */
+/*    */
 /*    */
 import org.bukkit.Material;
 /*    */ import org.bukkit.entity.Player;
 /*    */ import org.bukkit.inventory.Inventory;
 /*    */ import org.bukkit.inventory.ItemStack;
-/*    */ 
+import org.bukkit.inventory.Recipe;
+
+/*    */
 /*    */ 
 /*    */ 
 /*    */ 
@@ -34,28 +36,17 @@ import org.bukkit.Material;
 /*    */ 
 /*    */ public class Recipes
 /*    */ {
-/* 36 */   public Map<Material, Integer> materialQuantities = new HashMap();
-/*    */   
-/*    */   public void removeFromPlayer(Player player)
-/*    */   {
-/* 40 */     Inventory inventory = player.getInventory();
-/* 41 */     for (Material material : this.materialQuantities.keySet()) {
-/* 42 */       inventory.removeItem(new ItemStack[] { new ItemStack(material.getId(), ((Integer)this.materialQuantities.get(material)).intValue()) });
-/*    */     }
-/*    */     
-/* 45 */     player.updateInventory();
-/*    */   }
-/*    */   
-/*    */   public boolean playerHasEnough(Player player) {
-/* 49 */     Inventory inventory = player.getInventory();
-/* 50 */     for (Material material : this.materialQuantities.keySet()) {
-/* 51 */       if (getMaterialCountFromInventory(material, inventory) < ((Integer)this.materialQuantities.get(material)).intValue())
-/*    */       {
-/* 53 */         return false;
-/*    */       }
-/*    */     }
-/* 56 */     return true;
-/*    */   }
+/* 36 */ private   List<ItemStack> itemStacks;
+/*    */   public Recipes(){
+        itemStacks=new ArrayList<>();
+}
+            public void setItemStacks(List<ItemStack> l){
+            itemStacks=l;
+            }
+            public List<ItemStack> getItemStacks(){
+    return itemStacks;
+            }
+
 /*    */   
 /*    */   public static int getMaterialCountFromInventory(Material material, Inventory inventory)
 /*    */   {
@@ -66,16 +57,7 @@ import org.bukkit.Material;
 /* 65 */     return count;
 /*    */   }
 /*    */   
-/*    */   public String getRecipeLine() {
-/* 69 */     ArrayList<String> lines = new ArrayList();
-/* 70 */     for (Map.Entry<Material, Integer> item : entriesSortedByValues(this.materialQuantities)) {
-/* 71 */       lines.add("" + item.getValue() + " " + TextUtil.getMaterialName((Material)item.getKey()));
-/*    */     }
-/*    */     
-/* 74 */     return TextUtil.implode(lines, ", ");
-/*    */   }
-/*    */   
-/*    */ 
+
 /*    */   public static <K, V extends Comparable<? super V>> SortedSet<Map.Entry<K, V>> entriesSortedByValues(Map<K, V> map)
 /*    */   {
 /* 80 */     SortedSet<Map.Entry<K, V>> sortedEntries = new TreeSet(new entryComparator());

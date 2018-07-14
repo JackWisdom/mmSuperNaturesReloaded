@@ -15,6 +15,7 @@ import org.bukkit.Location;
 /*     */ import org.bukkit.configuration.Configuration;
 /*     */
 /*     */ import org.bukkit.entity.EntityType;
+import org.bukkit.inventory.ItemStack;
 /*     */
 
 /*     */
@@ -327,77 +328,77 @@ import org.bukkit.Location;
 /* 320 */     woodMaterialsString = config.getStringList("Material.Wooden");
 /* 321 */     foodMaterialsString = config.getStringList("Material.Food");
 /*     */     
-/* 323 */     vampireJumpMaterial = config.getString("VAMPIRE.Materials.Jump", "RED_ROSE");
+/* 323 */     vampireJumpMaterial = config.getString("VAMPIRE_I.Materials.Jump", "RED_ROSE");
 /*     */     
 /*     */ 
-/* 326 */     vampirePowerStart = config.getInt("VAMPIRE.Power.Start", 10000);
-/* 327 */     vampireKillSpreadCurse = config.getBoolean("VAMPIRE.Kill.SpreadCurse", true);
+/* 326 */     vampirePowerStart = config.getInt("VAMPIRE_I.Power.Start", 10000);
+/* 327 */     vampireKillSpreadCurse = config.getBoolean("VAMPIRE_I.Kill.SpreadCurse", true);
 /*     */     
-/* 329 */     vampireTimePowerGained = config.getDouble("VAMPIRE.Time.PowerGained", 15.0D);
+/* 329 */     vampireTimePowerGained = config.getDouble("VAMPIRE_I.Time.PowerGained", 15.0D);
 /*     */     
-/* 331 */     vampireKillPowerCreatureGain = config.getInt("VAMPIRE.Power.Kill.CreatureGain", 100);
+/* 331 */     vampireKillPowerCreatureGain = config.getInt("VAMPIRE_I.Power.Kill.CreatureGain", 100);
 /*     */     
-/* 333 */     vampireKillPowerPlayerGain = config.getInt("VAMPIRE.Power.Kill.PlayerGain", 500);
+/* 333 */     vampireKillPowerPlayerGain = config.getInt("VAMPIRE_I.Power.Kill.PlayerGain", 500);
 /*     */     
-/* 335 */     vampireDeathPowerPenalty = config.getInt("VAMPIRE.Power.DeathPenalty", 10000);
+/* 335 */     vampireDeathPowerPenalty = config.getInt("VAMPIRE_I.Power.DeathPenalty", 10000);
 /*     */     
-/* 337 */     vampireDamageFactor = config.getDouble("VAMPIRE.DamageFactor.AttackBonus", 0.3D);
+/* 337 */     vampireDamageFactor = config.getDouble("VAMPIRE_I.DamageFactor.AttackBonus", 0.3D);
 /*     */     
-/* 339 */     vampireDamageReceivedFactor = config.getDouble("VAMPIRE.DamageFactor.DefenseBonus", 0.8D);
+/* 339 */     vampireDamageReceivedFactor = config.getDouble("VAMPIRE_I.DamageFactor.DefenseBonus", 0.8D);
 /*     */     
-/* 341 */     woodFactor = config.getDouble("VAMPIRE.DamageFactor.Wood", 1.5D);
-/* 342 */     vampireBurnInSunlight = config.getBoolean("VAMPIRE.Burn.InSunlight", true);
+/* 341 */     woodFactor = config.getDouble("VAMPIRE_I.DamageFactor.Wood", 1.5D);
+/* 342 */     vampireBurnInSunlight = config.getBoolean("VAMPIRE_I.Burn.InSunlight", true);
 /*     */     
-/* 344 */     vampireBurnMessageEnabled = config.getBoolean("VAMPIRE.Burn.MessageEnabled", true);
+/* 344 */     vampireBurnMessageEnabled = config.getBoolean("VAMPIRE_I.Burn.MessageEnabled", true);
 /*     */     
-/* 346 */     vampireCombustFireTicks = config.getInt("VAMPIRE.Burn.FireTicks", 3);
+/* 346 */     vampireCombustFireTicks = config.getInt("VAMPIRE_I.Burn.FireTicks", 3);
 /*     */     
-/* 348 */     jumpDeltaSpeed = config.getDouble("VAMPIRE.JumpDelta", 1.2D);
-/* 349 */     jumpBloodCost = config.getInt("VAMPIRE.Power.JumpCost", 1000);
-/* 350 */     vampireTimeHealthGained = config.getDouble("VAMPIRE.Time.HealthGained", 0.5D);
+/* 348 */     jumpDeltaSpeed = config.getDouble("VAMPIRE_I.JumpDelta", 1.2D);
+/* 349 */     jumpBloodCost = config.getInt("VAMPIRE_I.Power.JumpCost", 1000);
+/* 350 */     vampireTimeHealthGained = config.getDouble("VAMPIRE_I.Time.HealthGained", 0.5D);
 /*     */     
-/* 352 */     vampireHealthCost = config.getDouble("VAMPIRE.Power.HealingCost", 60.0D);
-/* 353 */     vampireDrowningCost = config.getInt("VAMPIRE.Power.DrowningCost", 90);
-/* 354 */     vampireTeleportCost = config.getInt("VAMPIRE.Power.TeleportCost", 9000);
-/* 355 */     vampireTeleportMaterial = config.getString("VAMPIRE.TeleportMarker.Material", "RED_ROSE");
+/* 352 */     vampireHealthCost = config.getDouble("VAMPIRE_I.Power.HealingCost", 60.0D);
+/* 353 */     vampireDrowningCost = config.getInt("VAMPIRE_I.Power.DrowningCost", 90);
+/* 354 */     vampireTeleportCost = config.getInt("VAMPIRE_I.Power.TeleportCost", 9000);
+/* 355 */     vampireTeleportMaterial = config.getString("VAMPIRE_I.TeleportMarker.Material", "RED_ROSE");
 /*     */     
-/* 357 */     vampireTruceString = config.getStringList("VAMPIRE.Truce.Creatures");
-/* 358 */     vampireMaterial = config.getString("VAMPIRE.Spell.Material", "BOOK");
-/* 359 */     vampireHelmet = config.getString("VAMPIRE.Burn.HelmetProtection", "GOLD_HELMET");
+/* 357 */     vampireTruceString = config.getStringList("VAMPIRE_I.Truce.Creatures");
+/* 358 */     vampireMaterial = config.getString("VAMPIRE_I.Spell.Material", "BOOK");
+/* 359 */     vampireHelmet = config.getString("VAMPIRE_I.Burn.HelmetProtection", "GOLD_HELMET");
 /*     */     
-/* 361 */     vampireWeaponsString = config.getStringList("VAMPIRE.Weapon.Restrictions");
+/* 361 */     vampireWeaponsString = config.getStringList("VAMPIRE_I.Weapon.Restrictions");
 /*     */     
-/* 363 */     vampireArmorString = config.getStringList("VAMPIRE.Armor");
-/* 364 */     vampireHungerRegainPlayer = config.getInt("VAMPIRE.GainHunger.Player");
-/* 365 */     vampireHungerRegainMob = config.getInt("VAMPIRE.GainHunger.Mob");
+/* 363 */     vampireArmorString = config.getStringList("VAMPIRE_I.Armor");
+/* 364 */     vampireHungerRegainPlayer = config.getInt("VAMPIRE_I.GainHunger.Player");
+/* 365 */     vampireHungerRegainMob = config.getInt("VAMPIRE_I.GainHunger.Mob");
 /*     */     
-/* 367 */     vampireAltarInfectMaterial = config.getString("VAMPIRE.Altar.Infect.Material", "GOLD_BLOCK");
+/* 367 */     vampireAltarInfectMaterial = config.getString("VAMPIRE_I.Altar.Infect.Material", "GOLD_BLOCK");
 /*     */     
-/* 369 */     vampireAltarInfectMaterialSurround = config.getString("VAMPIRE.Altar.Infect.Surrounding.Material", "OBSIDIAN");
+/* 369 */     vampireAltarInfectMaterialSurround = config.getString("VAMPIRE_I.Altar.Infect.Surrounding.Material", "OBSIDIAN");
 /*     */     
-/* 371 */     vampireAltarInfectMaterialRadius = config.getDouble("VAMPIRE.Altar.Infect.Surrounding.Radius", 7.0D);
+/* 371 */     vampireAltarInfectMaterialRadius = config.getDouble("VAMPIRE_I.Altar.Infect.Surrounding.Radius", 7.0D);
 /*     */     
-/* 373 */     vampireAltarInfectMaterialSurroundCount = config.getInt("VAMPIRE.Altar.Infect.Surrounding.Count", 20);
+/* 373 */     vampireAltarInfectMaterialSurroundCount = config.getInt("VAMPIRE_I.Altar.Infect.Surrounding.Count", 20);
 /*     */     
-/* 375 */     vampireAltarInfectMaterialsString = config.getStringList("VAMPIRE.Altar.Infect.Recipe.Materials");
+/* 375 */     vampireAltarInfectMaterialsString = config.getStringList("VAMPIRE_I.Altar.Infect.Recipe.Materials");
 /*     */     
-/* 377 */     vampireAltarInfectQuantities = config.getIntegerList("VAMPIRE.Altar.Infect.Recipe.Quantities");
-/*     */     
-/*     */ 
-/* 380 */     vampireAltarCureMaterial = config.getString("VAMPIRE.Altar.Cure.Material", "LAPIS_BLOCK");
-/*     */     
-/* 382 */     vampireAltarCureMaterialSurround = config.getString("VAMPIRE.Altar.Cure.Surrounding.Material", "GLOWSTONE");
-/*     */     
-/* 384 */     vampireAltarCureMaterialRadius = config.getDouble("VAMPIRE.Altar.Cure.Surrounding.Radius", 7.0D);
-/*     */     
-/* 386 */     vampireAltarCureMaterialSurroundCount = config.getInt("VAMPIRE.Altar.Cure.Surrounding.Count", 20);
-/*     */     
-/* 388 */     vampireAltarCureMaterialsString = config.getStringList("VAMPIRE.Altar.Cure.Recipe.Materials");
-/*     */     
-/* 390 */     vampireAltarCureQuantities = config.getIntegerList("VAMPIRE.Altar.Cure.Recipe.Quantities");
+/* 377 */     vampireAltarInfectQuantities = config.getIntegerList("VAMPIRE_I.Altar.Infect.Recipe.Quantities");
 /*     */     
 /*     */ 
-/* 393 */     vampireHallMessage = config.getString("VAMPIRE.Hall.Message", "Vampires");
+/* 380 */     vampireAltarCureMaterial = config.getString("VAMPIRE_I.Altar.Cure.Material", "LAPIS_BLOCK");
+/*     */     
+/* 382 */     vampireAltarCureMaterialSurround = config.getString("VAMPIRE_I.Altar.Cure.Surrounding.Material", "GLOWSTONE");
+/*     */     
+/* 384 */     vampireAltarCureMaterialRadius = config.getDouble("VAMPIRE_I.Altar.Cure.Surrounding.Radius", 7.0D);
+/*     */     
+/* 386 */     vampireAltarCureMaterialSurroundCount = config.getInt("VAMPIRE_I.Altar.Cure.Surrounding.Count", 20);
+/*     */     
+/* 388 */     vampireAltarCureMaterialsString = config.getStringList("VAMPIRE_I.Altar.Cure.Recipe.Materials");
+/*     */     
+/* 390 */     vampireAltarCureQuantities = config.getIntegerList("VAMPIRE_I.Altar.Cure.Recipe.Quantities");
+/*     */     
+/*     */ 
+/* 393 */     vampireHallMessage = config.getString("VAMPIRE_I.Hall.Message", "Vampires");
 /*     */     
 /*     */ 
 /* 396 */     priestChurchWorld = config.getString("PRIEST.Church.World", "world");
@@ -577,23 +578,24 @@ import org.bukkit.Location;
 /* 570 */     angelWeaponsString = config.getStringList("Angel.Weapons.Restrictions");
 /*     */     
 /* 572 */     for (String weapon : angelWeaponsString) {
-/* 573 */       angelWeapons.add(Material.valueOf(weapon));
+                
+/* 573 */       angelWeapons.add(Material.getMaterial(weapon));
 /*     */     }
 /*     */     
 /* 576 */     for (String armor : angelArmorString) {
-/* 577 */       angelArmor.add(Material.valueOf(armor));
+/* 577 */       angelArmor.add(Material.getMaterial(armor));
 /*     */     }
 /*     */     
 /* 580 */     for (String wood : woodMaterialsString) {
-/* 581 */       woodMaterials.add(Material.valueOf(wood));
+/* 581 */       woodMaterials.add(Material.getMaterial(wood));
 /*     */     }
 /*     */     
 /* 584 */     for (String food : foodMaterialsString) {
-/* 585 */       foodMaterials.add(Material.valueOf(food));
+/* 585 */       foodMaterials.add(Material.getMaterial(food));
 /*     */     }
 /*     */     
 /* 588 */     for (String block : burnableBlocksString) {
-/* 589 */       burnableBlocks.add(Material.valueOf(block));
+/* 589 */       burnableBlocks.add(Material.getMaterial(block));
 /*     */     }
 /*     */     
 /* 592 */     for (String creature : vampireTruceString) {
@@ -604,7 +606,7 @@ import org.bukkit.Location;
 /*     */     }
 /*     */     
 /* 599 */     for (String material : priestMaterialsString) {
-/* 600 */       priestSpellMaterials.add(Material.valueOf(material));
+/* 600 */       priestSpellMaterials.add(Material.getMaterial(material));
 /*     */     }
 /*     */     
 /* 603 */     for (String creature : ghoulTruceString) {
@@ -615,88 +617,88 @@ import org.bukkit.Location;
 /*     */     }
 /*     */     
 /* 610 */     for (String weapon : ghoulWeaponsString) {
-/* 611 */       ghoulWeapons.add(Material.valueOf(weapon));
+/* 611 */       ghoulWeapons.add(Material.getMaterial(weapon));
 /*     */     }
 /*     */     
 /* 614 */     for (String weapon : demonWeaponsString) {
-/* 615 */       demonWeapons.add(Material.valueOf(weapon));
+/* 615 */       demonWeapons.add(Material.getMaterial(weapon));
 /*     */     }
 /*     */     
 /* 618 */     for (String weapon : hunterWeaponsString) {
-/* 619 */       hunterWeapons.add(Material.valueOf(weapon));
+/* 619 */       hunterWeapons.add(Material.getMaterial(weapon));
 /*     */     }
 /*     */     
 /* 622 */     for (String weapon : priestWeaponsString) {
-/* 623 */       priestWeapons.add(Material.valueOf(weapon));
+/* 623 */       priestWeapons.add(Material.getMaterial(weapon));
 /*     */     }
 /*     */     
 /* 626 */     for (String weapon : vampireWeaponsString) {
-/* 627 */       vampireWeapons.add(Material.valueOf(weapon));
+/* 627 */       vampireWeapons.add(Material.getMaterial(weapon));
 /*     */     }
 /*     */     
 /* 630 */     for (String weapon : wereWeaponsString) {
-/* 631 */       wereWeapons.add(Material.valueOf(weapon));
+/* 631 */       wereWeapons.add(Material.getMaterial(weapon));
 /*     */     }
 /*     */     
 /* 634 */     for (String weapon : ghoulWeaponImmunityString) {
-/* 635 */       ghoulWeaponImmunity.add(Material.valueOf(weapon));
+/* 635 */       ghoulWeaponImmunity.add(Material.getMaterial(weapon));
 /*     */     }
 /*     */     
 /* 638 */     for (String armor : hunterArmorString) {
-/* 639 */       hunterArmor.add(Material.valueOf(armor));
+/* 639 */       hunterArmor.add(Material.getMaterial(armor));
 /*     */     }
 /*     */     
 /* 642 */     for (String armor : ghoulArmorString) {
-/* 643 */       ghoulArmor.add(Material.valueOf(armor));
+/* 643 */       ghoulArmor.add(Material.getMaterial(armor));
 /*     */     }
 /*     */     
 /* 646 */     for (String armor : demonArmorString) {
-/* 647 */       demonArmor.add(Material.valueOf(armor));
+/* 647 */       demonArmor.add(Material.getMaterial(armor));
 /*     */     }
 /*     */     
 /* 650 */     for (String armor : priestArmorString) {
  
-/* 651 */       priestArmor.add(Material.valueOf(armor));
+/* 651 */       priestArmor.add(Material.getMaterial(armor));
 /*     */     }
 /*     */     
 /* 654 */     for (String armor : vampireArmorString) {
-/* 655 */       vampireArmor.add(Material.valueOf(armor));
+/* 655 */       vampireArmor.add(Material.getMaterial(armor));
 /*     */     }
 /*     */     
 /* 658 */     for (String armor : wereArmorString) {
-/* 659 */       wereArmor.add(Material.valueOf(armor));
+/* 659 */       wereArmor.add(Material.getMaterial(armor));
 /*     */     }
 /*     */     
 /* 662 */     for (int i = 0; i < vampireAltarInfectMaterialsString.size(); i++) {
-/* 663 */       Material material = Material.valueOf((String)vampireAltarInfectMaterialsString.get(i));
+/* 663 */       Material material = Material.getMaterial((String)vampireAltarInfectMaterialsString.get(i));
 /*     */       
 /* 665 */       int quantity = 1;
 /*     */       try {
 /* 667 */         quantity = ((Integer)vampireAltarInfectQuantities.get(i)).intValue();
 /*     */       } catch (Exception e) {
 /* 669 */         e.printStackTrace();
-/* 670 */         SupernaturalsPlugin.log("Invalid VAMPIRE Infect Altar Quantities!");
+/* 670 */         SupernaturalsPlugin.log("Invalid VAMPIRE_I Infect Altar Quantities!");
 /*     */       }
 /*     */       
-/* 673 */       vampireAltarInfectRecipe.materialQuantities.put(material, Integer.valueOf(quantity));
+/* 673 */       vampireAltarInfectRecipe.getItemStacks().add(new ItemStack(material, Integer.valueOf(quantity)));
 /*     */     }
 /*     */     
 /* 676 */     for (int i = 0; i < vampireAltarCureMaterialsString.size(); i++) {
-/* 677 */       Material material = Material.valueOf((String)vampireAltarCureMaterialsString.get(i));
+/* 677 */       Material material = Material.getMaterial((String)vampireAltarCureMaterialsString.get(i));
 /*     */       
 /* 679 */       int quantity = 1;
 /*     */       try {
 /* 681 */         quantity = ((Integer)vampireAltarCureQuantities.get(i)).intValue();
 /*     */       } catch (Exception e) {
 /* 683 */         e.printStackTrace();
-/* 684 */         SupernaturalsPlugin.log("Invalid VAMPIRE Cure Altar Quantities!");
+/* 684 */         SupernaturalsPlugin.log("Invalid VAMPIRE_I Cure Altar Quantities!");
 /*     */       }
 /*     */       
-/* 687 */       vampireAltarCureRecipe.materialQuantities.put(material, Integer.valueOf(quantity));
+/* 687 */       vampireAltarCureRecipe.getItemStacks().add(new ItemStack(material, Integer.valueOf(quantity)));
 /*     */     }
 /*     */     
 /* 690 */     for (int i = 0; i < priestAltarMaterialsString.size(); i++) {
-/* 691 */       Material material = Material.valueOf((String)priestAltarMaterialsString.get(i));
+/* 691 */       Material material = Material.getMaterial((String)priestAltarMaterialsString.get(i));
 /*     */       
 /* 693 */       int quantity = 1;
 /*     */       try {
@@ -705,11 +707,11 @@ import org.bukkit.Location;
 /* 697 */         e.printStackTrace();
 /* 698 */         SupernaturalsPlugin.log("Invalid PRIEST Altar Quantities!");
 /*     */       }
-/* 700 */       priestAltarRecipe.materialQuantities.put(material, Integer.valueOf(quantity));
+/* 700 */       priestAltarRecipe.getItemStacks().add(new ItemStack(material, Integer.valueOf(quantity)));
 /*     */     }
 /*     */     
 /* 703 */     for (int i = 0; i < wereWolfbaneMaterialsString.size(); i++) {
-/* 704 */       Material material = Material.valueOf((String)wereWolfbaneMaterialsString.get(i));
+/* 704 */       Material material = Material.getMaterial((String)wereWolfbaneMaterialsString.get(i));
 /*     */       
 /* 706 */       int quantity = 1;
 /*     */       try {
@@ -718,11 +720,11 @@ import org.bukkit.Location;
 /* 710 */         e.printStackTrace();
 /* 711 */         SupernaturalsPlugin.log("Invalid Wolfbane Quantities!");
 /*     */       }
-/* 713 */       wereWolfbaneRecipe.materialQuantities.put(material, Integer.valueOf(quantity));
+/* 713 */       wereWolfbaneRecipe.getItemStacks().add(new ItemStack(material, Integer.valueOf(quantity)));
 /*     */     }
 /*     */     
 /* 716 */     for (int i = 0; i < priestDonationMaterialsString.size(); i++) {
-/* 717 */       Material material = Material.valueOf((String)priestDonationMaterialsString.get(i));
+/* 717 */       Material material = Material.getMaterial((String)priestDonationMaterialsString.get(i));
 /*     */       
 /* 719 */       int reward = 1;
 /*     */       try {
