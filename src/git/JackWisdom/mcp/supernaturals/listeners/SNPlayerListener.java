@@ -20,7 +20,8 @@ import org.bukkit.Location;
 /*     */ import org.bukkit.event.EventPriority;
 /*     */ import org.bukkit.event.Listener;
 /*     */ import org.bukkit.event.block.Action;
-/*     */ import org.bukkit.event.player.PlayerInteractEvent;
+/*     */ import org.bukkit.event.entity.PlayerDeathEvent;
+import org.bukkit.event.player.PlayerInteractEvent;
 /*     */ import org.bukkit.event.player.PlayerKickEvent;
 /*     */
 /*     */ import org.bukkit.material.Door;
@@ -51,11 +52,12 @@ import org.bukkit.Location;
 /*     */ 
 /*     */ 
 /*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
+              @EventHandler
+    public void playerDeath(PlayerDeathEvent event){
+     SuperNPlayer sn=SuperNManager.get(event.getEntity());
+     sn.getManager().deathEvent(event.getEntity());
+    }
+
 /*     */   @EventHandler(priority=EventPriority.LOW)
 /*     */   public void onPlayerInteract(PlayerInteractEvent event)
 /*     */   {

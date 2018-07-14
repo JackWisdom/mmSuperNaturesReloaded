@@ -46,11 +46,7 @@ import org.bukkit.event.player.AsyncPlayerChatEvent;
 /*     */   public SNPlayerMonitor(SupernaturalsPlugin instance) {
 /*  46 */     this.plugin = instance;
 /*     */   }
-            @EventHandler
-            public void playerDeath(PlayerDeathEvent event){
-            SuperNPlayer sn=SuperNManager.get(event.getEntity());
-            sn.getManager().deathEvent(event.getEntity());
-            }
+
 /*     */   @EventHandler(priority=EventPriority.MONITOR)
 /*     */   public void onPlayerChat(AsyncPlayerChatEvent event)
 /*     */   {
