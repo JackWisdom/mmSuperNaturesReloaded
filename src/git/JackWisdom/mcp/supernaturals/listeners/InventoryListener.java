@@ -65,6 +65,7 @@ public class InventoryListener implements Listener {
                         }else {
                             player.sendMessage(Language.PRIEST_DONATE_ONLY.toString());
                         }
+                        return;
                     }
                     case VAMPIRE_I:{
                         VampInfectGui donateGui= (VampInfectGui) iGui;
@@ -75,6 +76,7 @@ public class InventoryListener implements Listener {
                         }else {
                             player.sendMessage(Language.GUI_EXACTLY.toString());
                         }
+                        return;
                     }
                     case VAMPIRE_C:{
                         VampCureGui donateGui=(VampCureGui) iGui;
@@ -85,6 +87,7 @@ public class InventoryListener implements Listener {
                         }else {
                             player.sendMessage(Language.GUI_EXACTLY.toString());
                         }
+                        return;
                     }
                 }
        /*     }

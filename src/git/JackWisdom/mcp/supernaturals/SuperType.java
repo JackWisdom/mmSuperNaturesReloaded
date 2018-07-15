@@ -1,6 +1,8 @@
 package git.JackWisdom.mcp.supernaturals;
 
 import git.JackWisdom.mcp.supernaturals.manager.ClassManager;
+import git.JackWisdom.mcp.supernaturals.util.Language;
+
 import static git.JackWisdom.mcp.supernaturals.SupernaturalsPlugin.instance;
 import java.util.HashMap;
 
@@ -26,7 +28,10 @@ this.manager=manager;
     public boolean isDemon(){
         return this==VAMPIRE||this==GHOUL||this==DEMON;
     }
+    public String getLocalizedName(){
 
+        return Language.valueOf("SN_"+name()+"_NAME").toString();
+    }
     public ClassManager getManager(){
         return manager;
     }

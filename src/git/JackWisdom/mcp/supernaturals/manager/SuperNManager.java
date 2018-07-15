@@ -134,7 +134,7 @@ import org.bukkit.Bukkit;
 /* 126 */     if ((SNConfigHandler.convertNode) && 
 /* 127 */       (snplayer.hasPermission( "supernatural.convert." + superType + ".allow")))
 /*     */     {
-/* 129 */       sendMessage(snplayer, Language.SN_CMD_JOIN_NO_PREMISSION.toString().replace(LanguageTag.TYPE.toString(), superType.name()));
+/* 129 */       sendMessage(snplayer, Language.SN_CMD_JOIN_NO_PREMISSION.toString().replace(LanguageTag.TYPE.toString(), superType.getLocalizedName()));
 /*     */
 /* 133 */       return;
 /*     */     }
@@ -155,7 +155,7 @@ import org.bukkit.Bukkit;
 /* 146 */       snplayer.setPower(powerLevel);
 /*     */     }
 
-/* 151 */     sendMessage(snplayer, Language.SN_ADMIN_CMD_CONVERT_NOTICE.toString().replace(LanguageTag.TYPE.toString(), superType.name()));
+/* 151 */     sendMessage(snplayer, Language.SN_ADMIN_CMD_CURE_NOTICE.toString().replace(LanguageTag.TYPE.toString(), superType.name()));
 /*     */     
 /* 153 */     SupernaturalsPlugin.log(snplayer.getName() + " turned into a " + ChatColor.WHITE + superType + ChatColor.RED + "!");
 /*     */     
