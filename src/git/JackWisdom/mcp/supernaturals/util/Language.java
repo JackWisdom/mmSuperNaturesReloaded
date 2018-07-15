@@ -11,7 +11,7 @@
             GUI_PRIEST_DONATE_TITLE("gui_priest_donate_title","donate to gain power"),
             GUI_VAMCURE_TITLE("gui_vamcure_title","donate to cure"),
             GUI_VAMINFECT_TITLE("gui_vaminfect_title","donate to infect"),
-            GUI_EXACTLY("gui_exactly","you must place exactly as the frist line did"),
+            GUI_EXACTLY("gui_exactly","you must place exactly as the frist line did,your items have been removed for not putting right item"),
 /*  10 */   ADMIN_BOOST("admin_boost", "Admin boost!"), 
 /*  11 */   ALL_DATA_SAVE("all_data_save", "All config/player data has been saved!"), 
 /*  12 */   ALREADY_WHITELISTED("already_whitelisted", "You are already whitelisted!"), 

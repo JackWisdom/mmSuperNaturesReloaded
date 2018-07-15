@@ -41,7 +41,7 @@ import org.bukkit.inventory.ItemStack;
 /*     */ 
 /*     */ public class SNConfigHandler
 /*     */ {
-            public static List<Map<?, ?>> wolfBaneRecipeKey;
+            public static List<Map<?,?>> wolfBaneRecipeKey;
             public static Material wolfBane;
             public static String wolfBaneDispaly;
             public static List<String> wolfBaneLore;
@@ -318,7 +318,7 @@ import org.bukkit.inventory.ItemStack;
 /* 306 */       saveConfig();
 /*     */     }
                 String wb="Were.Wolfbane.";
-                wolfBane=Material.getMaterial(config.getString(wb+"Material"));
+                wolfBane=Material.valueOf(config.getString(wb+"Material"));
                 wolfBaneRecipeKey =config.getMapList(wb+"RecipeKey");
                 wolfBaneDispaly=config.getString(wb+"CustomName");
                 wolfBaneLore=config.getStringList(wb+"Description");
@@ -340,148 +340,148 @@ import org.bukkit.inventory.ItemStack;
 /* 320 */     woodMaterialsString = config.getStringList("Material.Wooden");
 /* 321 */     foodMaterialsString = config.getStringList("Material.Food");
 /*     */     
-/* 323 */     vampireJumpMaterial = config.getString("VAMPIRE_I.Materials.Jump", "RED_ROSE");
+/* 323 */     vampireJumpMaterial = config.getString("Vampire.Materials.Jump", "RED_ROSE");
 /*     */     
 /*     */ 
-/* 326 */     vampirePowerStart = config.getInt("VAMPIRE_I.Power.Start", 10000);
-/* 327 */     vampireKillSpreadCurse = config.getBoolean("VAMPIRE_I.Kill.SpreadCurse", true);
+/* 326 */     vampirePowerStart = config.getInt("Vampire.Power.Start", 10000);
+/* 327 */     vampireKillSpreadCurse = config.getBoolean("Vampire.Kill.SpreadCurse", true);
 /*     */     
-/* 329 */     vampireTimePowerGained = config.getDouble("VAMPIRE_I.Time.PowerGained", 15.0D);
+/* 329 */     vampireTimePowerGained = config.getDouble("Vampire.Time.PowerGained", 15.0D);
 /*     */     
-/* 331 */     vampireKillPowerCreatureGain = config.getInt("VAMPIRE_I.Power.Kill.CreatureGain", 100);
+/* 331 */     vampireKillPowerCreatureGain = config.getInt("Vampire.Power.Kill.CreatureGain", 100);
 /*     */     
-/* 333 */     vampireKillPowerPlayerGain = config.getInt("VAMPIRE_I.Power.Kill.PlayerGain", 500);
+/* 333 */     vampireKillPowerPlayerGain = config.getInt("Vampire.Power.Kill.PlayerGain", 500);
 /*     */     
-/* 335 */     vampireDeathPowerPenalty = config.getInt("VAMPIRE_I.Power.DeathPenalty", 10000);
+/* 335 */     vampireDeathPowerPenalty = config.getInt("Vampire.Power.DeathPenalty", 10000);
 /*     */     
-/* 337 */     vampireDamageFactor = config.getDouble("VAMPIRE_I.DamageFactor.AttackBonus", 0.3D);
+/* 337 */     vampireDamageFactor = config.getDouble("Vampire.DamageFactor.AttackBonus", 0.3D);
 /*     */     
-/* 339 */     vampireDamageReceivedFactor = config.getDouble("VAMPIRE_I.DamageFactor.DefenseBonus", 0.8D);
+/* 339 */     vampireDamageReceivedFactor = config.getDouble("Vampire.DamageFactor.DefenseBonus", 0.8D);
 /*     */     
-/* 341 */     woodFactor = config.getDouble("VAMPIRE_I.DamageFactor.Wood", 1.5D);
-/* 342 */     vampireBurnInSunlight = config.getBoolean("VAMPIRE_I.Burn.InSunlight", true);
+/* 341 */     woodFactor = config.getDouble("Vampire.DamageFactor.Wood", 1.5D);
+/* 342 */     vampireBurnInSunlight = config.getBoolean("Vampire.Burn.InSunlight", true);
 /*     */     
-/* 344 */     vampireBurnMessageEnabled = config.getBoolean("VAMPIRE_I.Burn.MessageEnabled", true);
+/* 344 */     vampireBurnMessageEnabled = config.getBoolean("Vampire.Burn.MessageEnabled", true);
 /*     */     
-/* 346 */     vampireCombustFireTicks = config.getInt("VAMPIRE_I.Burn.FireTicks", 3);
+/* 346 */     vampireCombustFireTicks = config.getInt("Vampire.Burn.FireTicks", 3);
 /*     */     
-/* 348 */     jumpDeltaSpeed = config.getDouble("VAMPIRE_I.JumpDelta", 1.2D);
-/* 349 */     jumpBloodCost = config.getInt("VAMPIRE_I.Power.JumpCost", 1000);
-/* 350 */     vampireTimeHealthGained = config.getDouble("VAMPIRE_I.Time.HealthGained", 0.5D);
+/* 348 */     jumpDeltaSpeed = config.getDouble("Vampire.JumpDelta", 1.2D);
+/* 349 */     jumpBloodCost = config.getInt("Vampire.Power.JumpCost", 1000);
+/* 350 */     vampireTimeHealthGained = config.getDouble("Vampire.Time.HealthGained", 0.5D);
 /*     */     
-/* 352 */     vampireHealthCost = config.getDouble("VAMPIRE_I.Power.HealingCost", 60.0D);
-/* 353 */     vampireDrowningCost = config.getInt("VAMPIRE_I.Power.DrowningCost", 90);
-/* 354 */     vampireTeleportCost = config.getInt("VAMPIRE_I.Power.TeleportCost", 9000);
-/* 355 */     vampireTeleportMaterial = config.getString("VAMPIRE_I.TeleportMarker.Material", "RED_ROSE");
+/* 352 */     vampireHealthCost = config.getDouble("Vampire.Power.HealingCost", 60.0D);
+/* 353 */     vampireDrowningCost = config.getInt("Vampire.Power.DrowningCost", 90);
+/* 354 */     vampireTeleportCost = config.getInt("Vampire.Power.TeleportCost", 9000);
+/* 355 */     vampireTeleportMaterial = config.getString("Vampire.TeleportMarker.Material", "RED_ROSE");
 /*     */     
-/* 357 */     vampireTruceString = config.getStringList("VAMPIRE_I.Truce.Creatures");
-/* 358 */     vampireMaterial = config.getString("VAMPIRE_I.Spell.Material", "BOOK");
-/* 359 */     vampireHelmet = config.getString("VAMPIRE_I.Burn.HelmetProtection", "GOLD_HELMET");
+/* 357 */     vampireTruceString = config.getStringList("Vampire.Truce.Creatures");
+/* 358 */     vampireMaterial = config.getString("Vampire.Spell.Material", "BOOK");
+/* 359 */     vampireHelmet = config.getString("Vampire.Burn.HelmetProtection", "GOLD_HELMET");
 /*     */     
-/* 361 */     vampireWeaponsString = config.getStringList("VAMPIRE_I.Weapon.Restrictions");
+/* 361 */     vampireWeaponsString = config.getStringList("Vampire.Weapon.Restrictions");
 /*     */     
-/* 363 */     vampireArmorString = config.getStringList("VAMPIRE_I.Armor");
-/* 364 */     vampireHungerRegainPlayer = config.getInt("VAMPIRE_I.GainHunger.Player");
-/* 365 */     vampireHungerRegainMob = config.getInt("VAMPIRE_I.GainHunger.Mob");
+/* 363 */     vampireArmorString = config.getStringList("Vampire.Armor");
+/* 364 */     vampireHungerRegainPlayer = config.getInt("Vampire.GainHunger.Player");
+/* 365 */     vampireHungerRegainMob = config.getInt("Vampire.GainHunger.Mob");
 /*     */     
-/* 367 */     vampireAltarInfectMaterial = config.getString("VAMPIRE_I.Altar.Infect.Material", "GOLD_BLOCK");
+/* 367 */     vampireAltarInfectMaterial = config.getString("Vampire.Altar.Infect.Material", "GOLD_BLOCK");
 /*     */     
-/* 369 */     vampireAltarInfectMaterialSurround = config.getString("VAMPIRE_I.Altar.Infect.Surrounding.Material", "OBSIDIAN");
+/* 369 */     vampireAltarInfectMaterialSurround = config.getString("Vampire.Altar.Infect.Surrounding.Material", "OBSIDIAN");
 /*     */     
-/* 371 */     vampireAltarInfectMaterialRadius = config.getDouble("VAMPIRE_I.Altar.Infect.Surrounding.Radius", 7.0D);
+/* 371 */     vampireAltarInfectMaterialRadius = config.getDouble("Vampire.Altar.Infect.Surrounding.Radius", 7.0D);
 /*     */     
-/* 373 */     vampireAltarInfectMaterialSurroundCount = config.getInt("VAMPIRE_I.Altar.Infect.Surrounding.Count", 20);
+/* 373 */     vampireAltarInfectMaterialSurroundCount = config.getInt("Vampire.Altar.Infect.Surrounding.Count", 20);
 /*     */     
-/* 375 */     vampireAltarInfectMaterialsString = config.getStringList("VAMPIRE_I.Altar.Infect.Recipe.Materials");
+/* 375 */     vampireAltarInfectMaterialsString = config.getStringList("Vampire.Altar.Infect.Recipe.Materials");
 /*     */     
-/* 377 */     vampireAltarInfectQuantities = config.getIntegerList("VAMPIRE_I.Altar.Infect.Recipe.Quantities");
-/*     */     
-/*     */ 
-/* 380 */     vampireAltarCureMaterial = config.getString("VAMPIRE_I.Altar.Cure.Material", "LAPIS_BLOCK");
-/*     */     
-/* 382 */     vampireAltarCureMaterialSurround = config.getString("VAMPIRE_I.Altar.Cure.Surrounding.Material", "GLOWSTONE");
-/*     */     
-/* 384 */     vampireAltarCureMaterialRadius = config.getDouble("VAMPIRE_I.Altar.Cure.Surrounding.Radius", 7.0D);
-/*     */     
-/* 386 */     vampireAltarCureMaterialSurroundCount = config.getInt("VAMPIRE_I.Altar.Cure.Surrounding.Count", 20);
-/*     */     
-/* 388 */     vampireAltarCureMaterialsString = config.getStringList("VAMPIRE_I.Altar.Cure.Recipe.Materials");
-/*     */     
-/* 390 */     vampireAltarCureQuantities = config.getIntegerList("VAMPIRE_I.Altar.Cure.Recipe.Quantities");
+/* 377 */     vampireAltarInfectQuantities = config.getIntegerList("Vampire.Altar.Infect.Recipe.Quantities");
 /*     */     
 /*     */ 
-/* 393 */     vampireHallMessage = config.getString("VAMPIRE_I.Hall.Message", "Vampires");
+/* 380 */     vampireAltarCureMaterial = config.getString("Vampire.Altar.Cure.Material", "LAPIS_BLOCK");
+/*     */     
+/* 382 */     vampireAltarCureMaterialSurround = config.getString("Vampire.Altar.Cure.Surrounding.Material", "GLOWSTONE");
+/*     */     
+/* 384 */     vampireAltarCureMaterialRadius = config.getDouble("Vampire.Altar.Cure.Surrounding.Radius", 7.0D);
+/*     */     
+/* 386 */     vampireAltarCureMaterialSurroundCount = config.getInt("Vampire.Altar.Cure.Surrounding.Count", 20);
+/*     */     
+/* 388 */     vampireAltarCureMaterialsString = config.getStringList("Vampire.Altar.Cure.Recipe.Materials");
+/*     */     
+/* 390 */     vampireAltarCureQuantities = config.getIntegerList("Vampire.Altar.Cure.Recipe.Quantities");
 /*     */     
 /*     */ 
-/* 396 */     priestChurchWorld = config.getString("PRIEST.Church.World", "world");
-/* 397 */     priestChurchLocationX = config.getInt("PRIEST.Church.Location.X", 0);
-/* 398 */     priestChurchLocationY = config.getInt("PRIEST.Church.Location.Y", 80);
-/* 399 */     priestChurchLocationZ = config.getInt("PRIEST.Church.Location.Z", 0);
-/* 400 */     priestBanishWorld = config.getString("PRIEST.Banish.World", "world");
-/* 401 */     priestBanishLocationX = config.getInt("PRIEST.Banish.Location.X", 0);
-/* 402 */     priestBanishLocationY = config.getInt("PRIEST.Banish.Location.Y", 80);
-/* 403 */     priestBanishLocationZ = config.getInt("PRIEST.Banish.Location.Z", 0);
-/*     */     
-/* 405 */     priestPowerStart = config.getInt("PRIEST.Power.StartingAmount", 10000);
-/* 406 */     priestDeathPowerPenalty = config.getInt("PRIEST.Power.DeathPenalty", 2000);
-/*     */     
-/* 408 */     priestDamageFactorAttackSuper = config.getDouble("PRIEST.DamageFactor.AttackBonusSuper", 1.0D);
-/*     */     
-/* 410 */     priestDamageFactorAttackHuman = config.getDouble("PRIEST.DamageFactor.AttackBonusHuman", 0.0D);
-/*     */     
-/* 412 */     priestPowerBanish = config.getInt("PRIEST.Power.Banish", 4000);
-/* 413 */     priestPowerHeal = config.getInt("PRIEST.Power.HealOther", 1000);
-/* 414 */     priestHealAmount = config.getInt("PRIEST.Spell.HealAmount", 10);
-/* 415 */     priestPowerExorcise = config.getInt("PRIEST.Power.Exorcise", 9000);
-/* 416 */     priestPowerCure = config.getInt("PRIEST.Power.Cure", 1000);
-/* 417 */     priestPowerDrain = config.getInt("PRIEST.Power.Drain", 1000);
-/* 418 */     priestPowerGuardianAngel = config.getInt("PRIEST.Power.GuardianAngel", 5000);
-/*     */     
-/* 420 */     priestDrainFactor = config.getDouble("PRIEST.Spell.DrainFactor", 0.15D);
-/* 421 */     priestFireTicks = config.getInt("PRIEST.DamageFactor.FireTicks", 50);
-/* 422 */     priestAltarMaterial = config.getString("PRIEST.Church.AltarMaterial", "DIAMOND_BLOCK");
-/*     */     
-/* 424 */     priestMaterialsString = config.getStringList("PRIEST.Spell.Material");
-/* 425 */     priestSpellGuardianAngel = config.getString("PRIEST.Spell.Material.GuardianAngel", "WOOL");
-/*     */     
-/* 427 */     priestAltarMaterialsString = config.getStringList("PRIEST.Church.Recipe.Materials");
-/*     */     
-/* 429 */     priestAltarQuantities = config.getIntegerList("PRIEST.Church.Recipe.Quantities");
-/*     */     
-/* 431 */     priestDonationMaterialsString = config.getStringList("PRIEST.Church.Donation.Materials");
-/*     */     
-/* 433 */     priestDonationRewards = config.getIntegerList("PRIEST.Church.Donation.Rewards");
-/*     */     
-/* 435 */     priestArmorString = config.getStringList("PRIEST.Armor");
-/* 436 */     priestWeaponsString = config.getStringList("PRIEST.Weapon.Restrictions");
+/* 393 */     vampireHallMessage = config.getString("Vampire.Hall.Message", "Vampires");
 /*     */     
 /*     */ 
-/* 439 */     ghoulPowerStart = config.getInt("GHOUL.Power.Start", 5000);
-/* 440 */     ghoulKillSpreadCurse = config.getBoolean("GHOUL.Kill.SpreadCurse", true);
+/* 396 */     priestChurchWorld = config.getString("Priest.Church.World", "world");
+/* 397 */     priestChurchLocationX = config.getInt("Priest.Church.Location.X", 0);
+/* 398 */     priestChurchLocationY = config.getInt("Priest.Church.Location.Y", 80);
+/* 399 */     priestChurchLocationZ = config.getInt("Priest.Church.Location.Z", 0);
+/* 400 */     priestBanishWorld = config.getString("Priest.Banish.World", "world");
+/* 401 */     priestBanishLocationX = config.getInt("Priest.Banish.Location.X", 0);
+/* 402 */     priestBanishLocationY = config.getInt("Priest.Banish.Location.Y", 80);
+/* 403 */     priestBanishLocationZ = config.getInt("Priest.Banish.Location.Z", 0);
 /*     */     
-/* 442 */     ghoulKillPowerCreatureGain = config.getInt("GHOUL.Power.Kill.CreatureGain", 200);
+/* 405 */     priestPowerStart = config.getInt("Priest.Power.StartingAmount", 10000);
+/* 406 */     priestDeathPowerPenalty = config.getInt("Priest.Power.DeathPenalty", 2000);
 /*     */     
-/* 444 */     ghoulKillPowerPlayerGain = config.getInt("GHOUL.Power.Kill.PlayerGain", 1000);
+/* 408 */     priestDamageFactorAttackSuper = config.getDouble("Priest.DamageFactor.AttackBonusSuper", 1.0D);
 /*     */     
-/* 446 */     ghoulDeathPowerPenalty = config.getInt("GHOUL.Power.DeathPenalty", 2000);
+/* 410 */     priestDamageFactorAttackHuman = config.getDouble("Priest.DamageFactor.AttackBonusHuman", 0.0D);
 /*     */     
-/* 448 */     ghoulDamageReceivedFactor = config.getDouble("GHOUL.DamageFactor.DefenseBonus", 0.65D);
+/* 412 */     priestPowerBanish = config.getInt("Priest.Power.Banish", 4000);
+/* 413 */     priestPowerHeal = config.getInt("Priest.Power.HealOther", 1000);
+/* 414 */     priestHealAmount = config.getInt("Priest.Spell.HealAmount", 10);
+/* 415 */     priestPowerExorcise = config.getInt("Priest.Power.Exorcise", 9000);
+/* 416 */     priestPowerCure = config.getInt("Priest.Power.Cure", 1000);
+/* 417 */     priestPowerDrain = config.getInt("Priest.Power.Drain", 1000);
+/* 418 */     priestPowerGuardianAngel = config.getInt("Priest.Power.GuardianAngel", 5000);
 /*     */     
-/* 450 */     ghoulWeaponsString = config.getStringList("GHOUL.Weapon.Restrictions");
-/* 451 */     ghoulTruceString = config.getStringList("GHOUL.Truce.Creatures");
-/* 452 */     ghoulDamageFactor = config.getDouble("GHOUL.DamageFactor.AttackBonus", 2.0D);
+/* 420 */     priestDrainFactor = config.getDouble("Priest.Spell.DrainFactor", 0.15D);
+/* 421 */     priestFireTicks = config.getInt("Priest.DamageFactor.FireTicks", 50);
+/* 422 */     priestAltarMaterial = config.getString("Priest.Church.AltarMaterial", "DIAMOND_BLOCK");
 /*     */     
-/* 454 */     ghoulDamageWater = config.getInt("GHOUL.WaterDamage", 4);
-/* 455 */     ghoulHealthGained = config.getDouble("GHOUL.Time.HealthGained", 0.1D);
-/* 456 */     ghoulMaterial = config.getString("GHOUL.Summon.Material", "PORK");
-/* 457 */     ghoulBondMaterial = config.getString("GHOUL.UnholyBond.Material", "BONE");
+/* 424 */     priestMaterialsString = config.getStringList("Priest.Spell.Material");
+/* 425 */     priestSpellGuardianAngel = config.getString("Priest.Spell.Material.GuardianAngel", "WOOL");
 /*     */     
-/* 459 */     ghoulPowerSummonCost = config.getInt("GHOUL.Power.Summon", 1000);
-/* 460 */     ghoulPowerBond = config.getInt("GHOUL.Power.UnholyBond", 50);
-/* 461 */     ghoulWeaponImmunityString = config.getStringList("GHOUL.Immunity");
-/* 462 */     ghoulArmorString = config.getStringList("GHOUL.Armor");
-/* 463 */     ghoulRightClickSummon = config.getBoolean("GHOUL.RightClickSummon");
-/* 464 */     ghoulCureChance = config.getDouble("GHOUL.CureChance");
+/* 427 */     priestAltarMaterialsString = config.getStringList("Priest.Church.Recipe.Materials");
+/*     */     
+/* 429 */     priestAltarQuantities = config.getIntegerList("Priest.Church.Recipe.Quantities");
+/*     */     
+/* 431 */     priestDonationMaterialsString = config.getStringList("Priest.Church.Donation.Materials");
+/*     */     
+/* 433 */     priestDonationRewards = config.getIntegerList("Priest.Church.Donation.Rewards");
+/*     */     
+/* 435 */     priestArmorString = config.getStringList("Priest.Armor");
+/* 436 */     priestWeaponsString = config.getStringList("Priest.Weapon.Restrictions");
+/*     */     
+/*     */ 
+/* 439 */     ghoulPowerStart = config.getInt("Ghoul.Power.Start", 5000);
+/* 440 */     ghoulKillSpreadCurse = config.getBoolean("Ghoul.Kill.SpreadCurse", true);
+/*     */     
+/* 442 */     ghoulKillPowerCreatureGain = config.getInt("Ghoul.Power.Kill.CreatureGain", 200);
+/*     */     
+/* 444 */     ghoulKillPowerPlayerGain = config.getInt("Ghoul.Power.Kill.PlayerGain", 1000);
+/*     */     
+/* 446 */     ghoulDeathPowerPenalty = config.getInt("Ghoul.Power.DeathPenalty", 2000);
+/*     */     
+/* 448 */     ghoulDamageReceivedFactor = config.getDouble("Ghoul.DamageFactor.DefenseBonus", 0.65D);
+/*     */     
+/* 450 */     ghoulWeaponsString = config.getStringList("Ghoul.Weapon.Restrictions");
+/* 451 */     ghoulTruceString = config.getStringList("Ghoul.Truce.Creatures");
+/* 452 */     ghoulDamageFactor = config.getDouble("Ghoul.DamageFactor.AttackBonus", 2.0D);
+/*     */     
+/* 454 */     ghoulDamageWater = config.getInt("Ghoul.WaterDamage", 4);
+/* 455 */     ghoulHealthGained = config.getDouble("Ghoul.Time.HealthGained", 0.1D);
+/* 456 */     ghoulMaterial = config.getString("Ghoul.Summon.Material", "PORK");
+/* 457 */     ghoulBondMaterial = config.getString("Ghoul.UnholyBond.Material", "BONE");
+/*     */     
+/* 459 */     ghoulPowerSummonCost = config.getInt("Ghoul.Power.Summon", 1000);
+/* 460 */     ghoulPowerBond = config.getInt("Ghoul.Power.UnholyBond", 50);
+/* 461 */     ghoulWeaponImmunityString = config.getStringList("Ghoul.Immunity");
+/* 462 */     ghoulArmorString = config.getStringList("Ghoul.Armor");
+/* 463 */     ghoulRightClickSummon = config.getBoolean("Ghoul.RightClickSummon");
+/* 464 */     ghoulCureChance = config.getDouble("Ghoul.CureChance");
 /*     */     
 /* 466 */     dashDeltaSpeed = config.getDouble("Were.DashDelta", 4.0D);
 /* 467 */     dashBloodCost = config.getInt("Were.Power.Dash", 400);
@@ -506,28 +506,28 @@ import org.bukkit.inventory.ItemStack;
 /* 489 */     wereArmorString = config.getStringList("Were.Armor");
 /* 490 */     wereWeaponsString = config.getStringList("Were.Weapon.Restrictions");
 /*     */     
-/* 492 */     demonPowerStart = config.getInt("DEMON.Power.Start", 10000);
-/* 493 */     demonDeathPowerPenalty = config.getInt("DEMON.Power.DeathPenalty", 10000);
+/* 492 */     demonPowerStart = config.getInt("Demon.Power.Start", 10000);
+/* 493 */     demonDeathPowerPenalty = config.getInt("Demon.Power.DeathPenalty", 10000);
 /*     */     
-/* 495 */     demonKillPowerCreatureGain = config.getInt("DEMON.Power.CreatureKill", 20);
+/* 495 */     demonKillPowerCreatureGain = config.getInt("Demon.Power.CreatureKill", 20);
 /*     */     
-/* 497 */     demonKillPowerPlayerGain = config.getInt("DEMON.Power.PlayerKill", 100);
-/* 498 */     demonPowerGain = config.getInt("DEMON.Power.Gain", 40);
-/* 499 */     demonPowerLoss = config.getInt("DEMON.Power.Loss", 4);
-/* 500 */     demonPowerFireball = config.getInt("DEMON.Power.Fireball", 2000);
-/* 501 */     demonHealing = config.getInt("DEMON.Healing", 1);
-/* 502 */     demonMaterial = config.getString("DEMON.Fireball.Material", "REDSTONE");
-/* 503 */     demonFireballDamage = config.getInt("DEMON.Fireball.Damage", 10);
-/* 504 */     demonPowerSnare = config.getInt("DEMON.Power.Snare", 1000);
-/* 505 */     demonSnareDuration = config.getInt("DEMON.Snare.Duration", 10000);
-/* 506 */     demonSnareMaterial = config.getString("DEMON.Snare.Material", "INK_SACK");
+/* 497 */     demonKillPowerPlayerGain = config.getInt("Demon.Power.PlayerKill", 100);
+/* 498 */     demonPowerGain = config.getInt("Demon.Power.Gain", 40);
+/* 499 */     demonPowerLoss = config.getInt("Demon.Power.Loss", 4);
+/* 500 */     demonPowerFireball = config.getInt("Demon.Power.Fireball", 2000);
+/* 501 */     demonHealing = config.getInt("Demon.Healing", 1);
+/* 502 */     demonMaterial = config.getString("Demon.Fireball.Material", "REDSTONE");
+/* 503 */     demonFireballDamage = config.getInt("Demon.Fireball.Damage", 10);
+/* 504 */     demonPowerSnare = config.getInt("Demon.Power.Snare", 1000);
+/* 505 */     demonSnareDuration = config.getInt("Demon.Snare.Duration", 10000);
+/* 506 */     demonSnareMaterial = config.getString("Demon.Snare.Material", "INK_SACK");
 /*     */     
-/* 508 */     demonSnowballAmount = config.getInt("DEMON.SnowballAmount", 30);
-/* 509 */     demonArmorString = config.getStringList("DEMON.Armor");
-/* 510 */     demonWeaponsString = config.getStringList("DEMON.Weapon.Restrictions");
-/* 511 */     demonFireTicks = config.getInt("DEMON.DamageFactor.FireTicks", 50);
-/* 512 */     demonConvertPower = config.getInt("DEMON.Power.Convert", 2000);
-/* 513 */     demonHallMessage = config.getString("DEMON.Hall.Message", "Demons");
+/* 508 */     demonSnowballAmount = config.getInt("Demon.SnowballAmount", 30);
+/* 509 */     demonArmorString = config.getStringList("Demon.Armor");
+/* 510 */     demonWeaponsString = config.getStringList("Demon.Weapon.Restrictions");
+/* 511 */     demonFireTicks = config.getInt("Demon.DamageFactor.FireTicks", 50);
+/* 512 */     demonConvertPower = config.getInt("Demon.Power.Convert", 2000);
+/* 513 */     demonHallMessage = config.getString("Demon.Hall.Message", "Demons");
 /*     */     
 /* 515 */     hunterPowerStart = config.getInt("WitchHunter.Power.StartingPower", 10000);
 /*     */     
@@ -588,23 +588,23 @@ import org.bukkit.inventory.ItemStack;
 /*     */     
 /* 572 */     for (String weapon : angelWeaponsString) {
                 
-/* 573 */       angelWeapons.add(Material.getMaterial(weapon));
+/* 573 */       angelWeapons.add(Material.valueOf(weapon));
 /*     */     }
 /*     */     
 /* 576 */     for (String armor : angelArmorString) {
-/* 577 */       angelArmor.add(Material.getMaterial(armor));
+/* 577 */       angelArmor.add(Material.valueOf(armor));
 /*     */     }
 /*     */     
 /* 580 */     for (String wood : woodMaterialsString) {
-/* 581 */       woodMaterials.add(Material.getMaterial(wood));
+/* 581 */       woodMaterials.add(Material.valueOf(wood));
 /*     */     }
 /*     */     
 /* 584 */     for (String food : foodMaterialsString) {
-/* 585 */       foodMaterials.add(Material.getMaterial(food));
+/* 585 */       foodMaterials.add(Material.valueOf(food));
 /*     */     }
 /*     */     
 /* 588 */     for (String block : burnableBlocksString) {
-/* 589 */       burnableBlocks.add(Material.getMaterial(block));
+/* 589 */       burnableBlocks.add(Material.valueOf(block));
 /*     */     }
 /*     */     
 /* 592 */     for (String creature : vampireTruceString) {
@@ -615,7 +615,7 @@ import org.bukkit.inventory.ItemStack;
 /*     */     }
 /*     */     
 /* 599 */     for (String material : priestMaterialsString) {
-/* 600 */       priestSpellMaterials.add(Material.getMaterial(material));
+/* 600 */       priestSpellMaterials.add(Material.valueOf(material));
 /*     */     }
 /*     */     
 /* 603 */     for (String creature : ghoulTruceString) {
@@ -626,60 +626,60 @@ import org.bukkit.inventory.ItemStack;
 /*     */     }
 /*     */     
 /* 610 */     for (String weapon : ghoulWeaponsString) {
-/* 611 */       ghoulWeapons.add(Material.getMaterial(weapon));
+/* 611 */       ghoulWeapons.add(Material.valueOf(weapon));
 /*     */     }
 /*     */     
 /* 614 */     for (String weapon : demonWeaponsString) {
-/* 615 */       demonWeapons.add(Material.getMaterial(weapon));
+/* 615 */       demonWeapons.add(Material.valueOf(weapon));
 /*     */     }
 /*     */     
 /* 618 */     for (String weapon : hunterWeaponsString) {
-/* 619 */       hunterWeapons.add(Material.getMaterial(weapon));
+/* 619 */       hunterWeapons.add(Material.valueOf(weapon));
 /*     */     }
 /*     */     
 /* 622 */     for (String weapon : priestWeaponsString) {
-/* 623 */       priestWeapons.add(Material.getMaterial(weapon));
+/* 623 */       priestWeapons.add(Material.valueOf(weapon));
 /*     */     }
 /*     */     
 /* 626 */     for (String weapon : vampireWeaponsString) {
-/* 627 */       vampireWeapons.add(Material.getMaterial(weapon));
+/* 627 */       vampireWeapons.add(Material.valueOf(weapon));
 /*     */     }
 /*     */     
 /* 630 */     for (String weapon : wereWeaponsString) {
-/* 631 */       wereWeapons.add(Material.getMaterial(weapon));
+/* 631 */       wereWeapons.add(Material.valueOf(weapon));
 /*     */     }
 /*     */     
 /* 634 */     for (String weapon : ghoulWeaponImmunityString) {
-/* 635 */       ghoulWeaponImmunity.add(Material.getMaterial(weapon));
+/* 635 */       ghoulWeaponImmunity.add(Material.valueOf(weapon));
 /*     */     }
 /*     */     
 /* 638 */     for (String armor : hunterArmorString) {
-/* 639 */       hunterArmor.add(Material.getMaterial(armor));
+/* 639 */       hunterArmor.add(Material.valueOf(armor));
 /*     */     }
 /*     */     
 /* 642 */     for (String armor : ghoulArmorString) {
-/* 643 */       ghoulArmor.add(Material.getMaterial(armor));
+/* 643 */       ghoulArmor.add(Material.valueOf(armor));
 /*     */     }
 /*     */     
 /* 646 */     for (String armor : demonArmorString) {
-/* 647 */       demonArmor.add(Material.getMaterial(armor));
+/* 647 */       demonArmor.add(Material.valueOf(armor));
 /*     */     }
 /*     */     
 /* 650 */     for (String armor : priestArmorString) {
  
-/* 651 */       priestArmor.add(Material.getMaterial(armor));
+/* 651 */       priestArmor.add(Material.valueOf(armor));
 /*     */     }
 /*     */     
 /* 654 */     for (String armor : vampireArmorString) {
-/* 655 */       vampireArmor.add(Material.getMaterial(armor));
+/* 655 */       vampireArmor.add(Material.valueOf(armor));
 /*     */     }
 /*     */     
 /* 658 */     for (String armor : wereArmorString) {
-/* 659 */       wereArmor.add(Material.getMaterial(armor));
+/* 659 */       wereArmor.add(Material.valueOf(armor));
 /*     */     }
 /*     */     
 /* 662 */     for (int i = 0; i < vampireAltarInfectMaterialsString.size(); i++) {
-/* 663 */       Material material = Material.getMaterial((String)vampireAltarInfectMaterialsString.get(i));
+/* 663 */       Material material = Material.valueOf((String)vampireAltarInfectMaterialsString.get(i));
 /*     */       
 /* 665 */       int quantity = 1;
 /*     */       try {
@@ -693,7 +693,7 @@ import org.bukkit.inventory.ItemStack;
 /*     */     }
 /*     */     
 /* 676 */     for (int i = 0; i < vampireAltarCureMaterialsString.size(); i++) {
-/* 677 */       Material material = Material.getMaterial((String)vampireAltarCureMaterialsString.get(i));
+/* 677 */       Material material = Material.valueOf((String)vampireAltarCureMaterialsString.get(i));
 /*     */       
 /* 679 */       int quantity = 1;
 /*     */       try {
@@ -707,8 +707,8 @@ import org.bukkit.inventory.ItemStack;
 /*     */     }
 /*     */     
 /* 690 */     for (int i = 0; i < priestAltarMaterialsString.size(); i++) {
-/* 691 */       Material material = Material.getMaterial((String)priestAltarMaterialsString.get(i));
-/*     */       
+/* 691 */       Material material = Material.valueOf((String)priestAltarMaterialsString.get(i));
+/*     */
 /* 693 */       int quantity = 1;
 /*     */       try {
 /* 695 */         quantity = ((Integer)priestAltarQuantities.get(i)).intValue();
@@ -716,13 +716,14 @@ import org.bukkit.inventory.ItemStack;
 /* 697 */         e.printStackTrace();
 /* 698 */         SupernaturalsPlugin.log("Invalid PRIEST Altar Quantities!");
 /*     */       }
+                
 /* 700 */       priestAltarRecipe.getItemStacks().add(new ItemStack(material, Integer.valueOf(quantity)));
 /*     */     }
 /*     */     
 
 /*     */     
 /* 716 */     for (int i = 0; i < priestDonationMaterialsString.size(); i++) {
-/* 717 */       Material material = Material.getMaterial((String)priestDonationMaterialsString.get(i));
+/* 717 */       Material material = Material.valueOf((String)priestDonationMaterialsString.get(i));
 /*     */       
 /* 719 */       int reward = 1;
 /*     */       try {

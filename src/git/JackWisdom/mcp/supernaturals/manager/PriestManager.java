@@ -28,7 +28,9 @@ import org.bukkit.Location;
 /*     */ import org.bukkit.event.player.PlayerInteractEvent;
 /*     */ import org.bukkit.inventory.ItemStack;
 /*     */ import org.bukkit.inventory.PlayerInventory;
-/*     */ 
+import org.bukkit.scheduler.BukkitRunnable;
+
+/*     */
 /*     */ 
 /*     */ 
 /*     */ 
@@ -208,8 +210,14 @@ import org.bukkit.Location;
 /*     */           
 /* 207 */           SuperNManager.cure(snplayer);
 /*     */         } else {
-            PDonateGui pDonateGui=new PDonateGui(SNConfigHandler.priestAltarRecipe);
-            pDonateGui.openInv(player);
+
+            new BukkitRunnable() {
+                @Override
+                public void run() {
+                    PDonateGui pDonateGui=new PDonateGui(SNConfigHandler.priestAltarRecipe,Language.GUI_PRIEST_DONATE_TITLE.toString());
+                    pDonateGui.openInv(player);
+                }
+            }.runTaskAsynchronously(SupernaturalsPlugin.instance);
                  }
 /*     */       }  else {
 /* 238 */         SuperNManager.sendMessage(snplayer, Language.PRIEST_ALTAR_POWER_HUMAN.toString());
@@ -232,8 +240,13 @@ import org.bukkit.Location;
 /*     */           }
 /* 257 */           return;
 /*     */         }
-                DonateGui donateGui=new DonateGui(SNConfigHandler.priestAltarRecipe);
-                donateGui.openInv(player);
+                new BukkitRunnable() {
+                    @Override
+                    public void run() {
+                        DonateGui donateGui=new DonateGui(SNConfigHandler.priestAltarRecipe,Language.GUI_DONATE_TITLE.toString());
+                        donateGui.openInv(player);
+                    }
+                }.runTaskAsynchronously(SupernaturalsPlugin.instance);
 /* 259 */        //here add inv
 /*     */       }
 /*     */

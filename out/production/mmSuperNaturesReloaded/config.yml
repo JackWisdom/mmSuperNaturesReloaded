@@ -6,7 +6,7 @@ EnableChatColors: true
 EnableLoginMessage: true
 EnableJoinCommand: false
 Storage:
-  sql: true
+  sql: false
   url: "jdbc:mysql://localhost:3306/mtest?user=root&password=123456&useUnicode=true&characterEncoding=utf-8&useSSL=false"
   prefix: "mm_"
 Supernatural:
@@ -17,7 +17,7 @@ Supernatural:
   Types:
   - HUMAN
   - ANGLE
-  - VAMPIRE
+  - VAMPIRE_I
   - PRIEST
   - WEREWOLF
   - GHOUL
@@ -298,19 +298,38 @@ Were:
     Dash: FEATHER
   WolfTruce: true
   Wolfbane:
-    Trigger: BOWL
-    Materials:
-    - YELLOW_FLOWER
-    - RED_ROSE
-    - RED_MUSHROOM
-    - BROWN_MUSHROOM
-    - BOWL
-    Quantities:
-    - 10
-    - 10
-    - 10
-    - 10
-    - 1
+    Material: MUSHROOM_SOUP
+    CustomName: wolfBane
+    Description:
+    - lol
+    RecipeKey:
+      -  A: YELLOW_FLOWER
+      -  N: AIR
+      -  B: RED_ROSE
+      -  C: RED_MUSHROOM
+      -  D: REDSTONE
+      -  E: BROWN_MUSHROOM
+      -  F: BOWL
+    Recipe:
+    - "ANB"
+    - "CDE"
+    - "NFN"
+#    - "YELLOW_FLOWER,AIR,RED_ROSE"
+#    - "RED_MUSHROOM,RED_STONE,BROWN_MUSHROOM"
+#    - "AIR,BOWEL,AIR"
+#   Trigger: BOWL
+#   Materials:
+#   - YELLOW_FLOWER
+#   - RED_ROSE
+#    - RED_MUSHROOM
+#   - BROWN_MUSHROOM
+#    - BOWL
+#    Quantities:
+#    - 10
+#    - 10
+#    - 10
+#    - 10
+#    - 1
   Weapon:
     Restrictions:
     - BOW
@@ -510,7 +529,8 @@ Material:
   - RAW_FISH
   - CAKE
   - COOKIE
-  - COOKED_STEAK
+  - COOKED_MUTTON
+  - COOKED_BEEF
   - COOKED_CHICKEN
   - ROTTEN_FLESH
   - MELON

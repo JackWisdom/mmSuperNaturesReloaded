@@ -11,6 +11,7 @@ import git.JackWisdom.mcp.supernaturals.SupernaturalsPlugin;
 /*     */ import java.util.Arrays;
 /*     */ import java.util.logging.Level;
 /*     */
+import org.bukkit.Material;
 import org.bukkit.configuration.file.YamlConfiguration;
 /*     */ 
 /*     */ public class SNLanguageHandler
@@ -26,6 +27,7 @@ import org.bukkit.configuration.file.YamlConfiguration;
 /*     */   
 /*     */   public SNLanguageHandler(SupernaturalsPlugin instance)
 /*     */   {
+
 /*  27 */     plugin = instance;
 /*  29 */     defaultLanguage = "en";
 /*  30 */     languageFiles = new ArrayList(Arrays.asList(new String[] { defaultLanguage, "zh" }));

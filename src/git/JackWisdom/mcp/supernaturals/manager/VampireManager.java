@@ -4,6 +4,7 @@
 /*     */ import git.JackWisdom.mcp.supernaturals.SuperType;
 import git.JackWisdom.mcp.supernaturals.SupernaturalsPlugin;
 /*     */ import git.JackWisdom.mcp.supernaturals.events.VampireTeleportEvent;
+import git.JackWisdom.mcp.supernaturals.inventory.PDonateGui;
 import git.JackWisdom.mcp.supernaturals.inventory.VampCureGui;
 import git.JackWisdom.mcp.supernaturals.inventory.VampInfectGui;
 import git.JackWisdom.mcp.supernaturals.io.SNConfigHandler;
@@ -35,6 +36,7 @@ import org.bukkit.Location;
 /*     */ import org.bukkit.inventory.ItemStack;
 /*     */ import org.bukkit.inventory.PlayerInventory;
 /*     */ import org.bukkit.material.Door;
+import org.bukkit.scheduler.BukkitRunnable;
 /*     */
 
 /*     */
@@ -246,8 +248,7 @@ import org.bukkit.Location;
 /* 240 */       if ((helmet != null) && 
 /* 241 */         (!SNConfigHandler.vampireArmor.contains(helmet.getType())) && (!helmet.getType().equals(Material.WOOL)))
 /*     */       {
-                    System.out.println(helmet.getType());
-                    System.out.println(SNConfigHandler.vampireArmor.size());
+
 /* 243 */         inv.setHelmet(null);
 /* 244 */         dropItem(player, helmet);
 /*     */       }
@@ -371,8 +372,15 @@ import org.bukkit.Location;
 /*     */       
 /* 376 */       return;
 /*     */     }
-    VampInfectGui vampInfectGui=new VampInfectGui(SNConfigHandler.vampireAltarInfectRecipe);
-    vampInfectGui.openInv(player);
+
+
+    new BukkitRunnable() {
+        @Override
+        public void run() {
+            VampInfectGui vampInfectGui=new VampInfectGui(SNConfigHandler.vampireAltarInfectRecipe,Language.GUI_VAMINFECT_TITLE.toString());
+            vampInfectGui.openInv(player);
+        }
+    }.runTaskAsynchronously(SupernaturalsPlugin.instance);
 /*     */   }
 /*     */   
 /*     */   public void useAltarCure(Player player, Block centerBlock)
@@ -410,8 +418,14 @@ import org.bukkit.Location;
 /* 457 */       SuperNManager.sendMessage(snplayer, Language.VAMPIRE_ALTAR_CURE_FAIL.toString());
 return;
 /*     */     }
-    VampCureGui bc=new VampCureGui(SNConfigHandler.vampireAltarCureRecipe);
-        bc.openInv(player);
+
+    new BukkitRunnable() {
+        @Override
+        public void run() {
+            VampCureGui bc=new VampCureGui(SNConfigHandler.vampireAltarCureRecipe,Language.GUI_VAMCURE_TITLE.toString());
+            bc.openInv(player);
+        }
+    }.runTaskAsynchronously(SupernaturalsPlugin.instance);
 /*     */   }
 
 /*     */   public boolean combustAdvanceTime(Player player, long milliseconds)

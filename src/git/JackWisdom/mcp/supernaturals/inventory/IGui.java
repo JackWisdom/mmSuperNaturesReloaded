@@ -18,8 +18,10 @@ public abstract class IGui implements InventoryHolder {
     @Nonnull
     public abstract InventoryType getType();
     public IGui(Recipes recipes,String title){
-        inventory= Bukkit.createInventory(this,18);
+
+        inventory= Bukkit.createInventory(this,18,title);
         for(ItemStack i:recipes.getItemStacks()){
+
             inventory.addItem(i);
         }
         //recipe muse lower than 9
@@ -28,8 +30,8 @@ public abstract class IGui implements InventoryHolder {
         this.inventory=inventory;
     }
     protected List<Material> getMaterialByLine(int line){
-        int start=(line-1)*9 +1;
-        int end=line*9;
+        int start=(line-1)*9;
+        int end=line*9-1;
         ArrayList<Material> stacks=new ArrayList<>();
         while (start<=end){
             if(inventory.getItem(start)==null||inventory.getItem(start).getType()==Material.AIR){
@@ -40,15 +42,22 @@ public abstract class IGui implements InventoryHolder {
         return stacks;
     }
     protected List<ItemStack> getItemsByLine(int line){
-        int start=(line-1)*9 +1;
-        int end=line*9;
+
+        int start=(line-1)*9 ;
+        int end=line*9-1;
+
         ArrayList<ItemStack> stacks=new ArrayList<>();
+
         while (start<=end){
+
             if(inventory.getItem(start)==null||inventory.getItem(start).getType()==Material.AIR){
+                start=start+1;
                 continue;
             }
             stacks.add(inventory.getItem(start));
+            start=start+1;
         }
+
         return stacks;
     }
     protected boolean equalsByMaterial(List<Material> obj,List<Material> sample){
@@ -61,13 +70,18 @@ public abstract class IGui implements InventoryHolder {
     }
     protected boolean equals(List<ItemStack> s1,List<ItemStack> s2){
         int i=0;
+
         if(s1.size()!=s2.size()){
             return false;
         }
-        while (i<=s1.size()){
+        System.out.println(s1.size()+"|"+s2.size());
+        while (i<s1.size()){
+            System.out.println(i);
             if(itemEqual(s1.get(i),s2.get(i))){
+                i=i+1;
                 continue;
             }
+            i=i+1;
             return false;
         }
         return true;
