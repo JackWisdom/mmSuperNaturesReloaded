@@ -19,8 +19,10 @@
 /*     */ import org.bukkit.event.entity.EntityDamageByEntityEvent;
 /*     */ import org.bukkit.event.entity.EntityDamageEvent;
 /*     */
-/*     */ import org.bukkit.event.player.PlayerInteractEvent;
-/*     */ import org.bukkit.inventory.ItemStack;
+/*     */ import org.bukkit.event.entity.EntityShootBowEvent;
+import org.bukkit.event.player.PlayerInteractEvent;
+/*     */ import org.bukkit.event.player.PlayerItemConsumeEvent;
+import org.bukkit.inventory.ItemStack;
 /*     */ import org.bukkit.inventory.PlayerInventory;
 /*     */ import org.bukkit.util.Vector;
 /*     */ 
@@ -31,7 +33,7 @@
 /*     */   extends ClassManager
 /*     */ {
 /*  33 */   public HashMap<Wolf, SuperNPlayer> angelWolfMap = new HashMap();
-/*     */   
+/*     */     @Override
 /*     */   public void deathEvent(Player player)
 /*     */   {
 /*  37 */     SuperNPlayer snplayer = SuperNManager.get(player);
@@ -45,7 +47,13 @@
 /*  45 */       SuperNManager.cure(snplayer);
 /*     */     }
 /*     */   }
-/*     */   
+
+    @Override
+    public void killEvent(Player pDamager, SuperNPlayer damager, SuperNPlayer victim) {
+
+    }
+
+    /*     */     @Override
 /*     */   public double damagerEvent(EntityDamageByEntityEvent event, double damage)
 /*     */   {
 /*  51 */     Player player = (Player)event.getDamager();
@@ -66,7 +74,16 @@
 /*     */     }
 /*  67 */     return damage;
 /*     */   }
-/*     */   
+
+
+
+
+    @Override
+    public boolean shootArrow(Player shooter, EntityShootBowEvent event) {
+        return false;
+    }
+
+    /*     */     @Override
 /*     */   public void spellEvent(EntityDamageByEntityEvent event, Player target)
 /*     */   {
 /*  72 */     Player player = (Player)event.getDamager();
@@ -119,7 +136,7 @@
 /*     */     }
 /*     */   }
 /*     */   
-/*     */ 
+/*     */   @Override
 /*     */   public boolean playerInteract(PlayerInteractEvent event)
 /*     */   {
 /* 126 */     Player player = event.getPlayer();
@@ -143,10 +160,10 @@
 /*     */       
 /*     */ 
 /*     */ 
-/* 147 */       if ((itemInHandMaterial.equals(Material.RAW_BEEF)) || (itemInHandMaterial.equals(Material.BONE)) || (itemInHandMaterial.equals(Material.PORK)))
+/* 147 */       if ((itemInHandMaterial.equals(Material.BEEF)) || (itemInHandMaterial.equals(Material.BONE)) || (itemInHandMaterial.equals(Material.PORKCHOP)))
 /*     */       {
 /*     */ 
-/* 150 */         if (snplayer.getPower() > SNConfigHandler.angelSummonPowerCost) {
+/* 150 */         if (snplayer.getPower() <= SNConfigHandler.angelSummonPowerCost) {return false;}
 /* 151 */           if (itemInHandMaterial.toString().equals(SNConfigHandler.angelSummonCowMaterial))
 /*     */           {
 /* 153 */             player.getWorld().spawnEntity(plusOne, EntityType.COW);
@@ -190,13 +207,21 @@
 /*     */ 
 /* 191 */             return true;
 /*     */           }
-/*     */         }
+            /* 184 */           if (itemInHandMaterial.toString().equals(SNConfigHandler.angelSummonSheepMaterial))
+                /*     */           {
+                /* 186 */             player.getWorld().spawnEntity(plusOne, EntityType.SHEEP);
+                /* 187 */             event.setCancelled(true);
+                /* 188 */             SuperNManager.alterPower(snplayer, -SNConfigHandler.angelSummonPowerCost, Language.ANGEL_SUMMON_SHEEP.toString());
+                /*     */
+                /*     */
+                /* 191 */             return true;
+                /*     */           }
 /*     */       }
 /* 195 */       return false;
 /*     */     }
 /* 197 */     return false;
 /*     */   }
-/*     */   
+/*     */     @Override
 /*     */   public double victimEvent(EntityDamageEvent event, double damage)
 /*     */   {
 /* 202 */     if (event.getCause().equals(EntityDamageEvent.DamageCause.FALL)) {
@@ -205,7 +230,13 @@
 /*     */     }
 /* 206 */     return damage;
 /*     */   }
-/*     */   
+
+    @Override
+    public void eatItem(PlayerItemConsumeEvent event) {
+
+    }
+
+    /*     */
 /*     */   public static boolean jump(Player player, double deltaSpeed) {
 /* 210 */     SuperNPlayer snplayer = SuperNManager.get(player);
 /*     */     
@@ -225,7 +256,7 @@
 /* 225 */     player.setVelocity(player.getVelocity().add(vjadd));
 /* 226 */     return true;
 /*     */   }
-/*     */   
+/*     */     @Override
 /*     */   public void armorCheck(Player player)
 /*     */   {
 /* 231 */     if (!player.hasPermission("supernatural.player.ignorearmor")) {
@@ -260,7 +291,7 @@
 /*     */       }
 /*     */     }
 /*     */   }
-/*     */   
+/*     */     @Override
 /*     */   public void waterAdvanceTime(Player player)
 /*     */   {
 /* 266 */     if (player.isDead()) {
@@ -277,7 +308,7 @@
 /*     */     
 /* 278 */     Material material = player.getLocation().getBlock().getType();
 /*     */     
-/* 280 */     if ((material == Material.STATIONARY_WATER) || (material == Material.WATER)) {
+/* 280 */     if ( (material == Material.WATER)) {
 /* 281 */       SuperNManager.alterPower(snplayer, SNConfigHandler.angelSwimPowerGain, Language.ANGEL_SWIM.toString());
 /*     */     }
 /*     */   }

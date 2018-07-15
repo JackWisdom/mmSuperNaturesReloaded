@@ -22,8 +22,10 @@ import git.JackWisdom.mcp.supernaturals.SupernaturalsPlugin;
 /*     */ import org.bukkit.event.entity.EntityDamageByEntityEvent;
 /*     */ import org.bukkit.event.entity.EntityDamageEvent;
 /*     */
-/*     */ import org.bukkit.event.player.PlayerInteractEvent;
-/*     */ import org.bukkit.inventory.ItemStack;
+/*     */ import org.bukkit.event.entity.EntityShootBowEvent;
+import org.bukkit.event.player.PlayerInteractEvent;
+/*     */ import org.bukkit.event.player.PlayerItemConsumeEvent;
+import org.bukkit.inventory.ItemStack;
 /*     */ import org.bukkit.inventory.PlayerInventory;
 /*     */ 
 /*     */ 
@@ -87,7 +89,13 @@ import git.JackWisdom.mcp.supernaturals.SupernaturalsPlugin;
 /*     */ 
 /*  87 */     return damage;
 /*     */   }
-/*     */   
+
+    @Override
+    public void eatItem(PlayerItemConsumeEvent event) {
+
+    }
+
+    /*     */      @Override
 /*     */   public double damagerEvent(EntityDamageByEntityEvent event, double damage)
 /*     */   {
 /*  92 */     Entity damager = event.getDamager();
@@ -107,7 +115,15 @@ import git.JackWisdom.mcp.supernaturals.SupernaturalsPlugin;
 /*     */     
 /* 107 */     return damage;
 /*     */   }
-/*     */   
+
+
+
+    @Override
+    public boolean shootArrow(Player shooter, EntityShootBowEvent event) {
+        return false;
+    }
+    @Override
+    /*     */
 /*     */   public void deathEvent(Player player)
 /*     */   {
 /* 112 */     SuperNPlayer snplayer = SuperNManager.get(player);
@@ -116,7 +132,7 @@ import git.JackWisdom.mcp.supernaturals.SupernaturalsPlugin;
 /*     */   
 /*     */ 
 /*     */ 
-/*     */ 
+/*     */    @Override
 /*     */   public void killEvent(Player pDamager, SuperNPlayer damager, SuperNPlayer victim)
 /*     */   {
 /* 121 */     if (victim == null) {
@@ -146,7 +162,7 @@ import git.JackWisdom.mcp.supernaturals.SupernaturalsPlugin;
 /*     */ 
 /*     */ 
 /*     */ 
-/*     */ 
+/*     */    @Override
 /*     */   public boolean playerInteract(PlayerInteractEvent event)
 /*     */   {
 /* 151 */     Action action = event.getAction();
@@ -173,7 +189,7 @@ import git.JackWisdom.mcp.supernaturals.SupernaturalsPlugin;
 /*     */ 
 /*     */ 
 /*     */ 
-/*     */ 
+/*     */    @Override
 /*     */   public void armorCheck(Player player)
 /*     */   {
 /* 178 */     if (!player.hasPermission("supernatural.player.ignorearmor")) {
@@ -184,7 +200,7 @@ import git.JackWisdom.mcp.supernaturals.SupernaturalsPlugin;
 /* 183 */       ItemStack boots = inv.getBoots();
 /*     */       
 /* 185 */       if ((helmet != null) && 
-/* 186 */         (!SNConfigHandler.ghoulArmor.contains(helmet.getType())) && (!helmet.getType().equals(Material.WOOL)))
+/* 186 */         (!SNConfigHandler.ghoulArmor.contains(helmet.getType())) && (!helmet.getType().isBlock()))
 /*     */       {
 /* 188 */         inv.setHelmet(null);
 /* 189 */         dropItem(player, helmet);
@@ -213,7 +229,7 @@ import git.JackWisdom.mcp.supernaturals.SupernaturalsPlugin;
 /*     */ 
 /*     */ 
 /*     */ 
-/*     */ 
+/*     */    @Override
 /*     */   public void waterAdvanceTime(Player player)
 /*     */   {
 /* 218 */     if (player.isDead()) {
@@ -230,7 +246,7 @@ import git.JackWisdom.mcp.supernaturals.SupernaturalsPlugin;
 /*     */ 
 /* 230 */     Material material = player.getLocation().getBlock().getType();
 /*     */     
-/* 232 */     if ((material == Material.STATIONARY_WATER) || (material == Material.WATER)) {
+/* 232 */     if (  (material == Material.WATER)) {
 /* 233 */       double health = player.getHealth() - SNConfigHandler.ghoulDamageWater;
 /*     */       
 /* 235 */       if (health < 0.0D) {
@@ -248,7 +264,7 @@ import git.JackWisdom.mcp.supernaturals.SupernaturalsPlugin;
 /*     */ 
 /*     */ 
 /*     */ 
-/*     */ 
+/*     */    @Override
 /*     */   public void spellEvent(EntityDamageByEntityEvent event, Player target)
 /*     */   {
 /* 253 */     Player player = (Player)event.getDamager();
@@ -269,7 +285,7 @@ import git.JackWisdom.mcp.supernaturals.SupernaturalsPlugin;
 /* 268 */       event.setCancelled(true);
 /*     */     }
 /*     */   }
-/*     */   
+/*     */
 /*     */   public void removeBond(SuperNPlayer player) {
 /* 273 */     if (this.bonds.containsKey(player)) {
 /* 274 */       SuperNManager.sendMessage(player, Language.GHOUL_BOND_REMOVE_NOTICE_SELF.toString().replace(LanguageTag.PLAYER.toString(), ((SuperNPlayer)this.bonds.get(player)).getName()));

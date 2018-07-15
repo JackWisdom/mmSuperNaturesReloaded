@@ -491,8 +491,9 @@ Angel:
     Cure: PAPER
     Summon:
       Cow: RAW_BEEF
-      Pig: PORK
+      Pig: PORKCHOP
       Wolf: BONE
+      Sheep: MUTTON
     Heal: FEATHER
   Weapons:
     Restrictions: []

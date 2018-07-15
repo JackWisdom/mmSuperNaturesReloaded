@@ -24,8 +24,10 @@ import git.JackWisdom.mcp.supernaturals.SupernaturalsPlugin;
 /*     */ import org.bukkit.event.entity.EntityDamageByEntityEvent;
 /*     */ import org.bukkit.event.entity.EntityDamageEvent;
 /*     */
-/*     */ import org.bukkit.event.player.PlayerInteractEvent;
-/*     */ import org.bukkit.inventory.ItemStack;
+/*     */ import org.bukkit.event.entity.EntityShootBowEvent;
+import org.bukkit.event.player.PlayerInteractEvent;
+/*     */ import org.bukkit.event.player.PlayerItemConsumeEvent;
+import org.bukkit.inventory.ItemStack;
 /*     */ import org.bukkit.inventory.PlayerInventory;
 /*     */ import org.bukkit.material.Door;
 /*     */
@@ -55,7 +57,7 @@ import git.JackWisdom.mcp.supernaturals.SupernaturalsPlugin;
 /*  53 */     this.plugin = plugin;
 /*     */   }
 /*     */   
-/*  56 */   private ArrayList<Location> hallDoors = new ArrayList();
+/*
 /*  57 */   private HashMap<Block, Location> webMap = new HashMap();
 /*  58 */   private ArrayList<Player> demonApps = new ArrayList();
 /*  59 */   private List<Player> demons = new ArrayList();
@@ -105,7 +107,13 @@ import git.JackWisdom.mcp.supernaturals.SupernaturalsPlugin;
 /*     */     }
 /* 104 */     return damage;
 /*     */   }
-/*     */   
+
+    @Override
+    public void eatItem(PlayerItemConsumeEvent event) {
+
+    }
+
+    /*     */
 /*     */   public double damagerEvent(EntityDamageByEntityEvent event, double damage)
 /*     */   {
 /* 109 */     Entity damager = event.getDamager();
@@ -123,7 +131,18 @@ import git.JackWisdom.mcp.supernaturals.SupernaturalsPlugin;
 
 /* 131 */     return damage;
 /*     */   }
-/*     */   
+
+    @Override
+    public void waterAdvanceTime(Player player) {
+
+    }
+
+    @Override
+    public boolean shootArrow(Player shooter, EntityShootBowEvent event) {
+        return false;
+    }
+
+    /*     */
 /*     */   public void deathEvent(Player player)
 /*     */   {
 /* 136 */     SuperNPlayer snplayer = SuperNManager.get(player);
@@ -141,11 +160,11 @@ import git.JackWisdom.mcp.supernaturals.SupernaturalsPlugin;
 /* 148 */       int pLocY = player.getLocation().getBlockZ();
 /* 149 */       Biome pBiome = player.getWorld().getBiome(pLocX, pLocY);
 /* 150 */       if ((snplayer.isDemon()) && (
-/* 151 */         (pBiome == Biome.TAIGA) || (pBiome == Biome.FROZEN_OCEAN) || (pBiome == Biome.FROZEN_RIVER) || (pBiome == Biome.ICE_MOUNTAINS) || (pBiome == Biome.COLD_BEACH)))
+/* 151 */         (pBiome == Biome.TAIGA) || pBiome.name().contains("ICE")||pBiome.name().contains("FROZEN")))
 /*     */       {
 /*     */ 
 /*     */ 
-/* 155 */         if (player.getInventory().contains(Material.SNOW_BALL, SNConfigHandler.demonSnowballAmount))
+/* 155 */         if (player.getInventory().contains(Material.SNOWBALL, SNConfigHandler.demonSnowballAmount))
 /*     */         {
 /* 157 */           SuperNManager.sendMessage(snplayer, Language.DAEMON_DEATH.toString());
 /*     */           
@@ -232,7 +251,7 @@ import git.JackWisdom.mcp.supernaturals.SupernaturalsPlugin;
 /* 239 */       ItemStack boots = inv.getBoots();
 /*     */       
 /* 241 */       if ((helmet != null) && 
-/* 242 */         (!SNConfigHandler.demonArmor.contains(helmet.getType())) && (!helmet.getType().equals(Material.WOOL)))
+/* 242 */         (!SNConfigHandler.demonArmor.contains(helmet.getType())) && (!helmet.getType().isBlock()))
 /*     */       {
 /* 244 */         inv.setHelmet(null);
 /* 245 */         dropItem(player, helmet);
@@ -439,8 +458,8 @@ import git.JackWisdom.mcp.supernaturals.SupernaturalsPlugin;
 /* 450 */         for (int z = loc.getBlockZ() - 1; z < loc.getBlockZ() + 2; z++) {
 /* 451 */           Location newLoc = new Location(block.getWorld(), x, y, z);
 /* 452 */           Block newBlock = newLoc.getBlock();
-/* 453 */           if (newBlock.getTypeId() == 0) {
-/* 454 */             newBlock.setType(Material.WEB);
+/* 453 */           if (newBlock.isEmpty()) {
+/* 454 */             newBlock.setType(Material.COBWEB);
 /* 455 */             this.webMap.put(newBlock, loc);
 /*     */           }
 /*     */         }
@@ -480,99 +499,34 @@ import git.JackWisdom.mcp.supernaturals.SupernaturalsPlugin;
 /* 491 */     return true;
 /*     */   }
 /*     */   
-/*     */   private void addDoorLocation(Location location) {
-/* 495 */     if (!this.hallDoors.contains(location)) {
-/* 496 */       this.hallDoors.add(location);
-/*     */     }
-/*     */   }
-/*     */   
-/*     */   private void removeDoorLocation(Location location) {
-/* 501 */     this.hallDoors.remove(location);
-/*     */   }
-/*     */   
-/*     */   public boolean doorIsOpening(Location location) {
-/* 505 */     if (this.hallDoors.contains(location)) {
-/* 506 */       return true;
-/*     */     }
-/* 508 */     return false;
-/*     */   }
-/*     */   
-/*     */   public boolean doorEvent(Player player, Block block, Door door) {
-/* 512 */     if (door.isOpen()) {
-/* 513 */       return true;
-/*     */     }
+
+/*     */   public boolean doorEvent(Player player, Door door) {
+
 /*     */     
 /* 516 */     SuperNPlayer snplayer = SuperNManager.get(player);
-/*     */     
-/* 518 */     final Location loc = block.getLocation();
-/*     */     
+
 /*     */ 
-/*     */ 
-/* 522 */     if (snplayer.isDemon()) { Location newLoc;
-/* 523 */       if (door.isTopHalf()) {
-/* 524 */           newLoc = new Location(loc.getWorld(), loc.getBlockX(), loc.getBlockY() - 1, loc.getBlockZ());
-/*     */         
-/* 526 */         Block newBlock = newLoc.getBlock();
-/* 527 */         block.setTypeIdAndData(71, (byte)(block.getData() + 4), false);
-/* 528 */         newBlock.setTypeIdAndData(71, (byte)(newBlock.getData() + 4), false);
-/*     */       }
-/*     */       else {
-/* 531 */         newLoc = new Location(loc.getWorld(), loc.getBlockX(), loc.getBlockY() + 1, loc.getBlockZ());
-/*     */         
-/* 533 */         Block newBlock = newLoc.getBlock();
-/* 534 */         block.setTypeIdAndData(71, (byte)(block.getData() + 4), false);
-/* 535 */         newBlock.setTypeIdAndData(71, (byte)(newBlock.getData() + 4), false);
-/*     */       }
-/*     */       
-/*     */ 
-/* 539 */       addDoorLocation(loc);
-/* 540 */       addDoorLocation(newLoc);
-/*     */       
+/* 522 */     if (snplayer.isDemon()) {
+
+/*     */       door.setOpen(true);
+
 /* 542 */       SupernaturalsPlugin.instance.getServer().getScheduler().scheduleSyncDelayedTask(SupernaturalsPlugin.instance, new Runnable()
 /*     */       {
-/*     */ 
-/*     */ 
-/*     */ 
+
 /*     */ 
 /*     */         public void run() {
-/* 549 */           DemonManager.this.closeDoor(loc); } }, 20L);
-/*     */       
-/*     */ 
+/* 549 */           if(door!=null ){
+                try {
+                    door.setOpen(false);
+                }catch (Exception e){
+        }
+    }; } }, 20L);
 /* 552 */       return true;
 /*     */     }
 /* 554 */     SuperNManager.sendMessage(snplayer, Language.DAEMON_ONLY.toString());
 /* 555 */     return true;
 /*     */   }
-/*     */   
-/*     */   private void closeDoor(Location loc) {
-/* 559 */     Block block = loc.getBlock();
-/* 560 */     Door door = (Door)block.getState().getData();
-/* 561 */     if (!door.isOpen()) {
-/*     */       return;
-/*     */     }
-/*     */     
-/*     */ 
-/*     */     Location newLoc;
-/*     */     
-/* 568 */     if (door.isTopHalf()) {
-/* 569 */       newLoc = new Location(loc.getWorld(), loc.getBlockX(), loc.getBlockY() - 1, loc.getBlockZ());
-/*     */       
-/* 571 */       Block newBlock = newLoc.getBlock();
-/* 572 */       block.setTypeIdAndData(71, (byte)(block.getData() - 4), false);
-/* 573 */       newBlock.setTypeIdAndData(71, (byte)(newBlock.getData() - 4), false);
-/*     */     }
-/*     */     else {
-/* 576 */       newLoc = new Location(loc.getWorld(), loc.getBlockX(), loc.getBlockY() + 1, loc.getBlockZ());
-/*     */       
-/* 578 */       Block newBlock = newLoc.getBlock();
-/* 579 */       block.setTypeIdAndData(71, (byte)(block.getData() - 4), false);
-/* 580 */       newBlock.setTypeIdAndData(71, (byte)(newBlock.getData() - 4), false);
-/*     */     }
-/*     */     
-/*     */ 
-/* 584 */     removeDoorLocation(loc);
-/* 585 */     removeDoorLocation(newLoc);
-/*     */   }
+
 /*     */ }
 
 

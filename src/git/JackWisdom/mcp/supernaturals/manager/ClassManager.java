@@ -14,37 +14,24 @@ import org.bukkit.inventory.ItemStack;
 
 /*    */ public abstract class ClassManager
 /*    */ {
-/*    */   public double damagerEvent(EntityDamageByEntityEvent event, double damage)
-/*    */   {
-/* 39 */     return damage;
-/*    */   }
+/*    */   public abstract double damagerEvent(EntityDamageByEntityEvent event, double damage);
+/*    */   public abstract void waterAdvanceTime(Player player);
+/*    */   public abstract boolean shootArrow(Player shooter, EntityShootBowEvent event);
 /*    */   
-/*    */   public boolean shootArrow(Player shooter, EntityShootBowEvent event) {
-/* 43 */     return false;
-/*    */   }
+/*    */   public abstract void spellEvent(EntityDamageByEntityEvent event, Player target) ;
 /*    */   
-/*    */   public void spellEvent(EntityDamageByEntityEvent event, Player target) {}
-/*    */   
-/*    */   public double victimEvent(EntityDamageEvent event, double damage)
-/*    */   {
-/* 50 */     return damage;
-/*    */   }
-/*    */   public void eatItem(PlayerItemConsumeEvent event){
-
-        }
+/*    */   public abstract double victimEvent(EntityDamageEvent event, double damage);
+/*    */   public abstract void eatItem(PlayerItemConsumeEvent event);
 /*    */ 
-/*    */   public void deathEvent(Player player) {}
+/*    */   public abstract void deathEvent(Player player);
 /*    */   
 /*    */ 
-/*    */   public void killEvent(Player pDamager, SuperNPlayer damager, SuperNPlayer victim) {}
+/*    */   public abstract void killEvent(Player pDamager, SuperNPlayer damager, SuperNPlayer victim);
 /*    */   
-/*    */   public boolean playerInteract(PlayerInteractEvent event)
-/*    */   {
-/* 61 */     return false;
-/*    */   }
+/*    */   public abstract boolean playerInteract(PlayerInteractEvent event);
 /*    */   
-/*    */   public void armorCheck(Player player) {}
-/*    */   
+/*    */   public abstract void armorCheck(Player player) ;
+/*    */
 /*    */   public void dropItem(Player player, ItemStack item)
 /*    */   {
 /* 68 */     if (!player.hasPermission("supernatural.player.ignorearmor")) {

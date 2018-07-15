@@ -20,7 +20,8 @@ import git.JackWisdom.mcp.supernaturals.SupernaturalsPlugin;
 /*     */ import org.bukkit.event.entity.EntityDamageByEntityEvent;
 /*     */ import org.bukkit.event.entity.EntityDamageEvent;
 /*     */
-/*     */ import org.bukkit.event.player.PlayerInteractEvent;
+/*     */ import org.bukkit.event.entity.EntityShootBowEvent;
+import org.bukkit.event.player.PlayerInteractEvent;
 /*     */ import org.bukkit.event.player.PlayerItemConsumeEvent;
 import org.bukkit.inventory.Inventory;
 /*     */ import org.bukkit.inventory.ItemStack;
@@ -86,7 +87,23 @@ import org.bukkit.inventory.Inventory;
 /*     */ 
 /*  85 */     return damage;
 /*     */   }
-/*     */   
+
+    @Override
+    public void waterAdvanceTime(Player player) {
+
+    }
+
+    @Override
+    public boolean shootArrow(Player shooter, EntityShootBowEvent event) {
+        return false;
+    }
+
+    @Override
+    public void spellEvent(EntityDamageByEntityEvent event, Player target) {
+
+    }
+
+    /*     */
 /*     */   public void deathEvent(Player player)
 /*     */   {
 /*  90 */     SuperNPlayer snplayer = SuperNManager.get(player);
@@ -199,7 +216,7 @@ import org.bukkit.inventory.Inventory;
 /* 254 */       ItemStack boots = inv.getBoots();
 /*     */       
 /* 256 */       if ((helmet != null) && 
-/* 257 */         (!SNConfigHandler.wereArmor.contains(helmet.getType())) && (!helmet.getType().equals(Material.WOOL)))
+/* 257 */         (!SNConfigHandler.wereArmor.contains(helmet.getType())) && (!helmet.getType().isBlock()))
 /*     */       {
 /* 259 */         inv.setHelmet(null);
 /* 260 */         dropItem(player, helmet);
@@ -232,7 +249,7 @@ import org.bukkit.inventory.Inventory;
                     SuperNPlayer snplayer=SuperNManager.get(player);
     boolean isTheSame=  SupernaturalsPlugin.instance.getRecipeManager().getWolfbaneRecipe().isTheSame(event.getItem());
     if(isTheSame){
-        SupernaturalsPlugin.instance.getWereManager().wolfbane(event.getPlayer());
+        wolfbane(event.getPlayer());
         return;
     }
         /* 194 */       if ((SuperNManager.worldTimeIsNight(player)) &&   (SNConfigHandler.foodMaterials.contains(itemMaterial))) {

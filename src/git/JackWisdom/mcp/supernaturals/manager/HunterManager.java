@@ -47,7 +47,7 @@ import git.JackWisdom.mcp.supernaturals.SupernaturalsPlugin;
                   //UID是猎人的UID
 /*  59 */   private ArrayList<Player> grapplingPlayers = new ArrayList();
 /*  60 */   private ArrayList<Player> drainedPlayers = new ArrayList();
-/*  61 */   private ArrayList<Location> hallDoors = new ArrayList();
+
 /*  62 */   private ArrayList<SuperNPlayer> playerInvites = new ArrayList();
 /*  63 */   private static ArrayList<SuperNPlayer> bountyList = new ArrayList();
 /*     */   
@@ -317,57 +317,19 @@ import git.JackWisdom.mcp.supernaturals.SupernaturalsPlugin;
 /*     */ 
 /*     */ 
 /*     */ 
-/*     */   private void addDoorLocation(Location location)
-/*     */   {
-/* 333 */     if (!this.hallDoors.contains(location)) {
-/* 334 */       this.hallDoors.add(location);
-/*     */     }
-/*     */   }
-/*     */   
-/*     */   private void removeDoorLocation(Location location) {
-/* 339 */     this.hallDoors.remove(location);
-/*     */   }
-/*     */   
-/*     */   public boolean doorIsOpening(Location location) {
-/* 343 */     return this.hallDoors.contains(location);
-/*     */   }
-/*     */   
-/*     */   public boolean doorEvent(Player player, Block block, Door door) {
-/* 347 */     if (door.isOpen()) {
-/* 348 */       return true;
-/*     */     }
-/*     */     
+
+
+/*     */   public boolean doorEvent(Player player,  Door door) {
+
 /* 351 */     SuperNPlayer snplayer = SuperNManager.get(player);
 /* 352 */     boolean open = false;
-/*     */     
-/* 354 */     final Location loc = block.getLocation();
-/*     */     
-/*     */ 
-/*     */ 
+
 /* 358 */     if (snplayer.isHuman()) {
 /* 359 */       open = join(snplayer);
 /*     */     }
 /*     */     
-/* 362 */     if ((snplayer.isHunter()) || ((snplayer.isHuman()) && (open))) { Location newLoc;
-/* 363 */       if (door.isTopHalf()) {
-/* 364 */          newLoc = new Location(loc.getWorld(), loc.getBlockX(), loc.getBlockY() - 1, loc.getBlockZ());
-/*     */         
-/* 366 */         Block newBlock = newLoc.getBlock();
-/* 367 */         block.setTypeIdAndData(71, (byte)(block.getData() + 4), false);
-/* 368 */         newBlock.setTypeIdAndData(71, (byte)(newBlock.getData() + 4), false);
-/*     */       }
-/*     */       else {
-/* 371 */         newLoc = new Location(loc.getWorld(), loc.getBlockX(), loc.getBlockY() + 1, loc.getBlockZ());
-/*     */         
-/* 373 */         Block newBlock = newLoc.getBlock();
-/* 374 */         block.setTypeIdAndData(71, (byte)(block.getData() + 4), false);
-/* 375 */         newBlock.setTypeIdAndData(71, (byte)(newBlock.getData() + 4), false);
-/*     */       }
-/*     */       
-/*     */ 
-/* 379 */       addDoorLocation(loc);
-/* 380 */       addDoorLocation(newLoc);
-/*     */       
+/* 362 */     if ((snplayer.isHunter()) || ((snplayer.isHuman()) && (open))) {
+                door.setOpen(true);
 /* 382 */       SupernaturalsPlugin.instance.getServer().getScheduler().scheduleSyncDelayedTask(SupernaturalsPlugin.instance, new Runnable()
 /*     */       {
 /*     */ 
@@ -375,7 +337,9 @@ import git.JackWisdom.mcp.supernaturals.SupernaturalsPlugin;
 /*     */ 
 /*     */ 
 /*     */         public void run() {
-/* 389 */           HunterManager.this.closeDoor(loc); } }, 20L);
+/* 389 */           try {
+    door.setOpen(false);
+    }catch (Exception e){}} }, 20L);
 /*     */       
 /*     */ 
 /* 392 */       return true;
@@ -385,37 +349,7 @@ import git.JackWisdom.mcp.supernaturals.SupernaturalsPlugin;
 /* 396 */     return true;
 /*     */   }
 /*     */   
-/*     */   private void closeDoor(Location loc) {
-/* 400 */     Block block = loc.getBlock();
-/* 401 */     Door door = (Door)block.getState().getData();
-/* 402 */     if (!door.isOpen()) {
-/*     */       return;
-/*     */     }
-/*     */     
-/*     */ 
-/*     */     Location newLoc;
-/*     */     
-/* 409 */     if (door.isTopHalf()) {
-/* 410 */         newLoc = new Location(loc.getWorld(), loc.getBlockX(), loc.getBlockY() - 1, loc.getBlockZ());
-/*     */       
-/* 412 */       Block newBlock = newLoc.getBlock();
-/* 413 */       block.setTypeIdAndData(71, (byte)(block.getData() - 4), false);
-/* 414 */       newBlock.setTypeIdAndData(71, (byte)(newBlock.getData() - 4), false);
-/*     */     }
-/*     */     else {
-/* 417 */       newLoc = new Location(loc.getWorld(), loc.getBlockX(), loc.getBlockY() + 1, loc.getBlockZ());
-/*     */       
-/* 419 */       Block newBlock = newLoc.getBlock();
-/* 420 */       block.setTypeIdAndData(71, (byte)(block.getData() - 4), false);
-/* 421 */       newBlock.setTypeIdAndData(71, (byte)(newBlock.getData() - 4), false);
-/*     */     }
-/*     */     
-/*     */ 
-/* 425 */     removeDoorLocation(loc);
-/* 426 */     removeDoorLocation(newLoc);
-/*     */   }
-/*     */   
-/*     */ 
+
 /*     */ 
 /*     */ 
 /*     */   public void invite(final SuperNPlayer snplayer)

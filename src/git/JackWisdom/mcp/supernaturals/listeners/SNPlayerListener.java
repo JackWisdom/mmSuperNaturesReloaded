@@ -15,8 +15,9 @@ import git.JackWisdom.mcp.supernaturals.util.Language;
 import org.bukkit.Location;
 /*     */ import org.bukkit.Material;
 /*     */ import org.bukkit.block.Block;
-/*     */
-/*     */ import org.bukkit.block.Sign;
+/*     */ import org.bukkit.block.BlockFace;
+import org.bukkit.block.Sign;
+import org.bukkit.block.data.type.WallSign;
 /*     */
 import org.bukkit.entity.Player;
 /*     */
@@ -86,7 +87,29 @@ import org.bukkit.material.Door;
 */
 
 
+            private void doorEvent(Player player,Sign sign){
+                if(!(sign.getBlockData() instanceof WallSign)){
+                    return;
+                }
+               BlockFace facing= ((WallSign)sign.getBlockData()).getFacing().getOppositeFace();
+               Block b=sign.getBlock().getRelative(facing);
 
+               if(b.getType()!=Material.IRON_DOOR){
+                   return;
+               }
+               Door door= (Door) b.getState().getData();
+               if(door.isOpen()){
+                   return;
+               }
+                 String msg=sign.getLine(0);
+               if(msg.equals(SNConfigHandler.hunterHallMessage)){
+                 this.plugin.getHunterManager().doorEvent(player,  door);
+               }else if (msg.equals(SNConfigHandler.demonHallMessage)){
+                   this.plugin.getDemonManager().doorEvent(player,  door);
+               }else if (msg.equals(SNConfigHandler.vampireHallMessage)){
+                   this.plugin.getVampireManager().doorEvent(player,  door);
+               }
+            }
 /*     */   @EventHandler(priority=EventPriority.LOW)
 /*     */   public void onPlayerInteract(PlayerInteractEvent event)
 /*     */   {
@@ -105,91 +128,15 @@ import org.bukkit.material.Door;
 /*  70 */     if ((!player.hasPermission( this.worldPermission)) && (SNConfigHandler.multiworld))
 /*     */     {
 /*  72 */       return;
-/*     */     }
-/*     */     
-/*     */ 
+}
 /*  76 */     Block block = event.getClickedBlock();
-/*  77 */     if ((action.equals(Action.RIGHT_CLICK_BLOCK)) || (action.equals(Action.LEFT_CLICK_BLOCK))) {
-/*     */       Location blockLoc;
-/*     */       try {
-/*  80 */         blockLoc = block.getLocation();
-/*     */       } catch (NullPointerException e) {
-/*  82 */         SupernaturalsPlugin.log("Door trying to close.");
-/*  83 */         event.setCancelled(true);
-/*  84 */         return;
-/*     */       }
-/*     */       
-/*  87 */       if (block.getType().equals(Material.IRON_DOOR_BLOCK)) {
-/*  88 */         for (int x = blockLoc.getBlockX() - 2; x < blockLoc.getBlockX() + 3; x++) {
-/*  89 */           for (int y = blockLoc.getBlockY() - 2; y < blockLoc.getBlockY() + 3; 
-/*  90 */               y++) {
-/*  91 */             for (int z = blockLoc.getBlockZ() - 2; z < blockLoc.getBlockZ() + 3; 
-/*  92 */                 z++) {
-/*  93 */               Location newLoc = new Location(block.getWorld(), x, y, z);
-/*     */               
-/*  95 */               Block newBlock = newLoc.getBlock();
-/*  96 */               if ((newBlock.getType().equals(Material.SIGN)) || (newBlock.getType().equals(Material.WALL_SIGN)))
-/*     */               {
-/*     */ 
-/*  99 */                 Sign sign = (Sign)newBlock.getState();
-/* 100 */                 String[] text = sign.getLines();
-/* 101 */                 for (int i = 0; i < text.length; i++) {
-/* 102 */                   if (text[i].contains(SNConfigHandler.hunterHallMessage))
-/*     */                   {
-/* 104 */                     if (this.plugin.getHunterManager().doorIsOpening(blockLoc))
-/*     */                     {
-/* 106 */                       event.setCancelled(true);
-/* 107 */                       return;
-/*     */                     }
-/* 109 */                     Door door = (Door)block.getState().getData();
-/*     */                     
-/* 111 */                     boolean open = this.plugin.getHunterManager().doorEvent(player, block, door);
-/*     */                     
-/*     */ 
-/* 114 */                     event.setCancelled(open);
-/* 115 */                     return;
-/*     */                   }
-/* 117 */                   if (text[i].contains(SNConfigHandler.demonHallMessage))
-/*     */                   {
-/* 119 */                     if (this.plugin.getHunterManager().doorIsOpening(blockLoc))
-/*     */                     {
-/* 121 */                       event.setCancelled(true);
-/* 122 */                       return;
-/*     */                     }
-/* 124 */                     Door door = (Door)block.getState().getData();
-/*     */                     
-/* 126 */                     boolean open = this.plugin.getDemonManager().doorEvent(player, block, door);
-/*     */                     
-/* 128 */                     event.setCancelled(open);
-/* 129 */                     return;
-/*     */                   }
-/* 131 */                   if (text[i].contains(SNConfigHandler.vampireHallMessage))
-/*     */                   {
-/* 133 */                     if (this.plugin.getHunterManager().doorIsOpening(blockLoc))
-/*     */                     {
-/* 135 */                       event.setCancelled(true);
-/* 136 */                       return;
-/*     */                     }
-/* 138 */                     Door door = (Door)block.getState().getData();
-/*     */                     
-/* 140 */                     boolean open = this.plugin.getVampireManager().doorEvent(player, block, door);
-/*     */                     
-/*     */ 
-/* 143 */                     event.setCancelled(open);
-/* 144 */                     return;
-/*     */                   }
-/*     */                 }
-/*     */               }
-/*     */             }
-/*     */           }
-/*     */         }
-/*     */       }
+/*  77 */     if ((action.equals(Action.RIGHT_CLICK_BLOCK))) {
+                if(block.getType()==Material.WALL_SIGN){
+                    doorEvent(player, (Sign) block);
+                }
 /*     */     }
-/*     */     
 /* 154 */     boolean cancelled = false;
-/*     */     
 /* 156 */     cancelled = SuperNManager.get(player).getManager().playerInteract(event);
-/*     */     
 /* 158 */     if (cancelled) {
 /* 159 */       return;
 /*     */     }
@@ -213,7 +160,7 @@ import org.bukkit.material.Door;
 /* 178 */       this.plugin.getPriestManager().useAltar(player);
 /*     */     }
 /*     */   }
-/*     */   
+/*     */
 /*     */   @EventHandler(priority=EventPriority.LOW)
 /*     */   public void onPlayerKick(PlayerKickEvent event) {
 /* 184 */     if (event.isCancelled()) {

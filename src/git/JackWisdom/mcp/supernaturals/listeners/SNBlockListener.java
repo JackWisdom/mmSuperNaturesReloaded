@@ -48,7 +48,7 @@ import org.bukkit.Material;
 /*    */   @EventHandler(priority=EventPriority.LOW)
 /*    */   public void onBlockBreak(BlockBreakEvent event) {
 /* 49 */     Block eventBlock = event.getBlock();
-/* 50 */     if (eventBlock.getType().equals(Material.WEB)) {
+/* 50 */     if (eventBlock.getType().equals(Material.COBWEB)) {
 /* 51 */       for (Block block : this.plugin.getDemonManager().getWebs().keySet()) {
 /* 52 */         if (block.equals(eventBlock)) {
 /* 53 */           event.setCancelled(true);
@@ -74,7 +74,7 @@ import org.bukkit.Material;
 /* 73 */           SuperNManager.sendMessage(SuperNManager.get(player), Language.WITCHHUNTER_SIGN_NOT_ALLOW.toString());
 /*    */           
 /* 75 */           event.setCancelled(true);
-/* 76 */           event.getBlock().setTypeId(0);
+/* 76 */           event.getBlock().setType(Material.AIR);
 /* 77 */           player.getWorld().dropItem(player.getLocation(), new ItemStack(Material.SIGN, 1));
 /*    */         }
 /*    */         

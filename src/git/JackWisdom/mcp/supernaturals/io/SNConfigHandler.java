@@ -185,6 +185,7 @@ import org.bukkit.inventory.ItemStack;
 /*     */   public static String angelCureMaterial;
 /*     */   public static String angelSummonPigMaterial;
 /*     */   public static String angelSummonWolfMaterial;
+    public static String angelSummonSheepMaterial;
 /*     */   public static String angelHealMaterial;
 /*     */   public static Location priestChurchLocation;
 /*     */   public static Location priestBanishLocation;
@@ -256,7 +257,7 @@ import org.bukkit.inventory.ItemStack;
 /* 244 */   private static List<String> wereArmorString = new ArrayList();
 /* 245 */   private static List<String> angelArmorString = new ArrayList();
 /*     */   
-/* 247 */   public static Map<Material, Double> materialOpacity = new HashMap();
+
 /* 248 */   public static HashSet<Material> transparent = new HashSet();
 /*     */   
 /* 250 */   public static Recipes vampireAltarInfectRecipe = new Recipes();
@@ -265,34 +266,9 @@ import org.bukkit.inventory.ItemStack;
 
 /*     */   
 /*     */   static {
-/* 256 */     materialOpacity.put(Material.AIR, Double.valueOf(0.0D));
-/* 257 */     materialOpacity.put(Material.SAPLING, Double.valueOf(0.3D));
-/* 258 */     materialOpacity.put(Material.LEAVES, Double.valueOf(0.3D));
-/* 259 */     materialOpacity.put(Material.GLASS, Double.valueOf(0.5D));
-/* 260 */     materialOpacity.put(Material.YELLOW_FLOWER, Double.valueOf(0.1D));
-/* 261 */     materialOpacity.put(Material.RED_ROSE, Double.valueOf(0.1D));
-/* 262 */     materialOpacity.put(Material.BROWN_MUSHROOM, Double.valueOf(0.1D));
-/* 263 */     materialOpacity.put(Material.RED_MUSHROOM, Double.valueOf(0.1D));
-/* 264 */     materialOpacity.put(Material.TORCH, Double.valueOf(0.1D));
-/* 265 */     materialOpacity.put(Material.FIRE, Double.valueOf(0.0D));
-/* 266 */     materialOpacity.put(Material.MOB_SPAWNER, Double.valueOf(0.3D));
-/* 267 */     materialOpacity.put(Material.REDSTONE_WIRE, Double.valueOf(0.0D));
-/* 268 */     materialOpacity.put(Material.CROPS, Double.valueOf(0.2D));
-/* 269 */     materialOpacity.put(Material.SIGN, Double.valueOf(0.1D));
-/* 270 */     materialOpacity.put(Material.SIGN_POST, Double.valueOf(0.2D));
-/* 271 */     materialOpacity.put(Material.LEVER, Double.valueOf(0.1D));
-/* 272 */     materialOpacity.put(Material.STONE_PLATE, Double.valueOf(0.0D));
-/* 273 */     materialOpacity.put(Material.WOOD_PLATE, Double.valueOf(0.0D));
-/* 274 */     materialOpacity.put(Material.REDSTONE_TORCH_OFF, Double.valueOf(0.1D));
-/* 275 */     materialOpacity.put(Material.REDSTONE_TORCH_ON, Double.valueOf(0.1D));
-/* 276 */     materialOpacity.put(Material.STONE_BUTTON, Double.valueOf(0.0D));
-/* 277 */     materialOpacity.put(Material.SUGAR_CANE_BLOCK, Double.valueOf(0.3D));
-/* 278 */     materialOpacity.put(Material.FENCE, Double.valueOf(0.2D));
-/* 279 */     materialOpacity.put(Material.DIODE_BLOCK_OFF, Double.valueOf(0.0D));
-/* 280 */     materialOpacity.put(Material.DIODE_BLOCK_ON, Double.valueOf(0.0D));
-/*     */     
+
 /* 282 */     transparent.add(Material.WATER);
-/* 283 */     transparent.add(Material.STATIONARY_WATER);
+
 /* 284 */     transparent.add(Material.AIR);
 /*     */   }
 /*     */   
@@ -577,8 +553,9 @@ import org.bukkit.inventory.ItemStack;
 /*     */     
 /* 561 */     angelCureMaterial = config.getString("Angel.Materials.Cure", "PAPER");
 /* 562 */     angelSummonCowMaterial = config.getString("Angel.Materials.Summon.Cow", "RAW_BEEF");
-/*     */     
-/* 564 */     angelSummonPigMaterial = config.getString("Angel.Materials.Summon.Pig", "PORK");
+    angelSummonSheepMaterial = config.getString("Angel.Materials.Summon.Sheep", "MUTTON");
+
+    /* 564 */     angelSummonPigMaterial = config.getString("Angel.Materials.Summon.Pig", "PORKCHOP");
 /*     */     
 /* 566 */     angelSummonWolfMaterial = config.getString("Angel.Materials.Summon.Wolf", "BONE");
 /*     */     

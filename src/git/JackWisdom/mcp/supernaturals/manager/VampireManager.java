@@ -31,8 +31,10 @@ import org.bukkit.Location;
 /*     */ import org.bukkit.event.entity.EntityDamageByEntityEvent;
 /*     */ import org.bukkit.event.entity.EntityDamageEvent;
 /*     */
-/*     */ import org.bukkit.event.player.PlayerInteractEvent;
-/*     */ import org.bukkit.inventory.ItemStack;
+/*     */ import org.bukkit.event.entity.EntityShootBowEvent;
+import org.bukkit.event.player.PlayerInteractEvent;
+/*     */ import org.bukkit.event.player.PlayerItemConsumeEvent;
+import org.bukkit.inventory.ItemStack;
 /*     */ import org.bukkit.inventory.PlayerInventory;
 /*     */ import org.bukkit.material.Door;
 import org.bukkit.scheduler.BukkitRunnable;
@@ -110,7 +112,13 @@ import org.bukkit.scheduler.BukkitRunnable;
 /*     */ 
 /* 104 */     return damage;
 /*     */   }
-/*     */   
+
+    @Override
+    public void eatItem(PlayerItemConsumeEvent event) {
+
+    }
+
+    /*     */
 /*     */   public void deathEvent(Player player)
 /*     */   {
 /* 109 */     SuperNPlayer snplayer = SuperNManager.get(player);
@@ -172,7 +180,23 @@ import org.bukkit.scheduler.BukkitRunnable;
 /* 165 */     damage += damage * snDamager.scale(SNConfigHandler.vampireDamageFactor);
 /* 166 */     return damage;
 /*     */   }
-/*     */   
+
+    @Override
+    public void waterAdvanceTime(Player player) {
+
+    }
+
+    @Override
+    public boolean shootArrow(Player shooter, EntityShootBowEvent event) {
+        return false;
+    }
+
+    @Override
+    public void spellEvent(EntityDamageByEntityEvent event, Player target) {
+
+    }
+
+    /*     */
 /*     */ 
 /*     */ 
 /*     */ 
@@ -207,7 +231,7 @@ import org.bukkit.scheduler.BukkitRunnable;
 /*     */     
 /* 201 */     if ((!action.equals(Action.RIGHT_CLICK_AIR)) && (!action.equals(Action.RIGHT_CLICK_BLOCK)))
 /*     */     {
-/* 203 */       if (itemMaterial.equals(Material.CAKE_BLOCK)) {
+/* 203 */       if (itemMaterial.equals(Material.CAKE)) {
 /* 204 */         event.setCancelled(true);
 /* 205 */         SuperNManager.sendMessage(snplayer, Language.VAMPIRE_LIMIT_EAT.toString());
 /*     */         
@@ -245,7 +269,7 @@ import org.bukkit.scheduler.BukkitRunnable;
 /* 238 */       ItemStack boots = inv.getBoots();
 /*     */
 /* 240 */       if ((helmet != null) && 
-/* 241 */         (!SNConfigHandler.vampireArmor.contains(helmet.getType())) && (!helmet.getType().equals(Material.WOOL)))
+/* 241 */         (!SNConfigHandler.vampireArmor.contains(helmet.getType())) && (!helmet.getType().isBlock()))
 /*     */       {
 
 /* 243 */         inv.setHelmet(null);
@@ -457,14 +481,7 @@ return;
 /*     */   
 /*     */   public boolean standsInSunlight(Player player)
 /*     */   {
-/* 526 */     Material material = player.getLocation().getBlock().getType();
-/* 527 */     World playerWorld = player.getWorld();
-/*     */     
-/* 529 */     if (player.hasPermission( this.permissions)) {
-/* 530 */       return false;
-/*     */     }
-/*     */     
-/* 533 */     return (!player.getWorld().getEnvironment().equals(World.Environment.NETHER)) && (!SuperNManager.worldTimeIsNight(player)) && (!isUnderRoof(player)) && (!material.equals(Material.STATIONARY_WATER)) && (!material.equals(Material.WATER)) && (!playerWorld.hasStorm()) && (!hasHelmet(player));
+/* 526 */     return player.getLocation().getBlock().getLightFromSky()<=14;
 /*     */   }
 /*     */   
 /*     */ 
@@ -485,130 +502,28 @@ return;
 /*     */ 
 /*     */ 
 /*     */ 
-/*     */   public boolean isUnderRoof(Player player)
-/*     */   {
-/* 556 */     boolean retVal = false;
-/* 557 */     Block blockCurrent = player.getLocation().getBlock();
-/*     */     
-/* 559 */     if (player.getLocation().getY() >= 254.0D) {
-/* 560 */       retVal = false;
-/*     */ 
-/*     */     }
-/*     */     else
-/*     */     {
-/* 565 */       double opacityAccumulator = 0.0D;
-/*     */       
-/*     */ 
-/* 568 */       while (blockCurrent.getY() + 1 <= 255) {
-/* 569 */         blockCurrent = blockCurrent.getRelative(BlockFace.UP);
-/*     */         
-/* 571 */         Double opacity = (Double)SNConfigHandler.materialOpacity.get(blockCurrent.getType());
-/*     */         
-/* 573 */         if (opacity == null) {
-/* 574 */           retVal = true;
-/*     */         }
-/*     */         else
-/*     */         {
-/* 578 */           opacityAccumulator += opacity.doubleValue();
-/* 579 */           if (opacityAccumulator >= 1.0D) {
-/* 580 */             retVal = true;
-/*     */           }
-/*     */         }
-/*     */       }
-/*     */     }
-/* 585 */     return retVal;
-/*     */   }
-/*     */   
-/*     */   private void addDoorLocation(Location location) {
-/* 589 */     if (!this.hallDoors.contains(location)) {
-/* 590 */       this.hallDoors.add(location);
-/*     */     }
-/*     */   }
-/*     */   
-/*     */   private void removeDoorLocation(Location location) {
-/* 595 */     this.hallDoors.remove(location);
-/*     */   }
-/*     */   
-/*     */   public boolean doorIsOpening(Location location) {
-/* 599 */     return this.hallDoors.contains(location);
-/*     */   }
-/*     */   
-/*     */   public boolean doorEvent(Player player, Block block, Door door) {
-/* 603 */     if (door.isOpen()) {
-/* 604 */       return true;
-/*     */     }
-/*     */     
+
+
+/*     */   public boolean doorEvent(Player player, Door door) {
+
 /* 607 */     SuperNPlayer snplayer = SuperNManager.get(player);
 /*     */     
-/* 609 */     final Location loc = block.getLocation();
-/*     */     
-/*     */ 
-/*     */ 
-/* 613 */     if (snplayer.isVampire()) { Location newLoc;
-/* 614 */       if (door.isTopHalf()) {
-/* 615 */          newLoc = new Location(loc.getWorld(), loc.getBlockX(), loc.getBlockY() - 1, loc.getBlockZ());
-/*     */         
-/* 617 */         Block newBlock = newLoc.getBlock();
-/* 618 */         block.setTypeIdAndData(71, (byte)(block.getData() + 4), false);
-/* 619 */         newBlock.setTypeIdAndData(71, (byte)(newBlock.getData() + 4), false);
-/*     */       }
-/*     */       else {
-/* 622 */         newLoc = new Location(loc.getWorld(), loc.getBlockX(), loc.getBlockY() + 1, loc.getBlockZ());
-/*     */         
-/* 624 */         Block newBlock = newLoc.getBlock();
-/* 625 */         block.setTypeIdAndData(71, (byte)(block.getData() + 4), false);
-/* 626 */         newBlock.setTypeIdAndData(71, (byte)(newBlock.getData() + 4), false);
-/*     */       }
-/*     */       
-/*     */ 
-/* 630 */       addDoorLocation(loc);
-/* 631 */       addDoorLocation(newLoc);
-/*     */       
+/* 609 */
+/* 613 */     if (snplayer.isVampire()) {
+    door.setOpen(true);
 /* 633 */       SupernaturalsPlugin.instance.getServer().getScheduler().scheduleSyncDelayedTask(SupernaturalsPlugin.instance, new Runnable()
 /*     */       {
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
 /*     */         public void run() {
-/* 640 */           VampireManager.this.closeDoor(loc); } }, 20L);
-/*     */       
-/*     */ 
+/* 640 */           try {
+    door.setOpen(false);
+    }catch (Exception e){}; } }, 20L);
 /* 643 */       return true;
 /*     */     }
 /* 645 */     SuperNManager.sendMessage(snplayer, Language.VAMPIRE_ONLY.toString());
 /* 646 */     return true;
 /*     */   }
 /*     */   
-/*     */   private void closeDoor(Location loc) {
-/* 650 */     Block block = loc.getBlock();
-/* 651 */     Door door = (Door)block.getState().getData();
-/* 652 */     if (!door.isOpen()) {
-/*     */       return;
-/*     */     }
-/*     */     
-/*     */ 
-/*     */     Location newLoc;
-/*     */     
-/* 659 */     if (door.isTopHalf()) {
-/* 660 */        newLoc = new Location(loc.getWorld(), loc.getBlockX(), loc.getBlockY() - 1, loc.getBlockZ());
-/*     */       
-/* 662 */       Block newBlock = newLoc.getBlock();
-/* 663 */       block.setTypeIdAndData(71, (byte)(block.getData() - 4), false);
-/* 664 */       newBlock.setTypeIdAndData(71, (byte)(newBlock.getData() - 4), false);
-/*     */     }
-/*     */     else {
-/* 667 */       newLoc = new Location(loc.getWorld(), loc.getBlockX(), loc.getBlockY() + 1, loc.getBlockZ());
-/*     */       
-/* 669 */       Block newBlock = newLoc.getBlock();
-/* 670 */       block.setTypeIdAndData(71, (byte)(block.getData() - 4), false);
-/* 671 */       newBlock.setTypeIdAndData(71, (byte)(newBlock.getData() - 4), false);
-/*     */     }
-/*     */     
-/*     */ 
-/* 675 */     removeDoorLocation(loc);
-/* 676 */     removeDoorLocation(newLoc);
-/*     */   }
+
 /*     */ }
 
 

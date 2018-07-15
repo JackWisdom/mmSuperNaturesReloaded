@@ -18,8 +18,10 @@ import git.JackWisdom.mcp.supernaturals.SupernaturalsPlugin;
 /*     */ import org.bukkit.event.entity.EntityDamageByEntityEvent;
 /*     */ import org.bukkit.event.entity.EntityDamageEvent;
 /*     */
-/*     */ import org.bukkit.event.player.PlayerInteractEvent;
+/*     */ import org.bukkit.event.entity.EntityShootBowEvent;
+import org.bukkit.event.player.PlayerInteractEvent;
 /*     */
+import org.bukkit.event.player.PlayerItemConsumeEvent;
 import org.bukkit.projectiles.ProjectileSource;
 
 /*     */
@@ -60,12 +62,36 @@ import org.bukkit.projectiles.ProjectileSource;
 /*     */   {
 /*  58 */     return damage;
 /*     */   }
-/*     */   
+
+    @Override
+    public void eatItem(PlayerItemConsumeEvent event) {
+
+    }
+
+    /*     */
 /*     */   public double damagerEvent(EntityDamageByEntityEvent event, double damage)
 /*     */   {
 /*  63 */     return damage;
 /*     */   }
-/*     */   
+
+    @Override
+    public void waterAdvanceTime(Player player) {
+
+    }
+
+
+
+    @Override
+    public boolean shootArrow(Player shooter, EntityShootBowEvent event) {
+        return false;
+    }
+
+    @Override
+    public void spellEvent(EntityDamageByEntityEvent event, Player target) {
+
+    }
+
+    /*     */
 /*     */   public void deathEvent(Player player)
 /*     */   {
 /*  68 */     if (player == null) {

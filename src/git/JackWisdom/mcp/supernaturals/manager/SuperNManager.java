@@ -409,7 +409,7 @@ import org.bukkit.Bukkit;
 /*     */   public Player getTarget(Player player)
 /*     */   {
 /* 456 */     List<Block> blocks = player.getLineOfSight(SNConfigHandler.transparent, 20);
-/*     */     
+/*     */
 /* 458 */     List<Entity> entities = player.getNearbyEntities(21.0D, 21.0D, 21.0D);
 /* 459 */     for (Block block:blocks) {
 
