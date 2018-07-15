@@ -7,6 +7,10 @@
 /*     */ 
 /*     */ public enum Language
 /*     */ {
+            GUI_DONATE_TITLE("gui_donate_title","becoming a priest"),
+            GUI_PRIEST_DONATE_TITLE("gui_priest_donate_title","donate to gain power"),
+            GUI_VAMCURE_TITLE("gui_vamcure_title","donate to cure"),
+            GUI_VAMINFECT_TITLE("gui_vaminfect_title","donate to infect"),
             GUI_EXACTLY("gui_exactly","you must place exactly as the frist line did"),
 /*  10 */   ADMIN_BOOST("admin_boost", "Admin boost!"), 
 /*  11 */   ALL_DATA_SAVE("all_data_save", "All config/player data has been saved!"), 
@@ -211,9 +215,9 @@
 /* 209 */   WEREWOLF_CURE_LIMIT("werewolf_cure_limit", "Cannot cure lycanthropy during the night."), 
 /* 210 */   WEREWOLF_DEATH("werewolf_death", "Your basic nature changes... You feel more in touch with your animal side."), 
 /* 211 */   WEREWOLF_EAT("werewolf_eat", "Eating!"), 
-/* 212 */   WEREWOLF_EAT_LIMIT("werewolf_eat_limit", "Werewolves do not gain power from Bread."), 
-/* 213 */   WEREWOLF_POTION_NEED("werewolf_potion_need", "You cannot create a Wolfbane potion without the following: "), 
-/* 214 */   WEREWOLF_POTION_NOTICE_SELF("werewolf_potion_notice_self", "You create a wolfbane potion!"), 
+/* 212 */   WEREWOLF_EAT_LIMIT("werewolf_eat_limit", "Werewolves do not gain power from Bread."),
+            WEREWOLF_POTION_ONLY("werewolf_potion_only","You ate wolf bane and happend nothing"),
+            WEREWOLF_POTION_SUCCEED("werewolf_potion_succeed","You ate wolf bane you feels not like to kill creatures"),
 /* 215 */   WEREWOLF_SUMMON_NOT_ALLOW("werewolf_summon_not_allow", "You cannot summon here."), 
 /* 216 */   WEREWOLF_SUMMON_TOO_MUCH_WOLF("werewolf_summon_too_much_wolf", "You already have all the wolves you can control."), 
 /* 217 */   WEREWOLF_SUMMON_WOLF("werewolf_summon_wolf", "Summoning wolf!"), 

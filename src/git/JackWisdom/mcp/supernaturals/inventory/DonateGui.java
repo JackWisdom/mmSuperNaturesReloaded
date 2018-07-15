@@ -14,8 +14,10 @@ import java.util.List;
 public class DonateGui extends IGui {
     protected Inventory inventory;
 
-    public DonateGui(Recipes recipes) {
-        super(recipes);
+    public DonateGui(Recipes recipes,String title) {
+
+        super(recipes,title);
+
     }
 
     @Override

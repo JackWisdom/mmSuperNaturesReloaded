@@ -41,6 +41,11 @@ import org.bukkit.inventory.ItemStack;
 /*     */ 
 /*     */ public class SNConfigHandler
 /*     */ {
+            public static List<Map<?, ?>> wolfBaneRecipeKey;
+            public static Material wolfBane;
+            public static String wolfBaneDispaly;
+            public static List<String> wolfBaneLore;
+            public static List<String> wolfRecipe;
 /*     */   public static SupernaturalsPlugin plugin;
 /*     */   public static Configuration config;
 /*     */   public static String language;
@@ -163,7 +168,7 @@ import org.bukkit.inventory.ItemStack;
 /*     */   public static String priestAltarMaterial;
 /*     */   public static String priestSpellGuardianAngel;
 /*     */   public static String wolfMaterial;
-/*     */   public static String wolfbaneMaterial;
+
 /*     */   public static String ghoulMaterial;
 /*     */   public static String ghoulBondMaterial;
 /*     */   public static String vampireMaterial;
@@ -218,7 +223,8 @@ import org.bukkit.inventory.ItemStack;
 /*     */   public static int priestBanishLocationX;
 /*     */   public static int priestBanishLocationY;
 /*     */   public static int priestBanishLocationZ;
-/* 215 */   private static List<String> ghoulWeaponsString = new ArrayList();
+
+    /* 215 */   private static List<String> ghoulWeaponsString = new ArrayList();
 /* 216 */   private static List<String> demonWeaponsString = new ArrayList();
 /* 217 */   private static List<String> priestWeaponsString = new ArrayList();
 /* 218 */   private static List<String> hunterWeaponsString = new ArrayList();
@@ -238,8 +244,8 @@ import org.bukkit.inventory.ItemStack;
 /* 232 */   private static List<String> priestAltarMaterialsString = new ArrayList();
 /* 233 */   private static List<Integer> priestAltarQuantities = new ArrayList();
 /* 234 */   private static List<String> priestDonationMaterialsString = new ArrayList();
-/* 235 */   private static List<String> wereWolfbaneMaterialsString = new ArrayList();
-/* 236 */   private static List<Integer> wereWolfbaneQuantities = new ArrayList();
+
+
 /* 237 */   private static List<Integer> priestDonationRewards = new ArrayList();
 /* 238 */   private static List<String> burnableBlocksString = new ArrayList();
 /* 239 */   private static List<String> hunterArmorString = new ArrayList();
@@ -256,7 +262,7 @@ import org.bukkit.inventory.ItemStack;
 /* 250 */   public static Recipes vampireAltarInfectRecipe = new Recipes();
 /* 251 */   public static Recipes vampireAltarCureRecipe = new Recipes();
 /* 252 */   public static Recipes priestAltarRecipe = new Recipes();
-/* 253 */   public static Recipes wereWolfbaneRecipe = new Recipes();
+
 /*     */   
 /*     */   static {
 /* 256 */     materialOpacity.put(Material.AIR, Double.valueOf(0.0D));
@@ -311,6 +317,12 @@ import org.bukkit.inventory.ItemStack;
 /* 305 */       config.options().copyDefaults(true);
 /* 306 */       saveConfig();
 /*     */     }
+                String wb="Were.Wolfbane.";
+                wolfBane=Material.getMaterial(config.getString(wb+"Material"));
+                wolfBaneRecipeKey =config.getMapList(wb+"RecipeKey");
+                wolfBaneDispaly=config.getString(wb+"CustomName");
+                wolfBaneLore=config.getStringList(wb+"Description");
+                wolfRecipe=config.getStringList(wb+"Recipe");
               sqlPrefix=config.getString("Storage.prefix");
               useSql=config.getBoolean("Storage.sql");
               sqlUrl=config.getString("Storage.url");
@@ -489,10 +501,7 @@ import org.bukkit.inventory.ItemStack;
 /* 481 */     werePowerSummonCost = config.getInt("Were.Power.Summon", 2000);
 /* 482 */     wolfTruce = config.getBoolean("Were.WolfTruce", true);
 /* 483 */     dashMaterial = config.getString("Were.Material.Dash", "FEATHER");
-/* 484 */     wolfbaneMaterial = config.getString("Were.Wolfbane.Trigger", "BOWL");
-/* 485 */     wereWolfbaneMaterialsString = config.getStringList("Were.Wolfbane.Materials");
-/*     */     
-/* 487 */     wereWolfbaneQuantities = config.getIntegerList("Were.Wolfbane.Quantities");
+
 /*     */     
 /* 489 */     wereArmorString = config.getStringList("Were.Armor");
 /* 490 */     wereWeaponsString = config.getStringList("Were.Weapon.Restrictions");
@@ -710,18 +719,7 @@ import org.bukkit.inventory.ItemStack;
 /* 700 */       priestAltarRecipe.getItemStacks().add(new ItemStack(material, Integer.valueOf(quantity)));
 /*     */     }
 /*     */     
-/* 703 */     for (int i = 0; i < wereWolfbaneMaterialsString.size(); i++) {
-/* 704 */       Material material = Material.getMaterial((String)wereWolfbaneMaterialsString.get(i));
-/*     */       
-/* 706 */       int quantity = 1;
-/*     */       try {
-/* 708 */         quantity = ((Integer)wereWolfbaneQuantities.get(i)).intValue();
-/*     */       } catch (Exception e) {
-/* 710 */         e.printStackTrace();
-/* 711 */         SupernaturalsPlugin.log("Invalid Wolfbane Quantities!");
-/*     */       }
-/* 713 */       wereWolfbaneRecipe.getItemStacks().add(new ItemStack(material, Integer.valueOf(quantity)));
-/*     */     }
+
 /*     */     
 /* 716 */     for (int i = 0; i < priestDonationMaterialsString.size(); i++) {
 /* 717 */       Material material = Material.getMaterial((String)priestDonationMaterialsString.get(i));

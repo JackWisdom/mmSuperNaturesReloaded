@@ -157,20 +157,7 @@ import git.JackWisdom.mcp.supernaturals.SupernaturalsPlugin;
 /*     */         
 /* 157 */         return false;
 /*     */       }
-/* 159 */       if (itemMaterial.toString().equalsIgnoreCase(SNConfigHandler.wolfbaneMaterial))
-/*     */       {
-/* 161 */         if (!player.hasPermission(this.permissions2)) {
-/* 162 */           return false;
-/*     */         }
-/* 164 */         if (SuperNManager.worldTimeIsNight(player)) {
-/* 165 */           SuperNManager.sendMessage(snplayer, Language.WEREWOLF_CURE_LIMIT.toString());
-/*     */           
-/* 167 */           return false;
-/*     */         }
-/* 169 */         wolfbane(player);
-/* 170 */         event.setCancelled(true);
-/* 171 */         return true;
-/*     */       }
+
 /* 173 */       if (itemMaterial.toString().equalsIgnoreCase(SNConfigHandler.dashMaterial))
 /*     */       {
 /* 175 */         if (SuperNManager.worldTimeIsNight(player)) {
@@ -285,23 +272,12 @@ import git.JackWisdom.mcp.supernaturals.SupernaturalsPlugin;
 /*     */ 
 /*     */ 
 /*     */ 
-/*     */   public boolean wolfbane(Player player)
+/*     */   public void wolfbane(Player player)
 /*     */   {
 /* 289 */     SuperNPlayer snplayer = SuperNManager.get(player);
-/* 290 */     if (SNConfigHandler.wereWolfbaneRecipe.playerHasEnough(player)) {
-/* 291 */       SuperNManager.sendMessage(snplayer, Language.WEREWOLF_POTION_NOTICE_SELF.toString());
-/*     */       
-/* 293 */       SuperNManager.sendMessage(snplayer, SNConfigHandler.wereWolfbaneRecipe.getRecipeLine());
-/*     */       
-/* 295 */       SNConfigHandler.wereWolfbaneRecipe.removeFromPlayer(player);
+                player.sendMessage(Language.WEREWOLF_POTION_SUCCEED.toString());
 /* 296 */       SuperNManager.cure(snplayer);
-/* 297 */       return true;
-/*     */     }
-/* 299 */     SuperNManager.sendMessage(snplayer, Language.WEREWOLF_POTION_NEED.toString());
-/*     */     
-/* 301 */     SuperNManager.sendMessage(snplayer, SNConfigHandler.wereWolfbaneRecipe.getRecipeLine());
-/*     */     
-/* 303 */     return false;
+
 /*     */   }
 /*     */   
 /*     */ 

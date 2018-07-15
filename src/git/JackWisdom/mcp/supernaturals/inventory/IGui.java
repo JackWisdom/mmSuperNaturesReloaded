@@ -1,5 +1,6 @@
 package git.JackWisdom.mcp.supernaturals.inventory;
 
+import git.JackWisdom.mcp.supernaturals.io.SNConfigHandler;
 import git.JackWisdom.mcp.supernaturals.util.Recipes;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
@@ -16,9 +17,11 @@ public abstract class IGui implements InventoryHolder {
     protected Inventory inventory;
     @Nonnull
     public abstract InventoryType getType();
-    public IGui(Recipes recipes){
+    public IGui(Recipes recipes,String title){
         inventory= Bukkit.createInventory(this,18);
-        inventory.addItem((ItemStack[]) recipes.getItemStacks().toArray());
+        for(ItemStack i:recipes.getItemStacks()){
+            inventory.addItem(i);
+        }
         //recipe muse lower than 9
     }
     public IGui(Inventory inventory){

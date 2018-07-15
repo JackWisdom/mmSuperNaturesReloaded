@@ -15,8 +15,8 @@ public class PDonateGui extends IGui {
         return InventoryType.PRIEST;
     }
 
-    public PDonateGui(Recipes recipes) {
-        super(recipes);
+    public PDonateGui(Recipes recipes,String title) {
+        super(recipes, title);
     }
     @Override
     public boolean accept(){

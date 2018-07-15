@@ -11,6 +11,7 @@ import git.JackWisdom.mcp.supernaturals.SupernaturalsPlugin;
 /*     */ import git.JackWisdom.mcp.supernaturals.manager.SuperNManager;
 /*     */
 /*     */
+import git.JackWisdom.mcp.supernaturals.manager.WereManager;
 import git.JackWisdom.mcp.supernaturals.util.Language;
 import org.bukkit.Location;
 /*     */ import org.bukkit.Material;
@@ -28,9 +29,11 @@ import org.bukkit.event.EventHandler;
 /*     */ import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.event.entity.PlayerDeathEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
-/*     */ import org.bukkit.event.player.PlayerKickEvent;
+/*     */ import org.bukkit.event.player.PlayerItemConsumeEvent;
+import org.bukkit.event.player.PlayerKickEvent;
 /*     */
-/*     */ import org.bukkit.material.Door;
+/*     */ import org.bukkit.inventory.EquipmentSlot;
+import org.bukkit.material.Door;
 
 import java.util.HashSet;
 
@@ -62,6 +65,18 @@ import java.util.HashSet;
 /*     */ 
 /*     */
 
+
+    @EventHandler
+    public void onplayereat(PlayerItemConsumeEvent event){
+            if(!SuperNManager.get(event.getPlayer()).isWere()){
+                event.getPlayer().sendMessage(Language.WEREWOLF_POTION_ONLY.toString());
+                return;
+            }
+          boolean isTheSame=  SupernaturalsPlugin.instance.getRecipeManager().getWolfbaneRecipe().isTheSame(event.getItem());
+            if(isTheSame){
+                SupernaturalsPlugin.instance.getWereManager().wolfbane(event.getPlayer());
+            }
+    }
     @EventHandler(priority = EventPriority.LOWEST)
     public void onPlayerPVP(EntityDamageByEntityEvent event){
         if(!(event.getEntity() instanceof Player &&event.getDamager() instanceof Player)){
@@ -121,6 +136,9 @@ import java.util.HashSet;
 /*     */   @EventHandler(priority=EventPriority.LOW)
 /*     */   public void onPlayerInteract(PlayerInteractEvent event)
 /*     */   {
+            if(event.getHand()==EquipmentSlot.OFF_HAND){
+                return;
+            }
 /*  61 */     Action action = event.getAction();
 /*  62 */     Player player = event.getPlayer();
 /*  63 */     SuperNPlayer snplayer = SuperNManager.get(player);

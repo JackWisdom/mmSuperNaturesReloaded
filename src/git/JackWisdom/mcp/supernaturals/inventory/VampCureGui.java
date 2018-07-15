@@ -6,8 +6,8 @@ import org.bukkit.inventory.Inventory;
 import javax.annotation.Nonnull;
 
 public class VampCureGui extends IGui {
-    public VampCureGui(Recipes recipes) {
-        super(recipes);
+    public VampCureGui(Recipes recipes,String title) {
+        super(recipes,title);
     }
 
     @Nonnull

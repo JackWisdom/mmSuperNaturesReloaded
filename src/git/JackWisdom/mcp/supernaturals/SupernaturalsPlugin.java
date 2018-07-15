@@ -20,7 +20,8 @@
 /*     */ import git.JackWisdom.mcp.supernaturals.commands.SNCommandSetup;
 /*     */ import git.JackWisdom.mcp.supernaturals.hooks.PAPIHook;
 import git.JackWisdom.mcp.supernaturals.io.SNConfigHandler;
-/*     */ import git.JackWisdom.mcp.supernaturals.storage.FileDataHandler;
+/*     */ import git.JackWisdom.mcp.supernaturals.recipes.RecipeManager;
+import git.JackWisdom.mcp.supernaturals.storage.FileDataHandler;
 import git.JackWisdom.mcp.supernaturals.storage.MySqlDataHandler;
 import git.JackWisdom.mcp.supernaturals.storage.SNDataHandler;
 /*     */ import git.JackWisdom.mcp.supernaturals.io.SNLanguageHandler;
@@ -96,6 +97,7 @@ import java.util.ArrayList;
 /*  97 */   private HumanManager  humanManager;
 /*  98 */   private VampireManager vampManager;
 /*  99 */   private PriestManager priestManager;
+            private RecipeManager recipeManager;
 /* 100 */   private WereManager wereManager;
 /* 101 */   private GhoulManager  ghoulManager;
 /* 102 */   private HunterManager hunterManager;
@@ -172,7 +174,9 @@ import java.util.ArrayList;
 /*     */   }
 /*     */   
 
-/*     */   
+/*     */   public RecipeManager getRecipeManager(){
+        return this.recipeManager;
+}
 /*     */ 
 /*     */ 
 /*     */ 
@@ -243,6 +247,9 @@ import java.util.ArrayList;
 /* 242 */     SNConfigHandler.getConfiguration();
 /* 243 */     SNLanguageHandler.getConfiguration();
 /* 248 */     SNWhitelistHandler.reloadWhitelist();
+                //recipe must load after config
+              recipeManager=new RecipeManager();
+
             //using mysql or not
             if(SNConfigHandler.useSql){
                 try {

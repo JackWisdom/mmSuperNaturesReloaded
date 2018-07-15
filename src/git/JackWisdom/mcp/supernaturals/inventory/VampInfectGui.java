@@ -12,8 +12,8 @@ public class VampInfectGui extends IGui {
         return InventoryType.VAMPIRE_I;
     }
 
-    public VampInfectGui(Recipes recipes) {
-        super(recipes);
+    public VampInfectGui(Recipes recipes,String title) {
+        super(recipes,title);
     }
 
     @Override
