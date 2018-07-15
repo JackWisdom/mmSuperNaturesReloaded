@@ -1,10 +1,9 @@
 /*     */ package git.JackWisdom.mcp.supernaturals.manager;
 /*     */ 
 /*     */ import git.JackWisdom.mcp.supernaturals.SuperNPlayer;
-/*     */ import git.JackWisdom.mcp.supernaturals.SuperType;
+/*     */
 import git.JackWisdom.mcp.supernaturals.SupernaturalsPlugin;
 /*     */ import git.JackWisdom.mcp.supernaturals.inventory.DonateGui;
-import git.JackWisdom.mcp.supernaturals.inventory.PDonateGui;
 import git.JackWisdom.mcp.supernaturals.io.SNConfigHandler;
 /*     */
 /*     */ import git.JackWisdom.mcp.supernaturals.util.Language;
@@ -210,15 +209,32 @@ import org.bukkit.scheduler.BukkitRunnable;
 /*     */           
 /* 207 */           SuperNManager.cure(snplayer);
 /*     */         } else {
-
-            new BukkitRunnable() {
-                @Override
-                public void run() {
-                    PDonateGui pDonateGui=new PDonateGui(SNConfigHandler.priestAltarRecipe,Language.GUI_PRIEST_DONATE_TITLE.toString());
-                    pDonateGui.openInv(player);
-                }
-            }.runTaskAsynchronously(SupernaturalsPlugin.instance);
-                 }
+            /* 209 */           PlayerInventory inv = player.getInventory();
+            /* 210 */           ItemStack[] items = inv.getContents();
+            /* 211 */           for (Material mat : SNConfigHandler.priestDonationMap.keySet())
+                /*     */           {
+                /* 213 */             for (ItemStack itemStack : items) {
+                    /* 214 */               if ((itemStack != null) &&
+                            /* 215 */                 (itemStack.getType().equals(mat))) {
+                        /* 216 */                 amount += itemStack.getAmount();
+                        /*     */               }
+                    /*     */             }
+                /*     */
+                /* 220 */             delta += amount * ((Integer)SNConfigHandler.priestDonationMap.get(mat)).intValue();
+                /*     */
+                /*     */
+                /* 223 */             amount = 0;
+                /*     */           }
+            /* 225 */           for (Material mat : SNConfigHandler.priestDonationMap.keySet())
+                /*     */           {
+                /* 227 */             inv.remove(mat);
+                /*     */           }
+            /* 229 */           player.updateInventory();
+            /* 230 */           SuperNManager.sendMessage(snplayer, Language.PRIEST_DONATE_ACCEPT.toString());
+            /*     */
+            /*     */
+            /* 233 */           SuperNManager.alterPower(snplayer, delta, Language.DAEMON_SNARE_NOTICE_SELF.toString());
+            /*     */         }
 /*     */       }  else {
 /* 238 */         SuperNManager.sendMessage(snplayer, Language.PRIEST_ALTAR_POWER_HUMAN.toString());
 /*     */         

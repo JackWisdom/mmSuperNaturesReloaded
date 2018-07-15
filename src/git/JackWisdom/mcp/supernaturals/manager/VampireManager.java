@@ -4,7 +4,6 @@
 /*     */ import git.JackWisdom.mcp.supernaturals.SuperType;
 import git.JackWisdom.mcp.supernaturals.SupernaturalsPlugin;
 /*     */ import git.JackWisdom.mcp.supernaturals.events.VampireTeleportEvent;
-import git.JackWisdom.mcp.supernaturals.inventory.PDonateGui;
 import git.JackWisdom.mcp.supernaturals.inventory.VampCureGui;
 import git.JackWisdom.mcp.supernaturals.inventory.VampInfectGui;
 import git.JackWisdom.mcp.supernaturals.io.SNConfigHandler;

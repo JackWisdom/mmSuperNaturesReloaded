@@ -8,7 +8,7 @@
 /*     */ public enum Language
 /*     */ {
             GUI_DONATE_TITLE("gui_donate_title","becoming a priest"),
-            GUI_PRIEST_DONATE_TITLE("gui_priest_donate_title","donate to gain power"),
+
             GUI_VAMCURE_TITLE("gui_vamcure_title","donate to cure"),
             GUI_VAMINFECT_TITLE("gui_vaminfect_title","donate to infect"),
             GUI_EXACTLY("gui_exactly","you must place exactly as the frist line did,your items have been removed for not putting right item"),

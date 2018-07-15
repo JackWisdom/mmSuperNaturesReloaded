@@ -155,7 +155,7 @@ import javax.annotation.Nullable;
 /*     */   }
 /*     */   
 /*     */   public boolean isAngel() {
-/* 128 */     return getType()==SuperType.ANGLE;
+/* 128 */     return getType()==SuperType.ANGEL;
 /*     */   }
 /*     */   
 /*     */   public boolean isHuman() {

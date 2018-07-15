@@ -90,7 +90,7 @@ import org.bukkit.projectiles.ProjectileSource;
 /*  89 */       (player.getItemInHand().getType().equals(Material.FEATHER))) {
 /*  90 */       SuperNManager.sendMessage(snplayer, Language.HUMAN_TO_ANGEL.toString());
 /*     */       
-/*  92 */       SuperNManager.convert(snplayer, SuperType.ANGLE, SNConfigHandler.angelPowerStart);
+/*  92 */       SuperNManager.convert(snplayer, SuperType.ANGEL, SNConfigHandler.angelPowerStart);
 /*     */     }
 /*     */     
 /*     */ 

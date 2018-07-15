@@ -38,11 +38,10 @@ public class InventoryListener implements Listener {
        Player player= (Player) event.getPlayer();
        IGui iGui= (IGui) event.getInventory().getHolder();
        SuperNPlayer snplayer=SuperNManager.get(player);
-       System.out.println(iGui.getType());
-       /*
+
         new BukkitRunnable() {
             @Override
-            public void run() {*/
+            public void run() {
                 switch (iGui.getType()){
                     case HUMAN:{
                         DonateGui donateGui= (DonateGui)iGui;
@@ -57,16 +56,7 @@ public class InventoryListener implements Listener {
                         }
                         return;
                     }
-                    case PRIEST:{
-                        PDonateGui donateGui= (PDonateGui) iGui;
-                        if(donateGui.accept()){
-                            player.sendMessage(Language.PRIEST_DONATE_ACCEPT.toString());
-                            SuperNManager.alterPower(snplayer, donateGui.getPower(), Language.DAEMON_SNARE_NOTICE_SELF.toString());
-                        }else {
-                            player.sendMessage(Language.PRIEST_DONATE_ONLY.toString());
-                        }
-                        return;
-                    }
+
                     case VAMPIRE_I:{
                         VampInfectGui donateGui= (VampInfectGui) iGui;
                         if(donateGui.accept()){
@@ -90,8 +80,8 @@ public class InventoryListener implements Listener {
                         return;
                     }
                 }
-       /*     }
-        }.runTaskAsynchronously(SupernaturalsPlugin.instance);*/
+         }
+        }.runTaskAsynchronously(SupernaturalsPlugin.instance);
 
    }
 }
