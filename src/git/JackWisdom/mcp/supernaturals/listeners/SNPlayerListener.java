@@ -102,6 +102,7 @@ import org.bukkit.material.Door;
                    return;
                }
                  String msg=sign.getLine(0);
+               System.out.println(msg+"|"+SNConfigHandler.hunterHallMessage);
                if(msg.equals(SNConfigHandler.hunterHallMessage)){
                  this.plugin.getHunterManager().doorEvent(player,  door);
                }else if (msg.equals(SNConfigHandler.demonHallMessage)){
@@ -128,11 +129,12 @@ import org.bukkit.material.Door;
 /*  70 */     if ((!player.hasPermission( this.worldPermission)) && (SNConfigHandler.multiworld))
 /*     */     {
 /*  72 */       return;
-}
+
+    }
 /*  76 */     Block block = event.getClickedBlock();
 /*  77 */     if ((action.equals(Action.RIGHT_CLICK_BLOCK))) {
                 if(block.getType()==Material.WALL_SIGN){
-                    doorEvent(player, (Sign) block);
+                    doorEvent(player,  (Sign)block.getState());
                 }
 /*     */     }
 /* 154 */     boolean cancelled = false;

@@ -25,7 +25,7 @@ Supernatural:
   - DEMON
 Vampire:
   Materials:
-    Jump: RED_ROSE
+    Jump: ROSE_RED
   Power:
     Start: 10000
     Kill:
@@ -49,10 +49,10 @@ Vampire:
     InSunlight: true
     MessageEnabled: true
     FireTicks: 3
-    HelmetProtection: GOLD_HELMET
+    HelmetProtection: GOLDEN_HELMET
   JumpDelta: 1.2
   TeleportMarker:
-    Material: RED_ROSE
+    Material: ROSE_RED
   Spell:
     Material: BOOK
   GainHunger:
@@ -67,9 +67,9 @@ Vampire:
         Count: 20
       Recipe:
         Materials:
-        - MUSHROOM_SOUP
+        - MUSHROOM_STEM
         - BONE
-        - SULPHUR
+        - GUNPOWDER
         - REDSTONE
         Quantities:
         - 1
@@ -113,10 +113,10 @@ Vampire:
   - IRON_CHESTPLATE
   - IRON_LEGGINGS
   - IRON_BOOTS
-  - GOLD_HELMET
-  - GOLD_CHESTPLATE
-  - GOLD_LEGGINGS
-  - GOLD_BOOTS
+  - GOLDEN_HELMET
+  - GOLDEN_CHESTPLATE
+  - GOLDEN_LEGGINGS
+  - GOLDEN_BOOTS
   - DIAMOND_HELMET
   - DIAMOND_CHESTPLATE
   - DIAMOND_LEGGINGS
@@ -126,7 +126,7 @@ Vampire:
   - CHAINMAIL_LEGGINGS
   - CHAINMAIL_BOOTS
   Hall:
-    Message: Vampires
+    Message: "仅限吸血鬼"
 Priest:
   Church:
     World: world
@@ -149,16 +149,20 @@ Priest:
     Donation:
       Materials:
       - APPLE
-      - RAW_FISH
-      - COOKED_FISH
-      - GRILLED_PORK
+      - PUFFERFISH
+      - TROPICAL_FISH
+      - COOKED_COD
+      - COOKED_SALMON
+      - COOKED_PORKCHOP
       - BREAD
       Rewards:
-      - 9000
-      - 510
-      - 500
-      - 210
-      - 80
+      - 10
+      - 30
+      - 30
+      - 30
+      - 100
+      - 100
+      - 150
   Banish:
     World: world
     Location:
@@ -218,29 +222,29 @@ Ghoul:
     Restrictions:
     - BOW
     - STICK
-    - WOOD_SWORD
-    - WOOD_PICKAXE
-    - WOOD_SPADE
-    - WOOD_AXE
-    - WOOD_HOE
+    - WOODEN_SWORD
+    - WOODEN_PICKAXE
+    - WOODEN_SHOVEL
+    - WOODEN_AXE
+    - WOODEN_HOE
     - STONE_SWORD
     - STONE_PICKAXE
-    - STONE_SPADE
+    - STONE_SHOVEL
     - STONE_AXE
     - STONE_HOE
     - IRON_SWORD
     - IRON_PICKAXE
-    - IRON_SPADE
+    - IRON_SHOVEL
     - IRON_AXE
     - IRON_HOE
-    - GOLD_SWORD
-    - GOLD_PICKAXE
-    - GOLD_SPADE
-    - GOLD_AXE
-    - GOLD_HOE
+    - GOLDEN_SWORD
+    - GOLDEN_PICKAXE
+    - GOLDEN_SHOVEL
+    - GOLDEN_AXE
+    - GOLDEN_HOE
     - DIAMOND_SWORD
     - DIAMOND_PICKAXE
-    - DIAMOND_SPADE
+    - DIAMOND_SHOVEL
     - DIAMOND_AXE
     - DIAMOND_HOE
   Immunity:
@@ -263,10 +267,10 @@ Ghoul:
   - IRON_CHESTPLATE
   - IRON_LEGGINGS
   - IRON_BOOTS
-  - GOLD_HELMET
-  - GOLD_CHESTPLATE
-  - GOLD_LEGGINGS
-  - GOLD_BOOTS
+  - GOLDEN_HELMET
+  - GOLDEN_CHESTPLATE
+  - GOLDEN_LEGGINGS
+  - GOLDEN_BOOTS
   - DIAMOND_HELMET
   - DIAMOND_CHESTPLATE
   - DIAMOND_LEGGINGS
@@ -298,14 +302,14 @@ Were:
     Dash: FEATHER
   WolfTruce: true
   Wolfbane:
-    Material: MUSHROOM_SOUP
+    Material: MUSHROOM_STEM
     CustomName: wolfBane
     Description:
     - lol
     RecipeKey:
-      -  A: YELLOW_FLOWER
+      -  A: DANDELION_YELLOW
       -  N: AIR
-      -  B: RED_ROSE
+      -  B: ROSE_RED
       -  C: RED_MUSHROOM
       -  D: REDSTONE
       -  E: BROWN_MUSHROOM
@@ -314,13 +318,13 @@ Were:
     - "ANB"
     - "CDE"
     - "NFN"
-#    - "YELLOW_FLOWER,AIR,RED_ROSE"
+#    - "DANDELION_YELLOW,AIR,ROSE_RED"
 #    - "RED_MUSHROOM,RED_STONE,BROWN_MUSHROOM"
 #    - "AIR,BOWEL,AIR"
 #   Trigger: BOWL
 #   Materials:
-#   - YELLOW_FLOWER
-#   - RED_ROSE
+#   - DANDELION_YELLOW
+#   - ROSE_RED
 #    - RED_MUSHROOM
 #   - BROWN_MUSHROOM
 #    - BOWL
@@ -334,29 +338,29 @@ Were:
     Restrictions:
     - BOW
     - STICK
-    - WOOD_SWORD
-    - WOOD_PICKAXE
-    - WOOD_SPADE
-    - WOOD_AXE
-    - WOOD_HOE
+    - WOODEN_SWORD
+    - WOODEN_PICKAXE
+    - WOODEN_SHOVEL
+    - WOODEN_AXE
+    - WOODEN_HOE
     - STONE_SWORD
     - STONE_PICKAXE
-    - STONE_SPADE
+    - STONE_SHOVEL
     - STONE_AXE
     - STONE_HOE
     - IRON_SWORD
     - IRON_PICKAXE
-    - IRON_SPADE
+    - IRON_SHOVEL
     - IRON_AXE
     - IRON_HOE
-    - GOLD_SWORD
-    - GOLD_PICKAXE
-    - GOLD_SPADE
-    - GOLD_AXE
-    - GOLD_HOE
+    - GOLDEN_SWORD
+    - GOLDEN_PICKAXE
+    - GOLDEN_SHOVEL
+    - GOLDEN_AXE
+    - GOLDEN_HOE
     - DIAMOND_SWORD
     - DIAMOND_PICKAXE
-    - DIAMOND_SPADE
+    - DIAMOND_SHOVEL
     - DIAMOND_AXE
     - DIAMOND_HOE
   Armor:
@@ -369,10 +373,10 @@ Were:
   - IRON_CHESTPLATE
   - IRON_LEGGINGS
   - IRON_BOOTS
-  - GOLD_HELMET
-  - GOLD_CHESTPLATE
-  - GOLD_LEGGINGS
-  - GOLD_BOOTS
+  - GOLDEN_HELMET
+  - GOLDEN_CHESTPLATE
+  - GOLDEN_LEGGINGS
+  - GOLDEN_BOOTS
   - DIAMOND_HELMET
   - DIAMOND_CHESTPLATE
   - DIAMOND_LEGGINGS
@@ -407,7 +411,7 @@ Demon:
   Armor:
   - AIR
   Hall:
-    Message: Demons
+    Message: '仅限恶魔'
 WitchHunter:
   Power:
     StartingPower: 10000
@@ -429,32 +433,32 @@ WitchHunter:
   FireArrow:
     FireTicks: 100
   Hall:
-    Message: WitchHunter
+    Message: "仅限恶魔猎手"
   Weapon:
     Restrictions:
-    - WOOD_SWORD
-    - WOOD_PICKAXE
-    - WOOD_SPADE
-    - WOOD_AXE
-    - WOOD_HOE
+    - WOODEN_SWORD
+    - WOODEN_PICKAXE
+    - WOODEN_SHOVEL
+    - WOODEN_AXE
+    - WOODEN_HOE
     - STONE_SWORD
     - STONE_PICKAXE
-    - STONE_SPADE
+    - STONE_SHOVEL
     - STONE_AXE
     - STONE_HOE
     - IRON_SWORD
     - IRON_PICKAXE
-    - IRON_SPADE
+    - IRON_SHOVEL
     - IRON_AXE
     - IRON_HOE
-    - GOLD_SWORD
-    - GOLD_PICKAXE
-    - GOLD_SPADE
-    - GOLD_AXE
-    - GOLD_HOE
+    - GOLDEN_SWORD
+    - GOLDEN_PICKAXE
+    - GOLDEN_SHOVEL
+    - GOLDEN_AXE
+    - GOLDEN_HOE
     - DIAMOND_SWORD
     - DIAMOND_PICKAXE
-    - DIAMOND_SPADE
+    - DIAMOND_SHOVEL
     - DIAMOND_AXE
     - DIAMOND_HOE
   Armor:
@@ -487,7 +491,7 @@ Angel:
     Start: 10000
   JumpDelta: 1.2
   Materials:
-    Jump: YELLOW_FLOWER
+    Jump: DANDELION_YELLOW
     Cure: PAPER
     Summon:
       Cow: RAW_BEEF
@@ -514,20 +518,22 @@ Angel:
 Material:
   Wooden:
   - STICK
-  - WOOD_AXE
-  - WOOD_HOE
-  - WOOD_PICKAXE
-  - WOOD_SPADE
-  - WOOD_SWORD
+  - WOODEN_AXE
+  - WOODEN_HOE
+  - WOODEN_PICKAXE
+  - WOODEN_SHOVEL
+  - WOODEN_SWORD
   - BOW
   Food:
   - APPLE
   - BREAD
-  - COOKED_FISH
-  - GRILLED_PORK
+  - COOKED_COD
+  - COOKED_SALMON
+  - COOKED_PORKCHOP
   - GOLDEN_APPLE
-  - MUSHROOM_SOUP
-  - RAW_FISH
+  - MUSHROOM_STEM
+  - PUFFERFISH
+  - TROPICAL_FISH
   - CAKE
   - COOKIE
   - COOKED_MUTTON

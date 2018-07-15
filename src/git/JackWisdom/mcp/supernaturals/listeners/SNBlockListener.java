@@ -77,7 +77,7 @@ import org.bukkit.Material;
 /* 76 */           event.getBlock().setType(Material.AIR);
 /* 77 */           player.getWorld().dropItem(player.getLocation(), new ItemStack(Material.SIGN, 1));
 /*    */         }
-/*    */         
+/*    */
 /* 80 */         return;
 /*    */       }
 /*    */     }

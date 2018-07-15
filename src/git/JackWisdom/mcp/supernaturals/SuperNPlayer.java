@@ -10,7 +10,8 @@ import git.JackWisdom.mcp.supernaturals.util.Color;
 import git.JackWisdom.mcp.supernaturals.util.Language;
 import org.bukkit.Bukkit;
 /*     */ import org.bukkit.Location;
-import org.bukkit.entity.Player;
+ import org.bukkit.Material;
+ import org.bukkit.entity.Player;
 
 import javax.annotation.Nullable;
 
@@ -117,7 +118,7 @@ import javax.annotation.Nullable;
 /*     */   public void setOldPower(double amount) {
 /*  85 */     this.oldPower = amount;
 /*     */   }
-/*     */   
+/*     */
 /*     */   public double getPower() {
 /*  89 */     return this.superPower;
 /*     */   }

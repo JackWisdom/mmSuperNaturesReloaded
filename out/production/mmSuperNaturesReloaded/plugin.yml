@@ -2,6 +2,7 @@ name: mmSupernaturalsReloaded
 main: git.JackWisdom.mcp.supernaturals.SupernaturalsPlugin
 version: 1.6
 author: [JackWisdom]
+api-version: 1.13
 softdepend: [PlaceholderAPI]
 commands:
   sn:
