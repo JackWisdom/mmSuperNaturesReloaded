@@ -155,7 +155,7 @@ import org.bukkit.Bukkit;
 /* 146 */       snplayer.setPower(powerLevel);
 /*     */     }
 
-/* 151 */     sendMessage(snplayer, Language.SN_ADMIN_CMD_CURE_NOTICE.toString().replace(LanguageTag.TYPE.toString(), superType.name()));
+/* 151 */     sendMessage(snplayer, Language.SN_ADMIN_CMD_CONVERT_NOTICE.toString().replace(LanguageTag.TYPE.toString(), superType.name()));
 /*     */     
 /* 153 */     SupernaturalsPlugin.log(snplayer.getName() + " turned into a " + ChatColor.WHITE + superType + ChatColor.RED + "!");
 /*     */     

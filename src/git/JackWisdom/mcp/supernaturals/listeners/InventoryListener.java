@@ -39,9 +39,10 @@ public class InventoryListener implements Listener {
        IGui iGui= (IGui) event.getInventory().getHolder();
        SuperNPlayer snplayer=SuperNManager.get(player);
        System.out.println(iGui.getType());
+       /*
         new BukkitRunnable() {
             @Override
-            public void run() {
+            public void run() {*/
                 switch (iGui.getType()){
                     case HUMAN:{
                         DonateGui donateGui= (DonateGui)iGui;
@@ -86,8 +87,8 @@ public class InventoryListener implements Listener {
                         }
                     }
                 }
-            }
-        }.runTaskAsynchronously(SupernaturalsPlugin.instance);
+       /*     }
+        }.runTaskAsynchronously(SupernaturalsPlugin.instance);*/
 
    }
 }

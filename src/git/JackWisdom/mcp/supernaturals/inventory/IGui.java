@@ -4,6 +4,7 @@ import git.JackWisdom.mcp.supernaturals.io.SNConfigHandler;
 import git.JackWisdom.mcp.supernaturals.util.Recipes;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
+import org.bukkit.craftbukkit.libs.it.unimi.dsi.fastutil.Stack;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.InventoryHolder;
@@ -35,9 +36,11 @@ public abstract class IGui implements InventoryHolder {
         ArrayList<Material> stacks=new ArrayList<>();
         while (start<=end){
             if(inventory.getItem(start)==null||inventory.getItem(start).getType()==Material.AIR){
+                start=start+1;
                 continue;
             }
             stacks.add(inventory.getItem(start).getType());
+            start=start+1;
         }
         return stacks;
     }
@@ -74,7 +77,7 @@ public abstract class IGui implements InventoryHolder {
         if(s1.size()!=s2.size()){
             return false;
         }
-        System.out.println(s1.size()+"|"+s2.size());
+
         while (i<s1.size()){
             System.out.println(i);
             if(itemEqual(s1.get(i),s2.get(i))){
