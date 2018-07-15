@@ -123,7 +123,7 @@ import org.bukkit.inventory.ItemStack;
         return false;
     }
     @Override
-    /*     */
+
 /*     */   public void deathEvent(Player player)
 /*     */   {
 /* 112 */     SuperNPlayer snplayer = SuperNManager.get(player);

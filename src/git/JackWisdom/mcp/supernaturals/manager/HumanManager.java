@@ -10,11 +10,11 @@ import git.JackWisdom.mcp.supernaturals.SupernaturalsPlugin;
 /*     */ import org.bukkit.Material;
 /*     */ import org.bukkit.World;
 /*     */
-/*     */ import org.bukkit.entity.LivingEntity;
-/*     */ import org.bukkit.entity.PigZombie;
-/*     */ import org.bukkit.entity.Player;
-/*     */ import org.bukkit.entity.Projectile;
-/*     */ import org.bukkit.entity.Wolf;
+/*     */ import org.bukkit.entity.*;
+/*     */
+/*     */
+/*     */
+/*     */
 /*     */ import org.bukkit.event.entity.EntityDamageByEntityEvent;
 /*     */ import org.bukkit.event.entity.EntityDamageEvent;
 /*     */
@@ -23,6 +23,8 @@ import org.bukkit.event.player.PlayerInteractEvent;
 /*     */
 import org.bukkit.event.player.PlayerItemConsumeEvent;
 import org.bukkit.projectiles.ProjectileSource;
+
+import java.util.List;
 
 /*     */
 /*     */ 
@@ -101,7 +103,7 @@ import org.bukkit.projectiles.ProjectileSource;
 /*  72 */     SuperNPlayer snplayer = SuperNManager.get(player);
 /*  73 */     LivingEntity lDamager = null;
 /*  74 */     EntityDamageEvent e = player.getLastDamageCause();
-/*     */     
+/*     */
 /*  76 */     if (snplayer == null) {
 /*  77 */       return;
 /*     */     }
@@ -115,12 +117,8 @@ import org.bukkit.projectiles.ProjectileSource;
 /*  88 */     if ((e.getCause().equals(EntityDamageEvent.DamageCause.FALL)) && 
 /*  89 */       (player.getItemInHand().getType().equals(Material.FEATHER))) {
 /*  90 */       SuperNManager.sendMessage(snplayer, Language.HUMAN_TO_ANGEL.toString());
-/*     */       
 /*  92 */       SuperNManager.convert(snplayer, SuperType.ANGEL, SNConfigHandler.angelPowerStart);
 /*     */     }
-/*     */     
-/*     */ 
-/*     */ 
 /*  97 */     if ((e.getCause().equals(EntityDamageEvent.DamageCause.LAVA)) || (e.getCause().equals(EntityDamageEvent.DamageCause.FIRE)) || (e.getCause().equals(EntityDamageEvent.DamageCause.FIRE_TICK)))
 /*     */     {
 /*     */ 
@@ -132,17 +130,30 @@ import org.bukkit.projectiles.ProjectileSource;
 /* 105 */         SuperNManager.convert(snplayer, SuperType.DEMON, SNConfigHandler.demonPowerStart);
 /*     */       }
 /*     */     }
-/*     */     
-/*     */ 
-/*     */ 
 /* 111 */     if ((e instanceof EntityDamageByEntityEvent)) {
 /* 112 */       if ((((EntityDamageByEntityEvent)e).getDamager() instanceof LivingEntity)) {
 /* 113 */         lDamager = (LivingEntity)((EntityDamageByEntityEvent)e).getDamager();
 /*     */       }
 /* 115 */       else if ((((EntityDamageByEntityEvent)e).getDamager() instanceof Projectile)) {
+
                 ProjectileSource shooter=((Projectile)((EntityDamageByEntityEvent)e).getDamager()).getShooter();
 /* 116 */         if(shooter instanceof LivingEntity){
                     lDamager= (LivingEntity) shooter;
+                    //memaid
+                    if(((EntityDamageByEntityEvent)e).getDamager()  instanceof Trident&&player.getWorld().hasStorm()){
+                        boolean isInWater= player.getLocation().getBlock().getType()==Material.WATER;
+                        List<Entity> entities=player.getNearbyEntities(3,3,3);
+                        int dophant=0;
+                        for(Entity ent:entities){
+                            if(ent instanceof Dolphin){
+                                dophant=dophant+1;
+                            }
+                        }
+                        boolean isDophinNearBy3=dophant>=3;
+                        if(isInWater&&isDophinNearBy3){
+                            SuperNManager.convert(snplayer, SuperType.MERMAID, SNConfigHandler.mermaidPowerStart);
+                        }
+                    }
             }else {
     return;
             }

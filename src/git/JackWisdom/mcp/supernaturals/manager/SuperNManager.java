@@ -311,7 +311,12 @@ import org.bukkit.block.Block;
 /* 311 */     player.setVelocity(player.getVelocity().add(vjadd));
 /* 312 */     return true;
 /*     */   }
-/*     */   
+
+    public static void cure(Player player) {
+   cure( get(player));
+}
+
+    /*     */
 /*     */ 
 /*     */ 
 /*     */ 

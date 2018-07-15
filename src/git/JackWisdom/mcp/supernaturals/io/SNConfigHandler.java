@@ -160,33 +160,33 @@ import org.bukkit.inventory.ItemStack;
 /*     */   public static int hunterBountyCompletion;
             public static String sqlPrefix;
             public static String sqlUrl;
-/*     */   public static String vampireAltarInfectMaterial;
-/*     */   public static String vampireAltarCureMaterial;
-/*     */   public static String vampireAltarInfectMaterialSurround;
-/*     */   public static String vampireAltarCureMaterialSurround;
-/*     */   public static String vampireHelmet;
-/*     */   public static String priestAltarMaterial;
-/*     */   public static String priestSpellGuardianAngel;
-/*     */   public static String wolfMaterial;
+/*     */   public static Material vampireAltarInfectMaterial;
+/*     */   public static Material vampireAltarCureMaterial;
+/*     */   public static Material vampireAltarInfectMaterialSurround;
+/*     */   public static Material vampireAltarCureMaterialSurround;
 
-/*     */   public static String ghoulMaterial;
-/*     */   public static String ghoulBondMaterial;
-/*     */   public static String vampireMaterial;
-/*     */   public static String vampireTeleportMaterial;
-/*     */   public static String vampireJumpMaterial;
-/*     */   public static String dashMaterial;
-/*     */   public static String demonMaterial;
-/*     */   public static String demonSnareMaterial;
-/*     */   public static String hunterHallMessage;
-/*     */   public static String demonHallMessage;
-/*     */   public static String vampireHallMessage;
-/*     */   public static String angelJumpMaterial;
-/*     */   public static String angelSummonCowMaterial;
-/*     */   public static String angelCureMaterial;
-/*     */   public static String angelSummonPigMaterial;
-/*     */   public static String angelSummonWolfMaterial;
+/*     */   public static Material priestAltarMaterial;
+/*     */   public static String priestSpellGuardianAngel;
+/*     */   public static Material wolfMaterial;
+
+/*     */   public static Material ghoulMaterial;
+/*     */   public static Material ghoulBondMaterial;
+/*     */   public static Material vampireMaterial;
+/*     */   public static Material vampireTeleportMaterial;
+/*     */   public static Material vampireJumpMaterial;
+/*     */   public static Material dashMaterial;
+/*     */   public static Material demonMaterial;
+/*     */   public static Material demonSnareMaterial;
+/*     */   public static Material hunterHallMessage;
+/*     */   public static Material demonHallMessage;
+/*     */   public static Material vampireHallMessage;
+/*     */   public static Material angelJumpMaterial;
+/*     */   public static Material angelSummonCowMaterial;
+/*     */   public static Material angelCureMaterial;
+/*     */   public static Material angelSummonPigMaterial;
+/*     */   public static Material angelSummonWolfMaterial;
     public static String angelSummonSheepMaterial;
-/*     */   public static String angelHealMaterial;
+/*     */   public static Material angelHealMaterial;
 /*     */   public static Location priestChurchLocation;
 /*     */   public static Location priestBanishLocation;
 /* 180 */   public static List<String> supernaturalTypes = new ArrayList();
@@ -224,6 +224,7 @@ import org.bukkit.inventory.ItemStack;
 /*     */   public static int priestBanishLocationX;
 /*     */   public static int priestBanishLocationY;
 /*     */   public static int priestBanishLocationZ;
+            public static int mermaidPowerStart;
 
     /* 215 */   private static List<String> ghoulWeaponsString = new ArrayList();
 /* 216 */   private static List<String> demonWeaponsString = new ArrayList();
@@ -315,8 +316,16 @@ import org.bukkit.inventory.ItemStack;
 /*     */     
 /* 320 */     woodMaterialsString = config.getStringList("Material.Wooden");
 /* 321 */     foodMaterialsString = config.getStringList("Material.Food");
-/*     */     
-/* 323 */     vampireJumpMaterial = config.getString("Vampire.Materials.Jump", "RED_ROSE");
+
+
+
+/*     */     mermaidPowerStart=config.getInt("Mermaid.Power.Start");
+
+
+
+
+
+/* 323 */     vampireJumpMaterial =Material.valueOf( config.getString("Vampire.Materials.Jump", "ROSE_RED"));
 /*     */     
 /*     */ 
 /* 326 */     vampirePowerStart = config.getInt("Vampire.Power.Start", 10000);

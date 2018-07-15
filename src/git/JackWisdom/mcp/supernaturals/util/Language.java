@@ -7,6 +7,7 @@
 /*     */ 
 /*     */ public enum Language
 /*     */ {
+            SN_MERMAID_NAME("sn_mermaid_name","Mermaid"),
             GUI_DONATE_TITLE("gui_donate_title","becoming a priest"),
 
             GUI_VAMCURE_TITLE("gui_vamcure_title","donate to cure"),

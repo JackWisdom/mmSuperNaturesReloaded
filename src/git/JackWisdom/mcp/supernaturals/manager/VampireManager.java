@@ -487,16 +487,7 @@ return;
 /*     */ 
 /*     */ 
 /*     */ 
-/*     */   public boolean hasHelmet(Player player)
-/*     */   {
-/* 541 */     if ((player.getInventory().getHelmet() != null) && 
-/* 542 */       (player.getInventory().getHelmet().getType().toString().equalsIgnoreCase(SNConfigHandler.vampireHelmet)))
-/*     */     {
-/* 544 */       return true;
-/*     */     }
-/*     */     
-/* 547 */     return false;
-/*     */   }
+
 /*     */   
 /*     */ 
 /*     */ 

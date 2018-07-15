@@ -13,8 +13,8 @@
 /* 13 */   PRIEST("&6"), 
 /* 14 */   WITCHHUNTER("&a"), 
 /* 15 */   DEMON("&c"), 
-/* 16 */   ANGEL("&b");
-/*    */   
+/* 16 */   ANGEL("&b"),
+/*    */   MERMAID("&e");
 /*    */   private String code;
 /*    */   
 /*    */   private Color(String code)

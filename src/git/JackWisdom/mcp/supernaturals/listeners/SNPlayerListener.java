@@ -102,7 +102,7 @@ import org.bukkit.material.Door;
                    return;
                }
                  String msg=sign.getLine(0);
-               System.out.println(msg+"|"+SNConfigHandler.hunterHallMessage);
+
                if(msg.equals(SNConfigHandler.hunterHallMessage)){
                  this.plugin.getHunterManager().doorEvent(player,  door);
                }else if (msg.equals(SNConfigHandler.demonHallMessage)){

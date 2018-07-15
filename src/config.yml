@@ -22,7 +22,11 @@ Supernatural:
   - WEREWOLF
   - GHOUL
   - WITCHHUNTER
+  - MERMAID
   - DEMON
+Mermaid:
+  Power:
+    Start: 10000
 Vampire:
   Materials:
     Jump: ROSE_RED
