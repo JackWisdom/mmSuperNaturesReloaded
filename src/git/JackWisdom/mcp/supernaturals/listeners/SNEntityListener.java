@@ -91,6 +91,7 @@ import org.bukkit.entity.Entity;
 
             }
              */
+    //恶魔火球
     @EventHandler(priority=EventPriority.NORMAL)
    public void onEntityDemonExplode(EntityExplodeEvent event) {
     Fireball fireball;

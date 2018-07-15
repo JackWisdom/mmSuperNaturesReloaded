@@ -64,7 +64,7 @@ import git.JackWisdom.mcp.supernaturals.SupernaturalsPlugin;
 /*     */   private SupernaturalsPlugin plugin;
 /*     */   
 /*     */ 
-/*     */ 
+
 /*     */   public double victimEvent(EntityDamageEvent event, double damage)
 /*     */   {
 /*  68 */     Player victim = (Player)event.getEntity();

@@ -1,7 +1,8 @@
 /*     */ package git.JackWisdom.mcp.supernaturals.listeners;
 /*     */ 
 /*     */ import git.JackWisdom.mcp.supernaturals.SuperNPlayer;
-/*     */ import git.JackWisdom.mcp.supernaturals.SupernaturalsPlugin;
+/*     */ import git.JackWisdom.mcp.supernaturals.SuperType;
+import git.JackWisdom.mcp.supernaturals.SupernaturalsPlugin;
 /*     */ import git.JackWisdom.mcp.supernaturals.io.SNConfigHandler;
 /*     */ import git.JackWisdom.mcp.supernaturals.io.SNWhitelistHandler;
 /*     */
@@ -13,15 +14,21 @@
 /*     */
 /*     */ import org.bukkit.World;
 /*     */
-/*     */ import org.bukkit.entity.Player;
-/*     */ import org.bukkit.event.EventHandler;
+/*     */ import org.bukkit.entity.Entity;
+import org.bukkit.entity.Player;
+/*     */ import org.bukkit.entity.Wolf;
+import org.bukkit.event.EventHandler;
 /*     */ import org.bukkit.event.EventPriority;
 /*     */ import org.bukkit.event.Listener;
-/*     */ import org.bukkit.event.entity.PlayerDeathEvent;
+
+import org.bukkit.event.entity.PlayerDeathEvent;
 import org.bukkit.event.player.AsyncPlayerChatEvent;
 /*     */ import org.bukkit.event.player.PlayerJoinEvent;
 /*     */ import org.bukkit.event.player.PlayerPortalEvent;
-/*     */ 
+
+import java.util.HashSet;
+
+/*     */
 /*     */ 
 /*     */ 
 /*     */ 
@@ -39,14 +46,52 @@ import org.bukkit.event.player.AsyncPlayerChatEvent;
 /*     */ 
 /*     */ public class SNPlayerMonitor
 /*     */   implements Listener
-/*     */ {
+/*     */ {            @EventHandler
+public void playerDeath(PlayerDeathEvent event){
+    Player pVictim = event.getEntity();
+    if ((!pVictim.hasPermission(this.worldPermission)) && (SNConfigHandler.multiworld)) {
+        return;
+    }
+    if (!pVictim.isOnline()) {
+        return;
+    }
+    SuperNPlayer snplayer = SuperNManager.get(pVictim);
+    Entity killer=event.getEntity().getKiller();
+    snplayer.getManager().deathEvent(event.getEntity());
+    if(killer==null){
+        return;
+    }
+    if(killer instanceof Wolf){
+        Wolf wolf= (Wolf)killer;
+        if(!(wolf.getOwner() instanceof Player)){return;}
+        Player owner= (Player) wolf.getOwner();
+        SuperNManager.get(owner).getManager().killEvent(owner,SuperNManager.get(owner),snplayer);
+        return;
+    }
+    if(!(killer instanceof Player)){ return;}
+    Player pkiller=pVictim.getKiller();
+    SuperNPlayer snkiller=SuperNManager.get(pkiller);
+    if(snkiller.isHunter()){
+        if(pVictim.getName().equals(pkiller.getName())){
+            SuperNManager.sendMessage(snplayer, Language.KILL_SELF.toString());
+            SuperNManager.sendMessage(snplayer, Language.WITCHHUNTER_KILL_SELF.toString());
+        }//is suicide
+        return;
+    }
+    if(!snkiller.isHuman()){return;}
+    HashSet<SuperType> supersKilled=snkiller.getHuntApp();
+    supersKilled.add(snplayer.getType());
+    if(supersKilled.size()>=3){
+        this.plugin.getHunterManager().invite(snkiller);
+    }
+}
 /*     */   private SupernaturalsPlugin plugin;
 /*  43 */   private String worldPermission = "supernatural.world.enabled";
 /*     */   
 /*     */   public SNPlayerMonitor(SupernaturalsPlugin instance) {
 /*  46 */     this.plugin = instance;
 /*     */   }
-
+            //PlayerPrefix
 /*     */   @EventHandler(priority=EventPriority.MONITOR)
 /*     */   public void onPlayerChat(AsyncPlayerChatEvent event)
 /*     */   {

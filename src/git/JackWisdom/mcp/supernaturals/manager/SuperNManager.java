@@ -28,11 +28,11 @@ import org.bukkit.Bukkit;
 /*     */
 /*     */
 /*     */ import org.bukkit.block.Block;
-/*     */ import org.bukkit.entity.Creature;
+/*     */
 /*     */ import org.bukkit.entity.Entity;
-/*     */ import org.bukkit.entity.LivingEntity;
+/*     */
 /*     */ import org.bukkit.entity.Player;
-/*     */ import org.bukkit.entity.Wolf;
+/*     */
 /*     */
 /*     */ import org.bukkit.util.Vector;
 
@@ -64,10 +64,6 @@ import org.bukkit.Bukkit;
               return   load(playername);
             }
 
-                if(superpowers.get(playername).getUuid()==null){
-                    superpowers.remove(playername);
-                    return null;
-                }
                 return superpowers.get(playername);
 /*     */   }
 /*     */   public static SuperNPlayer load(UUID uuid){
@@ -341,14 +337,14 @@ import org.bukkit.Bukkit;
 /*     */   }
 /*     */   
 /*     */   public int truceBreakTimeLeftGet(SuperNPlayer snplayer) {
-/* 385 */     return snplayer.getTruceTimer();
+/* 385 */     return snplayer.getTruceBreakTimer();
 /*     */   }
 /*     */   
 /*     */   private void truceBreakTimeLeftAlter(SuperNPlayer snplayer, int delta) {
-/* 389 */     if (snplayer.getTruceTimer() + delta < 0) {
+/* 389 */     if (snplayer.getTruceBreakTimer() + delta < 0) {
 /* 390 */       truceRestore(snplayer);
 /*     */     } else {
-/* 392 */       snplayer.setTruceTimer(snplayer.getTruceTimer() + delta);
+/* 392 */       snplayer.setTruceTimer(snplayer.getTruceBreakTimer() + delta);
 /*     */     }
 
 /*     */   }

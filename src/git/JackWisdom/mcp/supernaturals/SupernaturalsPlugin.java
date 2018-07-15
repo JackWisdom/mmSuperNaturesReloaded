@@ -20,7 +20,8 @@
 /*     */ import git.JackWisdom.mcp.supernaturals.commands.SNCommandSetup;
 /*     */ import git.JackWisdom.mcp.supernaturals.hooks.PAPIHook;
 import git.JackWisdom.mcp.supernaturals.io.SNConfigHandler;
-/*     */ import git.JackWisdom.mcp.supernaturals.recipes.RecipeManager;
+/*     */ import git.JackWisdom.mcp.supernaturals.manager.*;
+import git.JackWisdom.mcp.supernaturals.recipes.RecipeManager;
 import git.JackWisdom.mcp.supernaturals.storage.FileDataHandler;
 import git.JackWisdom.mcp.supernaturals.storage.MySqlDataHandler;
 import git.JackWisdom.mcp.supernaturals.storage.SNDataHandler;
@@ -33,16 +34,16 @@ import git.JackWisdom.mcp.supernaturals.storage.SNDataHandler;
 /*     */
 /*     */
 /*     */
-/*     */ import git.JackWisdom.mcp.supernaturals.manager.AngelManager;
 /*     */
-/*     */ import git.JackWisdom.mcp.supernaturals.manager.DemonManager;
-/*     */ import git.JackWisdom.mcp.supernaturals.manager.GhoulManager;
-/*     */ import git.JackWisdom.mcp.supernaturals.manager.HumanManager;
-/*     */ import git.JackWisdom.mcp.supernaturals.manager.HunterManager;
-/*     */ import git.JackWisdom.mcp.supernaturals.manager.PriestManager;
-/*     */ import git.JackWisdom.mcp.supernaturals.manager.SuperNManager;
-/*     */ import git.JackWisdom.mcp.supernaturals.manager.VampireManager;
-/*     */ import git.JackWisdom.mcp.supernaturals.manager.WereManager;
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
 /*     */ import git.JackWisdom.mcp.supernaturals.util.Language;
 /*     */ import git.JackWisdom.mcp.supernaturals.util.LanguageTag;
 
@@ -103,7 +104,7 @@ import java.util.ArrayList;
 /* 102 */   private HunterManager hunterManager;
 /* 103 */   private DemonManager demonManager;
 /* 104 */   private AngelManager angelManager;
-/*     */   
+/*     */   private MermaidManager mermaidManager;
 /* 106 */   public List<SNCommand> commands;
 /*     */   public static PAPIHook papiHook;
 /*     */   private static File dataFolder;
@@ -212,7 +213,7 @@ import java.util.ArrayList;
     wereManager = new WereManager();
     ghoulManager = new GhoulManager();
     priestManager = new PriestManager(this);
-
+    mermaidManager= new MermaidManager();
 /* 209 */     this.pm = getServer().getPluginManager();
 /* 212 */     this.commands.add(new SNCommandHelp());
 /* 213 */     this.commands.add(new SNCommandAdmin());
@@ -360,4 +361,8 @@ import java.util.ArrayList;
 /*     */   public static void log(Level level, String msg) {
 /* 432 */     instance.getLogger().log(level, msg);
 /*     */   }
-/*     */ }
+
+    public MermaidManager getMermaidManager() {
+    return mermaidManager;
+    }
+    /*     */ }

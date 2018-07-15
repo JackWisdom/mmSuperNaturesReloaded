@@ -10,7 +10,8 @@ public enum SuperType implements UsingData {
     HUMAN(humans,instance.getHumanManager()), ANGEL(angels,instance.getAngelManager()),
     VAMPIRE(vampires,instance.getVampireManager()), PRIEST(priests,instance.getPriestManager()),
     WEREWOLF(werewolves,instance.getWereManager())  , GHOUL(ghouls,instance.getGhoulManager())
-    , WITCHHUNTER(hunters,instance.getHunterManager()), DEMON(demons,instance.getDemonManager());
+    , WITCHHUNTER(hunters,instance.getHunterManager()), DEMON(demons,instance.getDemonManager()),
+    MERMAID(mermaids,instance.getMermaidManager());
 
     //是否是超能力者
     //食尸鬼和恶魔不算

@@ -9,7 +9,8 @@
 /*    */ import org.bukkit.event.entity.EntityDamageEvent;
 /*    */ import org.bukkit.event.entity.EntityShootBowEvent;
 /*    */ import org.bukkit.event.player.PlayerInteractEvent;
-/*    */ import org.bukkit.inventory.ItemStack;
+/*    */ import org.bukkit.event.player.PlayerItemConsumeEvent;
+import org.bukkit.inventory.ItemStack;
 
 /*    */ public abstract class ClassManager
 /*    */ {
@@ -28,7 +29,9 @@
 /*    */   {
 /* 50 */     return damage;
 /*    */   }
-/*    */   
+/*    */   public void eatItem(PlayerItemConsumeEvent event){
+
+        }
 /*    */ 
 /*    */   public void deathEvent(Player player) {}
 /*    */   

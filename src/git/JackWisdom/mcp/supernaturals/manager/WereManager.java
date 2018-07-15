@@ -21,7 +21,8 @@ import git.JackWisdom.mcp.supernaturals.SupernaturalsPlugin;
 /*     */ import org.bukkit.event.entity.EntityDamageEvent;
 /*     */
 /*     */ import org.bukkit.event.player.PlayerInteractEvent;
-/*     */ import org.bukkit.inventory.Inventory;
+/*     */ import org.bukkit.event.player.PlayerItemConsumeEvent;
+import org.bukkit.inventory.Inventory;
 /*     */ import org.bukkit.inventory.ItemStack;
 /*     */ import org.bukkit.inventory.PlayerInventory;
 /*     */ 
@@ -178,51 +179,7 @@ import git.JackWisdom.mcp.supernaturals.SupernaturalsPlugin;
 /* 190 */       return false;
 /*     */     }
 /*     */     
-/* 193 */     if (action.equals(Action.RIGHT_CLICK_AIR)) {
-/* 194 */       if ((SuperNManager.worldTimeIsNight(player)) && 
-/* 195 */         (itemMaterial != null) && 
-/* 196 */         (SNConfigHandler.foodMaterials.contains(itemMaterial))) {
-/* 197 */         if (itemMaterial.equals(Material.BREAD)) {
-/* 198 */           SuperNManager.sendMessage(snplayer, Language.WEREWOLF_EAT_LIMIT.toString());
-/*     */           
-/* 200 */           return false;
-/*     */         }
-/* 202 */         SuperNManager.alterPower(snplayer, SNConfigHandler.werePowerFood, Language.WEREWOLF_EAT.toString());
-/*     */         
-/*     */ 
-/* 205 */         player.setFoodLevel(player.getFoodLevel() + 6);
-/*     */         
-/*     */ 
-/* 208 */         Inventory inv = player.getInventory();
-/* 209 */         inv.removeItem(new ItemStack[] { new ItemStack(itemMaterial, 1) });
-/* 210 */         player.updateInventory();
-/* 211 */         return true;
-/*     */       }
-/*     */       
-/*     */ 
-/*     */ 
-/* 216 */       if ((itemMaterial != null) && 
-/* 217 */         (SNConfigHandler.foodMaterials.contains(itemMaterial))) {
-/* 218 */         if (player.getFoodLevel() == 20) {
-/* 219 */           return false;
-/*     */         }
-/* 221 */         if (itemMaterial.equals(Material.BREAD)) {
-/* 222 */           SuperNManager.sendMessage(snplayer, Language.WEREWOLF_EAT_LIMIT.toString());
-/*     */           
-/* 224 */           return false;
-/*     */         }
-/* 226 */         SuperNManager.alterPower(snplayer, SNConfigHandler.werePowerFood, Language.WEREWOLF_EAT.toString());
-/*     */         
-/*     */ 
-/* 229 */         player.setFoodLevel(player.getFoodLevel() + 6);
-/*     */         
-/*     */ 
-/* 232 */         Inventory inv = player.getInventory();
-/* 233 */         inv.removeItem(new ItemStack[] { new ItemStack(itemMaterial, 1) });
-/* 234 */         player.updateInventory();
-/* 235 */         return true;
-/*     */       }
-/*     */     }
+
 /*     */     
 /*     */ 
 /* 240 */     return false;
@@ -268,7 +225,28 @@ import git.JackWisdom.mcp.supernaturals.SupernaturalsPlugin;
 /*     */     }
 /*     */   }
 /*     */   
-/*     */ 
+/*     */ @Override
+            public void eatItem(PlayerItemConsumeEvent event){
+    /* 193 */     Player player=event.getPlayer();
+                    Material itemMaterial=event.getItem().getType();
+                    SuperNPlayer snplayer=SuperNManager.get(player);
+    boolean isTheSame=  SupernaturalsPlugin.instance.getRecipeManager().getWolfbaneRecipe().isTheSame(event.getItem());
+    if(isTheSame){
+        SupernaturalsPlugin.instance.getWereManager().wolfbane(event.getPlayer());
+        return;
+    }
+        /* 194 */       if ((SuperNManager.worldTimeIsNight(player)) &&   (SNConfigHandler.foodMaterials.contains(itemMaterial))) {
+            /* 197 */         if (itemMaterial.equals(Material.BREAD)) {
+                /* 198 */           SuperNManager.sendMessage(snplayer, Language.WEREWOLF_EAT_LIMIT.toString());
+                /*     */
+                /* 200 */           return ;
+                /*     */         }
+            /* 202 */         SuperNManager.alterPower(snplayer, SNConfigHandler.werePowerFood, Language.WEREWOLF_EAT.toString());
+
+            /* 211 */         return ;
+            /*     */       }
+
+           }
 /*     */ 
 /*     */ 
 /*     */ 

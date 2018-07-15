@@ -1,6 +1,6 @@
-/*     */ package git.JackWisdom.mcp.supernaturals;
-/*     */ 
-/*     */ import java.io.Serializable;
+ package git.JackWisdom.mcp.supernaturals;
+
+ import java.io.Serializable;
 
 import java.util.HashMap;
 import java.util.HashSet;
@@ -13,12 +13,12 @@ import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 
 import javax.annotation.Nullable;
-/*     */ 
 
-/*     */ public class SuperNPlayer
-/*     */   implements Serializable,UsingData
-/*     */ {
-/*     */   private static final long serialVersionUID = -2693531379993789149L;
+
+  public class SuperNPlayer
+  implements Serializable,UsingData
+ {
+   private static final long serialVersionUID = -2693531379993789149L;
         public UUID uuid;
         public SuperType type =SuperType.HUMAN;
         public SuperType oldType =SuperType.HUMAN;
@@ -38,9 +38,9 @@ import javax.annotation.Nullable;
            }
         };
 
-/*     */   
-/*     */   public SuperNPlayer() {}
-/*     */   
+
+   public SuperNPlayer() {}
+
            public SuperNPlayer(UUID uuid)
             {
              this.uuid=uuid;
@@ -125,15 +125,13 @@ import javax.annotation.Nullable;
 /*     */   public void setPower(double amount) {
 /*  93 */     this.superPower = limitDouble(amount);
 /*     */   }
-/*     */   public boolean hasTruce(){
-    return this.type.hasTruce();
-}
+            //是否和怪物停战
 /*     */   public boolean getTruce() {
-/*  97 */     return getTruceTimer()==0;
+/*  97 */     return type.hasTruce()&& getTruceBreakTimer()==0;
 
 /*     */   }
 
-/*     */   public int getTruceTimer() {
+/*     */   public int getTruceBreakTimer() {
 /* 106 */
     if(truceBreak.get(uuid)==null){
     return 0;}
@@ -153,43 +151,9 @@ import javax.annotation.Nullable;
 /*     */   {
 /* 118 */     return getType().isSuper();
 /*     */   }
-/*     */   
-/*     */   public boolean isAngel() {
-/* 128 */     return getType()==SuperType.ANGEL;
-/*     */   }
-/*     */   
-/*     */   public boolean isHuman() {
-/* 135 */     return getType()==SuperType.HUMAN;
-/*     */   }
-/*     */   
-/*     */   public boolean isVampire() {
-/* 142 */     return getType()==SuperType.VAMPIRE;
-/*     */   }
-/*     */   
-/*     */   public boolean isPriest() {
-/* 149 */    return getType()==SuperType.PRIEST;
-/*     */   }
-/*     */   
-/*     */   public boolean isWere() {
-/* 156 */   return getType()==SuperType.WEREWOLF;
-/*     */   }
-/*     */   
-/*     */   public boolean isGhoul() {
-/* 163 */    return getType()==SuperType.GHOUL;
-/*     */   }
-/*     */   
-/*     */   public boolean isHunter() {
-/* 170 */    return getType()==SuperType.WITCHHUNTER;
-/*     */   }
-/*     */   
-/*     */   public boolean isDemon() {
-/* 177 */  return getType()==SuperType.DEMON;
-/*     */   }
 
-/*     */   public double scale(double input) {
-/* 184 */     double powerPercentage = input * (getPower() / 10000.0D);
-/* 185 */     return powerPercentage;
-/*     */   }
+
+
     public static SuperNPlayer getPlayerOnline(Player p){
     return getPlayerOnline(p.getUniqueId());
     }
@@ -267,8 +231,44 @@ import javax.annotation.Nullable;
         SupernaturalsPlugin.instance.getDataHandler().save(this);
             SupernaturalsPlugin.log("saving data for"+uuid.toString());
         }
-    public int hashCode()
-    {
+
+        //type check
+     /*     */
+     /*     */   public boolean isAngel() {
+         /* 128 */     return getType()==SuperType.ANGEL;
+         /*     */   }
+     /*     */
+     /*     */   public boolean isHuman() {
+         /* 135 */     return getType()==SuperType.HUMAN;
+         /*     */   }
+     /*     */
+     /*     */   public boolean isVampire() {
+         /* 142 */     return getType()==SuperType.VAMPIRE;
+         /*     */   }
+     /*     */
+     /*     */   public boolean isPriest() {
+         /* 149 */    return getType()==SuperType.PRIEST;
+         /*     */   }
+     /*     */
+     /*     */   public boolean isWere() {
+         /* 156 */   return getType()==SuperType.WEREWOLF;
+         /*     */   }
+     /*     */
+     /*     */   public boolean isGhoul() {
+         /* 163 */    return getType()==SuperType.GHOUL;
+         /*     */   }
+     /*     */
+     /*     */   public boolean isHunter() {
+         /* 170 */    return getType()==SuperType.WITCHHUNTER;
+         /*     */   }
+     /*     */
+     /*     */   public boolean isDemon() {
+         /* 177 */  return getType()==SuperType.DEMON;
+         /*     */   }
+
+        //use less method
+            public int hashCode()
+             {
 /* 199 */     return uuid.hashCode();
 /*     */   }
 /*     */   
@@ -296,7 +296,10 @@ import javax.annotation.Nullable;
 /*     */   public double limitDouble(double d) {
 /* 224 */     return limitDouble(d, 0.0D, 10000.0D);
 /*     */   }
-
+     /*     */   public double scale(double input) {
+         /* 184 */     double powerPercentage = input * (getPower() / 10000.0D);
+         /* 185 */     return powerPercentage;
+         /*     */   }
 
     /*     */ }
 
