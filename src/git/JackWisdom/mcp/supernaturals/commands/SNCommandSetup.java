@@ -37,7 +37,7 @@ import org.bukkit.entity.Player;
 /* 36 */         this.stepNumber = 1;
 /* 37 */       } else if (this.stepNumber == 1) {
 /* 38 */         sendMessage(Language.SN_SETUP_CHURCH_GREETING.toString());
-/* 39 */         sendMessage(Language.SN_SETUP_CHURCH_ALTAR.toString().replace(LanguageTag.MATERIAL.toString(), SNConfigHandler.priestAltarMaterial.toLowerCase().replace("_", " ")));
+/* 39 */         sendMessage(Language.SN_SETUP_CHURCH_ALTAR.toString().replace(LanguageTag.MATERIAL.toString(), SNConfigHandler.priestAltarMaterial.name().toLowerCase().replace("_", " ")));
 /*    */         
 /*    */ 
 /*    */ 
@@ -46,13 +46,13 @@ import org.bukkit.entity.Player;
 /* 45 */         sendMessage(Language.SN_SETUP_CONTINUE.toString());
 /* 46 */         this.stepNumber = 2;
 /* 47 */       } else if (this.stepNumber == 2) {
-/* 48 */         sendMessage(Language.SN_SETUP_CHURSH_WITHIN_BLOCK.toString().replace(LanguageTag.MATERIAL.toString(), SNConfigHandler.priestAltarMaterial.toLowerCase().replace("_", " ")));
+/* 48 */         sendMessage(Language.SN_SETUP_CHURSH_WITHIN_BLOCK.toString().replace(LanguageTag.MATERIAL.toString(), SNConfigHandler.priestAltarMaterial.name().toLowerCase().replace("_", " ")));
 /*    */         
 /*    */ 
 /*    */ 
 /*    */ 
 /* 53 */         sendMessage(Language.SN_SETUP_CHRUSH_CMD.toString());
-/* 54 */         sendMessage(Language.SN_SETUP_CHRUSH_USAGE.toString().replace(LanguageTag.MATERIAL.toString(), SNConfigHandler.priestAltarMaterial.toLowerCase().replace("_", " ")));
+/* 54 */         sendMessage(Language.SN_SETUP_CHRUSH_USAGE.toString().replace(LanguageTag.MATERIAL.toString(), SNConfigHandler.priestAltarMaterial.name().toLowerCase().replace("_", " ")));
 /*    */         
 /*    */ 
 /*    */ 

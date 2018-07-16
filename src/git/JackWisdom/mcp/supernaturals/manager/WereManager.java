@@ -164,7 +164,7 @@ import org.bukkit.inventory.Inventory;
 /* 145 */         return false;
 /*     */       }
 /*     */       
-/* 148 */       if (itemMaterial.toString().equalsIgnoreCase(SNConfigHandler.wolfMaterial))
+/* 148 */       if (itemMaterial.equals(SNConfigHandler.wolfMaterial))
 /*     */       {
 /* 150 */         if (SuperNManager.worldTimeIsNight(player)) {
 /* 151 */           summon(player);
@@ -176,7 +176,7 @@ import org.bukkit.inventory.Inventory;
 /* 157 */         return false;
 /*     */       }
 
-/* 173 */       if (itemMaterial.toString().equalsIgnoreCase(SNConfigHandler.dashMaterial))
+/* 173 */       if (itemMaterial.equals(SNConfigHandler.dashMaterial))
 /*     */       {
 /* 175 */         if (SuperNManager.worldTimeIsNight(player)) {
 /* 176 */           SuperNManager.jump(event.getPlayer(), SNConfigHandler.dashDeltaSpeed, false);

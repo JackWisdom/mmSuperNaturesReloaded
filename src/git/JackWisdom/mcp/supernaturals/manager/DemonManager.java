@@ -30,6 +30,8 @@ import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.ItemStack;
 /*     */ import org.bukkit.inventory.PlayerInventory;
 /*     */ import org.bukkit.material.Door;
+import org.bukkit.potion.PotionEffect;
+import org.bukkit.potion.PotionEffectType;
 /*     */
 /*     */
 
@@ -60,7 +62,7 @@ import org.bukkit.inventory.ItemStack;
 /*
 /*  57 */   private HashMap<Block, Location> webMap = new HashMap();
 /*  58 */   private ArrayList<Player> demonApps = new ArrayList();
-/*  59 */   private List<Player> demons = new ArrayList();
+
 /*     */   
 /*     */ 
 /*     */   private SupernaturalsPlugin plugin;
@@ -83,24 +85,8 @@ import org.bukkit.inventory.ItemStack;
 /*  79 */       event.setCancelled(true);
 /*  80 */       return 0.0D; }
 /*  81 */     if (event.getCause().equals(EntityDamageEvent.DamageCause.LAVA)) {
-/*  82 */       final Player dPlayer = victim;
-/*  83 */       if (!this.demons.contains(dPlayer)) {
-/*  84 */         this.demons.add(dPlayer);
 /*  85 */         heal(victim);
 /*  86 */         SuperNManager.alterPower(snVictim, SNConfigHandler.demonPowerGain, Language.DAEMON_LOVE_LAVA.toString());
-/*     */         
-/*     */ 
-/*  89 */         SupernaturalsPlugin.instance.getServer().getScheduler().scheduleSyncDelayedTask(SupernaturalsPlugin.instance, new Runnable()
-/*     */         {
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */           public void run() {
-/*  96 */             DemonManager.this.demons.remove(dPlayer); } }, 41L);
-/*     */       }
-/*     */       
-/*     */ 
 /* 100 */       victim.setFireTicks(0);
 /* 101 */       event.setCancelled(true);
 /* 102 */       return 0.0D;
@@ -110,7 +96,10 @@ import org.bukkit.inventory.ItemStack;
 
     @Override
     public void eatItem(PlayerItemConsumeEvent event) {
-
+    if(event.getItem().getType()==Material.MILK_BUCKET){
+        event.getPlayer().addPotionEffect(new PotionEffect(PotionEffectType.BLINDNESS,100,1));
+        event.getPlayer().addPotionEffect(new PotionEffect(PotionEffectType.WITHER,100,1));
+    }
     }
 
     /*     */
@@ -125,7 +114,6 @@ import org.bukkit.inventory.ItemStack;
 /* 115 */     if ((item != null) && 
 /* 116 */       (SNConfigHandler.demonWeapons.contains(item.getType()))) {
 /* 117 */       SuperNManager.sendMessage(snDamager, Language.DAEMON_LIMIT_WEAPON.toString());
-/*     */       
 /* 119 */       damage = 0.0D;
 /*     */     }
 
@@ -216,15 +204,18 @@ import org.bukkit.inventory.ItemStack;
 /*     */     {
 /* 205 */       return false;
 /*     */     }
-/*     */     
-/* 208 */     if (itemMaterial.toString().equalsIgnoreCase(SNConfigHandler.demonMaterial))
+/*     */     if(player.getLocation().getBlock().getType()==Material.WATER){
+    return false;
+    }
+/* 208 */     if (itemMaterial.equals(SNConfigHandler.demonMaterial))
 /*     */     {
 /* 210 */       cancelled = fireball(player);
 /* 211 */       if ((!event.isCancelled()) && (cancelled)) {
 /* 212 */         event.setCancelled(true);
+
 /*     */       }
 /* 214 */       return true; }
-/* 215 */     if (itemMaterial.toString().equalsIgnoreCase(SNConfigHandler.demonSnareMaterial))
+/* 215 */     if (itemMaterial.equals(SNConfigHandler.demonSnareMaterial))
 /*     */     {
 /* 217 */       Player target = SupernaturalsPlugin.instance.getSuperManager().getTarget(player);
 /*     */       
@@ -281,34 +272,9 @@ import org.bukkit.inventory.ItemStack;
 /*     */ 
 /*     */ 
 /*     */ 
-/*     */   public boolean checkInventory(Player player)
-/*     */   {
-/* 274 */     PlayerInventory inv = player.getInventory();
-/* 275 */     ItemStack helmet = inv.getHelmet();
-/* 276 */     ItemStack chestplate = inv.getChestplate();
-/* 277 */     ItemStack leggings = inv.getLeggings();
-/* 278 */     ItemStack boots = inv.getBoots();
-/* 279 */     if ((helmet != null) && (chestplate != null) && (leggings != null) && (boots != null))
-/*     */     {
-/* 281 */       if ((helmet.getType().equals(Material.LEATHER_HELMET)) && (chestplate.getType().equals(Material.LEATHER_CHESTPLATE)) && (leggings.getType().equals(Material.LEATHER_LEGGINGS)) && (boots.getType().equals(Material.LEATHER_BOOTS)))
-/*     */       {
-/*     */ 
-/*     */ 
-/* 285 */         this.demonApps.add(player);
-/* 286 */         return true;
-/*     */       }
-/*     */     }
-/* 289 */     return false;
-/*     */   }
+
 /*     */   
-/*     */   public boolean checkPlayerApp(Player player) {
-/* 293 */     if (this.demonApps.contains(player)) {
-/* 294 */       this.demonApps.remove(player);
-/* 295 */       return true;
-/*     */     }
-/* 297 */     return false;
-/*     */   }
-/*     */   
+
 /*     */ 
 /*     */ 
 /*     */ 
@@ -368,6 +334,9 @@ import org.bukkit.inventory.ItemStack;
 /*     */   public void spellEvent(EntityDamageByEntityEvent event, Player target)
 /*     */   {
 /* 358 */     Player player = (Player)event.getDamager();
+                if(player.getLocation().getBlock().getType()==Material.WATER){
+                    return;
+                }
 /* 359 */     Material itemMaterial = player.getItemInHand().getType();
 /*     */     
 /* 361 */     boolean cancelled = false;

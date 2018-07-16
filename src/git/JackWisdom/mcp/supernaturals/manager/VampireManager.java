@@ -215,13 +215,13 @@ import org.bukkit.scheduler.BukkitRunnable;
 /* 184 */         return false;
 /*     */       }
 /*     */       
-/* 187 */       if (itemMaterial.toString().equalsIgnoreCase(SNConfigHandler.vampireJumpMaterial))
+/* 187 */       if (itemMaterial.equals(SNConfigHandler.vampireJumpMaterial))
 /*     */       {
 /* 189 */         SuperNManager.jump(player, SNConfigHandler.jumpDeltaSpeed, true);
 /*     */         
 /* 191 */         event.setCancelled(true);
 /* 192 */         return true; }
-/* 193 */       if (itemMaterial.toString().equalsIgnoreCase(SNConfigHandler.vampireMaterial))
+/* 193 */       if (itemMaterial.equals(SNConfigHandler.vampireMaterial))
 /*     */       {
 /* 195 */         teleport(player);
 /* 196 */         event.setCancelled(true);
@@ -246,7 +246,7 @@ import org.bukkit.scheduler.BukkitRunnable;
 /*     */         
 /* 216 */         event.setCancelled(true);
 /* 217 */         return true; }
-/* 218 */       if (itemMaterial.toString().equalsIgnoreCase(SNConfigHandler.vampireTeleportMaterial))
+/* 218 */       if (itemMaterial.equals(SNConfigHandler.vampireTeleportMaterial))
 /*     */       {
 /* 220 */         setTeleport(player);
 /* 221 */         return true;
@@ -363,14 +363,14 @@ import org.bukkit.scheduler.BukkitRunnable;
 /* 325 */     SuperNPlayer snplayer = SuperNManager.get(player);
 /*     */     
 /*     */ 
-/* 328 */     int count = GeometryUtil.countNearby(centerBlock, Material.getMaterial(SNConfigHandler.vampireAltarInfectMaterialSurround), SNConfigHandler.vampireAltarInfectMaterialRadius);
+/* 328 */     int count = GeometryUtil.countNearby(centerBlock,  (SNConfigHandler.vampireAltarInfectMaterialSurround), SNConfigHandler.vampireAltarInfectMaterialRadius);
 
 /* 333 */     if (count == 0) {
 /* 334 */       return;
 /*     */     }
 /*     */     
 /* 337 */     if (count < SNConfigHandler.vampireAltarInfectMaterialSurroundCount) {
-/* 338 */       SuperNManager.sendMessage(snplayer, Language.VAMPIRE_ALTAR_INFECT_NOT_ENOUGH.toString().replace(LanguageTag.MATERIAL.toString(), SNConfigHandler.vampireAltarInfectMaterial.toLowerCase().replace('_', ' ')).replaceAll(LanguageTag.MATERIAL_SURROUND.toString(), SNConfigHandler.vampireAltarInfectMaterialSurround.toLowerCase().replace('_', ' ')));
+/* 338 */       SuperNManager.sendMessage(snplayer, Language.VAMPIRE_ALTAR_INFECT_NOT_ENOUGH.toString().replace(LanguageTag.MATERIAL.toString(), SNConfigHandler.vampireAltarInfectMaterial.name().toLowerCase().replace('_', ' ')).replaceAll(LanguageTag.MATERIAL_SURROUND.toString(), SNConfigHandler.vampireAltarInfectMaterialSurround.name().replace('_', ' ')));
 /* 354 */       return;
 /*     */     }
 /*     */     
@@ -411,7 +411,7 @@ import org.bukkit.scheduler.BukkitRunnable;
 /* 413 */     SuperNPlayer snplayer = SuperNManager.get(player);
 /*     */     
 /*     */ 
-/* 416 */     int count = GeometryUtil.countNearby(centerBlock, Material.getMaterial(SNConfigHandler.vampireAltarCureMaterialSurround), SNConfigHandler.vampireAltarCureMaterialRadius);
+/* 416 */     int count = GeometryUtil.countNearby(centerBlock, (SNConfigHandler.vampireAltarCureMaterialSurround), SNConfigHandler.vampireAltarCureMaterialRadius);
 /*     */     
 /*     */ 
 /* 419 */     if (count == 0) {
@@ -419,7 +419,7 @@ import org.bukkit.scheduler.BukkitRunnable;
 /*     */     }
 /*     */     
 /* 423 */     if (count < SNConfigHandler.vampireAltarCureMaterialSurroundCount) {
-/* 424 */       SuperNManager.sendMessage(snplayer, Language.VAMPIRE_ALTAR_CURE_FAIL.toString().replace(LanguageTag.MATERIAL.toString(), SNConfigHandler.vampireAltarCureMaterial.toLowerCase().replace('_', ' ').replace('_', ' ')).replaceAll(LanguageTag.MATERIAL_SURROUND.toString(), SNConfigHandler.vampireAltarCureMaterialSurround.toLowerCase().replace('_', ' ')));
+/* 424 */       SuperNManager.sendMessage(snplayer, Language.VAMPIRE_ALTAR_CURE_FAIL.toString().replace(LanguageTag.MATERIAL.toString(), SNConfigHandler.vampireAltarCureMaterial.name().toLowerCase().replace('_', ' ').replace('_', ' ')).replaceAll(LanguageTag.MATERIAL_SURROUND.toString(), SNConfigHandler.vampireAltarCureMaterialSurround.name().replace('_', ' ')));
 /*     */
 
 /* 441 */       return;

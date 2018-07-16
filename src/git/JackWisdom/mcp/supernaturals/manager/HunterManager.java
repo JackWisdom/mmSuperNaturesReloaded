@@ -252,9 +252,7 @@ import git.JackWisdom.mcp.supernaturals.SupernaturalsPlugin;
 /* 263 */       if ((!bountyList.contains(sntarget)) && (sntarget.isSuper())) {
 /* 264 */         bountyList.add(sntarget);
 /* 265 */         SupernaturalsPlugin.instance.getServer().broadcastMessage(Language.WITCHHUNTER_BOUNTY_ADD.toString().replace(LanguageTag.PLAYER.toString(), sntarget.getName()));
-/*     */         
-/*     */ 
-/*     */ 
+
 /* 269 */         bountyFound = true;
 /* 270 */         return;
 /*     */       }

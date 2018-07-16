@@ -22,6 +22,8 @@ import git.JackWisdom.mcp.supernaturals.SupernaturalsPlugin;
 import org.bukkit.event.player.PlayerInteractEvent;
 /*     */
 import org.bukkit.event.player.PlayerItemConsumeEvent;
+import org.bukkit.inventory.Inventory;
+import org.bukkit.inventory.PlayerInventory;
 import org.bukkit.projectiles.ProjectileSource;
 
 import java.util.List;
@@ -92,7 +94,17 @@ import java.util.List;
     public void spellEvent(EntityDamageByEntityEvent event, Player target) {
 
     }
-
+        private boolean isPlayerWearingFur(Player player){
+        PlayerInventory inv=player.getInventory();
+        if(inv.getBoots()==null||inv.getChestplate()==null||inv.getHelmet()==null||inv.getLeggings()==null){
+            return false;
+        }
+            if(inv.getBoots().getType()!=Material.LEATHER_BOOTS||inv.getChestplate().getType()!=Material.LEATHER_CHESTPLATE||
+                    inv.getHelmet().getType()!=Material.LEATHER_HELMET||inv.getLeggings().getType()!=Material.LEATHER_LEGGINGS){
+                return false;
+            }
+            return true;
+        }
     /*     */
 /*     */   public void deathEvent(Player player)
 /*     */   {
@@ -122,11 +134,9 @@ import java.util.List;
 /*  97 */     if ((e.getCause().equals(EntityDamageEvent.DamageCause.LAVA)) || (e.getCause().equals(EntityDamageEvent.DamageCause.FIRE)) || (e.getCause().equals(EntityDamageEvent.DamageCause.FIRE_TICK)))
 /*     */     {
 /*     */ 
-/* 100 */       if ((player.getWorld().getEnvironment().equals(World.Environment.NETHER)) && (
-/* 101 */         (this.plugin.getDemonManager().checkPlayerApp(player)) || (this.plugin.getDemonManager().checkInventory(player))))
+/* 100 */       if ((player.getWorld().getEnvironment().equals(World.Environment.NETHER)) && (isPlayerWearingFur(player)))
 /*     */       {
 /* 103 */         SuperNManager.sendMessage(snplayer, Language.HUMAN_TO_DAEMON.toString());
-/*     */         
 /* 105 */         SuperNManager.convert(snplayer, SuperType.DEMON, SNConfigHandler.demonPowerStart);
 /*     */       }
 /*     */     }
@@ -151,6 +161,7 @@ import java.util.List;
                         }
                         boolean isDophinNearBy3=dophant>=3;
                         if(isInWater&&isDophinNearBy3){
+                            player.sendMessage(Language.HUMAN_TO_MERMAID.toString());
                             SuperNManager.convert(snplayer, SuperType.MERMAID, SNConfigHandler.mermaidPowerStart);
                         }
                     }

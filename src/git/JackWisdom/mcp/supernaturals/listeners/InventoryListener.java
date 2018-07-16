@@ -61,7 +61,7 @@ public class InventoryListener implements Listener {
                         VampInfectGui donateGui= (VampInfectGui) iGui;
                         if(donateGui.accept()){
                             player.sendMessage(Language.VAMPIRE_ALTAR_CONFIRM.toString());
-                            player.sendMessage(Language.VAMPIRE_ALTAR_INFECT_SUCCESS.toString().replace(LanguageTag.MATERIAL.toString(), SNConfigHandler.vampireAltarInfectMaterial.toLowerCase().replace('_', ' ')).replace(LanguageTag.MATERIAL_SURROUND.toString(), SNConfigHandler.vampireAltarInfectMaterialSurround.toLowerCase().replace('_', ' ')));
+                            player.sendMessage(Language.VAMPIRE_ALTAR_INFECT_SUCCESS.toString().replace(LanguageTag.MATERIAL.toString(), SNConfigHandler.vampireAltarInfectMaterial.name().toLowerCase().replace('_', ' ')).replace(LanguageTag.MATERIAL_SURROUND.toString(), SNConfigHandler.vampireAltarInfectMaterialSurround.name().toLowerCase().replace('_', ' ')));
                             SuperNManager.convert(snplayer, SuperType.VAMPIRE, SNConfigHandler.vampirePowerStart);
                         }else {
                             player.sendMessage(Language.GUI_EXACTLY.toString());
@@ -72,7 +72,7 @@ public class InventoryListener implements Listener {
                         VampCureGui donateGui=(VampCureGui) iGui;
                         if(donateGui.accept()){
                             player.sendMessage( Language.VAMPIRE_ALTAR_CONFIRM.toString());
-                            player.sendMessage(Language.VAMPIRE_ALTAR_CURE_SUCCESS.toString().replace(LanguageTag.MATERIAL.toString(), SNConfigHandler.vampireAltarCureMaterial.toLowerCase().replace('_', ' ')).replace(LanguageTag.MATERIAL_SURROUND.toString(), SNConfigHandler.vampireAltarCureMaterialSurround.toLowerCase().replace('_', ' ')));
+                            player.sendMessage(Language.VAMPIRE_ALTAR_CURE_SUCCESS.toString().replace(LanguageTag.MATERIAL.toString(), SNConfigHandler.vampireAltarCureMaterial.name().toLowerCase().replace('_', ' ')).replace(LanguageTag.MATERIAL_SURROUND.toString(), SNConfigHandler.vampireAltarCureMaterialSurround.name().toLowerCase().replace('_', ' ')));
                             SuperNManager.cure(snplayer);
                         }else {
                             player.sendMessage(Language.GUI_EXACTLY.toString());

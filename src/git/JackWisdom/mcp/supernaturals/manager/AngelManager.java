@@ -10,11 +10,11 @@
 /*     */ import org.bukkit.Material;
 /*     */
 /*     */ import org.bukkit.block.Block;
-/*     */ import org.bukkit.entity.Animals;
-/*     */ import org.bukkit.entity.Boat;
-/*     */ import org.bukkit.entity.EntityType;
-/*     */ import org.bukkit.entity.Player;
-/*     */ import org.bukkit.entity.Wolf;
+/*     */ import org.bukkit.entity.*;
+/*     */
+/*     */
+/*     */
+/*     */
 /*     */ import org.bukkit.event.block.Action;
 /*     */ import org.bukkit.event.entity.EntityDamageByEntityEvent;
 /*     */ import org.bukkit.event.entity.EntityDamageEvent;
@@ -39,9 +39,6 @@ import org.bukkit.inventory.ItemStack;
 /*  37 */     SuperNPlayer snplayer = SuperNManager.get(player);
 /*  38 */     if ((player.getLastDamageCause().getCause().equals(EntityDamageEvent.DamageCause.LAVA)) || (player.getLastDamageCause().getCause().equals(EntityDamageEvent.DamageCause.FIRE)) || (player.getLastDamageCause().getCause().equals(EntityDamageEvent.DamageCause.FIRE_TICK)))
 /*     */     {
-/*     */ 
-/*     */ 
-/*     */ 
 /*  43 */       SuperNManager.sendMessage(snplayer, Language.ANGEL_DEATH.toString());
 /*     */       
 /*  45 */       SuperNManager.cure(snplayer);
@@ -145,7 +142,7 @@ import org.bukkit.inventory.ItemStack;
 /* 129 */     SuperNPlayer snplayer = SuperNManager.get(player);
 /* 130 */     if ((action.equals(Action.LEFT_CLICK_AIR)) || (action.equals(Action.LEFT_CLICK_BLOCK)))
 /*     */     {
-/* 132 */       if (itemInHandMaterial.toString().equals(SNConfigHandler.angelJumpMaterial))
+/* 132 */       if (itemInHandMaterial. equals(SNConfigHandler.angelJumpMaterial))
 /*     */       {
 /* 134 */         if (snplayer.getPower() > SNConfigHandler.angelJumpPowerCost) {
 /* 135 */           jump(player, SNConfigHandler.angelJumpDeltaSpeed);
@@ -160,11 +157,11 @@ import org.bukkit.inventory.ItemStack;
 /*     */       
 /*     */ 
 /*     */ 
-/* 147 */       if ((itemInHandMaterial.equals(Material.BEEF)) || (itemInHandMaterial.equals(Material.BONE)) || (itemInHandMaterial.equals(Material.PORKCHOP)))
+/* 147 */       if ((itemInHandMaterial.equals(Material.RABBIT))||(itemInHandMaterial.equals(Material.CHICKEN))||(itemInHandMaterial.equals(Material.MUTTON))||(itemInHandMaterial.equals(Material.BEEF)) || (itemInHandMaterial.equals(Material.BONE)) || (itemInHandMaterial.equals(Material.PORKCHOP)))
 /*     */       {
 /*     */ 
 /* 150 */         if (snplayer.getPower() <= SNConfigHandler.angelSummonPowerCost) {return false;}
-/* 151 */           if (itemInHandMaterial.toString().equals(SNConfigHandler.angelSummonCowMaterial))
+/* 151 */           if (itemInHandMaterial. equals(SNConfigHandler.angelSummonCowMaterial))
 /*     */           {
 /* 153 */             player.getWorld().spawnEntity(plusOne, EntityType.COW);
 /* 154 */             event.setCancelled(true);
@@ -173,7 +170,7 @@ import org.bukkit.inventory.ItemStack;
 /*     */ 
 /* 158 */             return true;
 /*     */           }
-/* 160 */           if (itemInHandMaterial.toString().equals(SNConfigHandler.angelSummonWolfMaterial))
+/* 160 */           if (itemInHandMaterial. equals(SNConfigHandler.angelSummonWolfMaterial))
 /*     */           {
 /* 162 */             int wolves = 0;
 /* 163 */             for (Wolf wolf : this.angelWolfMap.keySet()) {
@@ -198,16 +195,34 @@ import org.bukkit.inventory.ItemStack;
 /*     */ 
 /* 182 */             return true;
 /*     */           }
-/* 184 */           if (itemInHandMaterial.toString().equals(SNConfigHandler.angelSummonPigMaterial))
-/*     */           {
-/* 186 */             player.getWorld().spawnEntity(plusOne, EntityType.PIG);
-/* 187 */             event.setCancelled(true);
-/* 188 */             SuperNManager.alterPower(snplayer, -SNConfigHandler.angelSummonPowerCost, Language.ANGEL_SUMMON_PIG.toString());
-/*     */             
-/*     */ 
-/* 191 */             return true;
-/*     */           }
-            /* 184 */           if (itemInHandMaterial.toString().equals(SNConfigHandler.angelSummonSheepMaterial))
+/* 184 */           if (itemInHandMaterial .equals(SNConfigHandler.angelSummonPigMaterial))
+                /*     */           {
+                /* 186 */             player.getWorld().spawnEntity(plusOne, EntityType.PIG);
+                /* 187 */             event.setCancelled(true);
+                /* 188 */             SuperNManager.alterPower(snplayer, -SNConfigHandler.angelSummonPowerCost, Language.ANGEL_SUMMON_PIG.toString());
+                /*     */
+                /*     */
+                /* 191 */             return true;
+                /*     */           }
+            /* 184 */           if (itemInHandMaterial .equals(SNConfigHandler.angelSummonChickenMaterial))
+                /*     */           {
+                /* 186 */             player.getWorld().spawnEntity(plusOne, EntityType.CHICKEN);
+                /* 187 */             event.setCancelled(true);
+                /* 188 */             SuperNManager.alterPower(snplayer, -SNConfigHandler.angelSummonPowerCost, Language.ANGEL_SUMMON_CHICKEN.toString());
+                /*     */
+                /*     */
+                /* 191 */             return true;
+                /*     */           }
+            /* 184 */           if (itemInHandMaterial .equals(SNConfigHandler.angelSummonRabbitMaterial))
+                /*     */           {
+                /* 186 */             player.getWorld().spawnEntity(plusOne, EntityType.RABBIT);
+                /* 187 */             event.setCancelled(true);
+                /* 188 */             SuperNManager.alterPower(snplayer, -SNConfigHandler.angelSummonPowerCost, Language.ANGEL_SUMMON_RABBIT.toString());
+                /*     */
+                /*     */
+                /* 191 */             return true;
+                /*     */           }
+            /* 184 */           if (itemInHandMaterial .equals(SNConfigHandler.angelSummonSheepMaterial))
                 /*     */           {
                 /* 186 */             player.getWorld().spawnEntity(plusOne, EntityType.SHEEP);
                 /* 187 */             event.setCancelled(true);
@@ -219,6 +234,17 @@ import org.bukkit.inventory.ItemStack;
 /*     */       }
 /* 195 */       return false;
 /*     */     }
+                //ANGEL CAN NOT USE IRON
+             if(action==Action.RIGHT_CLICK_BLOCK){
+                Block b=event.getClickedBlock();
+                if(b==null){
+                    return false;
+                }
+                if(b.getType()==Material.IRON_DOOR||b.getType()==Material.IRON_BLOCK||b.getType()==Material.ANVIL){
+                    player.setFireTicks(60);
+                    player.sendMessage(Language.ANGEL_SCARE_IRON.toString());
+                }
+             }
 /* 197 */     return false;
 /*     */   }
 /*     */     @Override
@@ -228,6 +254,16 @@ import org.bukkit.inventory.ItemStack;
 /* 203 */       event.setCancelled(true);
 /* 204 */       return 0.0D;
 /*     */     }
+            if(event instanceof EntityDamageByEntityEvent){
+                EntityDamageByEntityEvent ev= (EntityDamageByEntityEvent) event;
+                if(ev.getDamager() instanceof HumanEntity){
+                    ItemStack im=((HumanEntity)ev.getDamager()).getItemInHand();
+                    if(im!=null&&(im.getType().name().contains("IRON")||(im.getType()==Material.ANVIL))){
+                        event.getEntity().setFireTicks(100);
+                        event.getEntity().sendMessage(Language.ANGEL_SCARE_IRON.toString());
+                    }
+                }
+            }
 /* 206 */     return damage;
 /*     */   }
 
@@ -267,25 +303,25 @@ import org.bukkit.inventory.ItemStack;
 /* 236 */       ItemStack boots = inv.getBoots();
 /*     */       
 /* 238 */       if ((helmet != null) && 
-/* 239 */         (!SNConfigHandler.angelArmor.contains(helmet.getType()))) {
+/* 239 */         (SNConfigHandler.angelArmor.contains(helmet.getType()))) {
 /* 240 */         inv.setHelmet(null);
 /* 241 */         dropItem(player, helmet);
 /*     */       }
 /*     */       
 /* 244 */       if ((chest != null) && 
-/* 245 */         (!SNConfigHandler.angelArmor.contains(chest.getType()))) {
+/* 245 */         (SNConfigHandler.angelArmor.contains(chest.getType()))) {
 /* 246 */         inv.setChestplate(null);
 /* 247 */         dropItem(player, chest);
 /*     */       }
 /*     */       
 /* 250 */       if ((leggings != null) && 
-/* 251 */         (!SNConfigHandler.angelArmor.contains(leggings.getType()))) {
+/* 251 */         (SNConfigHandler.angelArmor.contains(leggings.getType()))) {
 /* 252 */         inv.setLeggings(null);
 /* 253 */         dropItem(player, leggings);
 /*     */       }
 /*     */       
 /* 256 */       if ((boots != null) && 
-/* 257 */         (!SNConfigHandler.angelArmor.contains(boots.getType()))) {
+/* 257 */         (SNConfigHandler.angelArmor.contains(boots.getType()))) {
 /* 258 */         inv.setBoots(null);
 /* 259 */         dropItem(player, boots);
 /*     */       }

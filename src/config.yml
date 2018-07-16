@@ -189,6 +189,7 @@ Priest:
   Spell:
     HealAmount: 10
     DrainFactor: 0.15
+    GuardianAngelMaterial: WHITE_WOOL
     Material:
     - FEATHER
     - SUGAR
@@ -218,7 +219,7 @@ Ghoul:
   Time:
     HealthGained: 0.1
   Summon:
-    Material: PORK
+    Material: PORKCHOP
   UnholyBond:
     Material: BONE
   RightClickSummon: false
@@ -252,7 +253,11 @@ Ghoul:
     - DIAMOND_AXE
     - DIAMOND_HOE
   Immunity:
-  - DIAMOND_SWORD
+    - DIAMOND_SWORD
+    - DIAMOND_PICKAXE
+    - DIAMOND_SHOVEL
+    - DIAMOND_AXE
+    - DIAMOND_HOE
   Truce:
     Creatures:
     - CREEPER
@@ -261,28 +266,7 @@ Ghoul:
     - PIG_ZOMBIE
     - GIANT
     - ENDERMAN
-  Armor:
-  - AIR
-  - LEATHER_HELMET
-  - LEATHER_CHESTPLATE
-  - LEATHER_LEGGINGS
-  - LEATHER_BOOTS
-  - IRON_HELMET
-  - IRON_CHESTPLATE
-  - IRON_LEGGINGS
-  - IRON_BOOTS
-  - GOLDEN_HELMET
-  - GOLDEN_CHESTPLATE
-  - GOLDEN_LEGGINGS
-  - GOLDEN_BOOTS
-  - DIAMOND_HELMET
-  - DIAMOND_CHESTPLATE
-  - DIAMOND_LEGGINGS
-  - DIAMOND_BOOTS
-  - CHAINMAIL_HELMET
-  - CHAINMAIL_CHESTPLATE
-  - CHAINMAIL_LEGGINGS
-  - CHAINMAIL_BOOTS
+  Armor: []
 Were:
   DashDelta: 4
   Power:
@@ -412,8 +396,7 @@ Demon:
     FireTicks: 50
   Weapon:
     Restrictions: []
-  Armor:
-  - AIR
+  Armor: []
   Hall:
     Message: '仅限恶魔'
 WitchHunter:
@@ -502,23 +485,24 @@ Angel:
       Pig: PORKCHOP
       Wolf: BONE
       Sheep: MUTTON
+      Chicken: CHICKEN
+      Rabbit: RABBIT
     Heal: FEATHER
   Weapons:
-    Restrictions: []
+    Restrictions:
+    - IRON_SWORD
+    - IRON_PICKAXE
+    - IRON_SHOVEL
+    - IRON_AXE
+    - IRON_HOE
+    - IRON_INGOT
+    - ANVIL
+#现在护甲指的是他们不能穿的护甲
   Armor:
-  - AIR
-  - LEATHER_HELMET
-  - LEATHER_CHESTPLATE
-  - LEATHER_LEGGINGS
-  - LEATHER_BOOTS
   - IRON_HELMET
   - IRON_CHESTPLATE
   - IRON_LEGGINGS
   - IRON_BOOTS
-  - CHAINMAIL_HELMET
-  - CHAINMAIL_CHESTPLATE
-  - CHAINMAIL_LEGGINGS
-  - CHAINMAIL_BOOTS
 Material:
   Wooden:
   - STICK

@@ -63,13 +63,13 @@ import org.bukkit.Material;
 /*    */   @EventHandler(priority=EventPriority.LOW)
 /*    */   public void onSignChange(SignChangeEvent event) {
 /* 64 */     Player player = event.getPlayer();
-/* 65 */     String[] text = event.getLines();
+/* 65 */     String  text = event.getLine(0);
 /* 66 */     if ((!player.hasPermission( this.worldPermission)) && (SNConfigHandler.multiworld))
 /*    */     {
 /* 68 */       return;
 /*    */     }
-/* 70 */     for (int i = 0; i < text.length; i++) {
-/* 71 */       if (text[i].contains(SNConfigHandler.hunterHallMessage)) {
+/* 70 *
+/* 71 */       if (text.equals((SNConfigHandler.hunterHallMessage))) {
 /* 72 */         if (!player.hasPermission( this.permissions)) {
 /* 73 */           SuperNManager.sendMessage(SuperNManager.get(player), Language.WITCHHUNTER_SIGN_NOT_ALLOW.toString());
 /*    */           
@@ -80,7 +80,7 @@ import org.bukkit.Material;
 /*    */
 /* 80 */         return;
 /*    */       }
-/*    */     }
+/*    */
 /*    */   }
 /*    */ }
 

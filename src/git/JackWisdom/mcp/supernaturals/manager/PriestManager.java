@@ -88,7 +88,7 @@ import org.bukkit.scheduler.BukkitRunnable;
 /*  83 */       Player pVictim = (Player)victim;
 
 /*  87 */       SuperNPlayer snvictim = SuperNManager.get(pVictim);
-/*  88 */       if (snvictim.isSuper()) {
+/*  88 */       if (snvictim.getType().isDemon()) {
 /*  89 */         if (!snvictim.isDemon()) {
 /*  90 */           pVictim.setFireTicks(SNConfigHandler.priestFireTicks);
 /*     */         }
@@ -347,7 +347,7 @@ import org.bukkit.scheduler.BukkitRunnable;
 /* 367 */         if (!event.isCancelled()) {
 /* 368 */           event.setCancelled(cancelled);
 /*     */         }
-/* 370 */       } else if (itemMaterial.toString().equalsIgnoreCase(SNConfigHandler.priestSpellGuardianAngel))
+/* 370 */       } else if (itemMaterial.equals(SNConfigHandler.priestSpellGuardianAngel))
 /*     */       {
 /* 372 */         cancelled = guardianAngel(player, target);
 /* 373 */         if (!event.isCancelled()) {

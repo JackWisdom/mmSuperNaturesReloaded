@@ -18,7 +18,8 @@ import git.JackWisdom.mcp.supernaturals.SupernaturalsPlugin;
 /*     */ import org.bukkit.entity.Entity;
 /*     */ import org.bukkit.entity.EntityType;
 /*     */ import org.bukkit.entity.Player;
-/*     */ import org.bukkit.event.block.Action;
+/*     */ import org.bukkit.event.Event;
+import org.bukkit.event.block.Action;
 /*     */ import org.bukkit.event.entity.EntityDamageByEntityEvent;
 /*     */ import org.bukkit.event.entity.EntityDamageEvent;
 /*     */
@@ -27,7 +28,10 @@ import org.bukkit.event.player.PlayerInteractEvent;
 /*     */ import org.bukkit.event.player.PlayerItemConsumeEvent;
 import org.bukkit.inventory.ItemStack;
 /*     */ import org.bukkit.inventory.PlayerInventory;
-/*     */ 
+import org.bukkit.potion.PotionEffect;
+import org.bukkit.potion.PotionEffectType;
+
+/*     */
 /*     */ 
 /*     */ 
 /*     */ 
@@ -92,7 +96,13 @@ import org.bukkit.inventory.ItemStack;
 
     @Override
     public void eatItem(PlayerItemConsumeEvent event) {
-
+        if(event.getItem().getType()==Material.MILK_BUCKET){
+            event.getPlayer().addPotionEffect(new PotionEffect(PotionEffectType.BLINDNESS,100,1));
+            event.getPlayer().addPotionEffect(new PotionEffect(PotionEffectType.CONFUSION,100,1));
+        }
+        if(event.getItem().getType()==Material.POTION){
+            event.getPlayer().addPotionEffect(new PotionEffect(PotionEffectType.POISON,100,1));
+        }
     }
 
     /*     */      @Override
@@ -176,7 +186,7 @@ import org.bukkit.inventory.ItemStack;
 /*     */ 
 /*     */ 
 /*     */ 
-/* 162 */       if (itemMaterial.toString().equalsIgnoreCase(SNConfigHandler.ghoulMaterial))
+/* 162 */       if (itemMaterial.equals(SNConfigHandler.ghoulMaterial))
 /*     */       {
 /* 164 */         summon(player);
 /* 165 */         event.setCancelled(true);
@@ -276,7 +286,7 @@ import org.bukkit.inventory.ItemStack;
 /* 259 */       return;
 /*     */     }
 /*     */     
-/* 262 */     if (itemMaterial.toString().equalsIgnoreCase(SNConfigHandler.ghoulBondMaterial))
+/* 262 */     if (itemMaterial.equals(SNConfigHandler.ghoulBondMaterial))
 /*     */     {
 /* 264 */       boolean success = createBond(player, target);
 /* 265 */       if (!success) {

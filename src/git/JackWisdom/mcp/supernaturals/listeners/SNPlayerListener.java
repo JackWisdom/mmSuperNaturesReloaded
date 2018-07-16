@@ -149,15 +149,15 @@ import org.bukkit.material.Door;
 /*     */     
 /* 166 */     Material blockMaterial = event.getClickedBlock().getType();
 /*     */     
-/* 168 */     if (blockMaterial == Material.getMaterial(SNConfigHandler.vampireAltarInfectMaterial))
+/* 168 */     if (blockMaterial == (SNConfigHandler.vampireAltarInfectMaterial))
 /*     */     {
 /* 170 */       this.plugin.getVampireManager().useAltarInfect(player, event.getClickedBlock());
 /*     */     }
-/* 172 */     else if (blockMaterial == Material.getMaterial(SNConfigHandler.vampireAltarCureMaterial))
+/* 172 */     else if (blockMaterial == (SNConfigHandler.vampireAltarCureMaterial))
 /*     */     {
 /* 174 */       this.plugin.getVampireManager().useAltarCure(player, event.getClickedBlock());
 /*     */     }
-/* 176 */     else if (blockMaterial == Material.getMaterial(SNConfigHandler.priestAltarMaterial))
+/* 176 */     else if (blockMaterial == (SNConfigHandler.priestAltarMaterial))
 /*     */     {
 /* 178 */       this.plugin.getPriestManager().useAltar(player);
 /*     */     }
@@ -177,7 +177,7 @@ import org.bukkit.material.Door;
 /* 193 */     if ((event.getLeaveMessage().contains("Flying")) || (event.getReason().contains("Flying")))
 /*     */     {
 /* 195 */       SuperNPlayer snplayer = SuperNManager.get(event.getPlayer());
-/* 196 */       if ((snplayer.isVampire()) && (event.getPlayer().getItemInHand().getType().toString().equalsIgnoreCase(SNConfigHandler.vampireJumpMaterial)))
+/* 196 */       if ((snplayer.isVampire()) && (event.getPlayer().getItemInHand().getType().equals(SNConfigHandler.vampireJumpMaterial)))
 /*     */       {
 /* 203 */         event.setCancelled(true);
 /*     */       }
