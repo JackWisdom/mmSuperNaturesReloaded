@@ -32,8 +32,6 @@ public class MySqlDataHandler extends SNDataHandler {
                 "   uuid char(36) not null primary key,\n" +
                 "   type varchar(10) not null default 'HUMAN',\n" +
                 "   oldtype varchar(10) not null default 'HUMAN',\n" +
-                "   trucetimer int not null  default 0,\n" +
-                "   truce boolean not null  default true,\n" +
                 "   power int not null default 0,\n" +
                 "   hunterapp varchar(16)\n" +
                 "   \n" +
@@ -108,7 +106,7 @@ public class MySqlDataHandler extends SNDataHandler {
         statement.execute(deleteData(playerTable,player.uuid.toString()));
         statement.close();
         //删除旧数据完成 开始输入新的
-      String url="insert into "+playerTable+"(uuid,type,oldtype,trucetimer,truce,power,hunterapp) values(?,?,?,?,?)";
+      String url="insert into "+playerTable+"(uuid,type,oldtype,power,hunterapp) values(?,?,?,?,?)";
       PreparedStatement ps=connection.prepareStatement(url);
       ps.setString(1,player.uuid.toString());
       ps.setString(2,player.type.name());
