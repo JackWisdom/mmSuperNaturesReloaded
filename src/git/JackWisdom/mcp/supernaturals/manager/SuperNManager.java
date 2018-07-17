@@ -340,9 +340,12 @@ import static git.JackWisdom.mcp.supernaturals.SupernaturalsPlugin.instance;
 /*     */   }
 /*     */   
 /*     */   public void truceBreakAdvanceTime(SuperNPlayer snplayer, int milliseconds) {
-/* 377 */     if (snplayer.getTruce()) {
+/* 377 */     if (!snplayer.getType().hasTruce()) {
 /* 378 */       return;
 /*     */     }
+              if(snplayer.getTruceBreakTimer()==0){
+                return;
+              }
 /*     */     
 /* 381 */     truceBreakTimeLeftAlter(snplayer, -milliseconds);
 /*     */   }
