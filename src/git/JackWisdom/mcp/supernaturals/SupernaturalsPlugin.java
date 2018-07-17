@@ -185,7 +185,7 @@ import java.util.ArrayList;
 /*     */ 
 /*     */   public void onDisable()
 /*     */   {
-/* 193 */     SuperNManager.cancelTimer();
+
 /* 197 */     this.demonManager.removeAllWebs();
 /* 198 */     PluginDescriptionFile pdfFile = getDescription();
                 saveAll();
@@ -340,10 +340,6 @@ import java.util.ArrayList;
 /*     */   }
 /*     */   
 
-/*     */   public static void restartTask() {
-/* 346 */     SuperNManager.cancelTimer();
-/* 347 */     SuperNManager.startTimer();
-/*     */   }
 /*     */   
 /*     */ 
 /*     */ 

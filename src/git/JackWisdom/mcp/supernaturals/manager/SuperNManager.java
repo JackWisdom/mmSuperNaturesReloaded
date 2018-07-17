@@ -35,15 +35,20 @@ import org.bukkit.block.Block;
 /*     */ import org.bukkit.entity.Player;
 /*     */
 /*     */
-/*     */ import org.bukkit.util.Vector;
+/*     */ import org.bukkit.potion.PotionEffect;
+import org.bukkit.potion.PotionEffectType;
+import org.bukkit.scheduler.BukkitRunnable;
+import org.bukkit.util.Vector;
+
+import static git.JackWisdom.mcp.supernaturals.SupernaturalsPlugin.instance;
 
 /*     */ public class SuperNManager implements UsingData
 /*     */ {
-/*     */   public static SupernaturalsPlugin plugin=SupernaturalsPlugin.instance;
+/*     */   public static SupernaturalsPlugin plugin=instance;
 /*  51 */   public String worldPermission = "supernatural.world.enabled";
 /*  52 */   public static String infPowerPermissions = "supernatural.admin.infinitepower";
 /*  55 */   public transient int taskCounter = 0;
-/*     */   public static int timer;
+
 /*     */   
 /*     */   public SuperNManager(SupernaturalsPlugin plugin) {
 /*  59 */     plugin = plugin;
@@ -68,7 +73,7 @@ import org.bukkit.block.Block;
                 return superpowers.get(playername);
 /*     */   }
 /*     */   public static SuperNPlayer load(UUID uuid){
-            SuperNPlayer np= SupernaturalsPlugin.instance.getDataHandler().load(uuid);
+            SuperNPlayer np= instance.getDataHandler().load(uuid);
 
             superpowers.put(np.getUuid(),np);
             np.getBelong().put(np.getUuid(),np);
@@ -108,12 +113,12 @@ import org.bukkit.block.Block;
 
                 snplayer.getType().getBelong().remove(snplayer.getUuid());//从之前所属的map中移除
                 snplayer.setOldType(snplayer.getType());//设置旧数据
-                snplayer.setOldPower(snplayer.getPower());
+
                 snplayer.setType(supertype);//设置新类别
-                snplayer.setPower(0.0d);
+                snplayer.setPower(0);
                 snplayer.getBelong().put(snplayer.getUuid(),snplayer);
 
-                PlayerChangeTypeEvent event=new PlayerChangeTypeEvent(snplayer.getOldType(),snplayer.getType(),snplayer.getOldPower(),snplayer.getPower());
+                PlayerChangeTypeEvent event=new PlayerChangeTypeEvent(snplayer.getOldType(),snplayer.getType()  ,snplayer.getPower());
                 Bukkit.getPluginManager().callEvent(event);
             }
 /*     */   public static void convert(SuperNPlayer snplayer, SuperType superType, int powerLevel)
@@ -147,7 +152,7 @@ import org.bukkit.block.Block;
 /* 141 */     if (snplayer.hasPermission(infPowerPermissions))
 /*     */     {
 /*     */ 
-/* 144 */       snplayer.setPower(10000.0D);
+/* 144 */       snplayer.setPower(10000);
 /*     */     } else {
 /* 146 */       snplayer.setPower(powerLevel);
 /*     */     }
@@ -166,8 +171,8 @@ import org.bukkit.block.Block;
 /* 162 */     if (snplayer.getOldType()==SuperType.WEREWOLF) {
 /* 163 */       WereManager.removePlayer(snplayer);
 /*     */     }
-/* 165 */     SupernaturalsPlugin.instance.getGhoulManager().removeBond(snplayer);
-/* 166 */     SupernaturalsPlugin.instance.getDataHandler().removeAngel(snplayer);
+/* 165 */     instance.getGhoulManager().removeBond(snplayer);
+/* 166 */     instance.getDataHandler().removeAngel(snplayer);
 /*     */   }
 /*     */   
 /*     */   public static void cure(SuperNPlayer snplayer) {
@@ -197,8 +202,8 @@ import org.bukkit.block.Block;
 /* 190 */     if (snplayer.getOldType()==SuperType.WEREWOLF) {
 /* 191 */       WereManager.removePlayer(snplayer);
 /*     */     }
-/* 193 */     SupernaturalsPlugin.instance.getGhoulManager().removeBond(snplayer);
-/* 194 */     SupernaturalsPlugin.instance.getDataHandler().removeAngel(snplayer);
+/* 193 */     instance.getGhoulManager().removeBond(snplayer);
+/* 194 */     instance.getDataHandler().removeAngel(snplayer);
 /*     */     
 /* 196 */     sendMessage(snplayer, Language.SN_ADMIN_CMD_CURE_NOTICE.toString());
 /*     */     
@@ -208,7 +213,7 @@ import org.bukkit.block.Block;
 /*     */
 /*     */   public static void revert(SuperNPlayer snplayer) {
 /* 204 */     SuperType oldType = snplayer.getOldType();
-/* 205 */     double oldPower = snplayer.getOldPower();
+/* 205 */
               changeType(snplayer,oldType);
 /*     */     
 /* 215 */     updateName(snplayer);
@@ -220,8 +225,8 @@ import org.bukkit.block.Block;
 /* 221 */     if (snplayer.getOldType()==SuperType.WEREWOLF) {
 /* 222 */       WereManager.removePlayer(snplayer);
 /*     */     }
-/* 224 */     SupernaturalsPlugin.instance.getGhoulManager().removeBond(snplayer);
-/* 225 */     SupernaturalsPlugin.instance.getDataHandler().removeAngel(snplayer);
+/* 224 */     instance.getGhoulManager().removeBond(snplayer);
+/* 225 */     instance.getDataHandler().removeAngel(snplayer);
 /*     */     
 /* 227 */     sendMessage(snplayer, Language.SN_ADMIN_CMD_REVERT_NOTICE.toString().replace(LanguageTag.TYPE.toString(), oldType.name()));
 /*     */     
@@ -233,24 +238,24 @@ import org.bukkit.block.Block;
 /*     */ 
 /*     */ 
 /*     */ 
-/*     */   public static void alterPower(SuperNPlayer snplayer, double delta)
+/*     */   public static void alterPower(SuperNPlayer snplayer, int delta)
 /*     */   {
 /* 241 */     if (snplayer.hasPermission( infPowerPermissions))
 /*     */     {
 /*     */ 
-/* 244 */       if (delta < 0.0D) {
+/* 244 */       if (delta < 0) {
 /* 245 */         return;
 /*     */       }
 /*     */     }
 /* 248 */     snplayer.setPower(snplayer.getPower() + delta);
 /*     */   }
 /*     */   
-/*     */   public static void alterPower(SuperNPlayer snplayer, double delta, String reason)
+/*     */   public static void alterPower(SuperNPlayer snplayer, int delta, String reason)
 /*     */   {
 /* 253 */     if ((Bukkit.getServer().getPlayer(snplayer.getName()) != null) && (snplayer.hasPermission( infPowerPermissions)))
 /*     */     {
 /*     */ 
-/* 256 */       if (delta < 0.0D) {
+/* 256 */       if (delta < 0) {
 /* 257 */         return;
 /*     */       }
 /*     */     }
@@ -448,7 +453,7 @@ import org.bukkit.block.Block;
             }
 /*     */   public static void sendMessage(SuperNPlayer snplayer, String message)
 /*     */   {
-/* 486 */     Player player = SupernaturalsPlugin.instance.getServer().getPlayer(snplayer.getName());
+/* 486 */     Player player = instance.getServer().getPlayer(snplayer.getName());
 /*     */     
 /* 488 */     if (!player.isOnline()) {
 /* 489 */       return;
@@ -463,7 +468,7 @@ import org.bukkit.block.Block;
 /*     */   }
 /*     */   
 /*     */   public static void updateName(SuperNPlayer snplayer) {
-/* 501 */     Player player = SupernaturalsPlugin.instance.getServer().getPlayer(snplayer.getName());
+/* 501 */     Player player = instance.getServer().getPlayer(snplayer.getName());
 /*     */     
 /* 503 */     String name = player.getName();
 /* 504 */     String displayname = player.getDisplayName().trim();
@@ -506,25 +511,27 @@ import org.bukkit.block.Block;
 /*     */   public static boolean worldTimeIsNight(Player player)
 /*     */   {
 /* 543 */     long time = player.getWorld().getTime() % 24000L;
-/*     */     
 /* 545 */     return (time < 0L) || (time > 12400L);
 /*     */   }
 /*     */   
 /*     */   public static void startTimer() {
-/* 549 */     timer = SupernaturalsPlugin.instance.getServer().getScheduler().scheduleSyncRepeatingTask(SupernaturalsPlugin.instance, new SNTaskTimer(SupernaturalsPlugin.instance), 0L, 20L);
-/*     */     
-/*     */ 
-/*     */ 
-/*     */ 
-/* 554 */     if (timer == -1) {
-/* 555 */       SupernaturalsPlugin.log(Level.WARNING, "Timer failed!");
-/*     */     }
+
+/*     */     Bukkit.getServer().getScheduler().runTaskTimerAsynchronously(instance,new SNTaskTimer(instance),0,30);
+              new BukkitRunnable() {
+                  //MermaidTimer
+                  @Override
+                  public void run() {
+                      for(SuperNPlayer np:mermaids.values()){
+                          if(np.getPlayer().getLocation().getBlock().getType()!=Material.WATER){
+                              continue;
+                          }
+                          np.getPlayer().addPotionEffect(new PotionEffect(PotionEffectType.NIGHT_VISION,130,1));
+                          np.getPlayer().addPotionEffect(new PotionEffect(PotionEffectType.SPEED,130,1));
+                      }
+                  }
+              }.runTaskTimer(instance,0,100);
 /*     */   }
-/*     */   
-/*     */   public static void cancelTimer() {
-/* 560 */     SupernaturalsPlugin.instance.getServer().getScheduler().cancelTask(timer);
-/*     */   }
-/*     */   
+
 /*     */   public void advanceTime(Collection<SuperNPlayer> snplayers)
 /*     */   {
 /* 565 */     for (SuperNPlayer snplayer : snplayers) {

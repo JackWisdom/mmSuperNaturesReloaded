@@ -302,7 +302,7 @@ import org.bukkit.scheduler.BukkitRunnable;
 /* 322 */       player.updateInventory();
 /* 323 */       SuperNManager.sendMessage(snplayer, Language.PRIEST_DONATE_REWARD.toString());
 /*     */       
-/* 325 */       SuperNManager.alterPower(snplayer, delta * 0.5D, Language.PRIEST_DONATE_NOTICE_SELF.toString());
+/* 325 */       SuperNManager.alterPower(snplayer, (int) (delta * 0.5D), Language.PRIEST_DONATE_NOTICE_SELF.toString());
 /*     */     }
 /*     */   }
 /*     */   
@@ -531,7 +531,7 @@ import org.bukkit.scheduler.BukkitRunnable;
 
 /* 564 */     if (snplayer.getPower() > SNConfigHandler.priestPowerDrain) {
 /* 565 */       if (snvictim.isSuper()) {
-/* 566 */         double power = snvictim.getPower();
+/* 566 */         int power = snvictim.getPower();
 /* 567 */         power *= SNConfigHandler.priestDrainFactor;
 /* 568 */         SuperNManager.alterPower(snplayer, -SNConfigHandler.priestPowerDrain, Language.PRIEST_DRAIN_NOTICE_SELF.toString().replace(LanguageTag.PLAYER.toString(), snvictim.getName()));
 /*     */         

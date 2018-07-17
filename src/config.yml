@@ -25,8 +25,43 @@ Supernatural:
   - MERMAID
   - DEMON
 Mermaid:
+  Material:
+     Fetch: FISHING_ROD
+     Dash: FEATHER
   Power:
     Start: 10000
+    DashCost: 100
+    FetchCost: 1000
+    Swim:
+      PowerGain: 10
+  Weapon:
+    Restrictions:
+    - STICK
+    - WOODEN_SWORD
+    - WOODEN_PICKAXE
+    - WOODEN_SHOVEL
+    - WOODEN_AXE
+    - WOODEN_HOE
+    - STONE_SWORD
+    - STONE_PICKAXE
+    - STONE_SHOVEL
+    - STONE_AXE
+    - STONE_HOE
+    - IRON_SWORD
+    - IRON_PICKAXE
+    - IRON_SHOVEL
+    - IRON_AXE
+    - IRON_HOE
+#现在护甲指的是他们不能穿的护甲
+  Armor:
+  - IRON_LEGGINGS
+  - IRON_BOOTS
+  - DIAMOND_LEGGINGS
+  - DIAMOND_BOOTS
+  - GOLDEN_LEGGINGS
+  - GOLDEN_BOOTS
+  - CHAINMAIL_LEGGINGS
+  - CHAINMAIL_BOOTS
 Vampire:
   Materials:
     Jump: ROSE_RED
@@ -53,10 +88,7 @@ Vampire:
     InSunlight: true
     MessageEnabled: true
     FireTicks: 3
-    HelmetProtection: GOLDEN_HELMET
   JumpDelta: 1.2
-  TeleportMarker:
-    Material: ROSE_RED
   Spell:
     Material: BOOK
   GainHunger:
@@ -107,28 +139,7 @@ Vampire:
     - BLAZE
   Weapon:
     Restrictions: []
-  Armor:
-  - AIR
-  - LEATHER_HELMET
-  - LEATHER_CHESTPLATE
-  - LEATHER_LEGGINGS
-  - LEATHER_BOOTS
-  - IRON_HELMET
-  - IRON_CHESTPLATE
-  - IRON_LEGGINGS
-  - IRON_BOOTS
-  - GOLDEN_HELMET
-  - GOLDEN_CHESTPLATE
-  - GOLDEN_LEGGINGS
-  - GOLDEN_BOOTS
-  - DIAMOND_HELMET
-  - DIAMOND_CHESTPLATE
-  - DIAMOND_LEGGINGS
-  - DIAMOND_BOOTS
-  - CHAINMAIL_HELMET
-  - CHAINMAIL_CHESTPLATE
-  - CHAINMAIL_LEGGINGS
-  - CHAINMAIL_BOOTS
+  Armor: []
   Hall:
     Message: "仅限吸血鬼"
 Priest:
@@ -198,8 +209,7 @@ Priest:
     - BOOK
   Weapon:
     Restrictions: []
-  Armor:
-  - AIR
+  Armor: []
 Ghoul:
   CureChance: 0.5
   Power:
@@ -227,6 +237,7 @@ Ghoul:
     Restrictions:
     - BOW
     - STICK
+    - TRIDENT
     - WOODEN_SWORD
     - WOODEN_PICKAXE
     - WOODEN_SHOVEL
@@ -286,7 +297,7 @@ Were:
   Time:
     HealthGained: 0.2
   Material:
-    Summon: PORK
+    Summon: PORKCHOP
     Dash: FEATHER
   WolfTruce: true
   Wolfbane:
@@ -350,29 +361,9 @@ Were:
     - DIAMOND_PICKAXE
     - DIAMOND_SHOVEL
     - DIAMOND_AXE
+    - TRIDENT
     - DIAMOND_HOE
-  Armor:
-  - AIR
-  - LEATHER_HELMET
-  - LEATHER_CHESTPLATE
-  - LEATHER_LEGGINGS
-  - LEATHER_BOOTS
-  - IRON_HELMET
-  - IRON_CHESTPLATE
-  - IRON_LEGGINGS
-  - IRON_BOOTS
-  - GOLDEN_HELMET
-  - GOLDEN_CHESTPLATE
-  - GOLDEN_LEGGINGS
-  - GOLDEN_BOOTS
-  - DIAMOND_HELMET
-  - DIAMOND_CHESTPLATE
-  - DIAMOND_LEGGINGS
-  - DIAMOND_BOOTS
-  - CHAINMAIL_HELMET
-  - CHAINMAIL_CHESTPLATE
-  - CHAINMAIL_LEGGINGS
-  - CHAINMAIL_BOOTS
+  Armor: []
 Demon:
   Power:
     Start: 10000
@@ -390,7 +381,7 @@ Demon:
     Damage: 10
   Snare:
     Duration: 10000
-    Material: INK_SACK
+    Material: INK_SAC
   SnowballAmount: 30
   DamageFactor:
     FireTicks: 50
@@ -448,12 +439,7 @@ WitchHunter:
     - DIAMOND_SHOVEL
     - DIAMOND_AXE
     - DIAMOND_HOE
-  Armor:
-  - AIR
-  - LEATHER_HELMET
-  - LEATHER_CHESTPLATE
-  - LEATHER_LEGGINGS
-  - LEATHER_BOOTS
+  Armor: []
   ArrowTypes:
   - fire
   - triple
@@ -481,7 +467,7 @@ Angel:
     Jump: DANDELION_YELLOW
     Cure: PAPER
     Summon:
-      Cow: RAW_BEEF
+      Cow: BEEF
       Pig: PORKCHOP
       Wolf: BONE
       Sheep: MUTTON

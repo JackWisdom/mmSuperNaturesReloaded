@@ -56,7 +56,7 @@
 /* 56 */           return;
 /*    */         }
 /* 58 */         SuperNPlayer snplayer = SuperNManager.get(player);
-/* 59 */         SuperNManager.alterPower(snplayer, -10000.0D, Language.BY_ADMIN.toString());
+/* 59 */         SuperNManager.alterPower(snplayer, -10000 , Language.BY_ADMIN.toString());
 /*    */         
 /* 61 */         sendMessage(Language.POWER_RESET.toString().replace(LanguageTag.PLAYER.toString(), snplayer.getName()));
 /*    */       }
@@ -72,7 +72,7 @@
 /*    */     }
 /* 73 */     if (this.parameters.isEmpty()) {
 /* 74 */       SuperNPlayer snplayer = SuperNManager.get(senderPlayer);
-/* 75 */       SuperNManager.alterPower(snplayer, -10000.0D, Language.BY_ADMIN.toString());
+/* 75 */       SuperNManager.alterPower(snplayer, -10000 , Language.BY_ADMIN.toString());
 /*    */     }
 /*    */     else {
 /* 78 */       String playername = (String)this.parameters.get(0);
@@ -84,7 +84,7 @@
 /* 84 */         return;
 /*    */       }
 /* 86 */       SuperNPlayer snplayer = SuperNManager.get(player);
-/* 87 */       SuperNManager.alterPower(snplayer, -10000.0D, Language.BY_ADMIN.toString());
+/* 87 */       SuperNManager.alterPower(snplayer, -10000 , Language.BY_ADMIN.toString());
 /*    */       
 /* 89 */       sendMessage(Language.POWER_RESET.toString().replace(LanguageTag.PLAYER.toString(), snplayer.getName()));
 /*    */     }

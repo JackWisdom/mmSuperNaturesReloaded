@@ -42,7 +42,7 @@ import org.bukkit.entity.Player;
 /* 41 */       sendMessage(Language.NO_PREMISSION.toString());
 /* 42 */       return;
 /*    */     }
-/* 44 */     SupernaturalsPlugin.restartTask();
+
 /* 45 */     sendMessage(Language.TASK_TIMER_RESTART.toString());
 /*    */   }
 /*    */ }

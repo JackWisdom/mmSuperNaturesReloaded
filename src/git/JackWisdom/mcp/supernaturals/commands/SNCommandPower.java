@@ -8,7 +8,8 @@
 /*     */ import java.util.ArrayList;
 /*     */
 /*     */
-/*     */ import org.bukkit.entity.Player;
+/*     */ import org.bukkit.Material;
+import org.bukkit.entity.Player;
 /*     */ 
 /*     */ 
 /*     */ 
@@ -66,19 +67,20 @@
 /*     */ 
 /*  67 */       if (!senderPlayer.hasPermission( permissions2)) {
 /*  68 */         sendMessage(Language.NO_PREMISSION.toString());
+
 /*  69 */         return;
 /*     */       }
 /*  71 */       if (this.parameters.size() == 1)
 /*     */       {
-/*     */         double powerGain;
+/*     */         int powerGain;
 /*     */         try {
-/*  75 */           powerGain = Double.parseDouble((String)this.parameters.get(0));
+/*  75 */           powerGain = Integer.parseInt( this.parameters.get(0));
 /*     */         } catch (NumberFormatException e) {
 /*  77 */           sendMessage(Language.INVALID_NUMBER.toString());
 /*  78 */           return;
 /*     */         }
-/*  80 */         if (powerGain >= 10000.0D) {
-/*  81 */           powerGain = 9999.0D;
+/*  80 */         if (powerGain >= 10000  ) {
+/*  81 */           powerGain = 9999 ;
 /*     */         }
 /*     */         
 /*  84 */         SuperNPlayer snplayer = SuperNManager.get(senderPlayer);
@@ -92,16 +94,16 @@
 /*  92 */           sendMessage(Language.PLAYER_NOT_FOUND.toString()); return;
 /*     */         }
 /*     */         
-/*     */         double powerGain;
+/*     */         int powerGain;
 /*     */         try
 /*     */         {
-/*  98 */           powerGain = Double.parseDouble((String)this.parameters.get(1));
+/*  98 */           powerGain = Integer.parseInt( this.parameters.get(1));
 /*     */         } catch (NumberFormatException e) {
 /* 100 */           sendMessage(Language.INVALID_NUMBER.toString());
 /* 101 */           return;
 /*     */         }
-/* 103 */         if (powerGain >= 10000.0D) {
-/* 104 */           powerGain = 9999.0D;
+/* 103 */         if (powerGain >= 10000 ) {
+/* 104 */           powerGain = 9999 ;
 /*     */         }
 /* 106 */         sendMessage(Language.POWER_UP.toString());
 /* 107 */         SuperNPlayer snplayer = SuperNManager.get(player);

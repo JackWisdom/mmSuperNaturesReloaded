@@ -7,7 +7,10 @@
 /*     */ 
 /*     */ public enum Language
 /*     */ {
-            SN_MERMAID_NAME("sn_mermaid_name","Mermaid"),
+            MERMAID_HURT_FISH("mermaid_hurt_fish","YOU CAN NOT HURT FIHS!!"),
+    MERMAID_SWIM("mermaid_swim", "Swimming in water"),
+    MERMAID_DASH("mermaid_dash", "Mermaid Dash!"),
+    SN_MERMAID_NAME("sn_mermaid_name","Mermaid"),
             GUI_DONATE_TITLE("gui_donate_title","becoming a priest"),
 
             GUI_VAMCURE_TITLE("gui_vamcure_title","donate to cure"),

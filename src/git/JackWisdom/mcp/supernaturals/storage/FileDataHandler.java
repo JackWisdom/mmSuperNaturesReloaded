@@ -35,18 +35,13 @@ public class FileDataHandler extends SNDataHandler {
             player.uuid=UUID.fromString(cfg.getString("uuid"));
             player.type=SuperType.valueOf(cfg.getString("type"));
             String tel="teleport.";
-            String world=cfg.getString(tel+"world");
-            if(!world.equals("NONE")) {
-                player.teleport=new Location(Bukkit.getWorld(world),cfg.getDouble(tel+"X"),
-                        cfg.getDouble(tel+"Y"),cfg.getDouble(tel+"Z"));
-            }
-            player.superPower=cfg.getDouble("power");
+
+            player.superPower=cfg.getInt("power");
             String uid=cfg.getString("protecting");
             if(uid!=null){
                 player.protecting=UUID.fromString(uid);
             }
             player.oldType=SuperType.valueOf(cfg.getString("oldType"));
-            player.oldPower=cfg.getDouble("oldPower");
             player.hunterApp= (HashSet<SuperType>) cfg.get("hunterApp");
         } catch (Exception e) {
             player=null;
@@ -75,18 +70,9 @@ public class FileDataHandler extends SNDataHandler {
             YamlConfiguration cfg=YamlConfiguration.loadConfiguration(data);
             cfg.set("uuid",player.getUuid().toString());
             cfg.set("type",player.getType().name());
-            if(player.teleport==null){
-                cfg.set("teleport.world","NONE");
-            }else {
-                String t="teleport.";
-                cfg.set(t+"world",player.teleport.getWorld().getName());
-                cfg.set(t+"X",player.teleport.getX());
-                cfg.set(t+"Y",player.teleport.getY());
-                cfg.set(t+"Z",player.teleport.getZ());
-            }
+
             cfg.set("protecting",player.protecting);
             cfg.set("oldType",player.oldType.name());
-            cfg.set("oldPower",player.oldPower);
             cfg.set("power",player.superPower);
             cfg.set("hunterApp",player.hunterApp);
             cfg.save(data);

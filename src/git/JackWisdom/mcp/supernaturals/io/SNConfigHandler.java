@@ -76,9 +76,9 @@ import org.bukkit.inventory.ItemStack;
 /*     */   public static double wereHealthGained;
 /*     */   public static double vampireAltarInfectMaterialRadius;
 /*     */   public static double vampireAltarCureMaterialRadius;
-/*     */   public static double vampireTimePowerGained;
+/*     */   public static int vampireTimePowerGained;
 /*     */   public static double vampireTimeHealthGained;
-/*     */   public static double vampireHealthCost;
+/*     */   public static int vampireHealthCost;
 /*     */   public static double wereDamageFall;
 /*     */   public static double wereDamageFactor;
 /*     */   public static double priestDamageFactorAttackSuper;
@@ -86,6 +86,7 @@ import org.bukkit.inventory.ItemStack;
 /*     */   public static double priestDrainFactor;
 /*     */   public static double hunterPowerArrowDamage;
 /*     */   public static double ghoulCureChance;
+
 /*     */   public static int jumpBloodCost;
 /*     */   public static int dashBloodCost;
 /*     */   public static int truceBreakTime;
@@ -105,7 +106,7 @@ import org.bukkit.inventory.ItemStack;
 /*     */   public static int vampireKillPowerPlayerGain;
 /*     */   public static int ghoulKillPowerPlayerGain;
 /*     */   public static int wereKillPowerPlayerGain;
-/*     */   public static int angelHealHealthGain;
+/*     */   public static double angelHealHealthGain;
 /*     */   public static int angelHealPowerCost;
 /*     */   public static int angelSummonPowerCost;
 /*     */   public static int angelCurePowerCost;
@@ -169,6 +170,15 @@ import org.bukkit.inventory.ItemStack;
 /*     */   public static Material priestSpellGuardianAngel;
 /*     */   public static Material wolfMaterial;
 
+
+    public static int mermaidSwimPowerGain;
+    public static Material mermaidDashMaterial;
+  //  public static Material mermaidFetchMaterial;
+    public static int mermaidDashCost;
+//    public static int mermaidFetchCost;
+
+
+
 /*     */   public static Material ghoulMaterial;
 /*     */   public static Material ghoulBondMaterial;
 /*     */   public static Material vampireMaterial;
@@ -216,7 +226,8 @@ import org.bukkit.inventory.ItemStack;
 /* 202 */   public static List<Material> vampireArmor = new ArrayList();
 /* 203 */   public static List<Material> wereArmor = new ArrayList();
 /* 204 */   public static List<Material> angelArmor = new ArrayList();
-/*     */   
+    public static List<Material> mermaidArmor = new ArrayList();
+    public static List<Material> mermaidWeapon = new ArrayList();
 /*     */   public static String priestChurchWorld;
 /*     */   
 /*     */   public static int priestChurchLocationX;
@@ -323,9 +334,20 @@ import org.bukkit.inventory.ItemStack;
 
 
 /*     */     mermaidPowerStart=config.getInt("Mermaid.Power.Start");
+    mermaidSwimPowerGain=config.getInt("Mermaid.Power.Swim.PowerGain");
 
-
-
+    for(String s:config.getStringList("Mermaid.Armor")){
+        mermaidArmor.add(Material.valueOf(s));
+    }
+    for(String s:config.getStringList(("Mermaid.Weapon.Restrictions"))){
+        mermaidWeapon.add(Material.valueOf(s));
+    }
+    String sm="Mermaid.Material.";
+    String sp="Mermaid.Power.";
+    mermaidDashMaterial=Material.valueOf(config.getString(sm+"Dash"));
+  //  mermaidFetchMaterial= Material.valueOf(config.getString(sm+"Fetch"));
+    mermaidDashCost=config.getInt(sp+"DashCost");
+//    mermaidFetchCost=config.getInt(sp+"FetchCost");
 
 
 /* 323 */     vampireJumpMaterial =Material.valueOf( config.getString("Vampire.Materials.Jump", "ROSE_RED"));
@@ -334,7 +356,7 @@ import org.bukkit.inventory.ItemStack;
 /* 326 */     vampirePowerStart = config.getInt("Vampire.Power.Start", 10000);
 /* 327 */     vampireKillSpreadCurse = config.getBoolean("Vampire.Kill.SpreadCurse", true);
 /*     */     
-/* 329 */     vampireTimePowerGained = config.getDouble("Vampire.Time.PowerGained", 15.0D);
+/* 329 */     vampireTimePowerGained = config.getInt("Vampire.Time.PowerGained", 15);
 /*     */     
 /* 331 */     vampireKillPowerCreatureGain = config.getInt("Vampire.Power.Kill.CreatureGain", 100);
 /*     */     
@@ -355,15 +377,15 @@ import org.bukkit.inventory.ItemStack;
 /*     */     
 /* 348 */     jumpDeltaSpeed = config.getDouble("Vampire.JumpDelta", 1.2D);
 /* 349 */     jumpBloodCost = config.getInt("Vampire.Power.JumpCost", 1000);
-/* 350 */     vampireTimeHealthGained = config.getDouble("Vampire.Time.HealthGained", 0.5D);
+/* 350 */     vampireTimeHealthGained = config.getDouble("Vampire.Time.HealthGained", 0.1);
 /*     */     
-/* 352 */     vampireHealthCost = config.getDouble("Vampire.Power.HealingCost", 60.0D);
+/* 352 */     vampireHealthCost = config.getInt("Vampire.Power.HealingCost", 60);
 /* 353 */     vampireDrowningCost = config.getInt("Vampire.Power.DrowningCost", 90);
 /* 354 */     vampireTeleportCost = config.getInt("Vampire.Power.TeleportCost", 9000);
 /* 355 */     vampireTeleportMaterial = Material.valueOf(config.getString("Vampire.TeleportMarker.Material", "ROSE_RED"));
 /*     */     
 /* 357 */     vampireTruceString = config.getStringList("Vampire.Truce.Creatures");
-/* 358 */     vampireMaterial =Material.valueOf(config.getString( config.getString("Vampire.Spell.Material", "BOOK")));
+/* 358 */     vampireMaterial =Material.valueOf(  config.getString("Vampire.Spell.Material", "BOOK") );
 
 /* 361 */     vampireWeaponsString = config.getStringList("Vampire.Weapon.Restrictions");
 /*     */     
@@ -371,9 +393,9 @@ import org.bukkit.inventory.ItemStack;
 /* 364 */     vampireHungerRegainPlayer = config.getInt("Vampire.GainHunger.Player");
 /* 365 */     vampireHungerRegainMob = config.getInt("Vampire.GainHunger.Mob");
 /*     */     
-/* 367 */     vampireAltarInfectMaterial = Material.valueOf(config.getString(config.getString("Vampire.Altar.Infect.Material", "GOLD_BLOCK")));
+/* 367 */     vampireAltarInfectMaterial = Material.valueOf(config.getString( "Vampire.Altar.Infect.Material", "GOLD_BLOCK") );
 /*     */     
-/* 369 */     vampireAltarInfectMaterialSurround = Material.valueOf(config.getString(config.getString("Vampire.Altar.Infect.Surrounding.Material", "OBSIDIAN")));
+/* 369 */     vampireAltarInfectMaterialSurround = Material.valueOf(config.getString(("Vampire.Altar.Infect.Surrounding.Material")));
 /*     */     
 /* 371 */     vampireAltarInfectMaterialRadius = config.getDouble("Vampire.Altar.Infect.Surrounding.Radius", 7.0D);
 /*     */     
@@ -384,9 +406,9 @@ import org.bukkit.inventory.ItemStack;
 /* 377 */     vampireAltarInfectQuantities = config.getIntegerList("Vampire.Altar.Infect.Recipe.Quantities");
 /*     */     
 /*     */ 
-/* 380 */     vampireAltarCureMaterial = Material.valueOf(config.getString(config.getString("Vampire.Altar.Cure.Material", "LAPIS_BLOCK")));
+/* 380 */     vampireAltarCureMaterial = Material.valueOf(config.getString(("Vampire.Altar.Cure.Material")));
 /*     */     
-/* 382 */     vampireAltarCureMaterialSurround =Material.valueOf(config.getString( config.getString("Vampire.Altar.Cure.Surrounding.Material", "GLOWSTONE")));
+/* 382 */     vampireAltarCureMaterialSurround =Material.valueOf(config.getString(  "Vampire.Altar.Cure.Surrounding.Material", "GLOWSTONE" ));
 /*     */     
 /* 384 */     vampireAltarCureMaterialRadius = config.getDouble("Vampire.Altar.Cure.Surrounding.Radius", 7.0D);
 /*     */     
@@ -397,7 +419,7 @@ import org.bukkit.inventory.ItemStack;
 /* 390 */     vampireAltarCureQuantities = config.getIntegerList("Vampire.Altar.Cure.Recipe.Quantities");
 /*     */     
 /*     */ 
-/* 393 */     vampireHallMessage =  (config.getString(config.getString("Vampire.Hall.Message", "Vampires")));
+/* 393 */     vampireHallMessage =  (config.getString(("Vampire.Hall.Message")));
 /*     */     
 /*     */ 
 /* 396 */     priestChurchWorld = config.getString("Priest.Church.World", "world");
@@ -426,7 +448,7 @@ import org.bukkit.inventory.ItemStack;
 /*     */     
 /* 420 */     priestDrainFactor = config.getDouble("Priest.Spell.DrainFactor", 0.15D);
 /* 421 */     priestFireTicks = config.getInt("Priest.DamageFactor.FireTicks", 50);
-/* 422 */     priestAltarMaterial = Material.valueOf(config.getString(config.getString("Priest.Church.AltarMaterial", "DIAMOND_BLOCK")));
+/* 422 */     priestAltarMaterial = Material.valueOf(config.getString(("Priest.Church.AltarMaterial")));
 /*     */     
 /* 424 */     priestMaterialsString = config.getStringList("Priest.Spell.Material");
 /* 425 */     priestSpellGuardianAngel = Material.valueOf(config.getString("Priest.Spell.GuardianAngelMaterial", "WHITE_WOOL"));
@@ -459,9 +481,9 @@ import org.bukkit.inventory.ItemStack;
 /* 452 */     ghoulDamageFactor = config.getDouble("Ghoul.DamageFactor.AttackBonus", 2.0D);
 /*     */     
 /* 454 */     ghoulDamageWater = config.getInt("Ghoul.WaterDamage", 4);
-/* 455 */     ghoulHealthGained = config.getDouble("Ghoul.Time.HealthGained", 0.1D);
-/* 456 */     ghoulMaterial = Material.valueOf(config.getString(config.getString("Ghoul.Summon.Material", "PORK")));
-/* 457 */     ghoulBondMaterial = Material.valueOf(config.getString(config.getString("Ghoul.UnholyBond.Material", "BONE")));
+/* 455 */     ghoulHealthGained = config.getDouble("Ghoul.Time.HealthGained", 0.2);
+/* 456 */     ghoulMaterial = Material.valueOf(config.getString(("Ghoul.Summon.Material")));
+/* 457 */     ghoulBondMaterial = Material.valueOf(config.getString(("Ghoul.UnholyBond.Material")));
 /*     */     
 /* 459 */     ghoulPowerSummonCost = config.getInt("Ghoul.Power.Summon", 1000);
 /* 460 */     ghoulPowerBond = config.getInt("Ghoul.Power.UnholyBond", 50);
@@ -483,11 +505,11 @@ import org.bukkit.inventory.ItemStack;
 /* 476 */     wereDeathPowerPenalty = config.getInt("Were.Power.DeathPenalty", 2000);
 /* 477 */     wereDamageFall = config.getDouble("Were.DamageFactor.Fall", 0.5D);
 /* 478 */     wereDamageFactor = config.getDouble("Were.DamageFactor.AttackBonus", 5.0D);
-/* 479 */     wereHealthGained = config.getDouble("Were.Time.HealthGained", 0.2D);
-/* 480 */     wolfMaterial = Material.valueOf(config.getString(config.getString("Were.Material.Summon", "PORKCHOP")));
+/* 479 */     wereHealthGained = config.getDouble("Were.Time.HealthGained", 0.5);
+/* 480 */     wolfMaterial = Material.valueOf( (config.getString("Were.Material.Summon", "PORKCHOP")));
 /* 481 */     werePowerSummonCost = config.getInt("Were.Power.Summon", 2000);
 /* 482 */     wolfTruce = config.getBoolean("Were.WolfTruce", true);
-/* 483 */     dashMaterial = Material.valueOf(config.getString(config.getString("Were.Material.Dash", "FEATHER")));
+/* 483 */     dashMaterial = Material.valueOf( (config.getString("Were.Material.Dash", "FEATHER")));
 
 /*     */     
 /* 489 */     wereArmorString = config.getStringList("Were.Armor");
@@ -503,18 +525,18 @@ import org.bukkit.inventory.ItemStack;
 /* 499 */     demonPowerLoss = config.getInt("Demon.Power.Loss", 4);
 /* 500 */     demonPowerFireball = config.getInt("Demon.Power.Fireball", 2000);
 /* 501 */     demonHealing = config.getInt("Demon.Healing", 1);
-/* 502 */     demonMaterial = Material.valueOf(config.getString(config.getString("Demon.Fireball.Material", "REDSTONE")));
+/* 502 */     demonMaterial = Material.valueOf(config.getString(("Demon.Fireball.Material")));
 /* 503 */     demonFireballDamage = config.getInt("Demon.Fireball.Damage", 10);
 /* 504 */     demonPowerSnare = config.getInt("Demon.Power.Snare", 1000);
 /* 505 */     demonSnareDuration = config.getInt("Demon.Snare.Duration", 10000);
-/* 506 */     demonSnareMaterial = Material.valueOf(config.getString(config.getString("Demon.Snare.Material", "INK_SACK")));
+/* 506 */     demonSnareMaterial = Material.valueOf(config.getString(("Demon.Snare.Material")));
 /*     */     
 /* 508 */     demonSnowballAmount = config.getInt("Demon.SnowballAmount", 30);
 /* 509 */     demonArmorString = config.getStringList("Demon.Armor");
 /* 510 */     demonWeaponsString = config.getStringList("Demon.Weapon.Restrictions");
 /* 511 */     demonFireTicks = config.getInt("Demon.DamageFactor.FireTicks", 50);
 /* 512 */     demonConvertPower = config.getInt("Demon.Power.Convert", 2000);
-/* 513 */     demonHallMessage =  (config.getString(config.getString("Demon.Hall.Message", "Demons")));
+/* 513 */     demonHallMessage =  (config.getString(("Demon.Hall.Message")));
 /*     */     
 /* 515 */     hunterPowerStart = config.getInt("WitchHunter.Power.StartingPower", 10000);
 /*     */     
@@ -543,36 +565,37 @@ import org.bukkit.inventory.ItemStack;
 /* 539 */     hunterFireArrowFireTicks = config.getInt("WitchHunter.FireArrow.FireTicks", 100);
 /*     */     
 /* 541 */     hunterArrowTypes = config.getStringList("WitchHunter.ArrowTypes");
-/* 542 */     hunterHallMessage =  (config.getString(config.getString("WitchHunter.Hall.Message", "WitchHunter")));
+/* 542 */     hunterHallMessage =  (config.getString(("WitchHunter.Hall.Message")));
 /*     */     
 /* 544 */     hunterMaxBounties = config.getInt("WitchHunter.Bounty.MaxNumber", 5);
 /* 545 */     hunterWeaponsString = config.getStringList("WitchHunter.Weapon.Restrictions");
 /*     */     
 /*     */ 
-/* 548 */     angelHealHealthGain = config.getInt("Angel.Power.Heal.HealthGain");
+/* 548 */     angelHealHealthGain = config.getDouble("Angel.Power.Heal.HealthGain");
 /* 549 */     angelHealPowerCost = config.getInt("Angel.Power.Heal.PowerCost", 3000);
 /* 550 */     angelSummonPowerCost = config.getInt("Angel.Power.Summon.PowerCost", 5000);
 /*     */     
 /* 552 */     angelCurePowerCost = config.getInt("Angel.Power.Cure.PowerCost", 6000);
 /* 553 */     angelJumpPowerCost = config.getInt("Angel.Power.Jump.PowerCost", 1000);
 /* 554 */     angelSwimPowerGain = config.getInt("Angel.Power.Swim.PowerGain", 50);
+
 /* 555 */     angelJumpDeltaSpeed = config.getDouble("Angel.JumpDelta", 1.2D);
 /* 556 */     angelKillMonsterPowerGain = config.getInt("Angel.Power.Kill.MonsterGain", 30);
 /*     */     
 /* 558 */     angelPowerStart = config.getInt("Angel.Power.Start", 10000);
-/* 559 */     angelJumpMaterial =Material.valueOf(config.getString( config.getString("Angel.Materials.Jump", "YELLOW_FLOWER")));
+/* 559 */     angelJumpMaterial =Material.valueOf(config.getString( "Angel.Materials.Jump"  ));
 /*     */     
-/* 561 */     angelCureMaterial =Material.valueOf(config.getString( config.getString("Angel.Materials.Cure", "PAPER")));
-/* 562 */     angelSummonCowMaterial = Material.valueOf(config.getString(config.getString("Angel.Materials.Summon.Cow", "RAW_BEEF")));
+/* 561 */     angelCureMaterial =Material.valueOf(config.getString( "Angel.Materials.Cure" ));
+/* 562 */     angelSummonCowMaterial = Material.valueOf(config.getString(("Angel.Materials.Summon.Cow")));
     angelSummonSheepMaterial = Material.valueOf(config.getString("Angel.Materials.Summon.Sheep", "MUTTON"));
     angelSummonChickenMaterial = Material.valueOf(config.getString("Angel.Materials.Summon.Chicken", "CHICKEN"));
     angelSummonRabbitMaterial = Material.valueOf(config.getString("Angel.Materials.Summon.Rabbit", "RABBIT"));
 
-    /* 564 */     angelSummonPigMaterial = Material.valueOf(config.getString(config.getString("Angel.Materials.Summon.Pig", "PORKCHOP")));
+    /* 564 */     angelSummonPigMaterial = Material.valueOf(config.getString(("Angel.Materials.Summon.Pig")));
 /*     */     
-/* 566 */     angelSummonWolfMaterial = Material.valueOf(config.getString(config.getString("Angel.Materials.Summon.Wolf", "BONE")));
+/* 566 */     angelSummonWolfMaterial = Material.valueOf(config.getString(("Angel.Materials.Summon.Wolf")));
 /*     */     
-/* 568 */     angelHealMaterial = Material.valueOf(config.getString(config.getString("Angel.Materials.Heal", "FEATHER")));
+/* 568 */     angelHealMaterial = Material.valueOf(config.getString(("Angel.Materials.Heal")));
 /* 569 */     angelArmorString = config.getStringList("Angel.Armor");
 /* 570 */     angelWeaponsString = config.getStringList("Angel.Weapons.Restrictions");
 /*     */     

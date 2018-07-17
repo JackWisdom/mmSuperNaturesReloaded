@@ -23,11 +23,10 @@ import javax.annotation.Nullable;
         public UUID uuid;
         public SuperType type =SuperType.HUMAN;
         public SuperType oldType =SuperType.HUMAN;
-        public double oldPower = 0.0D;
-        public double superPower = 0.0D;
+        public int superPower = 0;
 
         public UUID protecting=null;
-        public Location teleport =null;
+
         //牧师保护的UID
         public HashSet<SuperType> hunterApp=new HashSet<SuperType>(){
            @Override
@@ -47,10 +46,8 @@ import javax.annotation.Nullable;
              this.uuid=uuid;
              this.type = SuperType.HUMAN;
              this.oldType =SuperType.HUMAN;
-             this.oldPower = 0.0D;
-             this.superPower = 0.0D;
+             this.superPower = 0;
 
-             this.teleport =null;
              this.hunterApp=new HashSet<>();
              this.protecting=null;
             }
@@ -62,20 +59,7 @@ import javax.annotation.Nullable;
               public HashSet getHuntApp(){
                return hunterApp;
             }
-            //吸血鬼的传送位置
-            public void setTeleport(Location loc){
-               this.teleport =loc;
-            }
-             //吸血鬼是否可以传送
-              public boolean hasTeleport(){
-                    return teleport ==null;
-              }
-              //获取吸血鬼的传送位置
-            public org.bukkit.Location getTeleport() {
-               Location location = this.teleport;
-              org.bukkit.Location bLocation = new org.bukkit.Location(location.getWorld(), location.getX(), location.getY(), location.getZ());
-             return bLocation;
-              }
+
 /*     */   public UUID getUuid()
 /*     */   {
 /*  57 */     return this.uuid;
@@ -110,21 +94,17 @@ import javax.annotation.Nullable;
 /*     */   public void setOldType(SuperType type) {
 /*  77 */     this.oldType = type;
 /*     */   }
-/*     */   
-/*     */   public double getOldPower() {
-/*  81 */     return this.oldPower;
-/*     */   }
-/*     */   
-/*     */   public void setOldPower(double amount) {
-/*  85 */     this.oldPower = amount;
-/*     */   }
 /*     */
-/*     */   public double getPower() {
+/*     */
+/*     */   public int getPower() {
 /*  89 */     return this.superPower;
 /*     */   }
 /*     */   
-/*     */   public void setPower(double amount) {
-/*  93 */     this.superPower = limitDouble(amount);
+/*     */   public void setPower(int amount) {
+/*  93 */     if(amount>=10000){
+    amount=10000;
+    }
+    this.superPower=amount;
 /*     */   }
             //是否和怪物停战
 /*     */   public boolean getTruce() {
@@ -293,14 +273,13 @@ import javax.annotation.Nullable;
 /*     */     }
 /* 220 */     return d;
 /*     */   }
-/*     */   
-/*     */   public double limitDouble(double d) {
-/* 224 */     return limitDouble(d, 0.0D, 10000.0D);
-/*     */   }
+
      /*     */   public double scale(double input) {
          /* 184 */     double powerPercentage = input * (getPower() / 10000.0D);
          /* 185 */     return powerPercentage;
          /*     */   }
+     /*     */   
+/*
 
     /*     */ }
 

@@ -14,6 +14,7 @@ import git.JackWisdom.mcp.supernaturals.io.SNConfigHandler;
 /*     */
 /*     */
 /*     */ import org.bukkit.Bukkit;
+import org.bukkit.Material;
 import org.bukkit.entity.Entity;
 /*     */ import org.bukkit.entity.Fireball;
 /*     */ import org.bukkit.entity.LivingEntity;
@@ -236,6 +237,7 @@ import org.bukkit.entity.Entity;
 /*     */     
 /* 200 */     if ((!((Player)event.getTarget()).hasPermission( this.worldPermission)) && (SNConfigHandler.multiworld))
 /*     */     {
+
 /* 202 */       return;
 /*     */     }
 /*     */     

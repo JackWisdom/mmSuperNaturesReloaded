@@ -3,7 +3,7 @@
 /*     */ import git.JackWisdom.mcp.supernaturals.SuperNPlayer;
 /*     */ import git.JackWisdom.mcp.supernaturals.SuperType;
 import git.JackWisdom.mcp.supernaturals.SupernaturalsPlugin;
-/*     */ import git.JackWisdom.mcp.supernaturals.events.VampireTeleportEvent;
+/*     */
 import git.JackWisdom.mcp.supernaturals.inventory.VampCureGui;
 import git.JackWisdom.mcp.supernaturals.inventory.VampInfectGui;
 import git.JackWisdom.mcp.supernaturals.io.SNConfigHandler;
@@ -19,14 +19,14 @@ import git.JackWisdom.mcp.supernaturals.io.SNConfigHandler;
 import org.bukkit.Location;
 /*     */ import org.bukkit.Material;
 /*     */
-/*     */ import org.bukkit.World;
+/*     */
 /*     */
 /*     */ import org.bukkit.block.Block;
-/*     */ import org.bukkit.block.BlockFace;
 /*     */
-/*     */ import org.bukkit.entity.Entity;
-/*     */ import org.bukkit.entity.Player;
-/*     */ import org.bukkit.entity.Projectile;
+/*     */
+/*     */ import org.bukkit.entity.*;
+/*     */
+/*     */
 /*     */ import org.bukkit.event.block.Action;
 /*     */ import org.bukkit.event.entity.EntityDamageByEntityEvent;
 /*     */ import org.bukkit.event.entity.EntityDamageEvent;
@@ -115,7 +115,10 @@ import org.bukkit.scheduler.BukkitRunnable;
 
     @Override
     public void eatItem(PlayerItemConsumeEvent event) {
-
+        /* 213 */       if (SNConfigHandler.foodMaterials.contains(event.getItem().getType())) {
+            /* 214 */        event.getPlayer().sendMessage(Language.VAMPIRE_LIMIT_EAT.toString());
+            /* 216 */        event.getPlayer().setFoodLevel(0);
+        }
     }
 
     /*     */
@@ -240,18 +243,7 @@ import org.bukkit.scheduler.BukkitRunnable;
 /* 209 */       return false;
 /*     */     }
 /*     */     
-/* 212 */     if (itemMaterial != null) {
-/* 213 */       if (SNConfigHandler.foodMaterials.contains(itemMaterial)) {
-/* 214 */         SuperNManager.sendMessage(snplayer, Language.VAMPIRE_LIMIT_EAT.toString());
-/*     */         
-/* 216 */         event.setCancelled(true);
-/* 217 */         return true; }
-/* 218 */       if (itemMaterial.equals(SNConfigHandler.vampireTeleportMaterial))
-/*     */       {
-/* 220 */         setTeleport(player);
-/* 221 */         return true;
-/*     */       }
-/*     */     }
+
 /* 224 */     return false;
 /*     */   }
 /*     */   
@@ -261,38 +253,38 @@ import org.bukkit.scheduler.BukkitRunnable;
 /*     */ 
 /*     */   public void armorCheck(Player player)
 /*     */   {
-/* 233 */     if (!player.hasPermission("supernatural.player.ignorearmor")) {
-/* 234 */       PlayerInventory inv = player.getInventory();
-/* 235 */       ItemStack helmet = inv.getHelmet();
-/* 236 */       ItemStack chest = inv.getChestplate();
-/* 237 */       ItemStack leggings = inv.getLeggings();
-/* 238 */       ItemStack boots = inv.getBoots();
-/*     */
-/* 240 */       if ((helmet != null) && 
-/* 241 */         (!SNConfigHandler.vampireArmor.contains(helmet.getType())) && (!helmet.getType().isBlock()))
-/*     */       {
+     if (!player.hasPermission("supernatural.player.ignorearmor")) {
+        PlayerInventory inv = player.getInventory();
+        ItemStack helmet = inv.getHelmet();
+        ItemStack chest = inv.getChestplate();
+       ItemStack leggings = inv.getLeggings();
+       ItemStack boots = inv.getBoots();
 
-/* 243 */         inv.setHelmet(null);
-/* 244 */         dropItem(player, helmet);
-/*     */       }
-/*     */       
-/* 247 */       if ((chest != null) && 
-/* 248 */         (!SNConfigHandler.vampireArmor.contains(chest.getType()))) {
-/* 249 */         inv.setChestplate(null);
-/* 250 */         dropItem(player, chest);
-/*     */       }
-/*     */       
-/* 253 */       if ((leggings != null) && 
-/* 254 */         (!SNConfigHandler.vampireArmor.contains(leggings.getType()))) {
-/* 255 */         inv.setLeggings(null);
-/* 256 */         dropItem(player, leggings);
-/*     */       }
-/*     */       
-/* 259 */       if ((boots != null) && 
-/* 260 */         (!SNConfigHandler.vampireArmor.contains(boots.getType()))) {
-/* 261 */         inv.setBoots(null);
-/* 262 */         dropItem(player, boots);
-/*     */       }
+      if ((helmet != null) &&
+        (!SNConfigHandler.vampireArmor.contains(helmet.getType())) && (!helmet.getType().isBlock()))
+       {
+
+         inv.setHelmet(null);
+          dropItem(player, helmet);
+       }
+
+        if ((chest != null) &&
+         (!SNConfigHandler.vampireArmor.contains(chest.getType()))) {
+          inv.setChestplate(null);
+          dropItem(player, chest);
+      }
+
+       if ((leggings != null) &&
+         (!SNConfigHandler.vampireArmor.contains(leggings.getType()))) {
+          inv.setLeggings(null);
+        dropItem(player, leggings);
+      }
+
+        if ((boots != null) &&
+          (!SNConfigHandler.vampireArmor.contains(boots.getType()))) {
+         inv.setBoots(null);
+      dropItem(player, boots);
+       }
 /*     */     }
 /*     */   }
 /*     */   
@@ -305,52 +297,25 @@ import org.bukkit.scheduler.BukkitRunnable;
 /* 273 */     double deltaSeconds = milliseconds / 1000.0D;
 /* 274 */     double deltaPower = deltaSeconds * SNConfigHandler.vampireTimePowerGained;
 /*     */     
-/* 276 */     SuperNManager.alterPower(snplayer, deltaPower);
+/* 276 */     SuperNManager.alterPower(snplayer, (int) deltaPower);
 /*     */   }
+
 /*     */   
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */   public void setTeleport(Player player)
-/*     */   {
-/* 284 */     SuperNPlayer snplayer = SuperNManager.get(player);
-/*     */     
-/* 286 */     snplayer.setTeleport(player.getLocation());
-/* 287 */     SuperNManager.sendMessage(snplayer, Language.VAMPIRE_TELEPORT_SET.toString());
-/*     */   }
-/*     */   
-/*     */   public boolean teleport(Player player)
+/*     */   public void teleport(Player player)
 /*     */   {
 
 /* 292 */     SuperNPlayer snplayer = SuperNManager.get(player);
 
-/* 293 */     ItemStack item = player.getItemInHand();
-/* 294 */     if (snplayer.getTeleport()!=null) {
 /* 295 */       if (snplayer.getPower() > SNConfigHandler.vampireTeleportCost) {
 /* 296 */         SuperNManager.alterPower(snplayer, -SNConfigHandler.vampireTeleportCost, Language.VAMPIRE_TELEPORT_NOTICE_SELF.toString());
-/*     */         
-/*     */                  VampireTeleportEvent event=new VampireTeleportEvent(snplayer, player.getLocation());
-                           Bukkit.getPluginManager().callEvent(event);
-                        if(event.isCancelled()){
-                           return false;
-                       }
-/* 299 */         player.teleport(snplayer.getTeleport());
-/*     */         
-/* 301 */         if (item.getAmount() == 1) {
-/* 302 */           player.setItemInHand(null);
-/*     */         } else {
-/* 304 */           item.setAmount(player.getItemInHand().getAmount() - 1);
-/*     */         }
-/* 306 */         return true;
+/*     */
+                player.launchProjectile(EnderPearl.class,player.getVelocity().multiply(1.2));
+/* 306 */         return;
 /*     */       }
 /* 308 */       SuperNManager.sendMessage(snplayer, Language.NO_POWER.toString());
-/*     */       
-/* 310 */       return false;
-/*     */     }
-/*     */     
-/* 313 */     SuperNManager.sendMessage(snplayer, Language.VAMPIRE_TELEPORT_NOT_SET.toString());
-/*     */     
-/* 315 */     return false;
+/* 310 */
+
+/* 315 */     return;
 /*     */   }
 /*     */   
 /*     */ 
@@ -481,7 +446,7 @@ return;
 /*     */   
 /*     */   public boolean standsInSunlight(Player player)
 /*     */   {
-/* 526 */     return player.getLocation().getBlock().getLightFromSky()<=14;
+/* 526 */     return player.getLocation().getBlock().getLightFromSky()>=14&&((player.getInventory().getHelmet()==null) ||((player.getInventory().getHelmet().getType()==Material.AIR) ));
 /*     */   }
 /*     */   
 /*     */ 

@@ -105,32 +105,32 @@ public void playerDeath(PlayerDeathEvent event){
             //PlayerPrefixSetting
 /*  82 */     event.setFormat(event.getFormat().replace("[SN]", snplayer.getPrefix()));
 /*     */   }
-    /*     */
-/*     */   @EventHandler(priority=EventPriority.MONITOR)
-/*     */   public void onPlayerPortal(PlayerPortalEvent event) {
-/*  87 */     if (event.isCancelled()) {
-/*  88 */       return;
-/*     */     }
-/*  90 */     if (event.getTo() == null) {
-/*  91 */       return;
-/*     */     }
-/*  93 */     if (event.getTo().getWorld() == null) {
-/*  94 */       return;
-/*     */     }
-/*  96 */     Player player = event.getPlayer();
-/*  97 */     if (player == null) {
-/*  98 */       return;
-/*     */     }
-/* 100 */     if ((!player.hasPermission( this.worldPermission)) && (SNConfigHandler.multiworld))
-/*     */     {
-/* 102 */       return;
-/*     */     }
-/* 104 */     if (event.getTo().getWorld().getEnvironment().equals(World.Environment.NETHER))
-/*     */     {
-/* 106 */       this.plugin.getDemonManager().checkInventory(player);
-/*     */     }
-/*     */   }
-/*     */   
+    /*     *//*
+    @EventHandler(priority=EventPriority.MONITOR)
+   public void onPlayerPortal(PlayerPortalEvent event) {
+     if (event.isCancelled()) {
+        return;
+      }
+    if (event.getTo() == null) {
+     return;
+    }
+     if (event.getTo().getWorld() == null) {
+        return;
+      }
+      Player player = event.getPlayer();
+      if (player == null) {
+       return;
+    }
+    if ((!player.hasPermission( this.worldPermission)) && (SNConfigHandler.multiworld))
+    {
+      return;
+      }
+   if (event.getTo().getWorld().getEnvironment().equals(World.Environment.NETHER))
+   {
+      this.plugin.getDemonManager().checkInventory(player);
+      }
+    }
+   */
 /*     */   @EventHandler(priority=EventPriority.MONITOR)
 /*     */   public void onPlayerJoin(PlayerJoinEvent event) {
 /* 112 */     Player player = event.getPlayer();
@@ -146,7 +146,7 @@ public void playerDeath(PlayerDeathEvent event){
 /*     */ 
 /* 123 */     if (player.hasPermission( "supernatural.admin.infinitepower"))
 /*     */     {
-/* 125 */       snplayer.setPower(10000.0D);
+/* 125 */       snplayer.setPower(10000 );
 /*     */     }
 /*     */     
 /* 128 */     if (!SNConfigHandler.enableLoginMessage) {

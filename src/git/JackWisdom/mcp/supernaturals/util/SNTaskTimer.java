@@ -3,6 +3,7 @@
 /*    */ import git.JackWisdom.mcp.supernaturals.SupernaturalsPlugin;
 /*    */ import git.JackWisdom.mcp.supernaturals.UsingData;
 import git.JackWisdom.mcp.supernaturals.manager.SuperNManager;
+import org.bukkit.Bukkit;
 
 /*    */ public class SNTaskTimer
 /*    */   implements Runnable,UsingData
@@ -18,14 +19,7 @@ import git.JackWisdom.mcp.supernaturals.manager.SuperNManager;
 /*    */ 
 /*    */   public void run()
 /*    */   {
-/* 36 */     this.plugin.getServer().getScheduler().scheduleSyncDelayedTask(this.plugin, new Runnable()
-/*    */     {
-/*    */       public void run()
-/*    */       {
-
-/* 40 */         SNTaskTimer.this.plugin.getSuperManager().advanceTime(superpowers.values());
-/*    */       }
-/*    */     });
+/* 36 */      SNTaskTimer.this.plugin.getSuperManager().advanceTime(superpowers.values());
 /*    */   }
 /*    */ }
 

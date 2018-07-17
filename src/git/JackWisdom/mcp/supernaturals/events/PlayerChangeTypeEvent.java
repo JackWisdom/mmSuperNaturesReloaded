@@ -9,9 +9,9 @@ import org.bukkit.event.HandlerList;
 public class PlayerChangeTypeEvent extends Event {
     private static final HandlerList handlers = new HandlerList();
     SuperType oldt,newt;
-    double oldp,newp;
-    public PlayerChangeTypeEvent(SuperType oldt,SuperType newt,double oldp,double newp){
-        this.oldp=oldp;
+    double   newp;
+    public PlayerChangeTypeEvent(SuperType oldt, SuperType newt, double newp){
+
         this.oldt=oldt;
         this.newp=newp;
         this.newt=newt;
@@ -22,9 +22,7 @@ public class PlayerChangeTypeEvent extends Event {
     public SuperType getNewType(){
         return newt;
     }
-    public double getOldPower(){
-        return oldp;
-    }
+
     public double getNewPower(){
         return newp;
     }
