@@ -73,7 +73,7 @@ Vampire:
     JumpCost: 1000
     HealingCost: 60
     DrowningCost: 90
-    TeleportCost: 9000
+    TeleportCost: 1000
   Kill:
     SpreadCurse: true
   Time:

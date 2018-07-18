@@ -63,7 +63,7 @@ Mermaid:
   - CHAINMAIL_BOOTS
 Vampire:
   Materials:
-    Jump: ROSE_RED
+    Jump: POPPY
   Power:
     Start: 10000
     Kill:
@@ -305,9 +305,9 @@ Were:
     Description:
     - lol
     RecipeKey:
-      -  A: DANDELION_YELLOW
+      -  A: DANDELION
       -  N: AIR
-      -  B: ROSE_RED
+      -  B: POPPY
       -  C: RED_MUSHROOM
       -  D: REDSTONE
       -  E: BROWN_MUSHROOM
@@ -463,7 +463,7 @@ Angel:
     Start: 10000
   JumpDelta: 1.2
   Materials:
-    Jump: DANDELION_YELLOW
+    Jump: DANDELION
     Cure: PAPER
     Summon:
       Cow: BEEF
