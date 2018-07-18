@@ -201,11 +201,15 @@ import org.bukkit.scheduler.BukkitRunnable;
 
     /*     */
 /*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */   public boolean playerInteract(PlayerInteractEvent event)
+/*     */
+    /*     */   private boolean worldTimeIsNight(Player player)
+    /*     */   {
+        /* 543 */     long time = player.getWorld().getTime() % 24000L;
+        /*     */
+        /* 545 */     return (time < 0L) || (time > 12400L);
+        /*     */   }
+    /*     */
+    /*     */   public boolean playerInteract(PlayerInteractEvent event)
 /*     */   {
 /* 176 */     Action action = event.getAction();
 /* 177 */     Player player = event.getPlayer();
@@ -446,7 +450,7 @@ return;
 /*     */   
 /*     */   public boolean standsInSunlight(Player player)
 /*     */   {
-/* 526 */     return player.getLocation().getBlock().getLightFromSky()>=14&&((player.getInventory().getHelmet()==null) ||((player.getInventory().getHelmet().getType()==Material.AIR) ));
+/* 526 */     return player.getLocation().getBlock().getLightFromSky()==14&&((player.getInventory().getHelmet()==null) ||((player.getInventory().getHelmet().getType()==Material.AIR) ))&&(!worldTimeIsNight(player));
 /*     */   }
 /*     */   
 /*     */ 

@@ -152,15 +152,8 @@ import java.util.List;
                     //memaid
                     if(((EntityDamageByEntityEvent)e).getDamager()  instanceof Trident&&player.getWorld().hasStorm()){
                         boolean isInWater= player.getLocation().getBlock().getType()==Material.WATER;
-                        List<Entity> entities=player.getNearbyEntities(3,3,3);
-                        int dophant=0;
-                        for(Entity ent:entities){
-                            if(ent instanceof Dolphin){
-                                dophant=dophant+1;
-                            }
-                        }
-                        boolean isDophinNearBy3=dophant>=3;
-                        if(isInWater&&isDophinNearBy3){
+
+                        if(isInWater ){
                             player.sendMessage(Language.HUMAN_TO_MERMAID.toString());
                             SuperNManager.convert(snplayer, SuperType.MERMAID, SNConfigHandler.mermaidPowerStart);
                         }

@@ -118,6 +118,9 @@ public class MermaidManager extends ClassManager{
         if(event.getAction()!= Action.LEFT_CLICK_AIR){
             return false;
         }
+        if(event.getPlayer().getLocation().getBlock().getType()!=Material.WATER){
+            return false;
+        }
         Material dm=SNConfigHandler.mermaidDashMaterial;
 
         Material type=event.getItem().getType();
@@ -134,9 +137,9 @@ public class MermaidManager extends ClassManager{
             /* 214 */       return ;
             /*     */     }
         /* 216 */     SuperNManager.alterPower(snplayer, -SNConfigHandler.mermaidDashCost, Language.MERMAID_DASH.toString());
-        /* 222 */
-        /* 223 */
-        /* 225 */     player.setVelocity(player.getVelocity().multiply(1.5));
+        /* 222 */   Vector vhor = player.getLocation().getDirection();
+                    /* 223 */
+        /* 225 */     player.setVelocity(vhor.multiply(1.5));
         /* 226 */     return ;
         /*     */   }
 
