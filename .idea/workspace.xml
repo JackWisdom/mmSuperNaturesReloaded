@@ -8,12 +8,7 @@
   <component name="ChangeListManager">
     <list default="true" id="c1b564b4-0357-43b3-ad2a-ab2a8f0331b6" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/mmSuperNaturesReloaded/config.yml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/mmSuperNaturesReloaded/config.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/mmSuperNaturesReloaded/git/JackWisdom/mcp/supernaturals/manager/SuperNManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/mmSuperNaturesReloaded/git/JackWisdom/mcp/supernaturals/manager/SuperNManager.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/config.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/config.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/git/JackWisdom/mcp/supernaturals/manager/HumanManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/git/JackWisdom/mcp/supernaturals/manager/HumanManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/git/JackWisdom/mcp/supernaturals/manager/MermaidManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/git/JackWisdom/mcp/supernaturals/manager/MermaidManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/git/JackWisdom/mcp/supernaturals/manager/VampireManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/git/JackWisdom/mcp/supernaturals/manager/VampireManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/mmSuperNaturesReloaded/git/JackWisdom/mcp/supernaturals/manager/HumanManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/mmSuperNaturesReloaded/git/JackWisdom/mcp/supernaturals/manager/HumanManager.class" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -186,8 +181,8 @@
     <packageJsonPaths />
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="441" />
-    <option name="y" value="111" />
+    <option name="x" value="277" />
+    <option name="y" value="-8" />
     <option name="width" value="1096" />
     <option name="height" value="788" />
   </component>
@@ -377,7 +372,7 @@
       <workItem from="1531822603618" duration="313000" />
       <workItem from="1531872541332" duration="897000" />
       <workItem from="1531881028495" duration="38000" />
-      <workItem from="1531889720099" duration="2436000" />
+      <workItem from="1531889720099" duration="2522000" />
     </task>
     <task id="LOCAL-00001" summary="fix bugs">
       <created>1531460951475</created>
@@ -596,18 +591,26 @@
       <option name="project" value="LOCAL" />
       <updated>1531891056285</updated>
     </task>
-    <option name="localTasksCounter" value="32" />
+    <task id="LOCAL-00032" summary="added bugs">
+      <created>1531892228973</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1531892228973</updated>
+    </task>
+    <option name="localTasksCounter" value="33" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="87463000" />
+    <option name="totallyTimeSpent" value="87549000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <frame x="513" y="69" width="1096" height="788" extended-state="0" />
+    <editor active="true" />
     <layout>
       <window_info anchor="right" id="Palette" order="3" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Messages" order="7" sideWeight="0.4941435" weight="0.20859873" />
+      <window_info active="true" anchor="bottom" id="Messages" order="7" sideWeight="0.4941435" visible="true" weight="0.19494048" />
       <window_info anchor="right" id="Palette&#9;" order="3" />
       <window_info id="Image Layers" order="2" />
       <window_info anchor="right" id="Capture Analysis" order="3" />
@@ -619,9 +622,9 @@
       <window_info anchor="bottom" id="Terminal" order="7" />
       <window_info id="Capture Tool" order="2" />
       <window_info id="Designer" order="2" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.35139093" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.44444445" />
       <window_info anchor="right" id="Database" order="3" />
-      <window_info anchor="bottom" id="Find" order="1" sideWeight="0.49473685" visible="true" weight="0.18789808" />
+      <window_info anchor="bottom" id="Find" order="1" sideWeight="0.49473685" weight="0.18789808" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info id="UI Designer" order="2" />

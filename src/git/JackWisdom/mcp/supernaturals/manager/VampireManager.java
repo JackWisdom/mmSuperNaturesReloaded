@@ -450,7 +450,7 @@ return;
 /*     */   
 /*     */   public boolean standsInSunlight(Player player)
 /*     */   {
-/* 526 */     return player.getLocation().getBlock().getLightFromSky()==14&&((player.getInventory().getHelmet()==null) ||((player.getInventory().getHelmet().getType()==Material.AIR) ))&&(!worldTimeIsNight(player));
+/* 526 */     return player.getLocation().getBlock().getLightFromSky()==15&&((player.getInventory().getHelmet()==null) ||((player.getInventory().getHelmet().getType()==Material.AIR) ))&&(!worldTimeIsNight(player));
 /*     */   }
 /*     */   
 /*     */ 
