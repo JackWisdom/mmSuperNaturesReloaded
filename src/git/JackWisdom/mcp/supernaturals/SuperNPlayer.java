@@ -168,20 +168,8 @@ import javax.annotation.Nullable;
                 return false;
 /*     */   }
             public String getPrefix(){
-    SuperNPlayer snplayer=this;
-         String prefix="";
-                if (snplayer.isPriest()) {
-                    prefix = Color.PRIEST.prefix(Language.SN_PREIEST_NAME); } else if (snplayer.isVampire()) {
-                    prefix = Color.VAMPIRE.prefix(Language.SN_VAMPIRE_NAME); } else if (snplayer.isGhoul()) {
-                    prefix = Color.GHOUL.prefix(Language.SN_GHOUL_NAME); } else  if (snplayer.isWere()) {
-                    prefix = Color.WEREWOLF.prefix(Language.SN_WEREWOLF_NAME); } else   if (snplayer.isHunter()) {
-                    prefix = Color.WITCHHUNTER.prefix(Language.SN_WITCHHUNTER_NAME); } else if (snplayer.isDemon()) {
-                    prefix = Color.DEMON.prefix(Language.SN_DEMON_NAME); } else  if (snplayer.isAngel()) {
-                    prefix = Color.ANGEL.prefix(Language.SN_ANGEL_NAME);
-                } else{
-                    prefix = Color.HUMAN.prefix(Language.SN_HUMAN_NAME);
-                }
-                return prefix;
+
+                return getType().getLocalizedName();
             }
             @Nullable
             public Player getPlayer(){
@@ -247,6 +235,9 @@ import javax.annotation.Nullable;
          /* 177 */  return getType()==SuperType.DEMON;
          /*     */   }
 
+     public boolean isMermaid() {
+         return getType()==SuperType.MERMAID;
+     }
         //use less method
             public int hashCode()
              {
@@ -278,6 +269,7 @@ import javax.annotation.Nullable;
          /* 184 */     double powerPercentage = input * (getPower() / 10000.0D);
          /* 185 */     return powerPercentage;
          /*     */   }
+
      /*     */   
 /*
 

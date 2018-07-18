@@ -74,7 +74,6 @@ import static git.JackWisdom.mcp.supernaturals.SupernaturalsPlugin.instance;
 /*     */   }
 /*     */   public static SuperNPlayer load(UUID uuid){
             SuperNPlayer np= instance.getDataHandler().load(uuid);
-
             superpowers.put(np.getUuid(),np);
             np.getBelong().put(np.getUuid(),np);
             return np ;
@@ -162,7 +161,7 @@ import static git.JackWisdom.mcp.supernaturals.SupernaturalsPlugin.instance;
 /* 153 */     SupernaturalsPlugin.log(snplayer.getName() + " turned into a " + ChatColor.WHITE + superType + ChatColor.RED + "!");
 /*     */     
 /*     */ 
-/* 156 */     updateName(snplayer);
+
 /* 157 */     HunterManager.updateBounties();
 /*     */     
 /*     */ 
@@ -192,8 +191,7 @@ import static git.JackWisdom.mcp.supernaturals.SupernaturalsPlugin.instance;
               snplayer.setTruce(true);*/
 /*     */     
 /* 182 */
-/*     */     
-/* 184 */     updateName(snplayer);
+
 /* 185 */     HunterManager.updateBounties();
 /*     */     
 /*     */ 
@@ -216,7 +214,7 @@ import static git.JackWisdom.mcp.supernaturals.SupernaturalsPlugin.instance;
 /* 205 */
               changeType(snplayer,oldType);
 /*     */     
-/* 215 */     updateName(snplayer);
+
 /* 216 */     HunterManager.updateBounties();
 /*     */     
 /*     */ 
@@ -470,43 +468,7 @@ import static git.JackWisdom.mcp.supernaturals.SupernaturalsPlugin.instance;
 /*     */     }
 /*     */   }
 /*     */   
-/*     */   public static void updateName(SuperNPlayer snplayer) {
-/* 501 */     Player player = instance.getServer().getPlayer(snplayer.getName());
-/*     */     
-/* 503 */     String name = player.getName();
-/* 504 */     String displayname = player.getDisplayName().trim();
-/*     */     
 
-/*     */     ChatColor color;
-/* 508 */     if (snplayer.isPriest()) {
-/* 509 */       color = ChatColor.GOLD; }
-              else if (snplayer.isVampire()) {
-/* 511 */         color = ChatColor.DARK_PURPLE; }
-                else if (snplayer.isGhoul()) {
-/* 513 */           color = ChatColor.DARK_GRAY; }
-                else   if (snplayer.isWere()) {
-/* 515 */             color = ChatColor.BLUE; }
-                else   if (snplayer.isHunter()) {
-/* 517 */               color = ChatColor.GREEN; }
-                else    if (snplayer.isDemon()) {
-/* 519 */                 color = ChatColor.RED; }
-                else      if (snplayer.isAngel()) {
-/* 521 */                   color = ChatColor.AQUA;
-/*     */                 } else{
-/* 523 */                   color = ChatColor.WHITE; }
-
-/*     */     String updatedname;
-/* 526 */     if (displayname.contains("[SN]" + name)) {
-/* 527 */       updatedname = displayname.replaceFirst(" [SN]" + name, " " + color + name);
-/*     */     }
-/*     */     else {
-/* 530 */       updatedname = displayname.replaceFirst(name, color + name);
-/*     */     }
-/*     */     
-/* 533 */     if (SNConfigHandler.enableColors) {
-/* 534 */       player.setDisplayName(updatedname);
-/*     */     }
-/*     */   }
 /*     */   
 /*     */ 
 /*     */ 
@@ -528,8 +490,8 @@ import static git.JackWisdom.mcp.supernaturals.SupernaturalsPlugin.instance;
                           if(np.getPlayer().getLocation().getBlock().getType()!=Material.WATER){
                               continue;
                           }
-                          np.getPlayer().addPotionEffect(new PotionEffect(PotionEffectType.NIGHT_VISION,130,1));
-                          np.getPlayer().addPotionEffect(new PotionEffect(PotionEffectType.SPEED,130,1));
+                          np.getPlayer().addPotionEffect(new PotionEffect(PotionEffectType.FAST_DIGGING,200,1));
+                          np.getPlayer().addPotionEffect(new PotionEffect(PotionEffectType.SPEED,200,1));
                       }
                   }
               }.runTaskTimer(instance,0,100);
@@ -553,6 +515,7 @@ import static git.JackWisdom.mcp.supernaturals.SupernaturalsPlugin.instance;
 /* 577 */       this.taskCounter += 1;
 /* 578 */       if (this.taskCounter >= 30) {
 /* 579 */         this.taskCounter = 0;
+            get(player.getUniqueId()).getType().getManager().armorCheck(player);
 /*     */       }
 /*     */       
 /* 582 */       if (snplayer.isVampire()) {
@@ -560,36 +523,25 @@ import static git.JackWisdom.mcp.supernaturals.SupernaturalsPlugin.instance;
 /* 584 */           regenAdvanceTime(player, 3000);
 /*     */         }
 /* 586 */         if (this.taskCounter % 3 == 0) {
-
-
                plugin.getVampireManager().combustAdvanceTime(player, 3000L);
                plugin.getVampireManager().gainPowerAdvanceTime(snplayer, 3000);
           }
 /*     */       }
-/* 591 */       else if (snplayer.isGhoul()) {
-/* 592 */         if (this.taskCounter % 10 == 0) {
-/* 593 */           regenAdvanceTime(player, 10000);
-/*     */         }
-/* 595 */         plugin.getGhoulManager().waterAdvanceTime(player);
-/* 596 */       } else if (snplayer.isWere()) {
+/* 591 */       else if (snplayer.isWere()) {
 /* 597 */         if (this.taskCounter % 5 == 0) {
 /* 598 */           regenAdvanceTime(player, 5000);
 /*     */         }
-/* 600 */       } else if ((snplayer.isAngel()) && 
+/* 600 */       } else if (
 /* 601 */         (this.taskCounter % 10 == 0)) {
-/* 602 */         plugin.getAngelManager().waterAdvanceTime(player);
+/* 602 */         snplayer.getManager().waterAdvanceTime(player);
 /*     */       }
-/*     */       
-/*     */ 
-/* 606 */      get(player.getUniqueId()).getType().getManager().armorCheck(player);
-/*     */       
 /* 608 */       if ((snplayer.isDemon()) && 
 /* 609 */         (this.taskCounter % 5 == 0)) {
 /* 610 */         plugin.getDemonManager().powerAdvanceTime(player, 5);
 /*     */       }
 /*     */       
 /*     */ 
-/* 614 */       if ((snplayer.isSuper()) && 
+/* 614 */       if ((snplayer.isSuper()) &&
 /* 615 */         (this.taskCounter % 3 == 0)) {
 /* 616 */         truceBreakAdvanceTime(snplayer, 3000);
 /*     */       }

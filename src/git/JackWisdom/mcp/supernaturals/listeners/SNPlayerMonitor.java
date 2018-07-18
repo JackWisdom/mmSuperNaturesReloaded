@@ -160,7 +160,7 @@ public void playerDeath(PlayerDeathEvent event){
 /*     */       }
 /*     */     }
 /*     */     
-/* 139 */     SuperNManager.updateName(snplayer);
+
 /* 140 */     if (vanished) {
 /* 141 */       return;
 /*     */     }

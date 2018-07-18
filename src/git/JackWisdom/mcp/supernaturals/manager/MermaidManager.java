@@ -134,9 +134,9 @@ public class MermaidManager extends ClassManager{
             /* 214 */       return ;
             /*     */     }
         /* 216 */     SuperNManager.alterPower(snplayer, -SNConfigHandler.mermaidDashCost, Language.MERMAID_DASH.toString());
-        /* 222 */     Vector vjadd = new Vector(3, 2.25, 3);
+        /* 222 */
         /* 223 */
-        /* 225 */     player.setVelocity(player.getVelocity().add(vjadd));
+        /* 225 */     player.setVelocity(player.getVelocity().multiply(1.5));
         /* 226 */     return ;
         /*     */   }
 

@@ -26,7 +26,6 @@ Supernatural:
   - DEMON
 Mermaid:
   Material:
-     Fetch: FISHING_ROD
      Dash: FEATHER
   Power:
     Start: 10000
