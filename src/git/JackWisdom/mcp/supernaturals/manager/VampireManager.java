@@ -38,6 +38,7 @@ import org.bukkit.inventory.ItemStack;
 /*     */ import org.bukkit.inventory.PlayerInventory;
 /*     */ import org.bukkit.material.Door;
 import org.bukkit.scheduler.BukkitRunnable;
+import org.bukkit.util.Vector;
 /*     */
 
 /*     */
@@ -313,7 +314,8 @@ import org.bukkit.scheduler.BukkitRunnable;
 /* 295 */       if (snplayer.getPower() > SNConfigHandler.vampireTeleportCost) {
 /* 296 */         SuperNManager.alterPower(snplayer, -SNConfigHandler.vampireTeleportCost, Language.VAMPIRE_TELEPORT_NOTICE_SELF.toString());
 /*     */
-                player.launchProjectile(EnderPearl.class,player.getVelocity().multiply(1.2));
+        Vector vector=player.getLocation().getDirection().multiply(1.25);
+                player.launchProjectile(EnderPearl.class, vector);
 /* 306 */         return;
 /*     */       }
 /* 308 */       SuperNManager.sendMessage(snplayer, Language.NO_POWER.toString());
